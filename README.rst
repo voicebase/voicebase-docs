@@ -1,7 +1,7 @@
-VoiceBase /v2
-=============
+VoiceBase
+=========
 
-VoiceBase /v2 is an API for speech analytics. This documentation is currently under construction, with more details coming soon... 
+VoiceBase provides APIs for speech analytics. This documentation is currently under construction, with more details coming soon... 
 
 Features
 --------
@@ -11,5 +11,5 @@ Features
 Support
 -------
 
-If you are a VoiceBase customer, contact support [at] voicebase [dot] com.
+If you are a VoiceBase customer in need of support, contact support [at] voicebase [dot] com.
 
