@@ -1,10 +1,9 @@
-.. Read the Docs Template documentation master file, created by
-   sphinx-quickstart on Tue Aug 26 14:19:49 2014.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. VoiceBase documentation master file, created by jbocharov
 
-Welcome to Read the Docs Template's documentation!
-==================================================
+Welcome to VoiceBase V2 API Documentation
+=========================================
+
+The `VoiceBase`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data.
 
 Contents:
 
