@@ -10,12 +10,12 @@ Welcome to VoiceBase V2 API Documentation
 
 Contents:
 
-* :ref:`overview`
-* :ref:`how-to-guides`
-* :ref:`api-reference`
-* :ref:`data-formats`
+* :ref:`underview` - Overview of the API 
+* :ref:`how-to-guides` - Step-by-step guides to common patterns
+* :ref:`api-reference` - Reference documentation for the API
+* :ref:`data-formats` - Refenence dcoumentation for the data formats
 
-.. _overview:
+.. _underview:
 
 .. toctree::
   :maxdepth: 2
@@ -24,12 +24,13 @@ Contents:
   overview/api_overview
   overview/getting_started
   overview/support
-
+  
 .. _how-to-guides:
 
 .. toctree::
   :maxdepth: 2
   :caption: How-To Guides
+
   how-to-guides/hello-world
   how-to-guides/transcripts
   how-to-guides/stereo
@@ -40,6 +41,7 @@ Contents:
 .. toctree::
   :maxdepth: 2
   :caption: API Reference
+
   api-reference/media-post
   api-reference/media-get
   api-reference/media-mediaId-get
@@ -49,6 +51,7 @@ Contents:
 .. toctree::
   :maxdepth: 2
   :caption: Data Formats
+
   data-formats/media
   data-formats/configuration
 
