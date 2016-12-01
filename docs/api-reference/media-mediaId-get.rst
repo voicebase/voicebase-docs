@@ -1,0 +1,1 @@
+/media/{mediaId} GET
