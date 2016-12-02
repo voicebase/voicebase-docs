@@ -35,6 +35,7 @@ Contents:
   how-to-guides/stereo
   how-to-guides/callbacks
   how-to-guides/pci
+  how-to-guides/troubleshooting
 
 .. _api-reference:
 
