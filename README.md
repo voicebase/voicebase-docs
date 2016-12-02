@@ -23,3 +23,6 @@ make html
 open _build/html/index.html
 ```
 
+## Deployment
+
+When deployed, this documentation appears at [http://voicebase.readthedocs.io/en/v2-beta/](http://voicebase.readthedocs.io/en/v2-beta/).
