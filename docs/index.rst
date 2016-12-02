@@ -12,8 +12,8 @@ Contents:
 
 * :ref:`underview` - Overview of the API 
 * :ref:`how-to-guides` - Step-by-step guides to common patterns
-* :ref:`api-reference` - Reference documentation for the API
-* :ref:`data-formats` - Refenence dcoumentation for the data formats
+* :ref:`data-formats` - Data formats reference
+* :ref:`api-reference` - API reference
 
 .. _underview:
 
@@ -36,6 +36,15 @@ Contents:
   how-to-guides/stereo
   how-to-guides/callbacks
 
+.. _data-formats:
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Data Formats
+
+  data-formats/media
+  data-formats/configuration
+
 .. _api-reference:
 
 .. toctree::
@@ -45,13 +54,4 @@ Contents:
   api-reference/media-post
   api-reference/media-get
   api-reference/media-mediaId-get
-
-.. _data-formats:
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Data Formats
-
-  data-formats/media
-  data-formats/configuration
 

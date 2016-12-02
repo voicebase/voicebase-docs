@@ -1,1 +1,4 @@
-configuration
+{ configuration }
+=================
+
+{ configuration } placeholder
