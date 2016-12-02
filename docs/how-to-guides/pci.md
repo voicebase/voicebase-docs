@@ -41,3 +41,13 @@ When PCI detection is enabled, the predictions section of the /media resource wi
 ## Enabling Audio Redaction
 
 ## Complete Examples
+
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+    --header "Authorization: Bearer $TOKEN" \
+    --form media=@recording.mp3 \
+    | tee media-post-response.json | jq '.'
+
+export MEDIA_ID=$( jq --raw-output '.mediaId' < media-post-response.json )
+echo "Uploaded file with mediaId = ${MEDIA_ID}"
+```
