@@ -1,4 +1,0 @@
-Transcripts
-===========
-
-Transcripts placeholder...
