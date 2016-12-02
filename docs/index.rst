@@ -27,7 +27,7 @@ Contents:
 .. _how-to-guides:
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
   :caption: Developer Guides
 
   how-to-guides/hello-world
