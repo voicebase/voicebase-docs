@@ -10,12 +10,11 @@ Welcome to VoiceBase V2 Beta API Documentation
 
 Contents:
 
-* :ref:`underview` - Overview of the API 
+* :ref:`overview-section` - Overview of the API 
 * :ref:`how-to-guides` - Step-by-step guides to common patterns
-* :ref:`data-formats` - Data formats reference
 * :ref:`api-reference` - API reference
 
-.. _underview:
+.. _overview-section:
 
 .. toctree::
   :maxdepth: 2
@@ -29,7 +28,7 @@ Contents:
 
 .. toctree::
   :maxdepth: 2
-  :caption: How-To Guides
+  :caption: Developer Guides
 
   how-to-guides/hello-world
   how-to-guides/transcripts
@@ -37,22 +36,14 @@ Contents:
   how-to-guides/callbacks
   how-to-guides/pci
 
-.. _data-formats:
-
-.. toctree::
-  :maxdepth: 2
-  :caption: Data Formats
-
-  data-formats/media
-  data-formats/configuration
-
 .. _api-reference:
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 3
   :caption: API Reference
 
   api-reference/media-post
   api-reference/media-get
   api-reference/media-mediaId-get
+  data-formats/data-formats
 
