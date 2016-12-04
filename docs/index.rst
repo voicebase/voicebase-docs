@@ -36,6 +36,7 @@ Contents:
   how-to-guides/callbacks
   how-to-guides/pci
   how-to-guides/troubleshooting
+  how-to-guides/keywordsandtopics
 
 .. _api-reference:
 
