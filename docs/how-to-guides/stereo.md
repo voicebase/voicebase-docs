@@ -30,7 +30,7 @@ to /media and specify the label to use for each channel.
 }
 ```
 
-## Effects on transcripts
+## Effects on Transcripts
 
 When stereo processing is enabled, the word-by-word JSON transcript will contain
 additional nodes indicating the change of turn on the speaker. These nodes are
@@ -152,12 +152,15 @@ a service that has both
 of them for a low price.
 ```
 
+Note that When a configuration includes a callback, the document posted contains
+not only the JSON word-by-word transcription, but also the plain text and SRT
+transcripts.
 
 ## Effects on Keywords and Topics
 
 When processing a file in stereo, you will get keywords and topics detected
-independently on each channel. For example, the start time of a keyword on a recording processed
-as a single channel would appear under the "unknown" label:
+independently on each channel. For example, the start time of a keyword on a
+recording processed as a single channel would appear under the "unknown" label:
 
 ```json
 {
