@@ -40,7 +40,7 @@ Keywords and Topics are not supported for Spanish or Portuguese, and must be rem
 
 ## Complete Examples
 ### U.S. English
-```json
+```bash
 curl https://apis.voicebase.com/v2-beta/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
@@ -51,7 +51,7 @@ curl https://apis.voicebase.com/v2-beta/media \
     }
 ```
 ### Australian English
-```json
+```bash
 curl https://apis.voicebase.com/v2-beta/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
@@ -62,7 +62,7 @@ curl https://apis.voicebase.com/v2-beta/media \
     }
 ```
 ### Latin American Spanish
-```json
+```bash
 curl https://apis.voicebase.com/v2-beta/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
