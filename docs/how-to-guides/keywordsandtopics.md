@@ -48,13 +48,52 @@ The configuration items are independent.  If you are only interested in identify
 }
 ```
 
+The following is an example of posting a media document with semantic keywords and topics extraction enabled.
+
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+  --header "Authorization: Bearer $TOKEN" \
+  --form media=@recording.mp3 \
+  --form 'configuration={"configuration":{"keywords":{"semantic":true}, \
+  "topics":{"semantic":true}}}'
+```
 
 
-## Keyword Group Management
+# Keyword Group Management
 
 Voicebase allows you to specify pre-defined keyword groups which you can later use for targeted keyword extraction, as we see in the above example.
 
-    Reference to data classes.
+To define new keyword group, or update an existing keyword group, simply PUT the group under /v2-beta/definitions/keywords/groups. The body of the PUT request is a JSON object (Content-Type: application/json) that contains two keys:
+
+ - name : the name of the keyword group
+ - keywords : an array of the included keywords
+
+For example, to create group 'data' that includes the keywords data science, big data, and data mining, make the following PUT request using curl, or an equivalent request using a tool of your choice:
+
+```bash
+curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }'
+```
+
+## Uploading Media with Keyword Spotting Enabled
+
+To upload media with keyword spotting enabled, include a JSON configuration attachment with your media POST. The configuration attachment should contain the key:
+
+ - configuration : root object for configuration data
+    - keywords (child of configuration): object for keyword-specific configuration
+        - groups (child of keywords): array of keyword-spotting groups
+
+For example, to upload media from a local file called recording.mp3 and spot keywords using the data group, make the following POST request using curl, or an equivalent request using a tool of your choice:
+
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+  --header "Authorization: Bearer $TOKEN" \
+  --form media=@recording.mp3 \
+  --form 'configuration={"configuration":{"keywords":{"groups":["data"]}}}'
+```
 
 ## Complete Examples
 
