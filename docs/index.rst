@@ -39,6 +39,7 @@ Contents:
   how-to-guides/keywordsandtopics
   how-to-guides/search
   how-to-guides/swearwords
+  how-to-guides/languages
 
 .. _api-reference:
 
