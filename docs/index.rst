@@ -37,6 +37,7 @@ Contents:
   how-to-guides/pci
   how-to-guides/troubleshooting
   how-to-guides/keywordsandtopics
+  how-to-guides/search
 
 .. _api-reference:
 
