@@ -47,6 +47,19 @@ curl --header “Authorization: Bearer $TOKEN” \
 https://apis.voicebase.com/v2-beta/media?filter.metadata.extended.customerId=10101&query=bill
 ```
 
+#### Searchable Field Definitions
+
+To enable search over an extended metadata field, you must explicitly make the field searchable.  Use the PUT /definitions/media/search api endpoint to do so.
+
+```bash
+curl https://apis.voicebase.com/v2-beta/definitions/media/search \
+  --header "Authorization: Bearer $TOKEN" \
+  --header "Content-Type: application/json" \
+  --request PUT \
+  --data '{ "fields" : [ "extended.customerId" ] }'
+```
+
+
 ### Time-Range Restricted Search
 
 To restrict a search to media for a specific time range, add filters for lower and/or upper bounds on the creation time and date of the media. For example, to find media only for the month of January 2016:
