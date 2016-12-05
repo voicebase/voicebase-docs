@@ -38,6 +38,7 @@ Contents:
   how-to-guides/troubleshooting
   how-to-guides/keywordsandtopics
   how-to-guides/search
+  how-to-guides/swearwords
 
 .. _api-reference:
 
