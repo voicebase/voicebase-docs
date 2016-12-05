@@ -10,7 +10,7 @@ Welcome to VoiceBase V2 Beta API Documentation
 
 Contents:
 
-* :ref:`overview-section` - Overview of the API 
+* :ref:`overview-section` - Overview of the API
 * :ref:`how-to-guides` - Step-by-step guides to common patterns
 * :ref:`api-reference` - API reference
 
@@ -23,7 +23,7 @@ Contents:
   overview/api_overview
   overview/getting_started
   overview/support
-  
+
 .. _how-to-guides:
 
 .. toctree::
@@ -51,4 +51,3 @@ Contents:
   api-reference/media-get
   api-reference/media-mediaId-get
   data-formats/data-formats
-
