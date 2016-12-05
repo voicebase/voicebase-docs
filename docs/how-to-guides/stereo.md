@@ -46,7 +46,6 @@ node appears in the transcript.
       "engine": "standard",
       "confidence": 0.9585561312642723,
       "words": [
-          ...
           {
             "p": 176,
             "s": 55893,
@@ -69,7 +68,6 @@ node appears in the transcript.
             "e": 57483,
             "w": "what's"
           }
-          ...
      ]
    }
  }
@@ -179,8 +177,7 @@ as a single channel would appear under the "unknown" label:
             "name": "cable service",
             "relevance": "0.952574126822"
           }
-          ...
-    ]
+      ]
     }
   }
 }
@@ -208,7 +205,6 @@ label specified in the configuration:
             "name": "cable service",
             "relevance": "0.880797077978"
           }
-          ...
         ]
       }
     }
