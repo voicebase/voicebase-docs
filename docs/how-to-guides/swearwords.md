@@ -9,10 +9,10 @@ Note: When the beta label is removed from the V2 platform the swear word filter 
 To enable swearword filtering, configure the media post configuration with the swearFilter parameter set to 'true' in "transcripts":
 
 ```json
-{ "configuration":{ "executor":"v2", "transcripts":{ "engine":"premium", "swearFilter": true } }
+{ "configuration":{ "executor":"v2", "transcripts":{ "engine":"premium", "swearFilter": true } } }
 ```
 
-### Example 
+### Example
 
 To enable the swearword filter for a media document:
 
