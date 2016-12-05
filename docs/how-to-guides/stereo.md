@@ -1,8 +1,8 @@
 # Stereo
 
-When a recording is in stereo, where each speaker is recorded in one of the
-channels, a better transcript can be obtained by instructing VoiceBase to process
-each channel independently.
+When two speakers are recorded in separate channels, an improved transcript can
+be obtained by providing VoiceBase with instructions to process each channel
+independently. Phone calls recorded in stereo can benefit from this feature.
 
 ## Enabling stereo transcription
 
