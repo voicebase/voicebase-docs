@@ -30,9 +30,9 @@ to /media and specify the label to use for each channel.
 }
 ```
 
-### Transcripts Response
+## Changes on transcripts
 
-When stereo processing is enabled, the word-by-word transcript will contain
+When stereo processing is enabled, the word-by-word JSON transcript will contain
 additional nodes indicating the change of turn on the speaker. These nodes are
 identified by the attribute "m" set to "turn" and the attribute "w" set to the
 speaker's label provided in the configuration for one of the channels. The words
