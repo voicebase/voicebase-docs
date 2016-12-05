@@ -49,7 +49,7 @@ The configuration items are independent.  If you are only interested in identify
 ```
 
 
-# Keyword Group Management
+## Keyword Group Management
 
 Voicebase allows you to specify pre-defined keyword groups which you can later use for targeted keyword extraction, as we see in the above example.
 
