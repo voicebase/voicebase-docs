@@ -2,7 +2,7 @@
 
 
 Voicebase can automatically extract a specified or semantically extracted 
-set of keywords and associated topics from transcript.  
+set of keywords and associated topics from transcript.
 
 ## Enabling Keywords and Topics
 
@@ -25,9 +25,9 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 }
 ```
 
-configuration.keywords.semantic enables or disables semantic keyword extraction.
-configuration.topcs.semantic enables or disables semantic keyword extraction.
-configuration.keywords.groups allows you to specify the keyword groups you have defined.
+**configuration.keywords.semantic** enables or disables semantic keyword extraction.
+**configuration.topcs.semantic** enables or disables semantic keyword extraction.
+**configuration.keywords.groups** allows you to specify the keyword groups you have defined.
 
 The configuration items are independent.  If you are only interested in identifying specific words or phrases, you would  only specify configuration.keywords.groups, for example:
 
@@ -46,16 +46,6 @@ The configuration items are independent.  If you are only interested in identify
     }
   }
 }
-```
-
-The following is an example of posting a media document with semantic keywords and topics extraction enabled.
-
-```bash
-curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer $TOKEN" \
-  --form media=@recording.mp3 \
-  --form 'configuration={"configuration":{"keywords":{"semantic":true}, \
-  "topics":{"semantic":true}}}'
 ```
 
 
@@ -86,6 +76,12 @@ To upload media with keyword spotting enabled, include a JSON configuration atta
     - keywords (child of configuration): object for keyword-specific configuration
         - groups (child of keywords): array of keyword-spotting groups
 
+
+
+## Complete Examples
+
+### Example 1
+
 For example, to upload media from a local file called recording.mp3 and spot keywords using the data group, make the following POST request using curl, or an equivalent request using a tool of your choice:
 
 ```bash
@@ -95,6 +91,16 @@ curl https://apis.voicebase.com/v2-beta/media \
   --form 'configuration={"configuration":{"keywords":{"groups":["data"]}}}'
 ```
 
-## Complete Examples
 
+### Example 2
+
+The following is an example of posting a media document with semantic keywords and topics extraction enabled.
+
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+  --header "Authorization: Bearer $TOKEN" \
+  --form media=@recording.mp3 \
+  --form 'configuration={"configuration":{"keywords":{"semantic":true}, \
+  "topics":{"semantic":true}}}'
+```
 
