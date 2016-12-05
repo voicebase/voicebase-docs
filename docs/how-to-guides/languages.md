@@ -17,7 +17,7 @@ Use the language configuration parameter to set the language.
 ```json
 {  
   "configuration": { 
-    "language": "en-AU"
+    "language":"en-AU"
   }
 }
 ```
@@ -29,11 +29,12 @@ Keywords and Topics are not supported for Spanish or Portuguese, and must be rem
 {
   "configuration":{
   "language":"es-LA",
-  "keywords": {
-    "semantic": false
-  },
-  "topics": {
-    "semantic": false
+    "keywords":{
+      "semantic":false
+    },
+    "topics":{
+      "semantic":false
+    }
   }
 }
 ```
@@ -69,11 +70,11 @@ curl https://apis.voicebase.com/v2-beta/media \
     --form 'configuration={
       "configuration":{
         "language":"es-LA",
-        "keywords": {
+        "keywords":{
           "semantic": false
         },
-        "topics": {
-          "semantic": false
+        "topics":{
+          "semantic":false
         }
       }
     }
