@@ -40,7 +40,7 @@ following a turn node belong to the speaker identified by it until a new turn
 node appears in the transcript.
 
 ```json
-"transcripts": {
+  "transcripts": {
     "latest": {
       "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
       "engine": "standard",
@@ -70,10 +70,14 @@ node appears in the transcript.
             "w": "what's"
           }
           ...
+     ]
+   }
+ }
 ```
 
 The plain text version of the transcript will show each segment of the conversation
 prefixed with the speaker name (E.g. 'Agent:' or  'Customer')
+
 ```bash
 curl -v   https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
         --header "Authorization: Bearer $TOKEN" \
@@ -174,11 +178,12 @@ as a single channel would appear under the "unknown" label:
             },
             "name": "cable service",
             "relevance": "0.952574126822"
-          },
+          }
           ...
     ]
     }
   }
+}
 ```
 When the recording is processed in stereo, the start time appear under each speaker's
 label specified in the configuration:
@@ -202,8 +207,11 @@ label specified in the configuration:
             },
             "name": "cable service",
             "relevance": "0.880797077978"
-          },
+          }
           ...
+        ]
+      }
+    }
 ```
 
 A similar change occurs on the reporting of topics.
