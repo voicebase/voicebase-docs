@@ -40,6 +40,7 @@ following a turn node belong to the speaker identified by it until a new turn
 node appears in the transcript.
 
 ```json
+{
   "transcripts": {
     "latest": {
       "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
@@ -70,6 +71,7 @@ node appears in the transcript.
           }
      ]
    }
+  }
  }
 ```
 
@@ -189,7 +191,7 @@ When the recording is processed in stereo, the start time appear under each spea
 label specified in the configuration:
 
 ```json
-  ...
+  {
    "keywords": {
       "latest": {
         "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
@@ -211,6 +213,7 @@ label specified in the configuration:
         ]
       }
     }
+  }
 ```
 
 A similar change occurs on the reporting of topics.
