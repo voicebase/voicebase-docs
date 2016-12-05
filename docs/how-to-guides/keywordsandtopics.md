@@ -1,7 +1,7 @@
 # Keywords and Topics
 
 
-Voicebase can automatically extract a specified or semantically extracted 
+Voicebase can automatically extract a specified or semantically extracted
 set of keywords and associated topics from transcript.
 
 ## Enabling Keywords and Topics
@@ -10,14 +10,13 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 
 ```json
 {  
-  "configuration": { 
-    "keywords": { 
+  "configuration": {
+    "keywords":
       {  
         "semantic": true,
-        "groups" : ['array', 'of', 'keyword', 'groups', 'you', 'have', 'defined'],
-        
+        "groups" : ['array', 'of', 'keyword', 'groups', 'you', 'have', 'defined']
       },
-       "topics" : {
+    "topics" : {
         "semantic": true
       }
     }
@@ -33,14 +32,12 @@ The configuration items are independent.  If you are only interested in identify
 
 ```json
 {  
-  "configuration": { 
-    "keywords": { 
-      {  
+  "configuration": {
+    "keywords": {
         "semantic": false,
         "groups" : ['array', 'of', 'keyword', 'groups', 'you', 'have', 'defined'],
-        
       },
-       "topics" : {
+    "topics" : {
         "semantic": false
       }
     }
@@ -103,4 +100,3 @@ curl https://apis.voicebase.com/v2-beta/media \
   --form 'configuration={"configuration":{"keywords":{"semantic":true}, \
   "topics":{"semantic":true}}}'
 ```
-
