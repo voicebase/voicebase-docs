@@ -41,6 +41,7 @@ Contents:
   how-to-guides/swearwords
   how-to-guides/languages
   how-to-guides/priority
+  how-to-guides/aligner
 
 .. _api-reference:
 
