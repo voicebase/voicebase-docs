@@ -40,6 +40,7 @@ Contents:
   how-to-guides/search
   how-to-guides/swearwords
   how-to-guides/languages
+  how-to-guides/priority
 
 .. _api-reference:
 
