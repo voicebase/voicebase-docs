@@ -11,14 +11,14 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 ```json
 {  
   "configuration": {
-    "keywords":
-      {  
-        "semantic": true,
-        "groups" : ['array', 'of', 'keyword', 'groups', 'you', 'have', 'defined']
-      },
-    "topics" : {
-        "semantic": true
-      }
+    "keywords": {  
+      "semantic": true,
+      "groups" : [
+        "array", "of", "keyword", "groups", "you", "have", "defined"
+      ]
+    },
+    "topics": {
+      "semantic": true
     }
   }
 }
