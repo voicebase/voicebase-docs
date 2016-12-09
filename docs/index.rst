@@ -52,7 +52,5 @@ Contents:
   :maxdepth: 3
   :caption: API Reference
 
-  api-reference/media-post
-  api-reference/media-get
-  api-reference/media-mediaId-get
+  api-reference/media
   data-formats/data-formats
