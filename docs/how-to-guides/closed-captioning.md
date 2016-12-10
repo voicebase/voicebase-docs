@@ -60,5 +60,5 @@ curl -v   https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/lates
 ## Retrieving a transcript in SRT format using a callback
 
 Note that when posting a media file with a configuration including a
-[callback](callbacks), the results posted to the callback URL always contain
+[callback](callbacks.html), the results posted to the callback URL always contain
 the JSON (word-by-word), the plain text and SRT transcripts.
