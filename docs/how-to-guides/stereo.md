@@ -240,3 +240,29 @@ A similar change occurs on the reporting of topics.
 
 Audio redaction of PCI will redact the audio in both channels regardless of what channel
 the PCI detected data occurred.
+
+## Complete Examples
+### Stereo
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+    --header "Authorization: Bearer $TOKEN" \
+    --form media=@recording.mp3 \
+    --form 'configuration={
+      "configuration": {
+          "ingest":
+          {
+            "channels":
+            {
+              "left":
+              {
+                "speaker": "Customer"
+              },
+              "right":
+              {
+                "speaker": "Agent"
+              }
+            }
+          }
+      }
+    }'
+```

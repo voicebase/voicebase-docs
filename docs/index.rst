@@ -32,6 +32,7 @@ Contents:
 
   how-to-guides/hello-world
   how-to-guides/transcripts
+  how-to-guides/closed-captioning
   how-to-guides/stereo
   how-to-guides/callbacks
   how-to-guides/pci
