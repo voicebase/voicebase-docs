@@ -2,6 +2,20 @@
 
 Voicebase allows you to detect and optionally redact numbers from the transcript and media files.  The information is detected with approximately a ?% accuracy and defined by a beginning timestamp and ending timestamp for the detected data.  
 
+## Number Detection Models
+
+Voicebase currently offers the following three number detection models:
+
+- PCI 
+    - Detect PCI sensitive numbers, including:
+        - Credit Card Number
+        - Consumer Purchase Number (i.e. payment cards)
+        - CVC Number
+- SSN
+    - Detects social security numbers
+- Number
+    - Detects any numbers.
+
 ##  Output
 
 - Transcript
@@ -19,7 +33,7 @@ First, POST to /media.
 curl -v -s https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer XXXXX" \
   --form media=@musicVoiceTone.wav \
-  --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, "detections":[{"model":"?????"}]}}'
+  --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, "detections":[{"model":"SSN"}]}}'
 
 ```
 
@@ -50,7 +64,7 @@ curl -v -s https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer XXXXX" \
   --form media=@musicVoiceTone.wav \
   --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, \
-        "detections":[{"model":"????","redact":{"transcripts":"[redacted]"}}]}}'
+        "detections":[{"model":"SSN","redact":{"transcripts":"[redacted]"}}]}}'
 
 ```
 
@@ -61,7 +75,7 @@ curl -v -s https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer XXXXX" \
   --form media=@musicVoiceTone.wav \
   --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, \
-        "detections":[{"model":"????","redact":{"transcripts":"[redacted]","audio":{"tone":270,"gain":0.5}}}]}}'
+        "detections":[{"model":"SSN","redact":{"transcripts":"[redacted]","audio":{"tone":270,"gain":0.5}}}]}}'
 
 ```
 
