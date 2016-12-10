@@ -44,7 +44,8 @@ Contents:
   how-to-guides/priority
   how-to-guides/aligner
   how-to-guides/numberdetectionandredaction
-  
+  how-to-guides/predictions
+
 .. _api-reference:
 
 .. toctree::
