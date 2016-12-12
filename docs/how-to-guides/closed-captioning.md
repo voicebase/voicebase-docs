@@ -4,8 +4,8 @@ VoiceBase can generate subtitles or closed captions for your video project, by
 allowing you to retrieve the transcript of your audio or video file using the
 SubRip Text (SRT) format.
 
-You do not need any special configuration. All transcripts are always available
-in three formats: JSON word-by-word, plain text and SRT.
+No special configuration is required. All transcripts are always available in
+three formats: JSON word-by-word, plain text and SRT.
 
 ## SRT subtitle format
 
