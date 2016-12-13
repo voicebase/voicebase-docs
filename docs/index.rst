@@ -1,18 +1,18 @@
 .. VoiceBase documentation master file, created by jbocharov on 2016-12-01
 
-Welcome to VoiceBase V2 Beta API Documentation
-==============================================
+Welcome to VoiceBase V2 (Beta) API Docs
+=======================================
 
-`VoiceBase`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data. The `Developer Portal`_ provides a variety of resources for working with the VoiceBase REST API, and example components you can use to jump-start your integration.
+`VoiceBase <https://www.voicebase.com>`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data. The `Developer Portal <https://apis.voicebase.com/developer-portal>`_ provides a variety of resources for working with the VoiceBase REST API, and example components you can use to jump-start your integration.
 
-.. _VoiceBase: https://www.voicebase.com
-.. _Developer Portal: https://apis.voicebase.com/developer-portal
 
-Contents:
+If you are getting started, we recommend the `Hello, World Developer Guide <how-to-guides/hello-world.html>`_ as a practical primer, and the `API Overview <overview/api_overview.html>`_ as a high-level introduction.
 
-* :ref:`overview-section` - Overview of the API
-* :ref:`how-to-guides` - Step-by-step guides to common patterns
-* :ref:`api-reference` - API reference
+More information and guidances can be found in the:
+
+* :ref:`how-to-guides`
+* :ref:`api-reference`
+* `Developer Portal <https://apis.voicebase.com/developer-portal>`_
 
 .. _overview-section:
 
@@ -21,8 +21,6 @@ Contents:
   :caption: Overview
 
   overview/api_overview
-  overview/getting_started
-  overview/support
 
 .. _how-to-guides:
 
@@ -54,4 +52,12 @@ Contents:
   :caption: API Reference
 
   api-reference/media
-  data-formats/data-formats
+  api-reference/definitions
+  api-reference/profile
+
+.. _developer-portal:
+
+.. toctree::
+  :caption: Developer Portal
+
+  Developer Portal <https://apis.voicebase.com/developer-portal/>

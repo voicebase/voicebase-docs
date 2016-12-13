@@ -1,10 +1,6 @@
 /media
 ======
 
-Placeholder...
+The */media* resource contains the media files you have uploaded to VoiceBase for analysis, as well as transcripts and analytics generated from processing these files.
 
-.. include:: media/media-GET.rst
-
-.. include:: media/media-POST.rst
-
-.. include:: media/media-mediaId-GET.rst
+You can find more details around the */media* resource in the `API Console for /media in the Developer Portal <https://apis.voicebase.com/developer-portal/#/console#media>`_.
