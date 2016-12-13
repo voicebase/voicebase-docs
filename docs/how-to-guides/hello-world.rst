@@ -6,12 +6,14 @@ This Quickstart tutorial gets you up and running with your first transcription a
 
 The examples assume you have these prerequisites:
 
-- *Your Bearer token* (otherwise, see: :ref:`How to Get Your Bearer Token <token>`)
-- *jq* for working with JSON (otherwise, see: :ref:`A Quick Note on Tools <tools>`)
+- *Your Bearer token* (otherwise, see: :ref:`How to Get Your Bearer Token <token>` for details)
+- *jq* for working with JSON (otherwise, see: :ref:`A Quick Note on Tools <tools>` for details)
 - *curl* (comes with most Linux systems, see: :ref:`A Quick Note on Tools <tools>` for details)
 
 Step **(1)**: Verify your Bearer Token and tools are working
 ------------------------------------------------------------
+
+Start by verifying your Bearer token is working by running the following from a command prompt. Please remember to insert your Bearer token after *TOKEN=* in the first line of the example. You can also find more detailed instructions on :ref:`How to Get Your Bearer Token <token>` or :ref:`Understanding Your First Request <understanding_step1>` below.
 
 .. code-block:: sh
   :linenos:
@@ -109,6 +111,35 @@ You can also retrieve a plain-text version using *transcripts/latest* and the *A
     --header 'Accept: text/plain' \
     --header "Authorization: Bearer ${TOKEN}"
 
+.. _token:
+
+
+How to Get Your Bearer Token
+----------------------------
+
+First, sign into the `Developer Portal <https://apis.voicebase.com/developer-portal>`__.
+
+.. image:: /_static/Sign-Into-Developer-Portal.png
+   :width: 200
+
+Click the *Bearer Token Management* widget in the lower-left of the portal.
+
+.. image:: /_static/Bearer-Token-Management.png
+   :width: 300
+
+Click the *+ New Token* button to generate a new Bearer token
+
+.. image:: /_static/New-Token.png
+   :width: 300
+
+Click through on *Create Token* to generate the token.
+
+.. image:: /_static/Create-Token.png
+
+Save your token by Copying it to the clipboard or downloading it.
+
+.. image:: /_static/Copy-Token-To-Clipboard.png
+
 
 .. _understanding_step1:
 
@@ -162,7 +193,7 @@ The *media* section the list of media in your account (up to 10 due to the limit
 Understanding Your First Upload
 -------------------------------
 
-In order to get acquainted with analytics, we first need to submit a recording for transcription and analysis. This is accomplished by making a POST request to /media. A minimal curl to do so is:
+The next step is to upload a recording to the API for transcription and analysis, but making a POST to /media, with the recording as an attachment named media.
 
 .. code-block:: sh
   :linenos:
@@ -172,6 +203,33 @@ In order to get acquainted with analytics, we first need to submit a recording f
     --form media=@hello-world.mp3 \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
+
+When you add the *--form media=@filename.mp3* parameters, *curl* automatically sets the HTTP method to *POST* and the *Content-Type* to *multipart/form-data*. This is equivalent to the more explicit:
+
+.. code-block:: sh
+  :linenos:
+  :emphasize-lines: 4-5
+
+  curl https://apis.voicebase.com/v2-beta/media \
+    --form media=@hello-world.mp3 \
+    --header "Authorization: Bearer ${TOKEN}" \
+    --request POST \
+    --header "Content-Type: multipart/form-data" \
+    | jq
+
+Finally, many operations will rely on providing a configuration JSON attachment with additional processing instructions. Omitting the attachment is equivalent to including the following default configuration:
+
+.. code-block:: sh
+  :linenos:
+  :emphasize-lines: 3
+
+  curl https://apis.voicebase.com/v2-beta/media \
+    --form media=@hello-world.mp3 \
+    --form 'configuration={"configuration":{}}' \
+    --header "Authorization: Bearer ${TOKEN}" \
+    | jq
+
+Many of the Developer Guides will address how to use specific options in the configuration attachment to address various Use Cases.
 
 .. _tools:
 
@@ -184,34 +242,6 @@ A Quick Note on Tools
 .. _curl: https://curl.haxx.se/docs/manpage.html
 .. _jq: http://stedolan.github.io/jq/
 
-.. _token:
-
-
-How to Get Your Bearer Token
-----------------------------
-
-First, sign into the `Developer Portal <https://apis.voicebase.com/developer-portal>`__.
-
-.. image:: /_static/Sign-Into-Developer-Portal.png
-   :width: 200
-
-Click the *Bearer Token Management* widget in the lower-left of the portal.
-
-.. image:: /_static/Bearer-Token-Management.png
-   :width: 300
-
-Click the *+ New Token* button to generate a new Bearer token
-
-.. image:: /_static/New-Token.png
-   :width: 300
-
-Click through on *Create Token* to generate the token.
-
-.. image:: /_static/Create-Token.png
-
-Save your token by Copying it to the clipboard or downloading it.
-
-.. image:: /_static/Copy-Token-To-Clipboard.png
 
 
 
