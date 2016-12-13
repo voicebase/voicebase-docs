@@ -35,6 +35,7 @@ Contents:
   how-to-guides/closed-captioning
   how-to-guides/stereo
   how-to-guides/callbacks
+  how-to-guides/s3-callbacks
   how-to-guides/pci
   how-to-guides/troubleshooting
   how-to-guides/keywordsandtopics
