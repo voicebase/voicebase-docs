@@ -16,7 +16,7 @@ VoiceBase supports several spoken languages and dialects.
 
 Use the language configuration parameter to set the language. Omitting the parameter defaults the language to U.S. English (`en-US`).
 
-Doe 
+For example, to transcribe a recording in Australian English:
 
 ```json
 {  
