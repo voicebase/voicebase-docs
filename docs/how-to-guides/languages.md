@@ -1,18 +1,22 @@
-# Language Support
-VoiceBase includes support for several languages and dialects besides U.S. English.
+# Languages
 
-**Languages supported:**
+VoiceBase supports several spoken languages and dialects.
+
+**Languages supported in the V2 (Beta) API:**
 * English
   * U.S. English (en-US) - *default*
   * U.K. English (en-UK)
   * Australian English (en-AU)
-* Spanish (Keywords and Topics not Supported)
+* Spanish
   * Latin America (es-LA)
-* Portuguese (Keywords and Topics not Supported)
+* Portuguese
   * Brazil (pt-BR)
 
 ## Configuring Language Support
-Use the language configuration parameter to set the language.  
+
+Use the language configuration parameter to set the language. Omitting the parameter defaults the language to U.S. English (`en-US`).
+
+Doe 
 
 ```json
 {  
@@ -22,60 +26,96 @@ Use the language configuration parameter to set the language.
 }
 ```
 
-### Remove Keywords and Topics Support where Necessary
-Keywords and Topics are not supported for Spanish or Portuguese, and must be removed by setting the semantic configuration to false for both keywords and topics. 
+## Disabling Semantic Keywords and Topics
+
+[Semantic keywords and topics](keywordsandtopics.html) are not currently supported with Spanish and Portuguese. When transcribing in these languages, disable these options in your configuration.
 
 ```json
 {
-  "configuration":{
-  "language":"es-LA",
-    "keywords":{
-      "semantic":false
+  "configuration": {
+  "language": "es-LA",
+    "keywords": {
+      "semantic": false
     },
-    "topics":{
-      "semantic":false
+    "topics": {
+      "semantic": false
     }
   }
 }
 ```
 
-## Complete Examples
+## Examples
+
 ### U.S. English
+
 ```bash
 curl https://apis.voicebase.com/v2-beta/media \
-    --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
     --form 'configuration={
-      "configuration":{
-        "language":"en-US",
+      "configuration": {
+        "language": "en-US",
       }
-    }
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
 ```
+
+### U.K. English
+```bash
+curl https://apis.voicebase.com/v2-beta/media \
+    --form media=@recording.mp3 \
+    --form 'configuration={
+      "configuration": {
+        "language": "en-UK",
+      }
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
+```
+
 ### Australian English
 ```bash
 curl https://apis.voicebase.com/v2-beta/media \
-    --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
     --form 'configuration={
-      "configuration":{
-        "language":"en-AU",
+      "configuration": {
+        "language": "en-AU",
       }
-    }
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
 ```
+
 ### Latin American Spanish
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
-    --header "Authorization: Bearer $TOKEN" \
+curl https://apis.voicebase.com/v2-beta/media  \
     --form media=@recording.mp3 \
     --form 'configuration={
-      "configuration":{
-        "language":"es-LA",
-        "keywords":{
+      "configuration": {
+        "language": "es-LA",
+        "keywords": {
           "semantic": false
         },
-        "topics":{
-          "semantic":false
+        "topics": {
+          "semantic": false
         }
       }
-    }
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
 ```
+
+### Brazilian Portuguese
+```bash
+curl https://apis.voicebase.com/v2-beta/media  \
+    --form media=@recording.mp3 \
+    --form 'configuration={
+      "configuration": {
+        "language": "pt-BR",
+        "keywords": {
+          "semantic": false
+        },
+        "topics": {
+          "semantic": false
+        }
+      }
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
+```
+
