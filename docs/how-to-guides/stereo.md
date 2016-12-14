@@ -1,31 +1,24 @@
 # Stereo
 
-When two speakers are recorded in separate channels, an improved transcript can
-be obtained by providing VoiceBase with instructions to process each channel
-independently. Phone calls recorded in stereo can benefit from this feature.
+Recording and processing conversations (such a phone calls) in stereo can significant improve transcription accuracy and analytical insight. To realize the benefit, each speaker is recorded on a different channel (left or right), and the speaker metadata is provided to VoiceBase when uploading the recording.
 
 ## Enabling stereo transcription
 
-To enable transcription per channel, add the "ingest" configuration when POSTing
-to /media and specify the label to use for each channel.
+To enable one speaker per channel stereo transcription, add the "ingest" configuration when POSTing to /media and specify the label to use for each channel.
 
 ```json
 {
   "configuration": {
-      "ingest":
-      {
-        "channels":
-        {
-          "left":
-          {
-            "speaker": "Customer"
-          },
-          "right":
-          {
-            "speaker": "Agent"
-          }
+    "ingest": {
+      "channels": {
+        "left": {
+          "speaker": "Customer"
+        },
+        "right": {
+          "speaker": "Agent"
         }
       }
+    }
   }
 }
 ```
@@ -43,9 +36,6 @@ node appears in the transcript.
 {
   "transcripts": {
     "latest": {
-      "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
-      "engine": "standard",
-      "confidence": 0.9585561312642723,
       "words": [
           {
             "p": 176,
@@ -67,31 +57,32 @@ node appears in the transcript.
             "s": 57353,
             "c": 0.346,
             "e": 57483,
-            "w": "what's"
+            "w": "what"
           }
-     ]
-   }
+      ],
+      "confidence": 0.958
+    }
   }
- }
+}
 ```
 
-The plain text version of the transcript will show each segment of the conversation
-prefixed with the speaker name (E.g. 'Agent:' or  'Customer')
+The plain text version of the transcript will show each segment of the conversation prefixed with the speaker name (e.g. 'Agent:' or  'Customer')
 
 ```bash
-curl -v   https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
-        --header "Authorization: Bearer $TOKEN" \
-        --header "Accept: text/plain"
+curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
+    --header "Accept: text/plain" \
+    --header "Authorization: Bearer ${TOKEN}" 
 ```
 
 ---
 **Agent:** Well this is Michael thank you for calling A.B.C. cable services.
-How may I help you today. **Customer:** Hi I'm calling because I'm interested
-in buying new cable services from my home but I want to know what your different
-packages are and what the different prices are **Agent:** OK great guest to
-start up.  Do you have an existing cable provider you currently using. **Customer:**
-Yeah I am using Dish Network for T.V. and I have eighteen T for my internet but
-I want to move to a service that has both of them for a low price.
+How may I help you today. 
+
+**Customer:** Hi I'm calling because I'm interested in buying new cable service.
+
+**Agent:** OK great let's get started.  
+
+...
 
 ---
 
@@ -100,9 +91,9 @@ The SRT version of the transcript will also contain the speaker names provided i
 the configuration.
 
 ```bash
-curl -v   https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
-        --header "Authorization: Bearer $TOKEN" \
-        --header "Accept: text/srt"
+curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest  \
+    --header "Accept: text/srt" \
+    --header "Authorization: Bearer ${TOKEN}"
 ```
 
 ```
@@ -118,45 +109,13 @@ Cable services. How may I help you today.
 3
 00:00:08,28 --> 00:00:11,93
 Customer: Hi I'm calling because I'm
-interested in buying new cable services from
+interested in buying new cable services.
 
 4
-00:00:11,93 --> 00:00:16,43
-my home but I want to know what your different
-packages are and what the different
+00:00:12,64 --> 00:00:16,43
+Agent: OK great let's get started.
 
-5
-00:00:16,43 --> 00:00:17,01
-prices are
-
-6
-00:00:18,20 --> 00:00:22,54
-Agent: OK great guest to start up. Do
-you have an existing cable provider you
-
-7
-00:00:22,54 --> 00:00:23,16
-currently using.
-
-8
-00:00:23,34 --> 00:00:27,25
-Customer:. Yeah I am using
-Dish Network for T.V.
-
-9
-00:00:27,25 --> 00:00:31,09
-And I have eighteen T for my
-internet but I want to move to
-
-10
-00:00:31,09 --> 00:00:34,66
-a service that has both
-of them for a low price.
 ```
-
-Note that When a configuration includes a callback, the document posted contains
-not only the JSON word-by-word transcription, but also the plain text and SRT
-transcripts.
 
 ## Effects on Keywords and Topics
 
@@ -166,103 +125,98 @@ recording processed as a single channel would appear under the "unknown" label:
 
 ```json
 {
-"keywords": {
-   "latest": {
-     "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
-     "words": [
-          {
-            "t": {
-              "unknown": [
-                "5.09",
-                "10.92",
-                "234.55",
-                "282.243"
-              ]
-            },
-            "name": "cable service",
-            "relevance": "0.952574126822"
-          }
+  "keywords": {
+    "latest": {
+      "words": [
+        {
+          "t": {
+            "unknown": [
+              "5.09",
+              "10.92",
+              "234.55",
+              "282.243"
+            ]
+          },
+          "name": "cable service",
+          "relevance": "0.953"
+        }
       ]
     }
   }
 }
 ```
-When the recording is processed in stereo, the start time appear under each speaker's
-label specified in the configuration:
+
+When the recording is processed in stereo, the start time appears under each speaker's label specified in the configuration:
 
 ```json
-  {
-   "keywords": {
-      "latest": {
-        "revision": "775b7de7-d6f2-4447-b1d4-67fd87a06db9",
-        "words": [
-          {
-            "t": {
-              "Customer": [
-                "10.921"
-              ],
-              "Agent": [
-                "5.08",
-                "234.55",
-                "282.239"
-              ]
-            },
-            "name": "cable service",
-            "relevance": "0.880797077978"
-          }
-        ]
-      }
+{
+  "keywords": {
+    "latest": {
+      "words": [
+        {
+          "t": {
+            "Customer": [
+              "10.921"
+            ],
+            "Agent": [
+              "5.08",
+              "234.55",
+              "282.239"
+            ]
+          },
+          "name": "cable service",
+          "relevance": "0.881"
+        }
+      ]
     }
   }
+}
 ```
 
-A similar change occurs on the reporting of topics.
+A similar change occurs in the topics data .
 ```json
-              {
-                "internalName": [
-                  "contract"
-                ],
-                "score": 0.594602944702319,
-                "t": {
-                  "Customer": [
-                    "208.263"
-                  ],
-                  "Agent": [
-                    "211.81",
-                    "219.16"
-                  ]
-                },
-                "name": "Contract"
-              }
+{
+  "internalName": [
+    "contract"
+  ],
+  "score": 0.594602944702319,
+  "t": {
+    "Customer": [
+      "208.263"
+    ],
+    "Agent": [
+      "211.81",
+      "219.16"
+    ]
+  },
+  "name": "Contract"
+}
 ```
 
 ## Effects on Audio Redaction
 
-Audio redaction of PCI will redact the audio in both channels regardless of what channel
-the PCI detected data occurred.
+Audio redaction of PCI will redact the audio in both channels, irrespective of which channel contains the detected PCI data.
 
-## Complete Examples
-### Stereo
+## Examples
+
+### Processing in Stereo
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
-    --header "Authorization: Bearer $TOKEN" \
+curl https://apis.voicebase.com/v2-beta/media  \
     --form media=@recording.mp3 \
     --form 'configuration={
       "configuration": {
-          "ingest":
-          {
-            "channels":
+        "ingest": {
+          "channels": {
+            "left": {
+              "speaker": "Customer"
+            },
+            "right":
             {
-              "left":
-              {
-                "speaker": "Customer"
-              },
-              "right":
-              {
-                "speaker": "Agent"
-              }
+              "speaker": "Agent"
             }
           }
+        }
       }
-    }'
+    }' \
+    --header "Authorization: Bearer ${TOKEN}"
 ```
