@@ -39,10 +39,6 @@ More information and guidances can be found in the:
   how-to-guides/search
   how-to-guides/swearwords
   how-to-guides/priority
-  how-to-guides/aligner
-  how-to-guides/pci
-  how-to-guides/numberdetectionandredaction
-  how-to-guides/troubleshooting
 
 .. _api-reference:
 
