@@ -25,7 +25,7 @@ Example:
 ```
 1
 00:00:02,76 --> 00:00:05,08
-Well this is Michael
+Agent: Well this is Michael
 thank you for calling A.B.C.
 
 2
@@ -34,30 +34,26 @@ Cable services. How may I help you today.
 
 3
 00:00:08,28 --> 00:00:11,93
-Hi I'm calling because I'm
-interested in buying new cable services from
+Customer: Hi I'm calling because I'm
+interested in buying new cable services.
 
 4
-00:00:11,93 --> 00:00:16,43
-my home but I want to know what your different
-packages are and what the different
+00:00:12,64 --> 00:00:16,43
+Agent: OK great let's get started.
 
-5
-00:00:16,43 --> 00:00:17,01
-prices are
 ```
 
-## Retrieving a transcript in SRT format
+## GET an SRT format
 
-Provide the **Accept** HTTP header with the value `"text/srt"` when requesting the
-transcript.
+Provide the `Accept` HTTP header with the value `"text/srt"` when requesting thetranscript.
 
 ```bash
-curl -v   https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
-        --header "Authorization: Bearer $TOKEN" \
-        --header "Accept: text/srt"
+curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
+  --header "Accept: text/srt" \
+  --header "Authorization: Bearer ${TOKEN}"
 ```
-## Retrieving a transcript in SRT format using a callback
+
+## Callbacks with SRT transcript
 
 Note that when posting a media file with a configuration including a
 [callback](callbacks.html), the results posted to the callback URL always contain
