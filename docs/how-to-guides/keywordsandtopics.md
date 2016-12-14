@@ -108,7 +108,7 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
 curl https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
-  --form 'configuration={"configuration":{"keywords":{"groups":["data"]}}}'
+  --form 'configuration={ "configuration": { "keywords": { "groups": [ "data" ] } } }'
 ```
 
 
@@ -121,7 +121,7 @@ curl https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
   --form 'configuration={"configuration":{
-    "keywords":{"semantic":false}, 
-    "topics":{"semantic":true}
+    "keywords":{ "semantic": false },
+    "topics":{ "semantic": false }
   }}'
 ```
