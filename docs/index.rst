@@ -36,7 +36,6 @@ More information and guidances can be found in the:
   how-to-guides/stereo
   how-to-guides/closed-captioning
   how-to-guides/callbacks
-  how-to-guides/s3-callbacks
   how-to-guides/search
   how-to-guides/swearwords
   how-to-guides/priority
