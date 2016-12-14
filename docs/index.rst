@@ -26,24 +26,24 @@ More information and guidances can be found in the:
 
 .. toctree::
   :maxdepth: 1
-  :caption: Developer Guides
+  :caption: How-To Guides
 
   how-to-guides/hello-world
   how-to-guides/transcripts
-  how-to-guides/closed-captioning
+  how-to-guides/keywordsandtopics
+  how-to-guides/predictions
+  how-to-guides/languages
   how-to-guides/stereo
+  how-to-guides/closed-captioning
   how-to-guides/callbacks
   how-to-guides/s3-callbacks
-  how-to-guides/pci
-  how-to-guides/troubleshooting
-  how-to-guides/keywordsandtopics
   how-to-guides/search
   how-to-guides/swearwords
-  how-to-guides/languages
   how-to-guides/priority
   how-to-guides/aligner
+  how-to-guides/pci
   how-to-guides/numberdetectionandredaction
-  how-to-guides/predictions
+  how-to-guides/troubleshooting
 
 .. _api-reference:
 

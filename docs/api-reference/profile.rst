@@ -1,5 +1,5 @@
-/profile
-========
+Managing Access (/profile)
+==========================
 
 The */profile* resource contains user profile information, and get can be used to manage your Bearer tokens.
 

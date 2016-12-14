@@ -88,8 +88,8 @@ You can poll for status until the processing is done (for production, we recomme
     echo "Got status: ${STATUS} for mediaId: ${MEDIA_ID} on $( date )"
   done
 
-Step **(3)**: Profit! Get your transcript and analytics
--------------------------------------------------------
+Step **(3)**: Get your transcript and analytics
+-----------------------------------------------
 
 You can retrieve the JSON version of the transcript and all analytics with a simple API call.
 
@@ -130,7 +130,7 @@ Click the *Bearer Token Management* widget in the lower-left of the portal.
 Click the *+ New Token* button to generate a new Bearer token
 
 .. image:: /_static/New-Token.png
-   :width: 300
+   :width: 450
 
 Click through on *Create Token* to generate the token.
 

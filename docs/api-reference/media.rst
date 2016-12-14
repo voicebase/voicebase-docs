@@ -1,5 +1,5 @@
-/media
-======
+Working with Media (/media)
+===========================
 
 The */media* resource contains the media files you have uploaded to VoiceBase for analysis, as well as transcripts and analytics generated from processing these files.
 
