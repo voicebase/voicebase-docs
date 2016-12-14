@@ -91,7 +91,7 @@ For example:
 }
 ```
 
-## Complete Examples
+## Examples
 
 ### Example: Defining and spotting a keyword group
 
