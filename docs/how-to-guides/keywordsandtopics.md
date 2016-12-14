@@ -1,56 +1,35 @@
 # Keywords and Topics
 
 
-Voicebase can automatically extract a specified or semantically extracted
-set of keywords and associated topics from transcript.
+VoiceBase can discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing ("semantic keywords and topics"). You also have the option of defining groups of keywords or key phrases, which are flagged when they are spotted in the recording.
 
-## Enabling Keywords and Topics
+## Semantic Keywords and Topics
 
-Adding keywords and topics to your media post configuration, enables semantic keywords and topic extraction.
+Semantic keywords and topics are discovered automatically (for languages where the feature is supported) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
 
 ```json
-{  
-  "configuration": {
-    "keywords": {  
-      "semantic": true,
-      "groups" : [
-        "array", "of", "keyword", "groups", "you", "have", "defined"
-      ]
-    },
-    "topics": {
-      "semantic": true
-    }
-  }
+{
+  "name": "subscription",
+  "t": {
+    "caller": [
+      "34.48",
+      "57.34"
+    ],
+    "agent": [
+      "40.01"
+    ]
+  },
+  "relevance": "0.17"
 }
 ```
 
-**configuration.keywords.semantic** enables or disables semantic keyword extraction.
-**configuration.topcs.semantic** enables or disables semantic keyword extraction.
-**configuration.keywords.groups** allows you to specify the keyword groups you have defined.
+In this example, the keyword "subscription" was spoken by the caller around 34 and 57 seconds into the recording, and by the agent around 40 seconds into the recoding.
 
-The configuration items are independent.  If you are only interested in identifying specific words or phrases, you would  only specify configuration.keywords.groups, for example:
+## Managing Keyword Groups
 
-```json
-{  
-  "configuration": {
-    "keywords": {
-        "semantic": false,
-        "groups" : ['array', 'of', 'keyword', 'groups', 'you', 'have', 'defined'],
-      },
-    "topics" : {
-        "semantic": false
-      }
-    }
-  }
-}
-```
+Voicebase allows you to specify pre-defined groups of keywords (or key phrases), which can be used to flag recordings of interest using keyword spotting.
 
-
-## Keyword Group Management
-
-Voicebase allows you to specify pre-defined keyword groups which you can later use for targeted keyword extraction, as we see in the above example.
-
-To define new keyword group, or update an existing keyword group, simply PUT the group under /v2-beta/definitions/keywords/groups. The body of the PUT request is a JSON object (Content-Type: application/json) that contains two keys:
+To define new keyword group, or update an existing keyword group, simply PUT the group under /definitions/keywords/groups. The body of the PUT request is a JSON object (`Content-Type: application/json`) that contains two keys:
 
  - name : the name of the keyword group
  - keywords : an array of the included keywords
@@ -59,44 +38,90 @@ For example, to create group 'data' that includes the keywords data science, big
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
-  --header "Authorization: Bearer $TOKEN" \
-  --header "Content-Type: application/json" \
   --request PUT \
-  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }'
+  --header "Content-Type: application/json" \  
+  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
+  --header "Authorization: Bearer ${TOKEN}"
 ```
 
-## Uploading Media with Keyword Spotting Enabled
+## Enabling Keyword Spotting
 
 To upload media with keyword spotting enabled, include a JSON configuration attachment with your media POST. The configuration attachment should contain the key:
 
  - configuration : root object for configuration data
-    - keywords (child of configuration): object for keyword-specific configuration
-        - groups (child of keywords): array of keyword-spotting groups
+    - keywords: object for keyword-specific configuration
+        - groups: array of keyword-spotting groups
 
+For example:
 
+```json
+{
+  "configuration": {
+    "keywords": {
+      "groups": [ "data" ]
+    }  
+  }
+}
+```
+
+## Disabling Semantic Keywords and Topics
+
+Adding keywords and topics to your media post configuration, enables semantic keywords and topic extraction.
+
+The configuration attachment should contain the key:
+
+ - configuration : root object for configuration data
+    - keywords: object for keyword-specific configuration
+        - semantic: flag to control semantic keywords
+    - topics: object for topic-specific configuration
+        - semantic: flag to control semantic topics
+
+For example:
+
+```json
+{  
+  "configuration": {
+    "keywords": {  
+      "semantic": false,
+    },
+    "topics": {
+      "semantic": false
+    }
+  }
+}
+```
 
 ## Complete Examples
 
-### Example 1
+### Example: Defining and spotting a keyword group
 
 For example, to upload media from a local file called recording.mp3 and spot keywords using the data group, make the following POST request using curl, or an equivalent request using a tool of your choice:
 
 ```bash
+
+curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
+  --request PUT \
+  --header "Content-Type: application/json" \  
+  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
+  --header "Authorization: Bearer ${TOKEN}"
+
 curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
   --form 'configuration={"configuration":{"keywords":{"groups":["data"]}}}'
 ```
 
 
-### Example 2
+### Example: Disabling semantic keywords and topics
 
 The following is an example of posting a media document with semantic keywords and topics extraction enabled.
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
-  --form 'configuration={"configuration":{"keywords":{"semantic":true}, \
-  "topics":{"semantic":true}}}'
+  --form 'configuration={"configuration":{
+    "keywords":{"semantic":false}, 
+    "topics":{"semantic":true}
+  }}'
 ```

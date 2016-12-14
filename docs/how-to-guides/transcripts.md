@@ -1,5 +1,7 @@
 # Transcripts
 
+Once processing is complete, transcripts can be retrieved in several formats.
+
 ## JSON Transcript
 
 Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item. By convention, the transcript for most common scenarios is called `latest`.
