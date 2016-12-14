@@ -17,7 +17,7 @@ The core workflow of the API is to generate transcriptions and analytics from vo
 
 1. Upload a voice recording, starting the transcription and analysis process
 2. Wait for completion, using periodic polling for status or callbacks
-3. Process or retrieve results, include thing transcript, keywords, topics and predictions 
+3. Process or retrieve results, including the transcript, keywords, topics and predictions 
 
 To achieve scalability, this workflow runs for multiple recordings in parallel.
 
