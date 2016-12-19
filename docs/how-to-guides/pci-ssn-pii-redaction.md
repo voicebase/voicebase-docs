@@ -1,61 +1,7 @@
-# Number Detection and Redaction
+# PCI, SSN, PII Redaction
 
-Voicebase allows you to detect and optionally redact numbers from the transcript and media files.  The information is detected with approximately a ?% accuracy and defined by a beginning timestamp and ending timestamp for the detected data.  
 
-## Number Detection Models
-
-Voicebase currently offers the following three number detection models:
-
-- PCI 
-    - Detect PCI sensitive numbers, including:
-        - Credit Card Number
-        - Consumer Purchase Number (i.e. payment cards)
-        - CVC Number
-- SSN
-    - Detects social security numbers
-- Number
-    - Detects any numbers.
-
-##  Output
-
-- Transcript
-    - The JSON redaction will have the section replaced by "[redacted]"
-- Audio
-    - The audio redaction will play a "tone":270 and "gain":0.5
-
-## How to Use It
-
-### Detection Request
-
-First, POST to /media.
-
-```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer XXXXX" \
-  --form media=@musicVoiceTone.wav \
-  --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, "detections":[{"model":"SSN"}]}}'
-
-```
-
-Which adds a section to the analytics output similar to the following (the s and e are start and end timestamps of the detected numbers, in milliseconds, respectively):
-
-```json
-
-{ 
-  "latest": {
-    "revision": "026ca936-0018-4c5b-8683-36cf1ff7833e",
-    "predictions": [],
-    "detections": [
-      {
-        "type": "????",
-        "e": 181280,
-        "s": 127830
-      }
-    ]
-  }
-}
-
-```
+Placeholder for redaction
 
 ### Redaction Request
 
@@ -134,3 +80,11 @@ To collect the redacted audio use /v2-beta/media/{mediaid}/streams, the response
 ```
 
 where <<your-link>> contains the redacted audio file.
+
+
+##  Output
+
+- Transcript
+    - The JSON redaction will have the section replaced by "[redacted]"
+- Audio
+    - The audio redaction will play a "tone":270 and "gain":0.5
