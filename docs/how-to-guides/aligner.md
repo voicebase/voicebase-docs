@@ -4,7 +4,7 @@ Voicebase allows you to align a human edited transcript with a previously run ma
 
 ## How to Use It
 
-First, POST to /media.
+First, make a POST request to the /media resource.
 
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media \
@@ -31,107 +31,42 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
 
 ```
 
-Secondly, when the previous job is finished, retrieve the words section of the transcript using GET /media/{mediaId} once the first job is complete.  Edit it.  And save it to a file named transcript.json. 
+Now retrieve the text transcript by making a GET request to the /media/${mediaId} resource, where ${mediaId} equals the mediaId returned from the POST request.
+
+```
+
+curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1/transcripts/latest \
+  --header "Authorization: Bearer XXXXX" --header "Accept: text/plain"
+ 
+```
+
+You may receive a 404 response indicating that the alignment of the new transcript with the original transcript and the recalculation of analytics and predictions is not complete.
 
 ```json
-[
-  {
-    "p": 0,
-    "s": 2160,
-    "c": 0.148,
-    "frq": [
-      {
-        "e": -0.114,
-        "f": 0
-      },
-      {
-        "e": 0,
-        "f": 0
-      }
-    ],
-    "e": 2220,
-    "v": 23.603,
-    "w": "This"
-  },
-  {
-    "p": 1,
-    "s": 2220,
-    "c": 0.759,
-    "frq": [
-      {
-        "e": 0.239,
-        "f": 87.033
-      },
-      {
-        "e": 0.459,
-        "f": 124.299
-      }
-    ],
-    "e": 2350,
-    "v": 28.883,
-    "w": "is"
-  },
-  {
-    "p": 2,
-    "s": 2350,
-    "c": 0.786,
-    "frq": [
-      {
-        "e": 0.848,
-        "f": 87.033
-      },
-      {
-        "e": 0.176,
-        "f": 347.897
-      }
-    ],
-    "e": 2560,
-    "v": 29.286,
-    "w": "between"
-  },
-  {
-    "p": 3,
-    "s": 2560,
-    "c": 0.153,
-    "frq": [
-      {
-        "e": 1,
-        "f": 285.787
-      },
-      {
-        "e": 0.376,
-        "f": 559.073
-      }
-    ],
-    "e": 2850,
-    "v": 19.618,
-    "w": "you"
-  },
-  {
-    "p": 4,
-    "s": 2850,
-    "c": 0.445,
-    "frq": [
-      {
-        "e": 0.396,
-        "f": 248.52
-      },
-      {
-        "e": 1,
-        "f": 484.54
-      }
-    ],
-    "e": 3110,
-    "v": 35.714,
-    "w": "and"
-  },
-  {
-  }
-]
+{
+    "status": 404,
+    "warnings": {
+        "message": "Transcripts only become available when a media item has status finished."},
+    "reference":"e072fda3-d66e-48a6-9f9e-643937165e39"
+}
+
 ```
 
 
-Then one would make a POST to /media/{mediaId} as follows:
+When processing is complete on the media, you will receive the plain text transcript transcribed by Voicebase.  Save it to an ascii text file.  
+
+```
+Old transcript in file.
+```
+
+You notice that the names are garbled, so you edit the plain text transcript in the file with your corrections.
+
+```
+Old transcript in file.
+```
+
+
+Now make a POST request to the /media/${mediaId} resource as follows
 
 
 ```bash
@@ -143,6 +78,11 @@ curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a2
 ```
 
 
-Finally, when the new job is complete, GET /media/{mediaId} will provide the aligned transcript and will have run any downstream tasks based on the new transcript (keywords, predictions, ...)  
+Finally, make a GET request on the /media/${mediaId} resource to download the latest analigned transcripts and configured analytics and predictions.
 
-Note that the simple act of including a transcript with the POST triggers alignment.
+```bash
+curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1 \
+  --header "Authorization: Bearer XXXXX"
+```
+
+Note that the simple act of including a transcript with the POST triggers the alignment configuration.

@@ -16,6 +16,27 @@ curl -v -s https://apis.voicebase.com/v2-beta/media \
 
 ### Redaction from analytics and audio request
 
+To redact sensitive information from a media file, upload it to Voicebase, with detections added to the configuration.
+
+```json
+{ 
+    "detections": {
+        "model":"SSN",
+        "redact":{
+            "transcripts":"[redacted]",
+            "audio": {
+                "tone":270,
+                "gain":0.5
+            }
+        }
+    }
+}
+```
+
+TODO Explanation of the configuration.
+
+Make a POST request to the /media resource with redaction configuration included.
+
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer XXXXX" \
@@ -62,7 +83,7 @@ If redaction is set, the transcript words will be redacted in the /media/{mediai
 ```
 
 
-To collect the redacted audio use /v2-beta/media/{mediaid}/streams, the response will be of the form:
+To download the redacted audio use /v2-beta/media/{mediaid}/streams, the response will be of the form:
 
 ```json
 

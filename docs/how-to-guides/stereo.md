@@ -1,10 +1,10 @@
 # Stereo
 
-Recording and processing conversations (such a phone calls) in stereo can significant improve transcription accuracy and analytical insight. To realize the benefit, each speaker is recorded on a different channel (left or right), and the speaker metadata is provided to VoiceBase when uploading the recording.
+Recording and processing conversations (such a phone calls) in stereo can significantly improve transcription accuracy and analytical insight. To realize the benefit, each speaker is recorded on a different channel (left or right), and the speaker metadata is provided to VoiceBase when uploading the recording.
 
 ## Enabling stereo transcription
 
-To enable one speaker per channel stereo transcription, add the "ingest" configuration when POSTing to /media and specify the label to use for each channel.
+To enable one speaker per channel stereo transcription, add the "ingest" configuration when making a POST request to the /media resource and specify the label to use for each channel.
 
 ```json
 {

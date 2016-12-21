@@ -41,7 +41,7 @@ For each detection, the API returns three data points:
 
 ## PCI Detector
 
-To enable it, add PCI detector to your configuration when you POST to /media.
+To enable it, add PCI detector to your configuration when you make a POST request to the /media resource.
 
 ```json
 {  
@@ -55,7 +55,7 @@ To enable it, add PCI detector to your configuration when you POST to /media.
 
 ## SSN Detector
 
-To enable it, add the SSN detector to your configuration when you POST to /media.
+To enable it, add the SSN detector to your configuration when you make a POST request to the /media resource.
 
 ```json
 {  
@@ -69,7 +69,7 @@ To enable it, add the SSN detector to your configuration when you POST to /media
 
 ## Number Detector
 
-To enable it, add the Number detector to your configuration when you POST to /media.
+To enable it, add the Number detector to your configuration when you make a POST request to the /media resource.
 
 ```json
 {  
