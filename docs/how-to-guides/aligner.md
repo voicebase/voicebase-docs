@@ -2,7 +2,15 @@
 
 VoiceBase allows you to align a human edited transcript with a previously run machine-generated transcript.  
 
-## How to Use It
+## Examples
+
+Note: Export your api token prior to running any of the following examples.
+
+```bash
+export TOKEN='Your Api Token'
+```
+
+### Correcting a machine transcript and re-processing analytics and callbacks.
 
 First, make a POST request to the /media resource.
 
@@ -31,16 +39,14 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
 
 ```
 
-Now retrieve the text transcript by making a GET request to the /media/${MEDIA_ID} resource, where ${MEDIA_ID} equals the mediaId returned from the POST request.
 
-Export `MEDIA_ID` and `TOKEN`
+Export `MEDIA_ID`
 
 ```bash
 export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
-export TOKEN='Your Api Token'
 ```
 
-Make the request to `/media/$MEDIA_ID/transcripts/latest`
+Make a request to the `/media/$MEDIA_ID/transcripts/latest` resource, including the `Accept: text/plain` header to retrieve the text transcript.
 
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
@@ -60,8 +66,7 @@ You may receive a 404 response indicating that the alignment of the new transcri
 
 ```
 
-
-When processing is complete on the media, you will receive the plain text transcript transcribed by Voicebase.  Save it to an ascii text file.  
+When processing is complete on the media, you will receive the plain text transcript transcribed by Voicebase.  Save it to an ascii text file named `transcript.txt`.  
 
 ```
 Old transcript in file.
@@ -74,7 +79,7 @@ New text transcript in file.
 ```
 
 
-Now make a POST request to the /media/${MEDIA_ID} resource as follows
+Now make a POST request to the `/media/${MEDIA_ID}` including a `configuration` and a `transcript` attachment.
 
 
 ```bash
@@ -82,11 +87,10 @@ curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}" \
   --X POST \
   --form 'configuration={"configuration":{ "executor":"v2"}}' \
-  --form transcript=@transcript.json
+  --form transcript=@transcript.text
 ```
 
-
-Finally, make a GET request on the /media/${MEDIA_ID} resource to download the latest analigned transcripts and configured analytics and predictions.
+Finally, make a GET request on the `/media/${MEDIA_ID}` resource to download the latest analigned transcripts and configured analytics and predictions.
 
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \

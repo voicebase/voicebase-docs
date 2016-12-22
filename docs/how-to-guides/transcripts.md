@@ -2,7 +2,7 @@
 
 Once processing is complete, transcripts can be retrieved in several formats.
 
-Export `MEDIA_ID` and `TOKEN` prior to running any of the following examples.
+Note: Export a mediaId and your api token prior to running any of the following examples.
 
 ```bash
 export MEDIA_ID='The media id of a \
@@ -21,6 +21,8 @@ Make a GET on the /media/$MEDIA_ID/transcripts/latest resource.
   curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
     --header "Authorization: Bearer ${TOKEN}" 
 ```
+
+TODO Detailed description of json transcript format.
 
 ## Plain Text Transcript
 
@@ -41,3 +43,5 @@ curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/srt"
 ```
+
+The [closedcaptioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.

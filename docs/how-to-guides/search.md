@@ -2,19 +2,18 @@
 
 VoiceBase can search across uploaded media documents **and** related results and metadata.  This is intended for light use.  We recommend building your own search if you have many end users.
 
+
+## Examples
+
 ** Note: Export your api `TOKEN` prior to running any of the following examples.
          
 ```bash
 export TOKEN='Your Api Token'
 ```
 
-## How to Use It
-
-To execute a search, make a GET request to the “media” collection with a “query” parameter.
-
 ### Simple Search
 
-For example, to look for media where the word "bill" is relevant:
+To execute a search, make a GET request to the “media” collection with a “query” parameter.  For example, to look for media where the word "bill" is relevant:
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media?query=bill \
@@ -30,7 +29,6 @@ To search for media containing the terms any of the terms “bill”, “charge�
 ```
 
 Next, url-encode the expression:
-
 
 ```bash
 %22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22
@@ -65,7 +63,6 @@ curl https://apis.voicebase.com/v2-beta/definitions/media/search \
   --request PUT \
   --data '{ "fields" : [ "extended.customerId" ] }'
 ```
-
 
 ### Time-Range Restricted Search
 
