@@ -3,6 +3,12 @@
 
 VoiceBase can discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing ("semantic keywords and topics"). You also have the option of defining groups of keywords or key phrases, which are flagged when they are spotted in the recording.
 
+Export `TOKEN` prior to running any of the following examples.
+
+```bash
+export TOKEN='Your Api Token'
+```
+
 ## Semantic Keywords and Topics
 
 Semantic keywords and topics are discovered automatically (for languages where the feature is supported) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
@@ -41,7 +47,7 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
   --request PUT \
   --header "Content-Type: application/json" \  
   --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
-  --header "Authorization: Bearer $TOKEN"
+  --header "Authorization: Bearer ${TOKEN}"
 ```
 
 ## Enabling Keyword Spotting
@@ -95,7 +101,8 @@ For example:
 
 ### Example: Defining and spotting a keyword group
 
-For example, to upload media from a local file called recording.mp3 and spot keywords using the data group, make the following POST request using curl, or an equivalent request using a tool of your choice:
+
+Define a `keyword group` by making a PUT request to the `/definitions/keywords/groups/data` resource.
 
 ```bash
 
@@ -103,10 +110,14 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
   --request PUT \
   --header "Content-Type: application/json" \  
   --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
-  --header "Authorization: Bearer $TOKEN"
+  --header "Authorization: Bearer ${TOKEN}"
+```
 
+Upload media from a local file called recording.mp3 and spot keywords using the `data` group, make the following POST request to `/media`
+
+```bash
 curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
   --form 'configuration={ "configuration": { "keywords": { "groups": [ "data" ] } } }'
 ```
@@ -114,14 +125,14 @@ curl https://apis.voicebase.com/v2-beta/media \
 
 ### Example: Disabling semantic keywords and topics
 
-The following is an example of posting a media document with semantic keywords and topics extraction enabled.
+The following is an example of posting a media document with semantic `keywords` and `topics` extraction disabled.
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media \
   --header "Authorization: Bearer $TOKEN" \
   --form media=@recording.mp3 \
   --form 'configuration={"configuration":{
-    "keywords":{ "semantic": false },
-    "topics":{ "semantic": false }
+    "keywords":{ "semantic": true },
+    "topics":{ "semantic": true }
   }}'
 ```

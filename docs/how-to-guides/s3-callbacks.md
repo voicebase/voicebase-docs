@@ -4,6 +4,12 @@ Sends transcription results to an S3 URL when media post is finished.
 * Send transcription and other other results to S3
 * Send audio file with redacted words to S3 (Not documented)
 
+** Note: Export your api `TOKEN` prior to running any of the following examples.
+         
+```bash
+export TOKEN='Your Api Token'
+```
+
 ## Setting Up S3
 Before we use this feature, S3 must be configured to receive the results.
 

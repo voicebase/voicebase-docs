@@ -66,6 +66,12 @@ For example, to transcribe a recording in Australian English:
 
 ## Examples
 
+** Note: Export your api `TOKEN` prior to running any of the following examples.
+         
+```bash
+export TOKEN='Your Api Token'
+```
+
 ### U.S. English
 
 ```bash

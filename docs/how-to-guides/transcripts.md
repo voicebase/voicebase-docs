@@ -2,13 +2,20 @@
 
 Once processing is complete, transcripts can be retrieved in several formats.
 
+Export `MEDIA_ID` and `TOKEN` prior to running any of the following examples.
+
+```bash
+export MEDIA_ID='The media id of a \
+    processed media file (`status` = `finished`)'
+export TOKEN='Your Api Token'
+```
+
+
 ## JSON Transcript
 
 Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item. By convention, the transcript for most common scenarios is called `latest`.
 
-In the example below, replace:
-  - `$MEDIA_ID` with the media id of a processed media file (`status` = `finished`)
-  - `$TOKEN` with your Bearer token
+Make a GET on the /media/$MEDIA_ID/transcripts/latest resource.
 
 ```sh
   curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
@@ -17,11 +24,7 @@ In the example below, replace:
 
 ## Plain Text Transcript
 
-To retrieve a transcripts as plain text, add an `Accept` HTTP header with the value `text/plain`.
-
-In the example below, replace:
-  - `$MEDIA_ID` with the media id of a processed media file (`status` = `finished`)
-  - `$TOKEN` with your Bearer token
+To download a transcript as plain text, add an `Accept` HTTP header with the value `text/plain`.
 
 ```sh
 curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
@@ -31,12 +34,7 @@ curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
 
 ## SRT transcript
 
-
 To retrieve a transcripts as plain text, add an `Accept` HTTP header with the value `text/srt`.
-
-In the example below, replace:
-  - `$MEDIA_ID` with the media id of a processed media file (`status` = `finished`)
-  - `$TOKEN` with your Bearer token
 
 ```sh
 curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \

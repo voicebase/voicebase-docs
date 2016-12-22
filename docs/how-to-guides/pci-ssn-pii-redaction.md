@@ -33,22 +33,44 @@ To redact sensitive information from a media file, upload it to Voicebase, with 
 }
 ```
 
-TODO Explanation of the configuration.
 
-Make a POST request to the /media resource with redaction configuration included.
+- `detections` : the detections sub-section of the configuration tree.
+    - `model` : The name of the model. (TODO is this right ?)
+    - `redact` : The redaction specification
+        - `transcripts` : transcripts should be redacted.  The value is always `[redacted]`.  Note that this is a string literal, not an array.
+        - `audio` : audio specification of the redaction
+            - `tone` : TODO
+            - `gain` : TODO
+            
+            
+### Examples
+            
+** Note: Export your api `TOKEN` prior to running any of the following examples.
+
+```bash
+export TOKEN='Your Api Token'
+```
+
+#### Requesting Redaction and Downloading Results
+         
+Make a `POST` request to the `/media` resource with `redaction` configuration included.
 
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer XXXXX" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --form media=@musicVoiceTone.wav \
   --form 'configuration={"configuration":{ "executor":"v2", "transcripts":{"voiceFeatures":"true"}, \
         "detections":[{"model":"SSN","redact":{"transcripts":"[redacted]","audio":{"tone":270,"gain":0.5}}}]}}'
 
 ```
 
+Export your api `TOKEN` prior to running any of the following examples.
 
-You can use /media/{mediaid} to collect detection results. The response will be of this form:
+```bash
+export MEDIA_ID='The mediaId returned in the POST request response'
+```
 
+Make a `GET` request on the `/media/${MEDIA_ID}` resource to collect `detection` results. The response will be of this form:
 
 ```json
   {  
@@ -69,7 +91,7 @@ You can use /media/{mediaid} to collect detection results. The response will be 
 ```
 
 
-If redaction is set, the transcript words will be redacted in the /media/{mediaid} response as well,
+If `redaction` is set, the transcript words will be redacted in the `/media/${MEDIA_ID}` resource response as well,
 
 
 ```json
@@ -83,7 +105,7 @@ If redaction is set, the transcript words will be redacted in the /media/{mediai
 ```
 
 
-To download the redacted audio use /v2-beta/media/{mediaid}/streams, the response will be of the form:
+To download the redacted audio make a `GET` request to the `/v2-beta/media/${MEDIA_ID}/streams` resource.  The response will be of the form:
 
 ```json
 

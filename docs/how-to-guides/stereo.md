@@ -23,14 +23,18 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
 }
 ```
 
+- `configuration` : top level of the configuration tree.
+    - `ingest` : the ingest sub-section.
+        - `channels` : specification of the stereo channels.  Both child sections are required.
+            - `left` : specification of the left channel.
+                - `speaker` : the name of left channel speaker.
+            - `right` : specification of the right channel.
+                - `speaker` : the name of right channel speaker.
+                
+
 ## Effects on Transcripts
 
-When stereo processing is enabled, the word-by-word JSON transcript will contain
-additional nodes indicating the change of turn on the speaker. These nodes are
-identified by the attribute "m" set to "turn" and the attribute "w" set to the
-speaker's label provided in the configuration for one of the channels. The words
-following a turn node belong to the speaker identified by it until a new turn
-node appears in the transcript.
+When stereo processing is enabled, the word-by-word JSON transcript will contain additional nodes indicating the change of turn on the speaker. These nodes are identified by the attribute "m" set to "turn" and the attribute "w" set to the speaker's label provided in the configuration for one of the channels. The words following a turn node belong to the speaker identified by it until a new turn node appears in the transcript.
 
 ```json
 {
