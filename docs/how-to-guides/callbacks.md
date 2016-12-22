@@ -27,16 +27,16 @@ To request a processing-completed callback from VoiceBase, include a JSON config
 ### Configuration Description
 
 - `configuration` : root object for configuration data
-- `configuration.publish` : object for publish-specific configuration
-- `configuration.publish.callbacks` : array of callbacks, with one object per callback desired
-- `configuration.publish.callbacks[n]` : callback array element
-- `configuration.publish.callbacks[n].url` : the https url for delivering a callback notification
-- `configuration.publish.callbacks[n].method` : the HTTPS method for callback delivery, with the following supported values:
-    - `POST`: deliver callbacks as an HTTPS POST
-- `configuration.publish.callbacks[n].include` :  array of data to include with the callback, with the following supported values:
-    - `transcripts`: include transcripts for the media
-    - `topics` : include topics and corresponding keywords for the media
-    - `metadata` : include supplied metadata, often useful for correlated to records in a different system
+    - `publish` : object for publish-specific configuration
+        - `callbacks` : array of callbacks, with one object per callback desired
+            - `[n]` : callback array element
+                - `url` : the https url for delivering a callback notification
+                - `method` : the HTTPS method for callback delivery, with the following supported values:
+                    - `POST`: deliver callbacks as an HTTPS POST
+                - `include` :  array of data to include with the callback, with the following supported values:
+                    - `transcripts`: include transcripts for the media
+                    - `topics` : include topics and corresponding keywords for the media
+                    - `metadata` : include supplied metadata, often useful for correlated to records in a different system
                     
 For example, to upload media from a local file called recording.mp3 and receive a callback at https://example.org/callback, make the following POST request using curl, or an equivalent request using a tool of your choice:
 
@@ -135,19 +135,19 @@ When media processing is complete, VoiceBase will call back your specified endpo
 ### Data Description
 
 - `_links` : HAL metadata with a URL for the corresponding media item
-- `_links.self` : section for the media item
-- `_links.self.href` : URL for the media item
+    - `self` : section for the media item
+        - `href` : URL for the media item
 - `callback` : object with metadata about the callback event
-- `callback.success` : true for success notifications and false for failure notifications
-- `callback.errors` : an optional array of errors (omitted or empty for success notifications)
-- `callback.warnings` : an optional array of warnings
-- `callback.event` : a JSON object that event triggering the callback (typicall a status change)
-- `callback.event.status` : the new status of the media processing job, with the following possible values:
-    - `finished` : media processing completed successfully
-    - `failed` : media processing failed
+    - `success` : true for success notifications and false for failure notifications
+    - `errors` : an optional array of errors (omitted or empty for success notifications)
+    - `warnings` : an optional array of warnings
+    - `event` : a JSON object that event triggering the callback (typicall a status change)
+        - `status` : the new status of the media processing job, with the following possible values:
+            - `finished` : media processing completed successfully
+            - `failed` : media processing failed
 - `media` : the requested data for the media item
-- `media.mediaId` : the unique VoiceBase id for the media item
-- `media.status` : the status of processing for the media item
-- `media.metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
-- `media.transcripts` : the transcipt(s) for the media (present if requested when media is uploaded)
-- `media.topics` : the topics and keywords for the media (present if requested when media is uploaded)
+    - `mediaId` : the unique VoiceBase id for the media item
+    - `status` : the status of processing for the media item
+    - `metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
+    - `transcripts` : the transcipt(s) for the media (present if requested when media is uploaded)
+    - `topics` : the topics and keywords for the media (present if requested when media is uploaded)

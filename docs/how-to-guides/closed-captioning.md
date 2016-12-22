@@ -38,7 +38,14 @@ Agent: OK great let's get started.
 
 ## GET an SRT format
 
-Provide the `Accept` HTTP header with the value `"text/srt"` when requesting the transcript.
+Export `MEDIA_ID` and `TOKEN`
+
+```bash
+export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
+export TOKEN='Your Api Token'
+```
+
+and provide the `Accept` HTTP header with the value `"text/srt"` when requesting the transcript.
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \

@@ -31,8 +31,8 @@ Voicebase allows you to specify pre-defined groups of keywords (or key phrases),
 
 To define new keyword group, or update an existing keyword group, simply PUT the group under /definitions/keywords/groups. The body of the PUT request is a JSON object (`Content-Type: application/json`) that contains two keys:
 
- - name : the name of the keyword group
- - keywords : an array of the included keywords
+ - `name` : the name of the keyword group
+ - `keywords` : an array of the included keywords
 
 For example, to create group 'data' that includes the keywords data science, big data, and data mining, make the following PUT request using curl, or an equivalent request using a tool of your choice:
 
@@ -48,9 +48,9 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
 
 To upload media with keyword spotting enabled, include a JSON configuration attachment with your media POST. The configuration attachment should contain the key:
 
- - configuration : root object for configuration data
-    - keywords: object for keyword-specific configuration
-        - groups: array of keyword-spotting groups
+ - `configuration` : root object for configuration data
+    - `keywords` : object for keyword-specific configuration
+        - `groups` : array of keyword-spotting groups
 
 For example:
 
@@ -70,11 +70,11 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 
 The configuration attachment should contain the key:
 
- - configuration : root object for configuration data
-    - keywords: object for keyword-specific configuration
-        - semantic: flag to control semantic keywords
-    - topics: object for topic-specific configuration
-        - semantic: flag to control semantic topics
+ - `configuration` : root object for configuration data
+    - `keywords` : object for keyword-specific configuration
+        - `semantic` : flag to control semantic keywords
+    - `topics` : object for topic-specific configuration
+        - `semantic` : flag to control semantic topics
 
 For example:
 

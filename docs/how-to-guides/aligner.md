@@ -1,6 +1,6 @@
 # Aligner
 
-Voicebase allows you to align a human edited transcript with a previously run machine-generated transcript.  
+VoiceBase allows you to align a human edited transcript with a previously run machine-generated transcript.  
 
 ## How to Use It
 
@@ -33,10 +33,11 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
 
 Now retrieve the text transcript by making a GET request to the /media/${MEDIA_ID} resource, where ${MEDIA_ID} equals the mediaId returned from the POST request.
 
-Export `MEDIA_ID`
+Export `MEDIA_ID` and `TOKEN`
 
 ```bash
 export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
+export TOKEN='Your Api Token'
 ```
 
 Make the request to `/media/$MEDIA_ID/transcripts/latest`
