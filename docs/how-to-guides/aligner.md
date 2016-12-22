@@ -8,7 +8,7 @@ First, make a POST request to the /media resource.
 
 ```bash
 curl -v -s https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer $TOKEN" \
+  --header "Authorization: Bearer ${TOKEN}" \
   --form media=@musicVoiceTone.wav \
   --form 'configuration={"configuration":{ "executor":"v2","transcripts":{"voiceFeatures":"true"}}}'
 
@@ -31,12 +31,19 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
 
 ```
 
-Now retrieve the text transcript by making a GET request to the /media/${mediaId} resource, where ${mediaId} equals the mediaId returned from the POST request.
+Now retrieve the text transcript by making a GET request to the /media/${MEDIA_ID} resource, where ${MEDIA_ID} equals the mediaId returned from the POST request.
 
+Export `MEDIA_ID`
+
+```bash
+export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
 ```
 
-curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1/transcripts/latest \
-  --header "Authorization: Bearer $TOKEN" --header "Accept: text/plain"
+Make the request to `/media/$MEDIA_ID/transcripts/latest`
+
+```bash
+curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
+  --header "Authorization: Bearer ${TOKEN}" --header "Accept: text/plain"
  
 ```
 
@@ -66,23 +73,23 @@ New text transcript in file.
 ```
 
 
-Now make a POST request to the /media/${mediaId} resource as follows
+Now make a POST request to the /media/${MEDIA_ID} resource as follows
 
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1 \
-  --header "Authorization: Bearer $TOKEN" \
+curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \
+  --header "Authorization: Bearer ${TOKEN}" \
   --X POST \
   --form 'configuration={"configuration":{ "executor":"v2"}}' \
   --form transcript=@transcript.json
 ```
 
 
-Finally, make a GET request on the /media/${mediaId} resource to download the latest analigned transcripts and configured analytics and predictions.
+Finally, make a GET request on the /media/${MEDIA_ID} resource to download the latest analigned transcripts and configured analytics and predictions.
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1 \
-  --header "Authorization: Bearer $TOKEN"
+curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \
+  --header "Authorization: Bearer ${TOKEN}"
 ```
 
 Note that the simple act of including a transcript with the POST triggers the alignment configuration.

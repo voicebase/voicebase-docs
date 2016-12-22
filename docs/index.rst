@@ -36,13 +36,14 @@ More information and guidances can be found in the:
   how-to-guides/stereo
   how-to-guides/closed-captioning
   how-to-guides/callbacks
+  how-to-guides/s3-callbacks
   how-to-guides/search
   how-to-guides/swearwords
   how-to-guides/priority
   how-to-guides/aligner
+  how-to-guides/pci
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
-  how-to-guides/pci
   how-to-guides/numberdetectionandredaction
   how-to-guides/troubleshooting
 
