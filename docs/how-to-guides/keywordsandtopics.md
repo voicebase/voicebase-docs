@@ -41,7 +41,7 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
   --request PUT \
   --header "Content-Type: application/json" \  
   --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
-  --header "Authorization: Bearer ${TOKEN}"
+  --header "Authorization: Bearer $TOKEN"
 ```
 
 ## Enabling Keyword Spotting
@@ -103,10 +103,10 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
   --request PUT \
   --header "Content-Type: application/json" \  
   --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
-  --header "Authorization: Bearer ${TOKEN}"
+  --header "Authorization: Bearer $TOKEN"
 
 curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer ${TOKEN}" \
+  --header "Authorization: Bearer $TOKEN" \
   --form media=@recording.mp3 \
   --form 'configuration={ "configuration": { "keywords": { "groups": [ "data" ] } } }'
 ```
@@ -118,7 +118,7 @@ The following is an example of posting a media document with semantic keywords a
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer ${TOKEN}" \
+  --header "Authorization: Bearer $TOKEN" \
   --form media=@recording.mp3 \
   --form 'configuration={"configuration":{
     "keywords":{ "semantic": false },
