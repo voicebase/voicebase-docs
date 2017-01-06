@@ -29,23 +29,18 @@ More information and guidances can be found in the:
   :caption: How-To Guides
 
   how-to-guides/hello-world
-  how-to-guides/search
   how-to-guides/transcripts
-  how-to-guides/closed-captioning
-  how-to-guides/aligner
-  how-to-guides/priority
-  how-to-guides/languages
-  how-to-guides/stereo
   how-to-guides/keywordsandtopics
   how-to-guides/predictions
+  how-to-guides/languages
+  how-to-guides/stereo
+  how-to-guides/closed-captioning
+  how-to-guides/callbacks
+  how-to-guides/search
   how-to-guides/swearwords
-  how-to-guides/pci
+  how-to-guides/priority
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
-  how-to-guides/numberdetectionandredaction
-  how-to-guides/callbacks
-  how-to-guides/s3-callbacks
-  how-to-guides/troubleshooting
 
 .. _api-reference:
 
