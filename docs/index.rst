@@ -42,6 +42,7 @@ More information and guidances can be found in the:
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
   .. Not yet ready for publication
+  how-to-guides/aligner
 
 .. _api-reference:
 
