@@ -43,6 +43,7 @@ More information and guidances can be found in the:
   how-to-guides/pci-ssn-pii-redaction
   .. Not yet ready for publication
   how-to-guides/aligner
+  how-to-guides/s3-callbacks
 
 .. _api-reference:
 
