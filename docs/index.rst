@@ -44,6 +44,7 @@ More information and guidances can be found in the:
   .. Not yet ready for publication
   how-to-guides/aligner
   how-to-guides/s3-callbacks
+  how-to-guides/custom-vocabulary
 
 .. _api-reference:
 
