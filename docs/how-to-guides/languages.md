@@ -26,6 +26,14 @@ For example, to transcribe a recording in Australian English:
 }
 ```
 
+- `configuration` : The root configuration section.
+    - `language` : The language code.
+        - `en-US` : US English
+        - `en-UK` : UK English
+        - `en-AU` : Austrialian English
+        - `es-LA` : Latin American Spanish
+        - `pt-BR` : Brazilian Portuguese
+                        
 ## Disabling Semantic Keywords and Topics
 
 [Semantic keywords and topics](keywordsandtopics.html) are not currently supported with Spanish and Portuguese. When transcribing in these languages, disable these options in your configuration.
@@ -44,7 +52,25 @@ For example, to transcribe a recording in Australian English:
 }
 ```
 
+- `configuration` : The root configuration section.
+    - `language` : The language code.
+        - `es-LA` : Latin American Spanish
+        - `pt-BR` : Brazilian Portuguese
+    - `keywords` : The keywords sub-section
+        - `semantic` : The semantic keywords sub-section
+            - `false` : The value is false to indicate no semantic keywords.
+    - `topics` : The topics sub-section
+        - `semantic` : The semantic topics sub-section
+            - `false` : The value is false to indicate no semantic topics.
+  
+
 ## Examples
+
+** Note: Export your api `TOKEN` prior to running any of the following examples.
+         
+```bash
+export TOKEN='Your Api Token'
+```
 
 ### U.S. English
 

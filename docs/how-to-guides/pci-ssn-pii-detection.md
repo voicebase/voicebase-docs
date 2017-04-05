@@ -2,8 +2,6 @@
 
 VoiceBase allows you to detect sensitive data in your recordings (and, optionally, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
 
-
-
 The API offers the following three detectors for sensitive data:
 
 - Payment Card Information (PCI) Detector
@@ -83,6 +81,12 @@ To enable it, add the Number detector to your configuration when you make a POST
 
 
 ## Examples
+
+** Note: Export your api `TOKEN` prior to running the following example.
+         
+```bash
+export TOKEN='Your Api Token'
+```
 
 ### Enabling the detectors
 

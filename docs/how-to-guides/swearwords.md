@@ -19,6 +19,12 @@ To enable the swear word filtering, configure the media post configuration with 
 
 ## Examples
 
+** Note: Export your api `TOKEN` prior to running the following example.
+         
+```bash
+export TOKEN='Your Api Token'
+```
+
 ### Enable the swear word filter
 
 ```bash

@@ -29,6 +29,7 @@ Sensitive data is automatically redacted from analytics (such as keywords and to
 
 To redact sensitive regions from your recording, upload it to VoiceBase, and add an `audio` section to the detector's redaction configuration. In this example, sensitive audio regions will be replaced with a 270 Hz tone of moderate volume.
 
+
 ```json
 { 
   "detections": [
@@ -45,7 +46,6 @@ To redact sensitive regions from your recording, upload it to VoiceBase, and add
   ]
 }
 ```
-
 
 To download the redacted audio, make a GET request to media/{mediaId}/streams. The response will be of the form:
 

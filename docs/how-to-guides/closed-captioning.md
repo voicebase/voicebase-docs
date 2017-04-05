@@ -1,19 +1,12 @@
 # Closed Captioning
 
-VoiceBase can generate subtitles or closed captions for your video project, by
-allowing you to retrieve the transcript of your audio or video file using the
-SubRip Text (SRT) format.
+VoiceBase can generate subtitles or closed captions for your video project, by allowing you to retrieve the transcript of your audio or video file using the SubRip Text (SRT) format.
 
-No special configuration is required. All transcripts are always available in
-three formats: JSON word-by-word, plain text and SRT.
+No special configuration is required. All transcripts are always available in three formats: JSON word-by-word, plain text and SRT.
 
 ## SRT subtitle format
 
-An SRT file contains formatted lines of plain text in groups separated by a
-blank line. Subtitles are numbered sequentially, starting at 1. The timecode
-format used is hours:minutes:seconds,milliseconds with time units fixed to two
-zero-padded digits and fractions fixed to three zero-padded digits (00:00:00,000).
-The fractional separator used is the comma.
+An SRT file contains formatted lines of plain text in groups separated by a blank line. Subtitles are numbered sequentially, starting at 1. The timecode format used is hours:minutes:seconds,milliseconds with time units fixed to two zero-padded digits and fractions fixed to three zero-padded digits (00:00:00,000).  The fractional separator used is the comma.
 
 1. A number indicating which subtitle it is in the sequence.
 2. The time that the subtitle should appear on the screen, and then disappear.
@@ -45,7 +38,14 @@ Agent: OK great let's get started.
 
 ## GET an SRT format
 
-Provide the `Accept` HTTP header with the value `"text/srt"` when requesting thetranscript.
+Export `MEDIA_ID` and `TOKEN`
+
+```bash
+export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
+export TOKEN='Your Api Token'
+```
+
+and provide the `Accept` HTTP header with the value `"text/srt"` when requesting the transcript.
 
 ```bash
 curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
