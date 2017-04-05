@@ -1,6 +1,6 @@
 # PCI, SSN, PII Detection
 
-VoiceBase allows you to detect sensitive data in your recordings and, optionally, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
+VoiceBase allows you to detect sensitive data in your recordings (and, optionally, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
 
 The API offers the following three detectors for sensitive data:
 
