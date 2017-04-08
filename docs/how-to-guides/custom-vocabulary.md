@@ -1,24 +1,27 @@
 
 # Custom Vocabulary
 
-Voicebase has a unique feature that can increase the possibility of terms or phrases being transcribed by the VoiceBase speech engine resulting in better accuracy.
+##### Summary:
+VoiceBase allows you to customize the speech engine to correctly recognize words and phrases that you would not find in a standard dictionary. Using this, you can have the flexibility of a highly tuned, and even more accurate speech engine for specific verticals and vernacular.
 
-The feature is used to preferentially transcribe:
-
+##### Use Case:
+The Custom Vocabulary feature is most useful for:
 * Jargon
-* Proper Nouns (Names, Companies, etc.)
+* Proper Nouns (names, products, companies, street and city names, etc.)
 * Acronyms
 * Non-dictionary words
 * Hyphenated words 
 * Multi-word phrases
 
-For example, company names, last name or alternative spellings may not be present in the standard dictionary. Those can be added and given preferential treatment to be transcribed. Words that already exist in the dictionary can be added to custom vocabulary to give them preferential treatment to be transcribed.
+Let's consider a simple message:
 
-Upon a standard configuration, a submitted audio file may return a transcript such as:
+>Hi this is Bryon from VoiceBase.
 
-“Hi this is Brian from voice space.”
+Let's look at how to use Custom Vocabulary to help ensure that Bryon (an uncommon spelling) and VoiceBase are correctly recognized. The name Bryon can be input from a CRM system, along with 
 
-However using Custom Vocabulary, we can specify that we would want the company name “VoiceBase” to be recognized.  We can do so using the ad-hoc method of Custom Vocabulary below:
+
+Using the ad-hoc method of Custom Vocabulary we can add these terms as part of the request configuration file:
+
 
 ```json
 { "configuration": 
@@ -26,7 +29,7 @@ However using Custom Vocabulary, we can specify that we would want the company n
 		"executor": "v2", 
 		"transcripts": 
 			{
-				"vocabularies": [ { "terms" : [ "VoiceBase" ] } ] 
+				"vocabularies": [ { "terms" : [ "Bryon" , "VoiceBase" ] } ] 
 			} 
 	}
 }
@@ -34,19 +37,17 @@ However using Custom Vocabulary, we can specify that we would want the company n
 
 When processed with the Custom Vocabulary configuration, the returned transcript would read
 
-“Hi, this is Brian from VoiceBase.”
 
-## Limitations: 
+“Hi, this is Bryon from VoiceBase.”
 
-Currently, Custom Vocabulary has a limit of 1000 terms per file processed. Greater than 1000 terms runs the risk of noticeable degradation in turnaround time and accuracy.
-
-Note: The greater the amount of custom vocabulary terms the greater the chance the overall accuracy may go down, even while the custom vocabulary accuracy goes up. 
 
 ## Upload Scenarios:
 
 There are two ways to upload custom vocabulary terms to VoiceBase:
 
-### Ad-hoc Scenario 
+
+### Ad-Hoc Scenario 
+
 
 If you have a voice file to transcribe and want to add ad hoc custom terms specifically for that file, upload the file with the following configuration:
 ```json
@@ -85,7 +86,7 @@ You can add a re-usable custom vocabulary list to your VoiceBase account with a 
        }
 ```
 
-From this example, the Custom Vocabulary list is named “earningsCalls”, and can be now be used in configurations attached with all media uploads.  To attach a pre-defined custom vocabulary list to media files, use the configuration below:   (Note* this can also be combined with adhoc terms)
+From this example, the Custom Vocabulary list is named “earningsCalls”, and can be now be used in configurations attached with all media uploads.  To attach a pre-defined custom vocabulary list to media files, use the configuration below:   (**Note** this can also be combined with adhoc terms)
 
 ```json
 {  
@@ -101,6 +102,15 @@ From this example, the Custom Vocabulary list is named “earningsCalls”, and 
    }
 }
 ```
+
+
+## Limitations: 
+
+* Currently, Custom Vocabulary has a limit of 1000 terms per file processed. Greater than 1000 terms runs the risk of noticeable degradation in turnaround time and accuracy.
+
+**Note:** Since Bryon is a non-standard way of the common name Brian, we would not want to include this term for every call, but VoiceBase allows you to create vocabularies specific for each file. In this way, you can submit names of people, streets, cities, products, and industry or company specific terms from a CRM system or other data source which are useful in this call, but will not affect others.
+
+
 
 ## Example cURL Request:
 
@@ -121,7 +131,7 @@ curl https://apis.voicebase.com/v2-beta/definitions/transcripts/vocabularies/com
 }'
 ```
 
-Example successful response on PUT request:
+## Example successful response to PUT request:
 
 ```json
 {
@@ -139,10 +149,3 @@ Example successful response on PUT request:
   ]
 }
 ```
-
-
-
- 
-
-
-
