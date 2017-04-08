@@ -19,7 +19,9 @@ Let's consider a simple message:
 
 Let's look at how to use Custom Vocabulary to help ensure that Bryon (an uncommon spelling) and VoiceBase are correctly recognized. The name Bryon can be input from a CRM system, along with 
 
+
 Using the ad-hoc method of Custom Vocabulary we can add these terms as part of the request configuration file:
+
 
 ```json
 { "configuration": 
@@ -35,13 +37,17 @@ Using the ad-hoc method of Custom Vocabulary we can add these terms as part of t
 
 When processed with the Custom Vocabulary configuration, the returned transcript would read
 
+
 “Hi, this is Bryon from VoiceBase.”
+
 
 ## Upload Scenarios:
 
 There are two ways to upload custom vocabulary terms to VoiceBase:
 
+
 ### Ad-Hoc Scenario 
+
 
 If you have a voice file to transcribe and want to add ad hoc custom terms specifically for that file, upload the file with the following configuration:
 ```json
@@ -97,11 +103,13 @@ From this example, the Custom Vocabulary list is named “earningsCalls”, and 
 }
 ```
 
+
 ## Limitations: 
 
 * Currently, Custom Vocabulary has a limit of 1000 terms per file processed. Greater than 1000 terms runs the risk of noticeable degradation in turnaround time and accuracy.
 
 **Note:** Since Bryon is a non-standard way of the common name Brian, we would not want to include this term for every call, but VoiceBase allows you to create vocabularies specific for each file. In this way, you can submit names of people, streets, cities, products, and industry or company specific terms from a CRM system or other data source which are useful in this call, but will not affect others.
+
 
 
 ## Example cURL Request:
