@@ -2,15 +2,29 @@
 
 VoiceBase supports several spoken languages and dialects.
 
-**Languages supported in the V2 (Beta) API:**
-* English
-  * U.S. English (en-US) - *default*
-  * U.K. English (en-UK)
-  * Australian English (en-AU)
-* Spanish
-  * Latin America (es-LA)
-* Portuguese
-  * Brazil (pt-BR)
+**The following languages and dialects are supported in the V2 (Beta) API:**
+
+| Language              | code  | Supported Frequency |
+|-----------------------|:-----:|:-------------------:|
+| English US            | en-US | 8, 16 |
+| English United Kingdom | en-UK | 8, 16 |
+| English Australian    | en-AU | 8,16  |
+| Spanish - Latin America | es-LA| 8, 16 |
+| Portugese Brazil      | pt-BR | 8     |
+
+
+### Feature Support by Language
+
+| Language              | Transcription | Keywords | Topics | Predictions | Custom Vocabulary | Number Formatting | Callbacks | PCI Detect/Redact | 
+|----------             |:-------------:|:--------:|:------:|:-----------:|:-----------------:|:-----------------:|:---------:|:------------------|
+| English US            | x             | x         | x     | x         |       x           |       x           |       x   |   x   |
+| English United Kingdom| x             | x         | x     | x         |       x           |       x           |       x   |    x  |
+| English Australian    | x             |   x       |   x   |   x       |       x           |       x           |       x   |   x   |
+| Spanish - Latin America| x            |
+| Portugese Brazil      | x             |         
+
+
+
 
 ## Configuring Language Support
 
