@@ -2,15 +2,6 @@
 
 Once processing is complete, transcripts can be retrieved in several formats.
 
-Note: Export a mediaId and your api token prior to running any of the following examples.
-
-```bash
-export MEDIA_ID='The media id of a \
-    processed media file (`status` = `finished`)'
-export TOKEN='Your Api Token'
-```
-
-
 ## JSON Transcript
 
 Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item. By convention, the transcript for most common scenarios is called `latest`.
@@ -80,6 +71,19 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
 
 To download a transcript as plain text, add an `Accept` HTTP header with the value `text/plain`.
 
+##### Example Response
+
+The plaintext response will contain only the words from the transcript, without formatting.
+
+```
+To find the source of success we started at work we asked people to identify who they thought
+were their most effective colleagues in fact over the past twenty five years we have asked
+over twenty thousand people to identify the individuals in their organizations who could
+really get things done
+```
+
+##### Example cURL
+
 ```sh
 curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
     --header "Authorization: Bearer ${TOKEN}" \
@@ -88,7 +92,35 @@ curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
 
 ## SRT transcript
 
-To retrieve a transcripts as plain text, add an `Accept` HTTP header with the value `text/srt`.
+To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio, add an `Accept` HTTP header with the value `text/srt`.
+
+The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.
+
+##### Example Response
+
+```
+1
+00:00:00,05 --> 00:00:05,81
+To find the source of success we started
+at work we asked people to identify who
+
+2
+00:00:05,82 --> 00:00:10,90
+they thought were their most effective
+colleagues in fact over the past twenty five
+
+3
+00:00:10,91 --> 00:00:16,13
+years we have asked over twenty thousand
+people to identify the individuals in their
+
+4
+00:00:16,14 --> 00:00:20,93
+organizations who could really get things
+done we wanted to find those who were not
+```
+
+##### Example cURL
 
 ```sh
 curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
@@ -96,4 +128,8 @@ curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
     --header "Accept: text/srt"
 ```
 
+
+
+
+_Attribution:_ SRT and Plaintext transcripts are generated from Audible dictation of [Crucial Conversations](http://www.audible.com/pd/Business/Crucial-Conversations-Audiobook/B009RQZDHS?source_code=GPAGBSH0508140001&mkwid=sDishsy3J_dc&pcrid=90539104740&pmt=&pkw=&cvosrc=ppc%20cse.google%20shopping.342766860&cvo_crid=90539104740&cvo_pid=23455575420) under fair-use.
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.

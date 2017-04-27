@@ -41,12 +41,11 @@ More information and guidances can be found in the:
   how-to-guides/priority
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
-.. Ready for review
-  how-to-guides/custom-vocabulary  
-.. Not yet ready for publication
+  how-to-guides/custom-vocabulary
   how-to-guides/aligner
   how-to-guides/s3-callbacks
   how-to-guides/number-formatting
+  how-to-guides/voicemail
 
 
 .. _api-reference:
