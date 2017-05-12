@@ -92,7 +92,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
 ```json
 {
   "_links" : {  
-    "self" : { "href" : "https://apis.voicebase.com/v2-beta/media/3c7499c2-aebd-4efc-aaf7-0ad4636cc160" }
+    "self" : { "href" : "https://apis.voicebase.com/v2-beta/media/abcdef01-2345-6789-abcd-0ad4636cc160" }
   },
   "callback" : {
     "success" : true,
@@ -103,19 +103,19 @@ When media processing is complete, VoiceBase will call back your specified endpo
     }
   },
   "media" : {
-    "mediaId" : "3c7499c2-aebd-4efc-aaf7-0ad4636cc160",
+    "mediaId" : "abcdef01-2345-6789-abcd-0ad4636cc160",
     "status" : "finished",
     "metadata" : {
       "latest" : {
         "title" : "An interesting conversation",
         "external" : {
-          "id" : "fe26afe9-e5cf-4f48-976d-29dd758a0550"
+          "id" : "abcdef01-2345-6789-abcd-29dd758a0550"
         }
       }
     },
     "transcripts" : {
       "latest" : {
-        "transcriptId" : "e0589bc2-5266-4c52-8347-42c2c186fe16",
+        "transcriptId" : "abcdef01-2345-6789-abcd-42c2c186fe16",
         "type" : "machine",
         "engine" : "premium",
         "features" : [ "speakerTurns", "speakerId" ],
@@ -127,11 +127,11 @@ When media processing is complete, VoiceBase will call back your specified endpo
     },
     "topics" : {
       "latest" : {
-        "revision" : "cc7bd8d1-bb76-47c9-bf52-54acd43aea57",
+        "revision" : "abcdef01-2345-6789-abcd-54acd43aea57",
         "terms" : [
           { 
             "name" : "mobile industry",
-            "id" : "6f71daf4-4f97-45c6-a29f-5726cbdba270",
+            "id" : "abcdef01-2345-6789-abcd-5726cbdba270",
             "spotting" : false,
             "keywords" : [ 
               "mobile advertising",
