@@ -3,10 +3,34 @@ Languages
 
 VoiceBase supports several spoken languages and dialects.
 
-**Languages supported in the V2 (Beta) API:** \* English \* U.S. English
-(en-US) - *default* \* U.K. English (en-UK) \* Australian English
-(en-AU) \* Spanish \* Latin America (es-LA) \* Portuguese \* Brazil
-(pt-BR)
+**Languages supported in the V2 (Beta) API:**
+
+===================  =====  ======
+Language             Code   Supported Frequencies
+===================  =====  ======
+English US           en-US  8, 16
+English UK           en-UK  8, 16
+English Australian   en-AU  8, 16
+Portugese, Brazil    pt-BR  8
+Spanish, Latin Am.   es-LA  8, 16
+===================  =====  ======
+
+
+
+**Feature Support by Language:**
+
+Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
+
+===================  =============  =================  ====================  ==========  ====  ==
+Language             Transcription  Number Formatting  Knowledge Extraction  Prediction  PCI   Callbacks Frequencies
+===================  =============  =================  ====================  ==========  ====  ==
+English US                 √               √                    √                 √        √    √
+English UK                 √               √                    √                 √        √    √
+English Australian         √               √                    √                 √        √    √
+Portugese, Brazil          √                                                                    √
+Spanish, Latin Am.         √                                                                    √
+===================  =============  =================  ====================  ==========  ====  ==
+
 
 Configuring Language Support
 ----------------------------
@@ -167,3 +191,4 @@ Brazilian Portuguese
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
+
