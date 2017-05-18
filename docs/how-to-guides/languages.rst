@@ -11,7 +11,7 @@ Language             Code   Supported Frequencies
 English US           en-US  8, 16
 English UK           en-UK  8, 16
 English Australian   en-AU  8, 16
-Portugese, Brazil    pt-BR  8
+Portuguese, Brazil   pt-BR  8
 Spanish, Latin Am.   es-LA  8, 16
 ===================  =====  ======
 
@@ -21,15 +21,15 @@ Spanish, Latin Am.   es-LA  8, 16
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
-===================  =============  =================  ====================  ==========  ====  ==
-Language             Transcription  Number Formatting  Knowledge Extraction  Prediction  PCI   Callbacks Frequencies
-===================  =============  =================  ====================  ==========  ====  ==
-English US                 √               √                    √                 √        √    √
-English UK                 √               √                    √                 √        √    √
-English Australian         √               √                    √                 √        √    √
-Portugese, Brazil          √                                                                    √
-Spanish, Latin Am.         √                                                                    √
-===================  =============  =================  ====================  ==========  ====  ==
+======================  ==========  ==========  ==================  ==================  ==================
+Feature                 English US  English UK  English Australian  Portuguese, Brazil  Spanish, Latin Am. 
+Transcription               √		√		√			√		√
+Callbacks		    √		√		√
+Number Formatting	    √		√		√
+Knowledge Extraction	    √		√		√
+Prediction		    √		√		√
+PCI			    √		√		√
+======================  ==========  ==========  ==================  ==================  ==================
 
 
 Configuring Language Support
