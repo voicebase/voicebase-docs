@@ -21,15 +21,15 @@ Spanish, Latin Am.   es-LA  8, 16
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
-======================  ==========  ==========  ==================  ==================  ==================
-Feature                 English US  English UK  English Australian  Portuguese, Brazil  Spanish, Latin Am. 
-Transcription               √		√		√			√		√
+======================  ==========  ==========  ==========  ==================  ==================
+Feature                 English US  English UK  English AU  Portuguese, Brazil  Spanish, Latin Am. 
+Transcription               √		√		√		√		√
 Callbacks		    √		√		√
 Number Formatting	    √		√		√
 Knowledge Extraction	    √		√		√
 Prediction		    √		√		√
 PCI			    √		√		√
-======================  ==========  ==========  ==================  ==================  ==================
+======================  ==========  ==========  ==========  ==================  ==================
 
 
 Configuring Language Support
