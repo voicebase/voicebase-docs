@@ -19,7 +19,7 @@ export TOKEN='Your Api Token'
 
 ## Semantic Keywords and Topics
 
-Semantic keywords and topics are discovered automatically (for [languages where the feature is supported](http://how-to-guides/languages.html)) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
+Semantic keywords and topics are discovered automatically (for [languages where the feature is supported](languages.html)) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
 
 ```json
 {
