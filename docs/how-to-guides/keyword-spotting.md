@@ -64,7 +64,42 @@ For example:
   }
 }
 ```
+When keyword spotting is enabled, this adds extra analytics to the response. For example:
 
+```json
+{
+  "media": {
+    "keywords": {
+      "latest": {
+        "groups": [
+          {
+            "keywords": [
+              {
+                "t": {
+                  "unknown": [
+                    4.62
+                  ]
+                },
+                "name": "data science"
+              },
+              {
+                "t": {
+                  "unknown": [
+                    6.68
+                  ]
+                },
+                "name": "data mining"
+              }
+            ],
+            "name": "data",
+            "type": "group"
+          }
+        ]
+      }
+    }
+  }
+}
+```
 ## Examples
 
 ### Example: Defining and enabling a keyword spotting group
