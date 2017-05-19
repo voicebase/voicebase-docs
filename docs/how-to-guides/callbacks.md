@@ -15,7 +15,7 @@ To request a processing-completed callback from VoiceBase, include a JSON config
           { 
             "url" : "https://example.org/callback",
             "method" : "POST",
-            "include" : [ "transcripts", "keywords", "topics", "metadata" ]
+            "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
           }
         ]
       }
@@ -33,11 +33,16 @@ To request a processing-completed callback from VoiceBase, include a JSON config
                 - `url` : the https url for delivering a callback notification
                 - `method` : the HTTPS method for callback delivery, with the following supported values:
                     - `POST`: deliver callbacks as an HTTPS POST
-                - `include` :  array of data to include with the callback, with the following supported values:
+                    - `PUT`: deliver callbacks as an HTTPS PUT
+                - `include` :  array of data to include with the callback, with the following supported values. If include is ommitted the callback will return all results:
                     - `transcripts`: include transcripts for the media
                     - `topics` : include topics and corresponding keywords for the media
                     - `metadata` : include supplied metadata, often useful for correlated to records in a different system
-                    
+                    - `keywords` : include spotted keywords that were supplied
+                    - `predictions` : include prediction information for the media based on supplied predictors
+
+## Example cURL Request with Callback
+
 For example, to upload media from a local file called recording.mp3 and receive a callback at https://example.org/callback, make the following POST request using curl, or an equivalent request using a tool of your choice:
 
 ```bash
@@ -52,7 +57,7 @@ curl https://apis.voicebase.com/v2-beta/media \
               { 
                 "url" : "https://example.org/callback",
                 "method" : "POST",
-                "include" : [ "transcripts", "keywords", "topics", "metadata" ]
+                "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
               }
             ]
           }
@@ -63,6 +68,22 @@ curl https://apis.voicebase.com/v2-beta/media \
 
 When using callbacks, you can still query the status of the media processing using a GET request to /media/{mediaId}.
 
+### Callback Retry Logic
+
+If a success response is not achieved on the first attempt, VoiceBase will do the following:
+
+1) Retry immediately up to two times.
+2) Put the callback delivery on schedule to re-attempt in 15 minutes, and the time doubled until it hits 16 hours between reattempts (in total, VoiceBase will stop after 36 hours). 
+
+If the file has not been accepted after step b) the status of the media file will change to 'finished' and VoiceBase will stop attempting.
+
+### IP Whitelist
+
+All egress traffic flows from our servers out through one of these three (currently) NAT gateways. The IPs are,
+52.6.224.43
+52.6.208.178
+52.2.171.140
+
 ## Callback Data
 
 When media processing is complete, VoiceBase will call back your specified endpoint by making an HTTPS POST request. The body is a JSON object with the following data:
@@ -71,7 +92,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
 ```json
 {
   "_links" : {  
-    "self" : { "href" : "https://apis.voicebase.com/v2-beta/media/3c7499c2-aebd-4efc-aaf7-0ad4636cc160" }
+    "self" : { "href" : "https://apis.voicebase.com/v2-beta/media/abcdef01-2345-6789-abcd-0ad4636cc160" }
   },
   "callback" : {
     "success" : true,
@@ -82,19 +103,19 @@ When media processing is complete, VoiceBase will call back your specified endpo
     }
   },
   "media" : {
-    "mediaId" : "3c7499c2-aebd-4efc-aaf7-0ad4636cc160",
+    "mediaId" : "abcdef01-2345-6789-abcd-0ad4636cc160",
     "status" : "finished",
     "metadata" : {
       "latest" : {
         "title" : "An interesting conversation",
         "external" : {
-          "id" : "fe26afe9-e5cf-4f48-976d-29dd758a0550"
+          "id" : "abcdef01-2345-6789-abcd-29dd758a0550"
         }
       }
     },
     "transcripts" : {
       "latest" : {
-        "transcriptId" : "e0589bc2-5266-4c52-8347-42c2c186fe16",
+        "transcriptId" : "abcdef01-2345-6789-abcd-42c2c186fe16",
         "type" : "machine",
         "engine" : "premium",
         "features" : [ "speakerTurns", "speakerId" ],
@@ -106,11 +127,11 @@ When media processing is complete, VoiceBase will call back your specified endpo
     },
     "topics" : {
       "latest" : {
-        "revision" : "cc7bd8d1-bb76-47c9-bf52-54acd43aea57",
+        "revision" : "abcdef01-2345-6789-abcd-54acd43aea57",
         "terms" : [
           { 
             "name" : "mobile industry",
-            "id" : "6f71daf4-4f97-45c6-a29f-5726cbdba270",
+            "id" : "abcdef01-2345-6789-abcd-5726cbdba270",
             "spotting" : false,
             "keywords" : [ 
               "mobile advertising",
@@ -126,7 +147,17 @@ When media processing is complete, VoiceBase will call back your specified endpo
           }
         ]
       }
-    }
+    },
+    "predictions" : [ {
+      "prediction" : {
+        "score" : 0.6481495509277182,
+        "type" : "binary",
+        "class" : "Prospect"
+      },
+      "model" : {
+        "uuid" : "abcdef01-2345-6789-abcd-0af1203baa8b"
+      }
+    } ]
   }
 }
 
@@ -151,3 +182,4 @@ When media processing is complete, VoiceBase will call back your specified endpo
     - `metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
     - `transcripts` : the transcipt(s) for the media (present if requested when media is uploaded)
     - `topics` : the topics and keywords for the media (present if requested when media is uploaded)
+    - `predictions` : the predictions results for the media 

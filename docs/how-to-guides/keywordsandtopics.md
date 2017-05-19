@@ -2,6 +2,14 @@
 
 
 VoiceBase can discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing ("semantic keywords and topics"). You also have the option of defining groups of keywords or key phrases, which are flagged when they are spotted in the recording.
+The VoiceBase Semantic Engine Service (S.E.S.) will return a *'relevance'* score from 0.5 to 1 for keywords and topics discovered in a recording.
+**For Keywords:**
+If the keyword is verified via a human curated taxonomy as being in a particular category, S.E.S. will assign a relevance score of 1 (100%). If the recognized keyword is attributable directly, VoiceBase S.E.S. will algorithmically generate other related keywords, and the 'relevance' score shows the separation between the key word and the category, *not necessarily to the recording*.
+Relevance may be used to rank the keywords within a discovered category (topic).
+**For Topics:**
+Topic relevance is evaluated using a weighted function of frequency, confidence, length, and the number of characters for each of the child keywords. For Topics, relevance indicates relatedness to the recording.
+
+
 
 Export `TOKEN` prior to running any of the following examples.
 
@@ -11,7 +19,7 @@ export TOKEN='Your Api Token'
 
 ## Semantic Keywords and Topics
 
-Semantic keywords and topics are discovered automatically (for languages where the feature is supported) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
+Semantic keywords and topics are discovered automatically (for [languages where the feature is supported](languages.html)) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
 
 ```json
 {
@@ -117,6 +125,7 @@ For example:
   }
 }
 ```
+
 
 ## Examples
 
