@@ -30,7 +30,8 @@ More information and guidances can be found in the:
 
   how-to-guides/hello-world
   how-to-guides/transcripts
-  how-to-guides/keywordsandtopics
+  how-to-guides/keywords-and-topics
+  how-to-guides/keyword-spotting
   how-to-guides/predictions
   how-to-guides/languages
   how-to-guides/stereo
