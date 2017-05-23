@@ -33,7 +33,7 @@ Semantic keywords and topics are scored for relevance. The `relevance` score ran
 
 Keyword relevance is computed by matching detected keywords and key phrases to an extensive taxonomy of potential keywords (VoiceBase's semantic index). The relevance algorithm generally produces higher scores for more frequent, closely matching, and distinctive keywords, while producing lower scores for very common keywords found in the recording.
 
-Topic relevance is computed by grouping discovered keywords into topics of interest... TODO
+Topic relevance is computed by grouping discovered keywords into topics of interest applying a similar relevance algorithm to the aggregate.
 
 ## Disabling Semantic Keywords and Topics
 
