@@ -1,6 +1,6 @@
 # Stereo
 
-Recording and processing conversations (such a phone calls) in stereo can significantly improve transcription accuracy and analytical insight. To realize the benefit, each speaker is recorded on a different channel (left or right), and the speaker metadata is provided to VoiceBase when uploading the recording.
+Recording and processing conversations (such a phone calls) in stereo can significantly improve transcription accuracy and analytical insight. To realize the benefit,  each speaker is recorded on a different channel (left or right), and the speaker metadata is provided to VoiceBase when uploading the recording.
 
 ## Enabling stereo transcription
 
@@ -8,29 +8,22 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
 
 ```json
 {
-  "configuration": {
-    "ingest": {
-      "channels": {
-        "left": {
-          "speaker": "Customer"
-        },
-        "right": {
-          "speaker": "Agent"
-        }
-      }
+  "ingest": {
+    "stereo": {
+       "left": { "speaker": "Customer" },
+      "right": { "speaker": "Agent"    }
     }
   }
 }
 ```
 
-- `configuration` : top level of the configuration tree.
     - `ingest` : the ingest sub-section.
-        - `channels` : specification of the stereo channels.  Both child sections are required.
+        - `stereo` : specification of the stereo channels.  Both child sections are required.
             - `left` : specification of the left channel.
                 - `speaker` : the name of left channel speaker.
             - `right` : specification of the right channel.
                 - `speaker` : the name of right channel speaker.
-                
+
 
 ## Effects on Transcripts
 
@@ -38,34 +31,32 @@ When stereo processing is enabled, the word-by-word JSON transcript will contain
 
 ```json
 {
-  "transcripts": {
-    "latest": {
-      "words": [
-          {
-            "p": 176,
-            "s": 55893,
-            "c": 0.574,
-            "e": 56103,
-            "w": "street"
-          },
-          {
-            "p": 177,
-            "s": 57353,
-            "c": 1,
-            "e": 58163,
-            "w": "Agent",
-            "m": "turn"
-          },
-          {
-            "p": 178,
-            "s": 57353,
-            "c": 0.346,
-            "e": 57483,
-            "w": "what"
-          }
-      ],
-      "confidence": 0.958
-    }
+  "transcript" : {
+    "confidence": 0.958,
+    "words": [
+        {
+          "p": 176,
+          "s": 55893,
+          "c": 0.574,
+          "e": 56103,
+          "w": "street"
+        },
+        {
+          "p": 177,
+          "s": 57353,
+          "c": 1,
+          "e": 58163,
+          "w": "Agent",
+          "m": "turn"
+        },
+        {
+          "p": 178,
+          "s": 57353,
+          "c": 0.346,
+          "e": 57483,
+          "w": "what"
+        }
+    ]
   }
 }
 ```
@@ -73,14 +64,14 @@ When stereo processing is enabled, the word-by-word JSON transcript will contain
 The plain text version of the transcript will show each segment of the conversation prefixed with the speaker name (e.g. 'Agent:' or  'Customer')
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/text \
     --header "Accept: text/plain" \
-    --header "Authorization: Bearer ${TOKEN}" 
+    --header "Authorization: Bearer ${TOKEN}"
 ```
 
 ---
 **Agent:** Well this is Michael thank you for calling A.B.C. cable services.
-How may I help you today. 
+How may I help you today.
 
 **Customer:** Hi I'm calling because I'm interested in buying new cable service.
 
@@ -95,7 +86,7 @@ The SRT version of the transcript will also contain the speaker names provided i
 the configuration.
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest  \
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/srt  \
     --header "Accept: text/srt" \
     --header "Authorization: Bearer ${TOKEN}"
 ```
@@ -124,76 +115,34 @@ Agent: OK great let's get started.
 ## Effects on Keywords and Topics
 
 When processing a file in stereo, you will get keywords and topics detected
-independently on each channel. For example, the start time of a keyword on a
-recording processed as a single channel would appear under the "unknown" label:
+independently on each channel. The occurrences of the keywords are grouped by
+speaker.
 
 ```json
 {
-  "keywords": {
-    "latest": {
-      "words": [
-        {
-          "t": {
-            "unknown": [
-              "5.09",
-              "10.92",
-              "234.55",
-              "282.243"
-            ]
+  "knowledge": {
+    "keywords": [
+      {
+        "name": "cable service",
+        "relevance": "0.953",
+        "mentions": [
+          {
+            "speakerName" : "Agent",
+            "occurrences" : [
+                { "s" : 5090, "e": 6070, "exact": "cable service" }
+              ]
           },
-          "name": "cable service",
-          "relevance": "0.953"
-        }
-      ]
-    }
-  }
-}
-```
-
-When the recording is processed in stereo, the start time appears under each speaker's label specified in the configuration:
-
-```json
-{
-  "keywords": {
-    "latest": {
-      "words": [
-        {
-          "t": {
-            "Customer": [
-              "10.921"
-            ],
-            "Agent": [
-              "5.08",
-              "234.55",
-              "282.239"
-            ]
-          },
-          "name": "cable service",
-          "relevance": "0.881"
-        }
-      ]
-    }
-  }
-}
-```
-
-A similar change occurs in the topics data .
-```json
-{
-  "internalName": [
-    "contract"
-  ],
-  "score": 0.594602944702319,
-  "t": {
-    "Customer": [
-      "208.263"
-    ],
-    "Agent": [
-      "211.81",
-      "219.16"
+          {
+            "speakerName" : "Customer",
+            "occurrences" : [
+                { "s" : 234550, "e": 235700, "exact": "cable product" },
+                { "s" : 347567, "e": 349000, "exact": "cable services" }
+              ]
+          }
+        ]
+      }
     ]
-  },
-  "name": "Contract"
+  }
 }
 ```
 
@@ -205,22 +154,16 @@ Audio redaction of PCI will redact the audio in both channels, irrespective of w
 
 ### Processing in Stereo
 ```bash
-curl https://apis.voicebase.com/v2-beta/media  \
+curl https://apis.voicebase.com/v3/media  \
     --form media=@recording.mp3 \
-    --form 'configuration={
-      "configuration": {
+    --form 'configuration=
+      "{
         "ingest": {
-          "channels": {
-            "left": {
-              "speaker": "Customer"
-            },
-            "right":
-            {
-              "speaker": "Agent"
-            }
+          "stereo": {
+            "left" : { "speaker": "Customer" },
+            "right": { "speaker": "Agent"    }
           }
         }
-      }
-    }' \
+      }' \
     --header "Authorization: Bearer ${TOKEN}"
 ```
