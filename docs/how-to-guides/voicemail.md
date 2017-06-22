@@ -11,7 +11,7 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
 * **Use [Callbacks](callbacks.md):** By using callbacks, our servers will send the data as soon as processing is finished. You won't have to wait until the next polling interval.
 
 
-## Example Configuration for Voicemail with a callback endpoint receiving JSON
+## Sample configuration for Voicemail with a callback endpoint receiving JSON
 ```json
 {  
    "knowledge": {
@@ -35,9 +35,12 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
 }
 ```
 
+
+## Sample configuration for Voicemail with a callback endpoint receiving plain text
+
 You may want a callback just with the text transcript. In this case, you should use a PUT operation to a unique URL that is associated with the recording on your system and the endpoint must accept content type "text/plain"
 
-## Example Configuration for Voicemail with a callback endpoint receiving plain text
+
 ```json
 {  
    "knowledge": {
