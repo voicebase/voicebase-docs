@@ -9,37 +9,63 @@ To request a processing-completed callback from VoiceBase, include a JSON config
 ```json
 
 {
-    "configuration" : {
-      "publish": {
-        "callbacks": [
-          { 
-            "url" : "https://example.org/callback",
-            "method" : "POST",
-            "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
-          }
-        ]
+  "publish": {
+    "callbacks": [
+      { 
+        "url" : "https://example.org/callback",
+        "method" : "POST"
+      },
+      { 
+        "url" : "https://example.org/callback",
+        "method" : "POST",
+        "include" : [ "transcripts", "knowledge", "metadata", "predictions" ]
+      },
+      { 
+        "url" : "https://example.org/callback/srt",
+        "method" : "PUT",
+        "type" : "transcript",
+        "format" : "srt"
+      },
+      { 
+        "url" : "https://example.org/callback/media",
+        "method" : "PUT",
+        "type" : "media"
       }
-    }
+    ]
+  }
 }
 
 ```
 
 ### Configuration Description
 
-- `configuration` : root object for configuration data
-    - `publish` : object for publish-specific configuration
-        - `callbacks` : array of callbacks, with one object per callback desired
-            - `[n]` : callback array element
-                - `url` : the https url for delivering a callback notification
-                - `method` : the HTTPS method for callback delivery, with the following supported values:
-                    - `POST`: deliver callbacks as an HTTPS POST
-                    - `PUT`: deliver callbacks as an HTTPS PUT
-                - `include` :  array of data to include with the callback, with the following supported values. If include is ommitted the callback will return all results:
-                    - `transcripts`: include transcripts for the media
-                    - `topics` : include topics and corresponding keywords for the media
-                    - `metadata` : include supplied metadata, often useful for correlated to records in a different system
-                    - `keywords` : include spotted keywords that were supplied
-                    - `predictions` : include prediction information for the media based on supplied predictors
+- `publish` : object for publish-specific configuration
+    - `callbacks` : array of callbacks, with one object per callback desired
+        - `[n]` : callback array element
+            - `url` : the https url for delivering a callback notification
+            - `method` : the HTTPS method for callback delivery, with the following supported values:
+                - `POST`: deliver callbacks as an HTTP POST (default)
+                - `PUT`: deliver callbacks as an HTTP PUT
+            - `type` : Type of results to callback
+                - `analytics`: the result analytics in json format (default)
+                - `transcript`: the transcript in specific format, see `format` attribute
+                - `media`: the media, see `stream` attribute
+            - `format` : the format of the callback of type 'transcript'
+                - `json`: transcript in json format (application/json)
+                - `text`: transcript in text format (text/plain)
+                - `srt`: transcript in srt format (text/srt)
+                - `webvtt`: transcript in webvvt format (text/vtt)
+                - `dfxp`: transcript in dfxp format (application/ttaf+xml)
+            - `include` :  array of data to include with the callback of type 'analytics', with the following supported values. If include is ommitted the callback will return all results:
+                - `metadata` : include supplied metadata, often useful for correlated to records in a different system
+                - `transcripts`: include transcripts for the media
+                - `knowledge` : include topics and keywords for the media
+                - `predictions` : include prediction information for the media based on supplied predictors
+                - `spotting` : include spotted groups information for the media based on supplied keyword groups
+                - `streams` : include links for the media
+            - `stream` : the media stream of type 'media'
+                - `original`: the original media 
+                - `redacted-audio`: the redacted media
 
 ## Example cURL Request with Callback
 
@@ -47,26 +73,24 @@ For example, to upload media from a local file called recording.mp3 and receive 
 
 ```bash
 
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
     --form 'configuration={
-        "configuration" : {
           "publish": {
             "callbacks": [
               { 
                 "url" : "https://example.org/callback",
                 "method" : "POST",
-                "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
+                "include" : [ "transcripts", "knowledge", "metadata", "predictions", "streams" ]
               }
             ]
           }
-        }
       }'
 
 ```
 
-When using callbacks, you can still query the status of the media processing using a GET request to /media/{mediaId}.
+When using callbacks, you can still query the status of the media processing using a GET request to /v3/media/{mediaId}.
 
 ### Callback Retry Logic
 
@@ -91,75 +115,128 @@ When media processing is complete, VoiceBase will call back your specified endpo
         
 ```json
 {
-  "_links" : {  
-    "self" : { "href" : "https://apis.voicebase.com/v2-beta/media/abcdef01-2345-6789-abcd-0ad4636cc160" }
+  "mediaId": "710a4041-b78a-46ae-b626-773b90316c3b",
+  "status": "finished",
+  "contentType": "audio/mpeg",
+  "length": 201636,
+  "metadata": {},
+  "knowledge": {
+    "keywords": [{
+      "keyword": "credit card",
+      "relevance": 0.880797077978,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "60.074"
+        }, {
+          "s": "63.696"
+        }]
+      }]
+    }, {
+      "keyword": "phone",
+      "relevance": 3.13913279205E-17,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "64.376"
+        }, {
+          "s": "201.41"
+        }]
+      }]
+    }, {
+      "keyword": "machines",
+      "relevance": 1.56288218933E-18,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "18.809"
+        }]
+      }]
+    }, {
+      "keyword": "business",
+      "relevance": 1.56288218933E-18,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "51.065"
+        }]
+      }]
+    },{
+      "keyword": "toronto",
+      "relevance": 5.74952226429E-19,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "47.115"
+        }]
+      }]
+    }],
+    "topics": [{
+      "topicName": "Machines",
+      "relevance": 16.012355953635,
+      "keywords": [ {
+        "keyword": "Machine",
+        "relevance": 1.0,
+        "mentions": [{
+          "speakerName": "unknown",
+          "occurrences": [{
+            "s": "18.809"
+          }]
+        }]
+      }, {
+        "keyword": "Mobile phone",
+        "relevance": 0.506181823917995,
+        "mentions": [{
+          "speakerName": "unknown",
+          "occurrences": [{
+            "s": "64.376"
+          }, {
+            "s": "201.41"
+          }]
+        }]
+      }]
+    }]
   },
-  "callback" : {
-    "success" : true,
-    "errors" : [ ],
-    "warnings" : [ ],
-    "event" : {
-      "status" : "finished"
-    }
-  },
-  "media" : {
-    "mediaId" : "abcdef01-2345-6789-abcd-0ad4636cc160",
-    "status" : "finished",
-    "metadata" : {
-      "latest" : {
-        "title" : "An interesting conversation",
-        "external" : {
-          "id" : "abcdef01-2345-6789-abcd-29dd758a0550"
-        }
-      }
-    },
-    "transcripts" : {
-      "latest" : {
-        "transcriptId" : "abcdef01-2345-6789-abcd-42c2c186fe16",
-        "type" : "machine",
-        "engine" : "premium",
-        "features" : [ "speakerTurns", "speakerId" ],
-        "formats" : [ "json", "srt" ],
-        "words" : [
-          { "p" : 1, "c" : 0.927, "s" : 10, "e" : 1390, "w" : "him" }
-        ]
-      }
-    },
-    "topics" : {
-      "latest" : {
-        "revision" : "abcdef01-2345-6789-abcd-54acd43aea57",
-        "terms" : [
-          { 
-            "name" : "mobile industry",
-            "id" : "abcdef01-2345-6789-abcd-5726cbdba270",
-            "spotting" : false,
-            "keywords" : [ 
-              "mobile advertising",
-              "mobile usage"
-            ]
-          },
-          {
-            "name" : "mobile-phone",
-            "spotting" : true,
-            "keywords" : [
-              "iPhone"
-            ]
-          }
-        ]
-      }
-    },
-    "predictions" : [ {
-      "prediction" : {
-        "score" : 0.6481495509277182,
-        "type" : "binary",
-        "class" : "Prospect"
-      },
-      "model" : {
-        "uuid" : "abcdef01-2345-6789-abcd-0af1203baa8b"
-      }
-    } ]
-  }
+  "transcript": {
+    "confidence": 0.25199372833392564,
+    "words": [{
+      "c": 0.263,
+      "e": 1609,
+      "p": 0,
+      "s": 1370,
+      "w": "Hi"
+    }],
+    "alternateFormats": [{
+      "format": "dfxp",
+      "contentType": "application/ttaf+xml",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "webvtt",
+      "contentType": "text/vtt",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "srt",
+      "contentType": "text/srt",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "text",
+      "contentType": "text/plain",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }],
+  "streams": [{
+    "streamName": "original",
+    "streamLocation": "https://media.voicebase.com/edd441bb-a1c8-4605-a0a8-0b73899d129c/710a4041-b78a-46ae-b626-773b90316c3b.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20170622T193008Z&X-Amz-SignedHeaders=host&X-Amz-Expires=899&X-Amz-Credential=AKIAJGBJWCBBZHQ52U3A%2F20170622%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=99d220e89739b7179fb16e7ecaa713b538a945cc34bcf053dbbea204f30cbdcf"
+  }]}
 }
+
 
 ```
 
@@ -168,18 +245,13 @@ When media processing is complete, VoiceBase will call back your specified endpo
 - `_links` : HAL metadata with a URL for the corresponding media item
     - `self` : section for the media item
         - `href` : URL for the media item
-- `callback` : object with metadata about the callback event
-    - `success` : true for success notifications and false for failure notifications
-    - `errors` : an optional array of errors (omitted or empty for success notifications)
-    - `warnings` : an optional array of warnings
-    - `event` : a JSON object that event triggering the callback (typicall a status change)
-        - `status` : the new status of the media processing job, with the following possible values:
-            - `finished` : media processing completed successfully
-            - `failed` : media processing failed
 - `media` : the requested data for the media item
     - `mediaId` : the unique VoiceBase id for the media item
     - `status` : the status of processing for the media item
+    - `contentType` : the media item content type
+    - `length` : the media item length
     - `metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
-    - `transcripts` : the transcipt(s) for the media (present if requested when media is uploaded)
-    - `topics` : the topics and keywords for the media (present if requested when media is uploaded)
+    - `transcripts` : the transcript(s) for the media (present if requested when media is uploaded)
+    - `knowledge` : the topics and keywords for the media (present if requested when media is uploaded)
     - `predictions` : the predictions results for the media 
+    - `streams` : links for the results of the media

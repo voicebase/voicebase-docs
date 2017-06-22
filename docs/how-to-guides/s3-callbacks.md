@@ -52,7 +52,7 @@ Target Key: s3test.json
 Pre-Signed Url: https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659471&Signature=JEk%2FVeKJC0iTjbkvicTsdQaIHWE%3D
 
 Simulated PUT callback for s3test to https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659471&Signature=JEk%2FVeKJC0iTjbkvicTsdQaIHWE%3D:
-          {"success":true,"warnings":[{"message":"This data for s3test is simulated, and not real."}],"callback":{"status":"simulated"},"media":{}}
+          {"media":{"status":"simulated"}}
           Response: 200
 ```
 
@@ -67,24 +67,18 @@ Pre-Signed Url: https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3
 curl --header 'Authorization: Bearer $token' \
     https://apis.voicebase.com/v2-beta/media \
     --form media=@s3test.mp3 \
-    --form 'configuration={"configuration":{"executor":"v2","publish":{"callbacks":[{"method":"PUT","url":"https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.mp3.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D","include":["transcripts","keywords","topics","metadata"]}]}}}'
+    --form 'configuration={"publish":{"callbacks":[{"method":"PUT","url":"https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.mp3.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D","include":["transcripts","keywords","topics","metadata"]}]}}'
 ```
 
 Media Post Configuration
 The following configuration file (callback.redact.json) was saved from the previous step:
 ```json
 {
-    "configuration":{
-        "executor":"v2",
-        "publish": {
-            "callbacks": [ {
-                "url" : "https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481588861&Signature=swJ%2FnY4qXxjqO5ST9nIeaADQWFQ%3D",
-                "method" : "PUT",
-                "attachments": {
-                  "redactedAudio": "http://requestb.in/19mr7993323"
-                }
-            } ]
-        }
+    "publish": {
+        "callbacks": [ {
+            "url" : "https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481588861&Signature=swJ%2FnY4qXxjqO5ST9nIeaADQWFQ%3D",
+            "method" : "PUT"
+        } ]
     }
 }
 ```
@@ -92,7 +86,7 @@ The following configuration file (callback.redact.json) was saved from the previ
 ## Processing Media
 ### Post Media
 ```bash
-> curl https://apis.qa.voicebase.com/v2-beta/media \
+> curl https://apis.qa.voicebase.com/v3/media \
     --header "Authorization: Bearer $TOKEN" \ 
     --form media=@s3test.mp3 \
     --form 'configuration=@callback.redact.json'
@@ -105,56 +99,125 @@ The following configuration file (callback.redact.json) was saved from the previ
 > s3cmd get s3://voicebase-dev-s3-export-sink-for-dev/s3test.mp3.json
 > cat s3test.mp3.json | jq
 {
-  "_links": {
-    "self": {
-      "href": "https://apis.qa.voicebase.com/v2-beta/media/32f388fa-330b-4c6b-8969-8b1daf34ca30"
-    }
+  "mediaId": "710a4041-b78a-46ae-b626-773b90316c3b",
+  "status": "finished",
+  "contentType": "audio/mpeg",
+  "length": 201636,
+  "metadata": {},
+  "knowledge": {
+    "keywords": [{
+      "keyword": "credit card",
+      "relevance": 0.880797077978,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "60.074"
+        }, {
+          "s": "63.696"
+        }]
+      }]
+    }, {
+      "keyword": "phone",
+      "relevance": 3.13913279205E-17,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "64.376"
+        }, {
+          "s": "201.41"
+        }]
+      }]
+    }, {
+      "keyword": "machines",
+      "relevance": 1.56288218933E-18,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "18.809"
+        }]
+      }]
+    }, {
+      "keyword": "business",
+      "relevance": 1.56288218933E-18,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "51.065"
+        }]
+      }]
+    },{
+      "keyword": "toronto",
+      "relevance": 5.74952226429E-19,
+      "mentions": [{
+        "speakerName": "unknown",
+        "occurrences": [{
+          "s": "47.115"
+        }]
+      }]
+    }],
+    "topics": [{
+      "topicName": "Machines",
+      "relevance": 16.012355953635,
+      "keywords": [ {
+        "keyword": "Machine",
+        "relevance": 1.0,
+        "mentions": [{
+          "speakerName": "unknown",
+          "occurrences": [{
+            "s": "18.809"
+          }]
+        }]
+      }, {
+        "keyword": "Mobile phone",
+        "relevance": 0.506181823917995,
+        "mentions": [{
+          "speakerName": "unknown",
+          "occurrences": [{
+            "s": "64.376"
+          }, {
+            "s": "201.41"
+          }]
+        }]
+      }]
+    }]
   },
-  "callback": {
-    "success": true,
-    "warnings": [],
-    "event": {
-      "status": "finished"
-    },
-    "errors": []
-  },
-  "media": {
-    "metadata": {
-      "length": {
-        "milliseconds": 5070,
-        "descriptive": "5.0 sec"
-      },
-      "contentType": "audio/x-wav"
-    },
-    "keywords": {
-      "words": [
-        {
-          "t": {
-            "unknown": [
-              "2.35"
-            ]
-          },
-          "name": "beneath",
-          "relevance": "5.74952226429e-19"
-        }
-      ]
-    },
-    "transcripts": {
-      "srt": "1\n00:00:02,16 --> 00:00:05,07\nThis is beneath you and sometimes\nI think you'll come to an end.\n\n",
-      "words": [
-        {
-          "p": 0,
-          "s": 2160,
-          "c": 0.15,
-          "e": 2220,
-          "w": "This"
-        },
-        ...
-      ],
-      "text": "This is beneath you and sometimes I think you'll come to an end. "
-    },
-    "mediaId": "32f388fa-330b-4c6b-8969-8b1daf34ca30",
-    "status": "finished"
-  }
+  "transcript": {
+    "confidence": 0.25199372833392564,
+    "words": [{
+      "c": 0.263,
+      "e": 1609,
+      "p": 0,
+      "s": 1370,
+      "w": "Hi"
+    }],
+    "alternateFormats": [{
+      "format": "dfxp",
+      "contentType": "application/ttaf+xml",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "webvtt",
+      "contentType": "text/vtt",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "srt",
+      "contentType": "text/srt",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }, {
+      "format": "text",
+      "contentType": "text/plain",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "...."
+    }],
+  "streams": [{
+    "streamName": "original",
+    "streamLocation": "https://media.voicebase.com/edd441bb-a1c8-4605-a0a8-0b73899d129c/710a4041-b78a-46ae-b626-773b90316c3b.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20170622T193008Z&X-Amz-SignedHeaders=host&X-Amz-Expires=899&X-Amz-Credential=AKIAJGBJWCBBZHQ52U3A%2F20170622%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=99d220e89739b7179fb16e7ecaa713b538a945cc34bcf053dbbea204f30cbdcf"
+  }]}
 }
 ```
