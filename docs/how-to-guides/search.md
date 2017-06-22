@@ -28,7 +28,7 @@ export TOKEN='Your Api Token'
 To execute a search, make a GET request to the “media” collection with a “query” parameter.  For example, to look for media where the word "bill" is relevant:
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media?query=bill \
+curl https://apis.voicebase.com/v3/media?query=bill \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
@@ -51,7 +51,7 @@ Then use the encoded expression as the query parameter.
 ```bash
    export QUERY='%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22'
    curl --header “Authorization: Bearer ${TOKEN}” \
-        'https://apis.voicebase.com/v2-beta/media?query=${QUERY}'
+        'https://apis.voicebase.com/v3/media?query=${QUERY}'
 ```
 
 
@@ -61,7 +61,7 @@ To scope the search to records containing a specific metadata value, add a metad
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v2-beta/media?filter.metadata.extended.customerId=10101&query=bill
+https://apis.voicebase.com/v3/media?filter.metadata.extended.customerId=10101&query=bill
 ```
 
 #### Searchable Field Definitions
@@ -69,7 +69,7 @@ https://apis.voicebase.com/v2-beta/media?filter.metadata.extended.customerId=101
 To enable search over an extended metadata field, you must explicitly make the field searchable.  Use the PUT /definitions/media/search api endpoint to do so.
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/definitions/media/search \
+curl https://apis.voicebase.com/v3/definitions/media/search \
   --header "Authorization: Bearer ${TOKEN}" \
   --header "Content-Type: application/json" \
   --request PUT \
@@ -82,7 +82,7 @@ To restrict a search to media for a specific time range, add filters for lower a
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v2-beta/media?filter.created.gte=2016-01-01&filter.created.lte=2016-02-01&query=bill
+https://apis.voicebase.com/v3/media?filter.created.gte=2016-01-01&filter.created.lte=2016-02-01&query=bill
 ```
 
 VoiceBase supports [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dDMPbW2n0x6l2B9nMJW7t5XZs8pTd2PN1qwvy8cV_HYW63JXmj56dN3wf47T3Y802?t=https://en.wikipedia.org/wiki/ISO_8601&si=5704743390019584&pi=f6509585-0574-49d3-b691-b930efd9d8ab) dates in either short form (YYYY-MM-DD) or including time (YYYY-MM-DDThh:mm:ssZ).
@@ -101,7 +101,7 @@ Make a GET request on the `/media` resource with the `after` query paramater set
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v2-beta/media?after=${MEDIA_ID}
+https://apis.voicebase.com/v3/media?after=${MEDIA_ID}
 ```
 
 ### Search with compound expressions, metadata-scoping, time-range, and pagination
@@ -110,5 +110,5 @@ To achieve metadata-scoping, date range filters, compound expressions and pagina
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v2-beta/media?filter.metadata.extended.customerId=10101&filter.created.gte=2016-01-01&filter.created.lte=2016-02-01&after=f1ea0482-af9b-45d1-bd00-5eac31cd8259&limit=100&query=%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22
+https://apis.voicebase.com/v3/media?filter.metadata.extended.customerId=10101&filter.created.gte=2016-01-01&filter.created.lte=2016-02-01&after=f1ea0482-af9b-45d1-bd00-5eac31cd8259&limit=100&query=%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22
 ```

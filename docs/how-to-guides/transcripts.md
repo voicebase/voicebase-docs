@@ -4,12 +4,12 @@ Once processing is complete, transcripts can be retrieved in several formats.
 
 ## JSON Transcript
 
-Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item. By convention, the transcript for most common scenarios is called `latest`.
+Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item.
 
-Make a GET on the /media/$MEDIA_ID/transcripts/latest resource.
+Make a GET on the /media/$MEDIA_ID/transcripts resource.
 
 ```sh
-  curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
+  curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts
     --header "Authorization: Bearer ${TOKEN}" 
 ```
 
@@ -26,44 +26,46 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
 * "m" = metadata (In this case when "m": "turn" it is detecting a change in speaker)
 
 ```json
-{  
-   "transcripts":{  
-      "latest":{  
-         "revision":"1aa96aa6-7400-45c5-b390-3c5ff2476779",
-         "words":[  
-            {  
-               "p":1,
-               "c":0.1,
-               "s":2200,
-               "e":2350,
-               "w":"agent: ",
-               "m":"turn"
-            },
-            {  
-               "p":2,
-               "c":0.537,
-               "s":2200,
-               "e":2300,
-               "w":"Hello"
-            },
-            {  
-               "p":52,
-               "c":0.1,
-               "s":2400,
-               "e":2550,
-               "w":"caller: ",
-               "m":"turn"
-            },
-            {  
-               "p":53,
-               "c":0.975,
-               "s":2400,
-               "e":2500,
-               "w":"Hi"
-            }
-         ]
-      }
-   }
+{
+  "mediaId": "bc14632d-e81b-4673-992d-5c5fb6573fb8",
+  "status": "finished",
+  "dateCreated": "2017-06-22T19:18:49Z",
+  "contentType": "audio/x-wav",
+  "length": 10031,
+  "transcript": {
+     "words":[  
+        {  
+           "p":1,
+           "c":0.1,
+           "s":2200,
+           "e":2350,
+           "w":"agent: ",
+           "m":"turn"
+        },
+        {  
+           "p":2,
+           "c":0.537,
+           "s":2200,
+           "e":2300,
+           "w":"Hello"
+        },
+        {  
+           "p":52,
+           "c":0.1,
+           "s":2400,
+           "e":2550,
+           "w":"caller: ",
+           "m":"turn"
+        },
+        {  
+           "p":53,
+           "c":0.975,
+           "s":2400,
+           "e":2500,
+           "w":"Hi"
+        }
+     ]
+  }
 }
 ```
 
@@ -85,7 +87,7 @@ really get things done
 ##### Example cURL
 
 ```sh
-curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/plain"
 ```
@@ -123,7 +125,7 @@ done we wanted to find those who were not
 ##### Example cURL
 
 ```sh
-curl https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/srt"
 ```
