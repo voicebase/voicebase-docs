@@ -5,15 +5,15 @@ You can filter out a preset list of offensive words ("swear words") from English
 
 ## How to Use It
 
-To enable the swear word filtering, configure the media post configuration with the swearFilter parameter set to `true` in the `"transcripts"` section:
+To enable the swear word filtering, configure the media post configuration with the swearFilter parameter set to `true` in the `"transcript"` section:
 
 ```json
 { 
-  "configuration": {
-    "transcripts": {
-      "swearFilter": true 
+    "transcript": {
+      "contentFiltering": {
+            "enableProfanityFiltering": true 
+      }
     }
-  }
 }
 ```
 
@@ -28,12 +28,12 @@ export TOKEN='Your Api Token'
 ### Enable the swear word filter
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3 \
   --form 'configuration={ 
-    "configuration": {
-      "transcripts": {
-        "swearFilter": true 
+    "transcript": {
+      "contentFiltering": {
+            "enableProfanityFiltering": true 
       }
     }
   }' \
