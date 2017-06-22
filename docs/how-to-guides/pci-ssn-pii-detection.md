@@ -20,32 +20,31 @@ When detection for sensitive data is enabled, the API returns detected regions a
 
 ```json
 {  
-  "predictions": {
-    "latest": {
-      "detections": [
-        { "type": "PCI", "s": 85240, "e": 101450 },
-        { "type": "PCI", "s": 130013, "e": 141711 },
-        { "type": "SSN", "s": 189204, "e": 197912 }
+  "prediction": {
+    "detectors": [
+        { "detectorName": "PCI", "detections" : [{ "s": 85240, "e": 101450 }] },
+        { "detectorName": "SSN", "detections" : [{ "s": 130013, "e": 141711 }] },
+        { "detectorName": "Number", "detections" : [{ "s": 189204, "e": 197912 }] }
       ]
-    }
   }
 }
 ```
 
 For each detection, the API returns three data points:
-- `type`: The type of sensitive data detected
+- `detectorName`: The type of sensitive data detected
+- `detections`: array of the detected regions
 - `s`: The start time of the detected region, in milliseconds
 - `e`: The start end of the detected region, in milliseconds 
 
 ## PCI Detector
 
-To enable it, add PCI detector to your configuration when you make a POST request to the /media resource.
+To enable it, add PCI detector to your configuration when you make a POST request to the /v3/media resource.
 
 ```json
 {  
-  "configuration": { 
-    "detections": [ 
-      { "model": "PCI" }
+  "prediction": { 
+    "detectors": [ 
+      { "detectorName": "PCI" }
     ]
   }
 }
@@ -53,13 +52,13 @@ To enable it, add PCI detector to your configuration when you make a POST reques
 
 ## SSN Detector
 
-To enable it, add the SSN detector to your configuration when you make a POST request to the /media resource.
+To enable it, add the SSN detector to your configuration when you make a POST request to the /v3/media resource.
 
 ```json
 {  
-  "configuration": { 
-    "detections": [ 
-      { "model": "SSN" }
+  "prediction": { 
+    "detectors": [ 
+      { "detectorName": "SSN" }
     ]
   }
 }
@@ -67,13 +66,13 @@ To enable it, add the SSN detector to your configuration when you make a POST re
 
 ## Number Detector
 
-To enable it, add the Number detector to your configuration when you make a POST request to the /media resource.
+To enable it, add the Number detector to your configuration when you make a POST request to the /v3/media resource.
 
 ```json
 {  
-  "configuration": { 
-    "detections": [ 
-      { "model": "Number" }
+  "prediction": { 
+    "detectors": [ 
+      { "detectorName": "Number" }
     ]
   }
 }
@@ -91,16 +90,15 @@ export TOKEN='Your Api Token'
 ### Enabling the detectors
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3 \
   --form configuration='{
-    "configuration": {
-      "detections": [ 
-        { "model": "PCI" },
-        { "model": "SSN" },
-        { "model": "Number" }
-      ]
-    }
+  "prediction": { 
+    "detectors": [ 
+      { "detectorName": "PCI" }
+      { "detectorName": "SSN" }
+      { "detectorName": "Number" }
+    ]}
   }' \
   --header "Authorization: Bearer ${TOKEN}" 
 ```
