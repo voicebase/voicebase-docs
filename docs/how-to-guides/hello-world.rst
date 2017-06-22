@@ -21,7 +21,7 @@ Start by verifying your Bearer token is working by running the following from a 
 
   export TOKEN= # Insert your VoiceBase Bearer token after TOKEN=
 
-  curl https://apis.voicebase.com/v3/media \
+  curl https://apis.voicebase.com/v2-beta/media \
     --header "Authorization: Bearer ${TOKEN:?'(hint: insert your token after export TOKEN=)'}" \
     | jq
 
@@ -32,7 +32,7 @@ You should see a response like this (otherwise, see :ref:`explanation <understan
   {
     "_links": {
       "self": {
-        "href": "/v3/media"
+        "href": "/v2-beta/media"
       }
     },
     "media": []
@@ -47,7 +47,7 @@ To upload a recording for transcription and analysis, POST to /media with the re
   :linenos:
   :emphasize-lines: 2
 
-  curl https://apis.voicebase.com/v3/media \
+  curl https://apis.voicebase.com/v2-beta/media \
     --form media=@hello-world.mp3 \
     --header "Authorization: Bearer ${TOKEN}" \
     | tee media-post.json \
@@ -61,20 +61,11 @@ The response includes a *mediaId* (assigned by the API) and a status of *accepte
   {
     "_links": {
       "self": {
-        "href": "/v3/media/10827f19-7574-4b54-bf9d-9387999eb5ec"
-      },
-      "progress": {
-        "href": "/v3/media/10827f19-7574-4b54-bf9d-9387999eb5ec/progress"
-      },
-      "metadata": {
-        "href": "/v3/media/10827f19-7574-4b54-bf9d-9387999eb5ec/metadata"
+        "href": "/v2-beta/media/ef6ed189-e19d-485e-a173-11191eeeeea4"
       }
     },
-    "mediaId": "10827f19-7574-4b54-bf9d-9387999eb5ec",
+    "mediaId": "ef6ed189-e19d-485e-a173-11191eeeeea4",
     "status": "accepted",
-    "dateCreated": "2017-06-22T18:23:02Z",
-    "contentType": "audio/mp3",
-    "length": 10031,
     "metadata": {}
   }
 
@@ -90,9 +81,9 @@ You can poll for status until the processing is done (for production, we recomme
   while [[ ${STATUS} != 'finished' && ${STATUS} != 'failed' ]]; do
     sleep 1
     STATUS=$( 
-      curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/progress \
+      curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/progress \
         --header "Authorization: Bearer ${TOKEN}" \
-        | jq --raw-output .progress.status
+        | jq --raw-output .status
     )
     echo "Got status: ${STATUS} for mediaId: ${MEDIA_ID} on $( date )"
   done
@@ -106,7 +97,7 @@ You can retrieve the JSON version of the transcript and all analytics with a sim
   :linenos:
   :emphasize-lines: 1
 
-  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts \
+  curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID} \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq .
 
@@ -116,7 +107,7 @@ You can also retrieve a plain-text version using *transcripts/latest* and the *A
   :linenos:
   :emphasize-lines: 1-2
 
-  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/text \
+  curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
     --header 'Accept: text/plain' \
     --header "Authorization: Bearer ${TOKEN}"
 
@@ -155,14 +146,14 @@ Save your token by Copying it to the clipboard or downloading it.
 Understanding Your First Request
 --------------------------------
 
-The root URL of the VoiceBase V3 API is **https://apis.voicebase.com/v3**. Every recording you submit for analysis appears in the **/media** collection. The first request is to GET the **/media** collection (which will be empty when you first sign up). We pro-actively limit the page size to 10 (*?limit=10*) to avoid an overwhelming response as the media collection grows.
+The root URL of the VoiceBase V2 (Beta) API is **https://apis.voicebase.com/v2-beta**. Every recording you submit for analysis appears in the **/media** collection. The first request is to GET the **/media** collection (which will be empty when you first sign up). We pro-actively limit the page size to 10 (*?limit=10*) to avoid an overwhelming response as the media collection grows.
 
 .. code-block:: sh
   :linenos:
 
   export TOKEN= # Insert your VoiceBase Bearer token after TOKEN=
 
-  curl https://apis.voicebase.com/v3/media?limit=10 \
+  curl https://apis.voicebase.com/v2-beta/media?limit=10 \
     --header "Authorization: Bearer ${TOKEN:?'(hint: insert your token after export TOKEN=)'}" \
     | jq
 
@@ -173,7 +164,7 @@ If you're running this for the first time, the API returns (see: :ref:`Troublesh
   {
     "_links": {
       "self": {
-        "href": "/v3/media"
+        "href": "/v2-beta/media"
       }
     },
     "media": []
@@ -208,7 +199,7 @@ The next step is to upload a recording to the API for transcription and analysis
   :linenos:
   :emphasize-lines: 2
 
-  curl https://apis.voicebase.com/v3/media \
+  curl https://apis.voicebase.com/v2-beta/media \
     --form media=@hello-world.mp3 \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
@@ -219,7 +210,7 @@ When you add the *--form media=@filename.mp3* parameters, *curl* automatically s
   :linenos:
   :emphasize-lines: 4-5
 
-  curl https://apis.voicebase.com/v3/media \
+  curl https://apis.voicebase.com/v2-beta/media \
     --form media=@hello-world.mp3 \
     --header "Authorization: Bearer ${TOKEN}" \
     --request POST \
@@ -232,9 +223,9 @@ Finally, many operations will rely on providing a configuration JSON attachment 
   :linenos:
   :emphasize-lines: 3
 
-  curl https://apis.voicebase.com/v3/media \
+  curl https://apis.voicebase.com/v2-beta/media \
     --form media=@hello-world.mp3 \
-    --form 'configuration={}' \
+    --form 'configuration={"configuration":{}}' \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
 
