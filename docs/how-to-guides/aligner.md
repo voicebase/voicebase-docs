@@ -15,10 +15,10 @@ export TOKEN='Your Api Token'
 First, make a POST request to the /media resource.
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media \
+curl -v -s https://apis.voicebase.com/v3/media \
   --header "Authorization: Bearer ${TOKEN}" \
   --form media=@musicVoiceTone.wav \
-  --form 'configuration={"configuration":{ "executor":"v2","transcripts":{"voiceFeatures":"true"}}}'
+  --form 'configuration={}'
 
 ```
 
@@ -26,16 +26,25 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
 
 ```json
 
-{
-  "_links": {
-    "self": {
-      "href": "/v2-beta/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1"
-    }
-  },
-  "mediaId": "7eb7964b-d324-49cb-b5b5-76a29ea739e1",
-  "status": "accepted",
-  "metadata": {}
-}
+  {
+    "_links": {
+      "self": {
+        "href": "/v3/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1"
+      },
+      "progress": {
+        "href": "/v3/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1/progress"
+      },
+      "metadata": {
+        "href": "/v3/media/7eb7964b-d324-49cb-b5b5-76a29ea739e1/metadata"
+      }
+    },
+    "mediaId": "7eb7964b-d324-49cb-b5b5-76a29ea739e1",
+    "status": "accepted",
+    "dateCreated": "2017-06-22T18:23:02Z",
+    "contentType": "audio/mp3",
+    "length": 10031,
+    "metadata": {}
+  }
 
 ```
 
@@ -46,10 +55,10 @@ Export `MEDIA_ID`
 export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
 ```
 
-Make a request to the `/media/$MEDIA_ID/transcripts/latest` resource, including the `Accept: text/plain` header to retrieve the text transcript.
+Make a request to the `/media/$MEDIA_ID/transcripts/text` resource, including the `Accept: text/plain` header to retrieve the text transcript.
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID/transcripts/latest \
+curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts/text \
   --header "Authorization: Bearer ${TOKEN}" --header "Accept: text/plain"
  
 ```
@@ -83,17 +92,17 @@ Now make a POST request to the `/media/${MEDIA_ID}` including a `configuration` 
 
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \
+curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}" \
   --X POST \
-  --form 'configuration={"configuration":{ "executor":"v2"}}' \
+  --form 'configuration={}' \
   --form transcript=@transcript.text
 ```
 
-Finally, make a GET request on the `/media/${MEDIA_ID}` resource to download the latest analigned transcripts and configured analytics and predictions.
+Finally, make a GET request on the `/media/${MEDIA_ID}` resource to download the latest aligned transcripts and configured analytics and predictions.
 
 ```bash
-curl -v -s https://apis.voicebase.com/v2-beta/media/$MEDIA_ID \
+curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
