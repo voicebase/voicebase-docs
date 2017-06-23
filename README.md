@@ -73,7 +73,7 @@ You can also `customize` VoiceBase by defining common keywords or phrases to `sp
 ### Technical Language: Nouns
 
 - `endpoint` - a top-level API (e.g. v2-beta or a callback sink; not common)
-- `resource` - a specific REST resource (e.g. /media or /definitions/transcripts)
+- `resource` - a specific REST resource (e.g. /media or /definitions/transcript)
 - `section` - a subset of a JSON document, usually identified by its path (e.g. the predictions.latest.detections section of the analytics)
 - `collection` - a resource that represents many similar things (e.g. /media)
 - `item` - one member of a collection (e.g. /media/{mediaId})

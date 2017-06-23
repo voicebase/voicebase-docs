@@ -6,10 +6,10 @@ Once processing is complete, transcripts can be retrieved in several formats.
 
 Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item.
 
-Make a GET on the /media/$MEDIA_ID/transcripts resource.
+Make a GET on the /media/$MEDIA_ID/transcript resource.
 
 ```sh
-  curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts
+  curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript
     --header "Authorization: Bearer ${TOKEN}"
 ```
 

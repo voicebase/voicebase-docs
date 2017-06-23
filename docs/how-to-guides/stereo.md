@@ -64,7 +64,7 @@ When stereo processing is enabled, the word-by-word JSON transcript will contain
 The plain text version of the transcript will show each segment of the conversation prefixed with the speaker name (e.g. 'Agent:' or  'Customer')
 
 ```bash
-curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/text \
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/text \
     --header "Accept: text/plain" \
     --header "Authorization: Bearer ${TOKEN}"
 ```
@@ -86,7 +86,7 @@ The SRT version of the transcript will also contain the speaker names provided i
 the configuration.
 
 ```bash
-curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/srt  \
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/srt  \
     --header "Accept: text/srt" \
     --header "Authorization: Bearer ${TOKEN}"
 ```

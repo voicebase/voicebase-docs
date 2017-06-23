@@ -89,7 +89,7 @@ You can poll for status until the processing is done (for production, we recomme
 
   while [[ ${STATUS} != 'finished' && ${STATUS} != 'failed' ]]; do
     sleep 1
-    STATUS=$( 
+    STATUS=$(
       curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/progress \
         --header "Authorization: Bearer ${TOKEN}" \
         | jq --raw-output .progress.status
@@ -106,17 +106,17 @@ You can retrieve the JSON version of the transcript and all analytics with a sim
   :linenos:
   :emphasize-lines: 1
 
-  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts \
+  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq .
 
-You can also retrieve a plain-text version using *transcripts/latest* and the *Accept* HTTP header.
+You can also retrieve a plain-text version using *transcript/text* and the *Accept* HTTP header.
 
 .. code-block:: sh
   :linenos:
   :emphasize-lines: 1-2
 
-  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcripts/text \
+  curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/text \
     --header 'Accept: text/plain' \
     --header "Authorization: Bearer ${TOKEN}"
 
@@ -186,8 +186,8 @@ All successful responses from the API will include an *_links* section with `HAL
 .. code-block:: json
    :emphasize-lines: 2
 
-  { 
-    "_links": { } 
+  {
+    "_links": { }
   }
 
 The *media* section the list of media in your account (up to 10 due to the limit parameter). If you have previously uploaded media, it will appear in the list.
@@ -258,4 +258,3 @@ A Quick Note on Tools
 
 Troubleshooting
 ---------------
-

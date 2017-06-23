@@ -55,12 +55,12 @@ Export `MEDIA_ID`
 export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
 ```
 
-Make a request to the `/media/$MEDIA_ID/transcripts/text` resource, including the `Accept: text/plain` header to retrieve the text transcript.
+Make a request to the `/media/$MEDIA_ID/transcript/text` resource, including the `Accept: text/plain` header to retrieve the text transcript.
 
 ```bash
-curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts/text \
+curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/text \
   --header "Authorization: Bearer ${TOKEN}" --header "Accept: text/plain"
- 
+
 ```
 
 You may receive a 404 response indicating that the alignment of the new transcript with the original transcript and the recalculation of analytics and predictions is not complete.
