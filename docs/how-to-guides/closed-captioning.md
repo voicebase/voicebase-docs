@@ -48,7 +48,7 @@ export TOKEN='Your Api Token'
 and provide the `Accept` HTTP header with the value `"text/srt"` when requesting the transcript.
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/srt \
   --header "Accept: text/srt" \
   --header "Authorization: Bearer ${TOKEN}"
 ```

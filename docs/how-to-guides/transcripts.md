@@ -10,7 +10,7 @@ Make a GET on the /media/$MEDIA_ID/transcripts resource.
 
 ```sh
   curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts
-    --header "Authorization: Bearer ${TOKEN}" 
+    --header "Authorization: Bearer ${TOKEN}"
 ```
 
 ##### Example Response
@@ -87,7 +87,7 @@ really get things done
 ##### Example cURL
 
 ```sh
-curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/text \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/plain"
 ```
@@ -125,7 +125,7 @@ done we wanted to find those who were not
 ##### Example cURL
 
 ```sh
-curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcripts \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/srt \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/srt"
 ```
