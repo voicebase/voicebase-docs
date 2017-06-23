@@ -92,6 +92,30 @@ curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/text \
     --header "Accept: text/plain"
 ```
 
+Alternatively, the text transcript can be retrieved with the JSON transcript by adding the `includeAlternateFormat` query parameter in the request.
+
+```sh
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=text \
+    --header "Authorization: Bearer ${TOKEN}" \
+    --header "Accept: application/json"
+```
+
+In this case, the transcript is returned encoded with Base64 within the JSON
+
+```json
+{
+  "alternateFormats": [
+    {
+      "format": "text",
+      "contentType": "text/plain",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "T0sgd2UgYXJlIHRyeWluZyB0aGlzIGZvciBhIDJuZCB0aW1lIHRvIHRlc3QgdGhlIGFiaWxpdHkgdG8gdXBsb2FkIGFuZCBpbiBQIDMgZmlsZSBIb3BlZnVsbHkgdGhpcyB3aWxsIHdvcmsuIA=="
+    }
+  ]
+}
+```
+
 ## SRT transcript
 
 To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio, add an `Accept` HTTP header with the value `text/srt`.
@@ -130,7 +154,29 @@ curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/srt \
     --header "Accept: text/srt"
 ```
 
+Alternatively, the SRT transcript can be retrieved with the JSON transcript by adding the `includeAlternateFormat` query parameter in the request.
 
+```sh
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=srt \
+    --header "Authorization: Bearer ${TOKEN}" \
+    --header "Accept: application/json"
+```
+
+In this case, the SRT transcript is returned encoded with Base64 within the JSON
+
+```json
+{
+  "alternateFormats": [
+    {
+      "format": "srt",
+      "contentType": "text/srt",
+      "contentEncoding": "Base64",
+      "charset": "utf-8",
+      "data": "MQowMDowMDowMCw3MiAtLT4gMDA6MDA6MDIsMDQKT0sgd2UgYXJlIHRyeWluZyB0aGlzIGZvcgoKMgowMDowMDowMiwwNSAtLT4gMDA6MDA6MDgsODMKYSAybmQgdGltZSB0byB0ZXN0IHRoZQphYmlsaXR5IHRvIHVwbG9hZCBhbmQgaW4gUCAzCgozCjAwOjAwOjA4LDg0IC0tPiAwMDowMDoxMSwyMApmaWxlIEhvcGVmdWxseSB0aGlzIHdpbGwgd29yay4KCg=="
+    },
+  ]
+}
+```
 
 
 _Attribution:_ SRT and Plaintext transcripts are generated from Audible dictation of [Crucial Conversations](http://www.audible.com/pd/Business/Crucial-Conversations-Audiobook/B009RQZDHS?source_code=GPAGBSH0508140001&mkwid=sDishsy3J_dc&pcrid=90539104740&pmt=&pkw=&cvosrc=ppc%20cse.google%20shopping.342766860&cvo_crid=90539104740&cvo_pid=23455575420) under fair-use.
