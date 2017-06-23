@@ -31,30 +31,30 @@ An example response:
   "_links" : {
     "self" : { "href": "/v3/definitions/predictions/classifiers" }
   },
-  "models" : [
+  "classifiers" : [
     {
-      "name": "sales-lead",
-      "displayName": "Sales Lead",
-      "modelId": "c8b8c1f7-e663-4a05-a6b5-7e1109ee2947",
-      "type": "binary",
-      "classes": [
-        "sales-lead",
-        "not-a-sales-lead"
+      "classifierId": "c8b8c1f7-e663-4a05-a6b5-7e1109ee2947",
+      "classifierName": "sales-lead",
+      "classifierDisplayName": "Sales Lead",
+      "classifierType": "binary",
+      "categories": [
+        { "categoryValue" : 1, "categoryLabel" : "sales-lead" },
+        { "categoryValue" : 0, "categoryLabel" : "not-a-sales-lead" }
       ]
     }
   ]
 }
 ```
 
-- `models` : array of classifier model objects.
+- `classifiers` : array of classifier model objects.
     - `[n]` : a `model` object.
-        - `name` : the key name of the classifier.
-        - `displayName` : the display name of the classifier.
-        - `modelId` : The unique identifier of the classifier.
-        - `type` : The model type, one of:
+        - `classifierId` : The unique identifier of the classifier.
+        - `classifierName` : the key name of the classifier.
+        - `classifierDisplayName` : the display name of the classifier.
+        - `classifierType` : The model type, one of:
             - `binary` : A binary classifier
-            - `multi` : A classifier with multiple classes (TODO: verify the type)
-        - `classes` : an array classes that the model detects.
+            - `multiclass` : A classifier with multiple classes
+        - `categories` : an array classes that the model detects.
 
 ## Using a classifier
 
@@ -69,7 +69,7 @@ Classifiers referred by name are provided by VoiceBase.
   "prediction": {
     "classifiers": [
       { "classifierId" : "c8b8c1f7-e663-4a05-a6b5-7e1109ee2947" },
-      { "classifierName": "sentiment" } 
+      { "classifierName": "sentiment" }
     ]
   }
 }
@@ -95,8 +95,8 @@ section.
           "classifierId": "c8b8c1f7-e663-4a05-a6b5-7e1109ee2947",
           "classifierName": "sales-lead",
           "classifierType": "binary",
-          "predictedClass" : 0,
-          "predictedClassLabel": "not-a-sales=lead",
+          "predictedCategory" : 0,
+          "predictedCategoryLabel": "not-a-sales-lead",
           "predictionScore" : 1.729  
         }
       ]
@@ -109,10 +109,11 @@ section.
    - `[n]` : A classifier result.
       - `classifierId` : The unique identifier of the classifier model
       - `classifierName`: The classifier model name
-      - `predictedClass` : The class of the prediction, as a index number
-      - `predictedClassLabel` : The name of the class
-      - `predictionScore` : Probability score.
       - `classifierType` : The type of the classifier.
+      - `predictedCategory` : The class of the prediction expressed as an integer
+      - `predictedCategoryLabel` : The name of the class
+      - `predictionScore` : Probability score.
+
 
 ## Examples
 
