@@ -115,8 +115,8 @@ Alternatively, you could build the configuration yourself as a JSON string
         case FAILED:
              System.out.println("Transcription failed");
              break;
-        case RUNNING:
         default:
-            System.out.println("Results not yet available, please wait...");
+             System.out.println("Results not yet available, please wait...");
+             break;     
       }  
 ```
