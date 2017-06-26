@@ -3,7 +3,7 @@
 Welcome to VoiceBase /v3 API Docs
 =======================================
 
-Note: Please use the documentation at `http://voicebase.readthedocs.io/en/v2-beta/ <http://voicebase.readthedocs.io/en/v2-beta/>`_. This page contains work-in-progress documentation for a future potential product, and may be subject to change, removal, or correction without notice.
+Note: Please use the documentation at `http://voicebase.readthedocs.io/en/v3/ <http://voicebase.readthedocs.io/en/v3/>`_. This page contains work-in-progress documentation for a future potential product, and may be subject to change, removal, or correction without notice.
 
 
 `VoiceBase <https://www.voicebase.com>`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data. The `Developer Portal <https://apis.voicebase.com/developer-portal>`_ provides a variety of resources for working with the VoiceBase REST API, and example components you can use to jump-start your integration.

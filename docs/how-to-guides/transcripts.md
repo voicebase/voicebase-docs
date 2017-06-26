@@ -71,7 +71,7 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
 
 ## Plain Text Transcript
 
-To download a transcript as plain text, add an `Accept` HTTP header with the value `text/plain`.
+
 
 ##### Example Response
 
@@ -86,13 +86,15 @@ really get things done
 
 ##### Example cURL
 
+To download a transcript as plain text, make a GET on the /media/$MEDIA_ID/transcript/text resource specifying an `Accept` HTTP header with the value `text/plain`.
+
 ```sh
 curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/text \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: text/plain"
 ```
 
-Alternatively, the text transcript can be retrieved with the JSON transcript by adding the `includeAlternateFormat` query parameter in the request.
+Alternatively, the text transcript can be retrieved with the JSON transcript by adding the `includeAlternateFormat` query parameter in the request set to the value 'text'
 
 ```sh
 curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=text \
@@ -100,7 +102,7 @@ curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFo
     --header "Accept: application/json"
 ```
 
-In this case, the transcript is returned encoded with Base64 within the JSON
+In this case, the transcript will contain the additional section  'alternateFormats', the 'data' attribute contains the text transcript encoded in Base64.
 
 ```json
 {
@@ -110,7 +112,7 @@ In this case, the transcript is returned encoded with Base64 within the JSON
       "contentType": "text/plain",
       "contentEncoding": "Base64",
       "charset": "utf-8",
-      "data": "T0sgd2UgYXJlIHRyeWluZyB0aGlzIGZvciBhIDJuZCB0aW1lIHRvIHRlc3QgdGhlIGFiaWxpdHkgdG8gdXBsb2FkIGFuZCBpbiBQIDMgZmlsZSBIb3BlZnVsbHkgdGhpcyB3aWxsIHdvcmsuIA=="
+      "data": "VG8gZmluZCB0aGUgc291cmNlIG9mIHN1Y2Nlc3Mgd2Ugc3RhcnRlZCBhdCB3b3JrIHdlIGFza2VkIHBlb3BsZSB0byBpZGVudGlmeSB3aG8gdGhleSB0aG91Z2h0DQp3ZXJlIHRoZWlyIG1vc3QgZWZmZWN0aXZlIGNvbGxlYWd1ZXMgaW4gZmFjdCBvdmVyIHRoZSBwYXN0IHR3ZW50eSBmaXZlIHllYXJzIHdlIGhhdmUgYXNrZWQNCm92ZXIgdHdlbnR5IHRob3VzYW5kIHBlb3BsZSB0byBpZGVudGlmeSB0aGUgaW5kaXZpZHVhbHMgaW4gdGhlaXIgb3JnYW5pemF0aW9ucyB3aG8gY291bGQNCnJlYWxseSBnZXQgdGhpbmdzIGRvbmU="
     }
   ]
 }
@@ -118,7 +120,7 @@ In this case, the transcript is returned encoded with Base64 within the JSON
 
 ## SRT transcript
 
-To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio, add an `Accept` HTTP header with the value `text/srt`.
+To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/text resource specifying an `Accept` HTTP header with the value `text/srt`.
 
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.
 
@@ -172,12 +174,23 @@ In this case, the SRT transcript is returned encoded with Base64 within the JSON
       "contentType": "text/srt",
       "contentEncoding": "Base64",
       "charset": "utf-8",
-      "data": "MQowMDowMDowMCw3MiAtLT4gMDA6MDA6MDIsMDQKT0sgd2UgYXJlIHRyeWluZyB0aGlzIGZvcgoKMgowMDowMDowMiwwNSAtLT4gMDA6MDA6MDgsODMKYSAybmQgdGltZSB0byB0ZXN0IHRoZQphYmlsaXR5IHRvIHVwbG9hZCBhbmQgaW4gUCAzCgozCjAwOjAwOjA4LDg0IC0tPiAwMDowMDoxMSwyMApmaWxlIEhvcGVmdWxseSB0aGlzIHdpbGwgd29yay4KCg=="
+      "data": "MQ0KMDA6MDA6MDAsMDUgLS0+IDAwOjAwOjA1LDgxDQpUbyBmaW5kIHRoZSBzb3VyY2Ugb2Ygc3VjY2VzcyB3ZSBzdGFydGVkDQphdCB3b3JrIHdlIGFza2VkIHBlb3BsZSB0byBpZGVudGlmeSB3aG8NCg0KMg0KMDA6MDA6MDUsODIgLS0+IDAwOjAwOjEwLDkwDQp0aGV5IHRob3VnaHQgd2VyZSB0aGVpciBtb3N0IGVmZmVjdGl2ZQ0KY29sbGVhZ3VlcyBpbiBmYWN0IG92ZXIgdGhlIHBhc3QgdHdlbnR5IGZpdmUNCg0KMw0KMDA6MDA6MTAsOTEgLS0+IDAwOjAwOjE2LDEzDQp5ZWFycyB3ZSBoYXZlIGFza2VkIG92ZXIgdHdlbnR5IHRob3VzYW5kDQpwZW9wbGUgdG8gaWRlbnRpZnkgdGhlIGluZGl2aWR1YWxzIGluIHRoZWlyDQoNCjQNCjAwOjAwOjE2LDE0IC0tPiAwMDowMDoyMCw5Mw0Kb3JnYW5pemF0aW9ucyB3aG8gY291bGQgcmVhbGx5IGdldCB0aGluZ3MNCmRvbmUgd2Ugd2FudGVkIHRvIGZpbmQgdGhvc2Ugd2hvIHdlcmUgbm90DQo="
     },
   ]
 }
 ```
 
+## Retrieving transcript in several formats in a single request
+
+You may specify several formats to be returned in the same request, just add 'includeAlternateFormat' in the query string as many times as needed:
+
+```sh
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=srt&includeAlternateFormat=text \
+    --header "Authorization: Bearer ${TOKEN}" \
+    --header "Accept: application/json"
+```
+
+Valid formats are: text, srt, dfxp
 
 _Attribution:_ SRT and Plaintext transcripts are generated from Audible dictation of [Crucial Conversations](http://www.audible.com/pd/Business/Crucial-Conversations-Audiobook/B009RQZDHS?source_code=GPAGBSH0508140001&mkwid=sDishsy3J_dc&pcrid=90539104740&pmt=&pkw=&cvosrc=ppc%20cse.google%20shopping.342766860&cvo_crid=90539104740&cvo_pid=23455575420) under fair-use.
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.

@@ -1,31 +1,85 @@
 # Keywords and Topics
 
 
-VoiceBase can discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing. The results are known as "semantic keywords and topics".
+VoiceBase can discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing. The results are known as "semantic knowledge discovery" and it includes keywords and topics.
 
 VoiceBase also supports keyword and key phrase spotting. You can define groups of keywords or key phrases, which are flagged when they are spotted in the recording. For more details, see [Keyword Spotting](keyword-spotting.html).
 
 ## Semantic Keywords and Topics
 
-Semantic keywords and topics are discovered automatically (for [languages where the feature is supported](languages.html)) and returned with the analytics. For example, the `media.keywords.latest.words` section may contain an entry like the following:
+Semantic keywords and topics are discovered automatically (for [languages where the feature is supported](languages.html)) and returned with the analytics under the section "knowledge" For example, the `knowledge.keywords` section may contain an entry like the following:
 
 ```json
 {
-  "name": "subscription",
-  "t": {
-    "caller": [
-      "34.48",
-      "57.34"
-    ],
-    "agent": [
-      "40.01"
-    ]
-  },
-  "relevance": "0.17"
+  "keyword": "subscription",
+  "relevance": 0.17,
+  "mentions" : [
+     {
+       "speakerName" : "caller",
+       "occurrences" : [
+          { "s": 34480, "e": 35545, "exact": "subscription" },
+          { "s": 57340, "e": 59034, "exact": "membership" }
+       ]
+     },
+     {
+       "speakerName" : "agent",
+       "occurrences" : [
+          { "s": 40010, "e": 42100, "exact": "subscription" }
+       ]
+     }
+
+  ]
 }
 ```
 
 In this example, the keyword `subscription` was spoken by the caller around 34 and 57 seconds into the recording, and by the agent around 40 seconds into the recording.
+
+Topics are reported by grouping a set of keywords that relate to each other. For example, the section `knowledge.topics` may contain an entry like this:
+
+```json
+{
+  "topicName": "Solar energy",
+  "subTopics": [ ],
+  "relevance": 0.004,
+  "keywords": [
+    {
+      "keyword": "solar power",
+      "relevance": 0.17,
+      "mentions" : [
+         {
+           "speakerName" : "caller",
+           "occurrences" : [
+              { "s": 34480, "e": 35545, "exact": "solar power" },
+              { "s": 57340, "e": 59034, "exact": "solar engergy" }
+           ]
+         },
+         {
+           "speakerName" : "agent",
+           "occurrences" : [
+              { "s": 40010, "e": 42100, "exact": "solar power" }
+           ]
+         }
+
+      ]
+    },
+    {
+      "keyword": "solar water heating",
+      "relevance": 0.17,
+      "mentions" : [
+         {
+           "speakerName" : "caller",
+           "occurrences" : [
+              { "s": 134480, "e": 135545, "exact": "solar water heater" },
+              { "s": 157340, "e": 159034, "exact": "solar thermal collector" }
+           ]
+         }
+      ]
+    }
+  ]
+}
+```
+
+
 
 ### Relevance
 
@@ -41,23 +95,17 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 
 The configuration attachment should contain the key:
 
- - `configuration` : root object for configuration data
-    - `keywords` : object for keyword-specific configuration
-        - `semantic` : flag to control semantic keywords
-    - `topics` : object for topic-specific configuration
-        - `semantic` : flag to control semantic topics
+ - `knowledge` : Settings for Knowledge Discovery
+    - `enableDiscovery` : Switch for enabling/disabling knowledge discovery. Default is false.
+    - `enableExternalDataSources` : Switch for allowing the search on sources external to VoiceBase. Users concerned about data privacy or PCI requirements can turn this off. Default is true.
 
 For example:
 
 ```json
 {  
-  "configuration": {
-    "keywords": {  
-      "semantic": false,
-    },
-    "topics": {
-      "semantic": false
-    }
+  "knowledge": {
+    "enableDiscovery": true,
+    "enableExternalDataSources" : true
   }
 }
 ```
@@ -65,39 +113,19 @@ For example:
 
 ## Examples
 
-### Example: Defining and spotting a keyword group
 
+### Example: Enabling semantic knowledge discovery
 
-Define a `keyword group` by making a PUT request to the `/definitions/keywords/groups/data` resource.
-
-```bash
-
-curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
-  --request PUT \
-  --header "Content-Type: application/json" \  
-  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
-  --header "Authorization: Bearer ${TOKEN}"
-```
-
-Upload media from a local file called recording.mp3 and spot keywords using the `data` group, make the following POST request to `/media`
+The following is an example of posting a media document with semantic `keywords` and `topics` extraction enabled.
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
-  --header "Authorization: Bearer ${TOKEN}" \
-  --form media=@recording.mp3 \
-  --form 'configuration={ "configuration": { "keywords": { "groups": [ "data" ] } } }'
-```
-
-### Example: Disabling semantic keywords and topics
-
-The following is an example of posting a media document with semantic `keywords` and `topics` extraction disabled.
-
-```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --header "Authorization: Bearer $TOKEN" \
   --form media=@recording.mp3 \
-  --form 'configuration={"configuration":{
-    "keywords":{ "semantic": false },
-    "topics":{ "semantic": false }
-  }}'
+  --form 'configuration={
+    "knowledge": {
+      "enableDiscovery": true,
+      "enableExternalDataSources" : false
+     }
+  }'
 ```

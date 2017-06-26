@@ -1,11 +1,11 @@
 # S3 Callbacks
-Sends transcription results to an S3 URL when media post is finished. 
+Sends transcription results to an S3 URL when media post is finished.
 
 * Send transcription and other other results to S3
 * Send audio file with redacted words to S3 (Not documented)
 
 ** Note: Export your api `TOKEN` prior to running any of the following examples.
-         
+
 ```bash
 export TOKEN='Your Api Token'
 ```
@@ -13,19 +13,19 @@ export TOKEN='Your Api Token'
 ## Setting Up S3
 Before we use this feature, S3 must be configured to receive the results.
 
-### Install S3 Tools 
+### Install S3 Tools
 Install and configure the S3cmd to give you access to the S3 environment.
 ```bash
 > brew install s3cmd
-> s3cmd --configure 
+> s3cmd --configure
 
 Access Key: <Access Key>
 Secret Key: <Secret Key>
-Default Region [US]: 
+Default Region [US]:
 Encryption password: <provide password and remember>
 Path to GPG program: <gpg folder>
 Use HTTPS protocol: Y
-HTTP Proxy server name: 
+HTTP Proxy server name:
 Test access with supplied credentials? [Y/n] n
 Save settings? [y/N] y
 ```
@@ -33,7 +33,7 @@ Save settings? [y/N] y
 ### Create S3 Bucket
 Create S3 bucket and verify that it exists.
 ```bash
-> s3cmd mb s3://voicebase-dev-s3-export-sink-for-dev 
+> s3cmd mb s3://voicebase-dev-s3-export-sink-for-dev
 > s3cmd ls s3://voicebase-dev-s3-export-sink-for-dev
 ```
 
@@ -65,7 +65,7 @@ Target Key: s3test.json
 Pre-Signed Url: https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D
 
 curl --header 'Authorization: Bearer $token' \
-    https://apis.voicebase.com/v2-beta/media \
+    https://apis.voicebase.com/v3/media \
     --form media=@s3test.mp3 \
     --form 'configuration={"publish":{"callbacks":[{"method":"PUT","url":"https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.mp3.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D","include":["transcripts","keywords","topics","metadata"]}]}}'
 ```
@@ -87,7 +87,7 @@ The following configuration file (callback.redact.json) was saved from the previ
 ### Post Media
 ```bash
 > curl https://apis.qa.voicebase.com/v3/media \
-    --header "Authorization: Bearer $TOKEN" \ 
+    --header "Authorization: Bearer $TOKEN" \
     --form media=@s3test.mp3 \
     --form 'configuration=@callback.redact.json'
 ```

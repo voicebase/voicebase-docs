@@ -8,7 +8,7 @@ recordings with high accuracy, discover the keywords and topics discussed, and p
 Authorization
 #############
 
-The VoiceBase V2 (Beta) REST API is secured using OAuth Bearer tokens. Bearer tokens are issued and managed
+The VoiceBase V3 REST API is secured using OAuth Bearer tokens. Bearer tokens are issued and managed
 through the `Developer Portal <https://apis.voicebase.com/developer-portal>`_.
 
 For details on getting your first token, see the `How to Get Your Bearer Token <../how-to-guides/hello-world.html#how-to-get-your-bearer-token>`_
@@ -38,7 +38,7 @@ A typical pattern of REST API calls to accomplish the workflow is to:
 
   POST /media
 
-The body of POST request is `MIME multipart <https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html>`_, with three attachments:
+The body of POST request is `MIME multipart <https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html>`_, with three parts:
 
 One of:
 
@@ -72,4 +72,4 @@ The API supports `Callbacks <../how-to-guides/callbacks.html>`_ instead of polli
 Getting Started
 ###############
 
-The `Hello, World How-To Guide <../how-to-guides/hello-world.html>`_ provides a practical introduction to getting started with the VoiceBase V2 (Beta) REST API.
+The `Hello, World How-To Guide <../how-to-guides/hello-world.html>`_ provides a practical introduction to getting started with the VoiceBase V3 REST API.
