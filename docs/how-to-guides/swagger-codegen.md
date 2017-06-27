@@ -24,7 +24,14 @@ java -jar swagger-codegen-cli.jar langs
 ```
 Here is a sample of the results:
 ```
-Available languages: [android, aspnet5, aspnetcore, async-scala, bash, cwiki, csharp, cpprest, dart, elixir, flash, python-flask, go, groovy, java, jaxrs, jaxrs-cxf-client, jaxrs-cxf, jaxrs-resteasy, jaxrs-resteasy-eap, jaxrs-spec, jaxrs-cxf-cdi, inflector, javascript, javascript-closure-angular, jmeter, nancyfx, nodejs-server, objc, perl, php, python, qt5cpp, ruby, scala, scalatra, finch, silex-PHP, sinatra, rails5, slim, spring, dynamic-html, html, html2, swagger, swagger-yaml, swift, swift3, tizen, typescript-angular2, typescript-angular, typescript-node, typescript-fetch, akka-scala, CsharpDotNet2, clojure, haskell, lumen, go-server, erlang-server, undertow, msf4j, ze-ph]
+Available languages: [android, aspnet5, aspnetcore, async-scala, bash, cwiki, csharp,
+cpprest, dart, elixir, flash, python-flask, go, groovy, java, jaxrs, jaxrs-cxf-client,
+jaxrs-cxf, jaxrs-resteasy, jaxrs-resteasy-eap, jaxrs-spec, jaxrs-cxf-cdi, inflector,
+javascript, javascript-closure-angular, jmeter, nancyfx, nodejs-server, objc, perl,
+php, python, qt5cpp, ruby, scala, scalatra, finch, silex-PHP, sinatra, rails5, slim,
+spring, dynamic-html, html, html2, swagger, swagger-yaml, swift, swift3, tizen,
+typescript-angular2, typescript-angular, typescript-node, typescript-fetch, akka-scala,
+CsharpDotNet2, clojure, haskell, lumen, go-server, erlang-server, undertow, msf4j, ze-ph]
 ```
 The client code generation for a given programming language can be customized with several options. You can get a list of available options by executing
 ```sh
