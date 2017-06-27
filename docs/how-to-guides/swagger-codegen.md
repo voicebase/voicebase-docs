@@ -117,15 +117,30 @@ Alternatively, you could build the configuration yourself as a JSON string
 ```
 
 
- Later on, you can get the transcripts
+ Later on, you could retrieve the analytics and transcripts:
+
 ```java      
   VbMedia analytics = mediaApi.getMediaById(mediaId, null);
   switch (analytics.getStatus()) {
       case FINISHED:
-          // Retrieving just the text transcript
+          // Keywords
+          if( analytics.getKnowledge() != null && analytics.getKnowledge().getKeywords() != null) {
+              System.out.println("**** Keywords: ");
+              for( VbKeyword keyword : analytics.getKnowledge().getKeywords() ) {
+                  System.out.println( keyword.getKeyword() );
+              }
+          }
+          // Topics
+          if( analytics.getKnowledge() != null && analytics.getKnowledge().getTopics() != null) {
+              System.out.println("**** Topics: ");
+              for(  VbTopic topic : analytics.getKnowledge().getTopics()) {
+                  System.out.println( topic.getTopicName() );
+              }
+          }
+
+          // Retrieving the text transcript
           String text = mediaApi.getTextById(mediaId);
-          // Retrieving the full analytics
-          analytics = mediaApi.getMediaById(mediaId, Arrays.asList("text", "srt"));
+          System.out.println(text);
 
           break;
       case FAILED:
