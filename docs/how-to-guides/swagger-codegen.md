@@ -44,7 +44,7 @@ java -jar swagger-codegen-cli.jar config-help -l scala
 ### Generating client code for Java
 ```sh
 java -jar swagger-codegen-cli.jar generate  \
-     -i https://apis.dev.voicebase.com/v3/defs/v3-api.yaml \
+     -i https://apis.voicebase.com/v3/defs/v3-api.yaml \
      -l java \
      -c java-config.json \
      -o v3client
