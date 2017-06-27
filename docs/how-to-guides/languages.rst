@@ -3,7 +3,7 @@ Languages
 
 VoiceBase supports several spoken languages and dialects.
 
-**Languages supported in the V2 (Beta) API:**
+**Languages supported in the V3 API:**
 
 ===================  =====  ======
 Language             Code   Supported Frequencies
