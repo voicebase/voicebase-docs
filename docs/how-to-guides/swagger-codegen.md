@@ -35,7 +35,7 @@ CsharpDotNet2, clojure, haskell, lumen, go-server, erlang-server, undertow, msf4
 ```
 The client code generation for a given programming language can be customized with several options. You can get a list of available options by executing
 ```sh
-java -jar swagger-codegen-cli.jar config-help -l <langauge>
+java -jar swagger-codegen-cli.jar config-help -l <language>
 ```
 For example, if you want to know what options are available for the Scala language:
 ```sh
@@ -44,7 +44,7 @@ java -jar swagger-codegen-cli.jar config-help -l scala
 ### Generating client code for Java
 ```sh
 java -jar swagger-codegen-cli.jar generate  \
-     -i https://apis.voicebase.com/v3/defs/v3-api.yaml \
+     -i https://apis.dev.voicebase.com/v3/defs/v3-api.yaml \
      -l java \
      -c java-config.json \
      -o v3client
@@ -60,46 +60,54 @@ Where `java-config.json` is the file with the options for the generator:
   "artifactId"  : "v3client",
   "fullJavaUtil" : true,
   "dateLibrary" : "java8",
-  "library" :  "feign"
+  "library" :  "jersey2"
 }   
 ```
 
 With the generated client, you may now submit a media for processing
 
 ```java
-      ApiClient client = new ApiClient(); // Create an ApiClient per thread
-      client.setBasePath(basePath.toString());
-      client.setApiKey("Bearer " + v3Token);
-      client.setConnectTimeout(60000);
-      client.setDebugging(false);
+  String baseApiUrl = "https://apis.voicebase.com/";
+  String v3Token = "your-token-goes here";
+  int connectTimeout = 60000;
+  int readTimeout = 120000;
 
-      MediaApi mediaApi = new MediaApi(client);
+  // Create an ApiClient per thread
+  ApiClient client = new ApiClient();
 
-      ObjectMapper objectMapper = new ObjectMapper();
-      objectMapper.configure(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS, false);
-      objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
-      objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-      objectMapper.setSerializationInclusion(Include.NON_NULL);
+  client.setBasePath(baseApiUrl);
+  client.setApiKey("Bearer " + v3Token);
+  client.setConnectTimeout(connectTimeout);
+  client.setDebugging(true);
 
-      File mediaFile = new File("stereo-recording.wav");
+  MediaApi mediaApi = new MediaApi(client);
 
-      // Create the configuration programmatically
-      VbConfiguration configuration = new VbConfiguration();
-      VbStereoConfiguration stereo = new VbStereoConfiguration();
-      VbChannelConfiguration leftChannel = new VbChannelConfiguration();
-      left.setSpeakerName("Agent");
-      stereo.setLeft(leftChannel);
-      VbChannelConfiguration rightChannel = new VbChannelConfiguration();
-      right.setSpeakerName("Caller");
-      stereo.setRight(rightChannel);
-      VbIngestConfiguration ingest = new VbIngestConfiguration();
-      ingest.setStereo(stereo);
-      configuration.setIngest(ingest);
-      String strConfiguration = objectMapper.writeValueAsString( configuration );
+  ObjectMapper objectMapper = new ObjectMapper();
+  objectMapper.configure(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS, false);
+  objectMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+  objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+  objectMapper.setSerializationInclusion(Include.NON_NULL);
 
-      // And execute the request
-      VbMedia upload = mediaApi.postMedia(mediaFile, null, strConfiguration, null, null );
-      String mediaId = upload1.getMediaId();
+  File mediaFile = new File("stereo-recording.wav");
+
+  // Create the configuration programmatically
+  VbConfiguration configuration = new VbConfiguration();
+  VbStereoConfiguration stereo = new VbStereoConfiguration();
+  VbChannelConfiguration leftChannel = new VbChannelConfiguration();
+  leftChannel.setSpeakerName("Agent");
+  stereo.setLeft(leftChannel);
+  VbChannelConfiguration rightChannel = new VbChannelConfiguration();
+  rightChannel.setSpeakerName("Caller");
+  stereo.setRight(rightChannel);
+  VbIngestConfiguration ingest = new VbIngestConfiguration();
+  ingest.setStereo(stereo);
+  configuration.setIngest(ingest);
+  String strConfiguration = objectMapper.writeValueAsString(configuration);
+
+  // And execute the request
+  VbMedia upload = mediaApi.postMedia(mediaFile, null, strConfiguration, null, null);
+  String mediaId = upload.getMediaId();
+
 ```
 
 Alternatively, you could build the configuration yourself as a JSON string
@@ -111,19 +119,20 @@ Alternatively, you could build the configuration yourself as a JSON string
 
  Later on, you can get the transcripts
 ```java      
-      VbMedia analytics = mediaApi.getMediaById(mediaId, null);
-      switch( analytics.getStatus() ) {
-        case FINISHED:
-              // Retrieving just the text transcript
-              String text = mediaApi.getTextById(mediaId);
-              // Retrieving the full analytics
-              VbMedia analytics = mediaApi.getMediaById(mediaId, Arrays.asList("text", "srt"));
-              break;
-        case FAILED:
-             System.out.println("Transcription failed");
-             break;
-        default:
-             System.out.println("Results not yet available, please wait...");
-             break;     
-      }  
+  VbMedia analytics = mediaApi.getMediaById(mediaId, null);
+  switch (analytics.getStatus()) {
+      case FINISHED:
+          // Retrieving just the text transcript
+          String text = mediaApi.getTextById(mediaId);
+          // Retrieving the full analytics
+          analytics = mediaApi.getMediaById(mediaId, Arrays.asList("text", "srt"));
+
+          break;
+      case FAILED:
+          System.out.println("Transcription failed");
+          break;
+      default:
+          System.out.println("Results not yet available, please wait...");
+          break;
+  }  
 ```
