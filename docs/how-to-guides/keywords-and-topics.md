@@ -122,7 +122,7 @@ The following is an example of posting a media document with semantic `keywords`
 curl https://apis.voicebase.com/v3/media \
   --header "Authorization: Bearer $TOKEN" \
   --form media=@recording.mp3 \
-  --form 'configuration={
+  --form configuration='{
     "knowledge": {
       "enableDiscovery": true,
       "enableExternalDataSources" : false

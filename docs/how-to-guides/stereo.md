@@ -156,8 +156,7 @@ Audio redaction of PCI will redact the audio in both channels, irrespective of w
 ```bash
 curl https://apis.voicebase.com/v3/media  \
     --form media=@recording.mp3 \
-    --form 'configuration=
-      "{
+    --form configuration='{
         "ingest": {
           "stereo": {
             "left" : { "speaker": "Customer" },

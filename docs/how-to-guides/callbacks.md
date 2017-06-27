@@ -11,22 +11,22 @@ To request a processing-completed callback from VoiceBase, include a JSON config
 {
   "publish": {
     "callbacks": [
-      { 
+      {
         "url" : "https://example.org/callback",
         "method" : "POST"
       },
-      { 
+      {
         "url" : "https://example.org/callback",
         "method" : "POST",
         "include" : [ "transcripts", "knowledge", "metadata", "predictions" ]
       },
-      { 
+      {
         "url" : "https://example.org/callback/srt",
         "method" : "PUT",
         "type" : "transcript",
         "format" : "srt"
       },
-      { 
+      {
         "url" : "https://example.org/callback/media",
         "method" : "PUT",
         "type" : "media"
@@ -64,7 +64,7 @@ To request a processing-completed callback from VoiceBase, include a JSON config
                 - `spotting` : include spotted groups information for the media based on supplied keyword groups
                 - `streams` : include links for the media
             - `stream` : the media stream of type 'media'
-                - `original`: the original media 
+                - `original`: the original media
                 - `redacted-audio`: the redacted media
 
 ## Example cURL Request with Callback
@@ -76,10 +76,10 @@ For example, to upload media from a local file called recording.mp3 and receive 
 curl https://apis.voicebase.com/v3/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
-    --form 'configuration={
+    --form configuration='{
           "publish": {
             "callbacks": [
-              { 
+              {
                 "url" : "https://example.org/callback",
                 "method" : "POST",
                 "include" : [ "transcripts", "knowledge", "metadata", "predictions", "streams" ]
@@ -97,7 +97,7 @@ When using callbacks, you can still query the status of the media processing usi
 If a success response is not achieved on the first attempt, VoiceBase will do the following:
 
 1) Retry immediately up to two times.
-2) Put the callback delivery on schedule to re-attempt in 15 minutes, and the time doubled until it hits 16 hours between reattempts (in total, VoiceBase will stop after 36 hours). 
+2) Put the callback delivery on schedule to re-attempt in 15 minutes, and the time doubled until it hits 16 hours between reattempts (in total, VoiceBase will stop after 36 hours).
 
 If the file has not been accepted after step b) the status of the media file will change to 'finished' and VoiceBase will stop attempting.
 
@@ -112,7 +112,7 @@ All egress traffic flows from our servers out through one of these three (curren
 
 When media processing is complete, VoiceBase will call back your specified endpoint by making an HTTPS POST request. The body is a JSON object with the following data:
 
-        
+
 ```json
 {
   "mediaId": "710a4041-b78a-46ae-b626-773b90316c3b",
@@ -253,5 +253,5 @@ When media processing is complete, VoiceBase will call back your specified endpo
     - `metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
     - `transcripts` : the transcript(s) for the media (present if requested when media is uploaded)
     - `knowledge` : the topics and keywords for the media (present if requested when media is uploaded)
-    - `predictions` : the predictions results for the media 
+    - `predictions` : the predictions results for the media
     - `streams` : links for the results of the media

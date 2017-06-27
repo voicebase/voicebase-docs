@@ -8,10 +8,10 @@ You can filter out a preset list of offensive words ("swear words") from English
 To enable the swear word filtering, configure the media post configuration with the swearFilter parameter set to `true` in the `"transcript"` section:
 
 ```json
-{ 
+{
     "transcript": {
       "contentFiltering": {
-            "enableProfanityFiltering": true 
+            "enableProfanityFiltering": true
       }
     }
 }
@@ -20,7 +20,7 @@ To enable the swear word filtering, configure the media post configuration with 
 ## Examples
 
 ** Note: Export your api `TOKEN` prior to running the following example.
-         
+
 ```bash
 export TOKEN='Your Api Token'
 ```
@@ -30,10 +30,10 @@ export TOKEN='Your Api Token'
 ```bash
 curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3 \
-  --form 'configuration={ 
+  --form configuration='{ 
     "transcript": {
       "contentFiltering": {
-            "enableProfanityFiltering": true 
+            "enableProfanityFiltering": true
       }
     }
   }' \

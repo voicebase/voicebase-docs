@@ -234,7 +234,7 @@ Finally, many operations will rely on providing a configuration JSON attachment 
 
   curl https://apis.voicebase.com/v3/media \
     --form media=@hello-world.mp3 \
-    --form 'configuration={}' \
+    --form configuration='{}' \
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
 

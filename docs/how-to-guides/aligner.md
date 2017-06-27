@@ -18,7 +18,7 @@ First, make a POST request to the /media resource.
 curl -v -s https://apis.voicebase.com/v3/media \
   --header "Authorization: Bearer ${TOKEN}" \
   --form media=@musicVoiceTone.wav \
-  --form 'configuration={}'
+  --form configuration='{}'
 
 ```
 
@@ -95,7 +95,7 @@ Now make a POST request to the `/media/${MEDIA_ID}` including a `configuration` 
 curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}" \
   --X POST \
-  --form 'configuration={}' \
+  --form configuration='{}' \
   --form transcript=@transcript.text
 ```
 

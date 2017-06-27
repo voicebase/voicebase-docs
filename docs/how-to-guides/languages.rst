@@ -22,7 +22,7 @@ Spanish, Latin Am.   es-LA  8, 16
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
 =====================  ==========  ==========  ==========  ==============  ===============
-Feature                English US  English UK  English AU  Portuguese, BR  Spanish, LatAm. 
+Feature                English US  English UK  English AU  Portuguese, BR  Spanish, LatAm.
 Transcription              √		√		√		√		√
 Callbacks		   √		√		√		√		√
 Number Formatting	   √		√		√
@@ -42,7 +42,7 @@ For example, to transcribe a recording in Australian English:
 
 .. code:: json
 
-    {  
+    {
       "speechModel" : {
         "language" : "en-US"
       }
@@ -89,7 +89,7 @@ U.S. English
 
     curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --form 'configuration={
+        --form configuration='{
           "speechModel" : {
             "language" : "en-US"
           }
@@ -103,7 +103,7 @@ U.K. English
 
     curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --form 'configuration={
+        --form configuration='{
          "speechModel" : {
             "language" : "en-UK"
           }
@@ -130,7 +130,7 @@ Latin American Spanish
 
     curl https://apis.voicebase.com/v3/media  \
         --form media=@recording.mp3 \
-        --form 'configuration={
+        --form configuration='{
           "speechModel" : {
             "language" : "en-LA"
           }
@@ -144,10 +144,9 @@ Brazilian Portuguese
 
     curl https://apis.voicebase.com/v3/media  \
         --form media=@recording.mp3 \
-        --form 'configuration={
+        --form configuration='{
           "speechModel" : {
             "language" : "pt-BR"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
-

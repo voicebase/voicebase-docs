@@ -67,7 +67,17 @@ Pre-Signed Url: https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3
 curl --header 'Authorization: Bearer $token' \
     https://apis.voicebase.com/v3/media \
     --form media=@s3test.mp3 \
-    --form 'configuration={"publish":{"callbacks":[{"method":"PUT","url":"https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.mp3.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D","include":["transcripts","keywords","topics","metadata"]}]}}'
+    --form configuration='{
+       "publish":{
+         "callbacks":[
+            {
+              "method": "PUT",
+              "url": "https://voicebase-dev-s3-export-sink-for-dev.s3.amazonaws.com/s3test.mp3.json?AWSAccessKeyId=AKIAJM42DSXOTO53WC6Q&Content-Type=application%2Fjson&Expires=1481659940&Signature=3aAsNXHJVdsFPSmSYJvjbES7hIM%3D",
+              "include":[ "transcripts","keywords","topics","metadata" ]
+            }
+         ]
+       }
+     }'
 ```
 
 Media Post Configuration
@@ -89,7 +99,7 @@ The following configuration file (callback.redact.json) was saved from the previ
 > curl https://apis.qa.voicebase.com/v3/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@s3test.mp3 \
-    --form 'configuration=@callback.redact.json'
+    --form configuration=@callback.redact.json
 ```
 
 ### View Results
