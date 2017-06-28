@@ -3,7 +3,7 @@ Languages
 
 VoiceBase supports several spoken languages and dialects.
 
-**Languages supported in the V2 (Beta) API:**
+**Languages supported in the V3 API:**
 
 ===================  =====  ======
 Language             Code   Supported Frequencies
@@ -22,7 +22,7 @@ Spanish, Latin Am.   es-LA  8, 16
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
 =====================  ==========  ==========  ==========  ==============  ===============
-Feature                English US  English UK  English AU  Portuguese, BR  Spanish, LatAm. 
+Feature                English US  English UK  English AU  Portuguese, BR  Spanish, LatAm.
 Transcription              √		√		√		√		√
 Callbacks		   √		√		√		√		√
 Number Formatting	   √		√		√
@@ -42,9 +42,9 @@ For example, to transcribe a recording in Australian English:
 
 .. code:: json
 
-    {  
-      "configuration": { 
-        "language":"en-AU"
+    {
+      "speechModel" : {
+        "language" : "en-US"
       }
     }
 
@@ -63,42 +63,14 @@ Disabling Semantic Keywords and Topics
 
 `Semantic keywords and topics <keywordsandtopics.html>`__ are not
 currently supported with Spanish and Portuguese. When transcribing in
-these languages, disable these options in your configuration.
+these languages, don't enable these options in your configuration.
 
 .. code:: json
 
     {
-      "configuration": {
-      "language": "es-LA",
-        "keywords": {
-          "semantic": false
-        },
-        "topics": {
-          "semantic": false
-        }
-      }
+      "knowledge": {
+        "enableDiscovery" : false,  // Default is false
     }
-
--  ``configuration`` : The root configuration section.
-
-   -  ``language`` : The language code.
-
-      -  ``es-LA`` : Latin American Spanish
-      -  ``pt-BR`` : Brazilian Portuguese
-
-   -  ``keywords`` : The keywords sub-section
-
-      -  ``semantic`` : The semantic keywords sub-section
-
-         -  ``false`` : The value is false to indicate no semantic
-            keywords.
-
-   -  ``topics`` : The topics sub-section
-
-      -  ``semantic`` : The semantic topics sub-section
-
-         -  ``false`` : The value is false to indicate no semantic
-            topics.
 
 Examples
 --------
@@ -115,11 +87,11 @@ U.S. English
 
 .. code:: bash
 
-    curl https://apis.voicebase.com/v2-beta/media \
+    curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --form 'configuration={
-          "configuration": {
-            "language": "en-US",
+        --form configuration='{
+          "speechModel" : {
+            "language" : "en-US"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
@@ -129,11 +101,11 @@ U.K. English
 
 .. code:: bash
 
-    curl https://apis.voicebase.com/v2-beta/media \
+    curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --form 'configuration={
-          "configuration": {
-            "language": "en-UK",
+        --form configuration='{
+         "speechModel" : {
+            "language" : "en-UK"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
@@ -143,11 +115,10 @@ Australian English
 
 .. code:: bash
 
-    curl https://apis.voicebase.com/v2-beta/media \
+    curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --form 'configuration={
-          "configuration": {
-            "language": "en-AU",
+        --"speechModel" : {
+            "language" : "en-AU"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
@@ -157,17 +128,11 @@ Latin American Spanish
 
 .. code:: bash
 
-    curl https://apis.voicebase.com/v2-beta/media  \
+    curl https://apis.voicebase.com/v3/media  \
         --form media=@recording.mp3 \
-        --form 'configuration={
-          "configuration": {
-            "language": "es-LA",
-            "keywords": {
-              "semantic": false
-            },
-            "topics": {
-              "semantic": false
-            }
+        --form configuration='{
+          "speechModel" : {
+            "language" : "en-LA"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
@@ -177,18 +142,11 @@ Brazilian Portuguese
 
 .. code:: bash
 
-    curl https://apis.voicebase.com/v2-beta/media  \
+    curl https://apis.voicebase.com/v3/media  \
         --form media=@recording.mp3 \
-        --form 'configuration={
-          "configuration": {
-            "language": "pt-BR",
-            "keywords": {
-              "semantic": false
-            },
-            "topics": {
-              "semantic": false
-            }
+        --form configuration='{
+          "speechModel" : {
+            "language" : "pt-BR"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
-

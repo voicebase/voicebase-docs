@@ -1,14 +1,14 @@
 # Number Formatting
 
-VoiceBase can transcribe numbers found in the transcription be displayed in digit form.
+VoiceBase can transcribe numbers found in the transcription be displayed in digit form. In V3 number formatting is enabled by default.
 
-To enable number-formatting, include the following snippet in your configuration:
+To explicitly enable number-formatting, include the following snippet in your configuration:
 
 ```json
 {  
-   "configuration":{  
-      "transcripts":{  
-         "formatNumbers":true
+   "transcript": {  
+      "formatting":{  
+         "enableNumberFormatting": true
       }
    }
 }

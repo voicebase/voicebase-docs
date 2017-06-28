@@ -1,6 +1,6 @@
 # VoiceBase V2 Beta API Documentation
 
-This repository contains developer documentation for the VoiceBase (v2-beta) API.
+This repository contains developer documentation for the VoiceBase (V3) API.
 
 The documentation is indeed to be rendered using Sphinx docs using the ReadTheDocs theme, for display on readthedocs.io
 
@@ -33,7 +33,7 @@ To rebuilding the documentation continuously on changes.
 
 ## Deployment
 
-When deployed, this documentation appears at [http://voicebase.readthedocs.io/en/v2-beta/](http://voicebase.readthedocs.io/en/v2-beta/).
+When deployed, this documentation appears at [http://voicebase.readthedocs.io/en/v3/](http://voicebase.readthedocs.io/en/v3/).
 
 ## Language Guide
 
@@ -72,8 +72,8 @@ You can also `customize` VoiceBase by defining common keywords or phrases to `sp
 
 ### Technical Language: Nouns
 
-- `endpoint` - a top-level API (e.g. v2-beta or a callback sink; not common)
-- `resource` - a specific REST resource (e.g. /media or /definitions/transcripts)
+- `endpoint` - a top-level API (e.g. v3 or a callback sink; not common)
+- `resource` - a specific REST resource (e.g. /media or /definitions/transcript)
 - `section` - a subset of a JSON document, usually identified by its path (e.g. the predictions.latest.detections section of the analytics)
 - `collection` - a resource that represents many similar things (e.g. /media)
 - `item` - one member of a collection (e.g. /media/{mediaId})
