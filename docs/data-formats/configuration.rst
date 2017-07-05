@@ -1,7 +1,3 @@
-..configuration
-..=============
-
-
 Sample configuration
 --------------------
 
