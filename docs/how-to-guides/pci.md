@@ -4,15 +4,13 @@ VoiceBase can detect and redact Payment Card Information (PCI) such as credit ca
 
 ## Enabling PCI Detection
 
-To enable PCI detection, add the PCI detector to your configuration when POSTing to /media.
+To enable PCI detection, add the PCI detector to your configuration when POSTing to /v3/media.
 
 ```json
 {  
-  "configuration": { 
-    "detections": [ 
-      {  
-        "model": "PCI"
-      }
+  "prediction": { 
+    "detectors": [ 
+      { "detectorName": "PCI" }
     ]
   }
 }
@@ -23,14 +21,16 @@ To enable PCI detection, add the PCI detector to your configuration when POSTing
 When PCI detection is enabled, the predictions section of the /media resource will contain the regions where PCI is detected.
 
 ```json
-{
-  "detections": [
-    {
-      "type": "PCI",
-      "e": 181280,
-      "s": 127830
-    }
-  ]
+{  
+  "prediction": {
+    "detectors": [{ 
+        "detectorName": "PCI", 
+        "detections" : [{ 
+            "s": 85240, 
+            "e": 101450 
+        }] 
+     }]
+  }
 }
 ```
 
@@ -43,7 +43,7 @@ When PCI detection is enabled, the predictions section of the /media resource wi
 ## Complete Examples
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
     --header "Authorization: Bearer $TOKEN" \
     --form media=@recording.mp3 \
     | tee media-post-response.json | jq '.'

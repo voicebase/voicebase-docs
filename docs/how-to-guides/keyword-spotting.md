@@ -8,18 +8,18 @@ VoiceBase can also discover the keywords, key phrases, and topics in your record
 
 VoiceBase allows you to specify pre-defined groups of keywords (or key phrases), which can be used to flag recordings of interest using keyword spotting.
 
-To define new keyword group, or update an existing keyword group, simply PUT the group under /definitions/keywords/groups. The body of the PUT request is a JSON object (`Content-Type: application/json`) that contains two keys:
+To define new keyword group, or update an existing keyword group, simply PUT the group under '/definition/spotting/groups'. The body of the PUT request is a JSON object (`Content-Type: application/json`) that contains two keys:
 
  - `name` : the name of the keyword group
  - `keywords` : an array of the included keywords
 
-For example, to create group `data` that includes the keywords `data science`, `big data`, and `data mining`, make the following PUT request using curl, or an equivalent request using a tool of your choice:
+For example, to create group `big-data` that includes the keywords `data science`, `big data`, and `data mining`, make the following PUT request using curl, or an equivalent request using a tool of your choice:
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
+curl https://apis.voicebase.com/v3/definition/spotting/groups/data-science \
   --request PUT \
   --header "Content-Type: application/json" \  
-  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
+  --data '{ "name" : "data-science", "keywords" : [ "data science", "machine learning", "data mining", "classification" ] }' \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
@@ -28,7 +28,7 @@ curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
 To display keyword groups that you have created make the following GET request using curl, or an equivalent request using a tool of your choice:
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
+curl https://apis.voicebase.com/v3/definition/spotting/groups/data-science \
   --request GET \
   --header "Authorization: Bearer ${TOKEN}"
 ```
@@ -37,9 +37,8 @@ The response will look like the following:
 
 ```json
 {
-	"name": "data",
-	"revision": "24f20f87-e05d-437a-8436-38e16280d464",
-	"keywords": [ "data science", "big data", "data mining" ]
+	"name": "data-science",
+	"keywords": [ "data science", "machine learning", "data mining", "classification" ]
 }
 ```
 
@@ -49,54 +48,54 @@ Revision is the uniqueID that VoiceBase uses applies to each keyword group that 
 
 To upload media with keyword spotting enabled, include a JSON configuration attachment with your media POST. The configuration attachment should contain the key:
 
- - `configuration` : root object for configuration data
-    - `keywords` : object for keyword-specific configuration
+    - `spotting` : object for keyword-spotting configuration
         - `groups` : array of keyword-spotting groups
 
 For example:
 
 ```json
 {
-  "configuration": {
-    "keywords": {
-      "groups": [ "data" ]
+    "spotting": {
+      "groups": [ { "groupName": "data-science" } ]
     }  
-  }
 }
 ```
 When keyword spotting is enabled, this adds extra analytics to the response. For example:
 
 ```json
 {
-  "media": {
-    "keywords": {
-      "latest": {
-        "groups": [
+  "spotting": {
+    "groups": [
           {
-            "keywords": [
+            "groupName" : "data-science",
+            "score" : 0,
+            "spotted" : true,
+            "spottedKeywords": [
               {
-                "t": {
-                  "unknown": [
-                    4.62
-                  ]
-                },
-                "name": "data science"
+                "keyword" : "data science",
+                "mentions" : [
+                  {
+                    "speakerName" : "Alice",
+                    "occurrences" : [
+                      { "s" : 4620 , "exact": "data science" }
+                    ]
+                  }
+                ]
               },
               {
-                "t": {
-                  "unknown": [
-                    6.68
-                  ]
-                },
-                "name": "data mining"
+                "keyword" : "data science",
+                "mentions" : [
+                  {
+                    "speakerName" : "Bob",
+                    "occurrences" : [
+                      { "s" : 5730 , "exact": "machine learning" }
+                    ]
+                  }
+                ]
               }
-            ],
-            "name": "data",
-            "type": "group"
-          }
-        ]
-      }
-    }
+          ]
+        }
+      ]
   }
 }
 ```
@@ -104,22 +103,22 @@ When keyword spotting is enabled, this adds extra analytics to the response. For
 
 ### Example: Defining and enabling a keyword spotting group
 
-Define a `keyword group` by making a PUT request to the `/definitions/keywords/groups/data` resource.
+Define a `keyword group` by making a PUT request to the `/definition/spotting/groups/data-science` resource.
 
 ```bash
 
-curl https://apis.voicebase.com/v2-beta/definitions/keywords/groups/data \
+curl https://apis.voicebase.com/v3/definition/spotting/groups/data-science \
   --request PUT \
   --header "Content-Type: application/json" \  
-  --data '{ "name" : "data", "keywords" : [ "data science", "big data", "data mining" ] }' \
+  --data '{ "name" : "data-science", "keywords" : [  "data science", "machine learning", "data mining", "classification" ] }' \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
-Upload media from a local file called recording.mp3 and spot keywords using the `data` group, make the following POST request to `/media`
+Upload media from a local file called recording.mp3 and spot keywords using the `data-science` group, make the following POST request to `/media`
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --header "Authorization: Bearer ${TOKEN}" \
   --form media=@recording.mp3 \
-  --form 'configuration={ "configuration": { "keywords": { "groups": [ "data" ] } } }'
+  --form configuration='{ "spotting": { "groups": [ { "groupName" : "data-science"  } ] } }'
 ```

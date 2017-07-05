@@ -9,15 +9,17 @@ VoiceBase allows you to redact sensitive data (after [detecting it](pci-ssn-pii-
 To redact sensitive information from a media file, upload it to Voicebase, with a redact section in the detector configuration. In this example, any words in the detected region will be replaced with `[redacted]`.
 
 ```json
-{ 
-  "detections": [
-    {
-      "model": "PCI",
-      "redact": {
-        "transcripts": "[redacted]"
-      }
-    }
-  ]
+{  
+  "prediction": { 
+    "detectors": [ { 
+        "detectorName": "PCI",
+         "redactor": {
+            "transcript":{
+                "replacement" : "[redacted]"
+            }
+         }
+    }]
+  }
 }
 ```
 
@@ -31,29 +33,32 @@ To redact sensitive regions from your recording, upload it to VoiceBase, and add
 
 
 ```json
-{ 
-  "detections": [
-    {
-      "model": "PCI",
-      "redact": {
-        "transcripts": "[redacted]",
-        "audio": {
-          "tone": 270,
-          "gain": 0.5
-        }
-      }
-    }
-  ]
+{  
+  "prediction": { 
+    "detectors": [ { 
+        "detectorName": "PCI",
+         "redactor": {
+            "transcript":{
+                "replacement" : "[redacted]"
+            },
+            "audio": {
+                "tone": 270,
+                "gain": 0.5
+            }
+         }
+    }]
+  }
 }
 ```
 
-To download the redacted audio, make a GET request to media/{mediaId}/streams. The response will be of the form:
+To download the redacted audio, make a GET request to /v3/media/{mediaId}/streams. The response will be of the form:
 
 ```json
 {
-  "streams": {
-    "original": "https://link.to.redacted.media"
-  }
+  "streams": [{
+    "streamName": "original",
+    "streamLocation": "https://link.to.redacted.media"
+  }]
 }
 
 ```
@@ -65,25 +70,26 @@ An expiring link to download the audio file with redacted will appear in place o
 #### Transcript Redaction Request
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3 \
   --form configuration='{
-    "configuration": {
-      "detections": [
-        {
-          "model": "PCI",
-          "redact": {
-            "transcripts": "[redacted]"
-          }
-        },
-        {
-          "model": "SSN",
-          "redact": {
-            "transcripts": "[redacted]"
-          }
-        }
-      ]
-    }
+      "prediction": { 
+        "detectors": [ { 
+            "detectorName": "PCI",
+             "redactor": {
+                "transcript":{
+                    "replacement" : "[redacted]"
+                }
+             }
+        }, { 
+           "detectorName": "SSN",
+            "redactor": {
+               "transcript":{
+                   "replacement" : "[redacted]"
+               }
+            }
+       }]
+      }
   }' \
   --header "Authorization: Bearer ${TOKEN}" 
 ```
@@ -91,33 +97,34 @@ curl https://apis.voicebase.com/v2-beta/media \
 #### Audio Redaction Request
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/media \
+curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3 \
   --form configuration='{
-    "configuration": {
-      "detections": [
-        {
-          "model": "PCI",
-          "redact": {
-            "transcripts": "[redacted]",
-            "audio": {
-              "tone": 270,
-              "gain": 0.5
+      "prediction": { 
+        "detectors": [ { 
+            "detectorName": "PCI",
+             "redactor": {
+                "transcript": {
+                    "replacement" : "[redacted]"
+                },
+                "audio": {
+                    "tone": 270,
+                    "gain": 0.5
+                }
+             }
+        }, { 
+           "detectorName": "SSN",
+            "redactor": {
+               "transcript": {
+                   "replacement" : "[redacted]"
+               },
+               "audio": {
+                    "tone": 270,
+                    "gain": 0.5
+               }
             }
-          }
-        },
-        {
-          "model": "SSN",
-          "redact": {
-            "transcripts": "[redacted]",
-            "audio": {
-              "tone": 270,
-              "gain": 0.5
-            }
-          }
-        }
-      ]
-    }
+       }]
+      }
   }' \
   --header "Authorization: Bearer ${TOKEN}"
 ```
@@ -125,7 +132,7 @@ curl https://apis.voicebase.com/v2-beta/media \
 #### Redacted Audio Request
 
 ```bash
-curl https://apis.voicebase.com/v2-beta/${MEDIA_ID}/streams \
+curl https://apis.voicebase.com/v3/${MEDIA_ID}/streams \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
