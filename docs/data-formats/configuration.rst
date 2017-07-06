@@ -6,6 +6,8 @@ Sample configuration
 --------------------
 
 Note: You will need to remove comments preceded by '//'
+
+
 .. code-block:: json
   :linenos:
 
