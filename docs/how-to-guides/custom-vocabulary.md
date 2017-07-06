@@ -68,11 +68,11 @@ If you have a recording to transcribe and want to add ad hoc custom terms specif
           "terms" : [
             "Bob Okunski",
             "Chuck Boynton",
-            "Tom Werner",
-            "gnocchi; nyohki, nokey, nochi; 2",
+            "Tom Werner;4",
+            "gnocchi;nyohki,nokey,nochi;2",
             "Bryon from VoiceBase",
             "Bryon M.",
-            "CEO; C.E.O."			  
+            "CEO;C.E.O."			  
           ]
         }
       ]
@@ -90,8 +90,8 @@ You can add a re-usable custom vocabulary list to your VoiceBase account with a 
   "vocabulary" : {
     "name": "earningsCalls",
     "terms": [
-      "AFFO; A.F.F.O.",
-      "APAC; Aypack",
+      "AFFO;A.F.F.O.",
+      "APAC;Aypack",
       "CapEx",
       "Bryon from VoiceBase"
     ]
@@ -138,8 +138,8 @@ curl https://apis.voicebase.com/v2-beta/definitions/transcripts/vocabularies/ear
     "vocabulary": {  
       "name": "earningsCalls",
       "terms": [
-        "AFFO; A.F.F.O.",
-        "APAC; Aypack",
+        "AFFO;A.F.F.O.",
+        "APAC;Aypack",
         "CapEx"
       ]
     }
@@ -158,8 +158,8 @@ curl https://apis.voicebase.com/v2-beta/definitions/transcripts/vocabularies/ear
   "name": "earningsCalls",
   "revision": "4c15602e-3966-4b05-81f0-0d4f18436dee",
   "terms": [
-    "AFFO; A.F.F.O.",
-    "APAC; Aypack",
+    "AFFO;A.F.F.O.",
+    "APAC;Aypack",
     "CapEx"
   ]
 }
