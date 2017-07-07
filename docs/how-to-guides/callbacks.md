@@ -141,9 +141,9 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "mentions": [{
         "speakerName": "unknown",
         "occurrences": [{
-          "s": "60.074"
+          "s": 60074
         }, {
-          "s": "63.696"
+          "s": 63696
         }]
       }]
     }, {
@@ -152,9 +152,9 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "mentions": [{
         "speakerName": "unknown",
         "occurrences": [{
-          "s": "64.376"
+          "s": 64376
         }, {
-          "s": "201.41"
+          "s": 20141
         }]
       }]
     }, {
@@ -163,7 +163,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "mentions": [{
         "speakerName": "unknown",
         "occurrences": [{
-          "s": "18.809"
+          "s": 18809
         }]
       }]
     }, {
@@ -172,7 +172,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "mentions": [{
         "speakerName": "unknown",
         "occurrences": [{
-          "s": "51.065"
+          "s": 51065
         }]
       }]
     },{
@@ -181,7 +181,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "mentions": [{
         "speakerName": "unknown",
         "occurrences": [{
-          "s": "47.115"
+          "s": 47.115
         }]
       }]
     }],
@@ -194,7 +194,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
         "mentions": [{
           "speakerName": "unknown",
           "occurrences": [{
-            "s": "18.809"
+            "s": 18809
           }]
         }]
       }, {
@@ -203,9 +203,9 @@ When media processing is complete, VoiceBase will call back your specified endpo
         "mentions": [{
           "speakerName": "unknown",
           "occurrences": [{
-            "s": "64.376"
+            "s": 64376
           }, {
-            "s": "201.41"
+            "s": 20141
           }]
         }]
       }]
