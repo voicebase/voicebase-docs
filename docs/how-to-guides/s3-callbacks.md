@@ -7,7 +7,7 @@ media for processing to us.
 
 
 
-## How to generate a pre-signed URL in Python using Boto3
+## How to generate a pre-signed URL with Python using Boto3
 
 The following code shows how to generate a pre-signed URL using boto3 as the AWS client library.
 Note that the "method" must be set to "PUT".
