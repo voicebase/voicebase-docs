@@ -13,12 +13,11 @@ To request a processing-completed callback from VoiceBase, include a JSON config
     "callbacks": [
       {
         "url" : "https://example.org/callback",
-        "method" : "POST"
       },
       {
         "url" : "https://example.org/callback",
         "method" : "POST",
-        "include" : [ "transcripts", "knowledge", "metadata", "predictions" ]
+        "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams", "spotting" ]
       },
       {
         "url" : "https://example.org/callback/srt",
@@ -29,7 +28,8 @@ To request a processing-completed callback from VoiceBase, include a JSON config
       {
         "url" : "https://example.org/callback/media",
         "method" : "PUT",
-        "type" : "media"
+        "type" : "media",
+        "stream": "original"
       }
     ]
   }
@@ -56,16 +56,30 @@ To request a processing-completed callback from VoiceBase, include a JSON config
                 - `srt`: transcript in srt format (text/srt)
                 - `webvtt`: transcript in webvvt format (text/vtt)
                 - `dfxp`: transcript in dfxp format (application/ttaf+xml)
-            - `include` :  array of data to include with the callback of type 'analytics', with the following supported values. If include is ommitted the callback will return all results:
+            - `include` :  array of data to include with the callback of type 'analytics', with the following supported values. If include is omitted the callback will return all results:
                 - `metadata` : include supplied metadata, often useful for correlated to records in a different system
-                - `transcripts`: include transcripts for the media
+                - `transcript`: include transcripts for the media on all formats
                 - `knowledge` : include topics and keywords for the media
-                - `predictions` : include prediction information for the media based on supplied predictors
+                - `prediction` : include prediction information for the media based on supplied predictors
                 - `spotting` : include spotted groups information for the media based on supplied keyword groups
                 - `streams` : include links for the media
             - `stream` : the media stream of type 'media'
                 - `original`: the original media
                 - `redacted-audio`: the redacted media
+
+The following table shows the Content-Type of the requests when we call you back with the results. This header is important if you are providing pre-signed URLs generated for a service like Amazon AWS S3
+
+| Type       | Format | Content-Type header |
+|:----------:|:------:|:-------------------:|
+| analytics  |        | application/json         |
+| transcript | text   |  text/plain              |
+| transcript | json   | application/json         |
+| transcript | srt    | text/srt                 |
+| transcript | dfxp   | application/ttaf+xml	   |
+| transcript | webvtt | text/vtt                 |
+| media      |        | application/octet-stream |
+
+
 
 ## Example cURL Request with Callback
 
@@ -82,7 +96,7 @@ curl https://apis.voicebase.com/v3/media \
               {
                 "url" : "https://example.org/callback",
                 "method" : "POST",
-                "include" : [ "transcripts", "knowledge", "metadata", "predictions", "streams" ]
+                "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams" ]
               }
             ]
           }
