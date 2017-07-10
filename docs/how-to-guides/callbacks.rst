@@ -112,6 +112,9 @@ transcript     webvtt  text/vtt
 media            -     application/octet-stream
 ============= ======== ====================
 
+If the media fails to be processed, you will only receive the callbacks of type "analytics" describing the error that prevented the media from being processed.
+Callbacks of type "transcript" and "media" will be ignored.
+
 Example cURL Request with Callback
 ----------------------------------
 
