@@ -6,13 +6,18 @@ VoiceBase supports several spoken languages and dialects.
 **Languages supported in the V3 API:**
 
 ===================  =====  ======
-Language             Code   Supported Frequencies
+Language             Code   Supported Frequencies (kHz)
 ===================  =====  ======
+Dutch                nl-NL  11-44
 English US           en-US  8, 16
 English UK           en-UK  8, 16
 English Australian   en-AU  8, 16
+French               fr-FR  11-44
+German               de-DE  11-44
+Italian              it-IT  11-44
 Portuguese, Brazil   pt-BR  8
 Spanish, Latin Am.   es-LA  8, 16
+Spanish, Spain       es-ES  11-44
 ===================  =====  ======
 
 
@@ -21,15 +26,20 @@ Spanish, Latin Am.   es-LA  8, 16
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
-=====================  ==========  ==========  ==========  ==============  ===============
-Feature                English US  English UK  English AU  Portuguese, BR  Spanish, LatAm.
-Transcription              √		√		√		√		√
-Callbacks		   √		√		√		√		√
-Number Formatting	   √		√		√
-Knowledge Extraction	   √		√		√
-Prediction		   √		√		√
-PCI			   √		√		√
-=====================  ==========  ==========  ==========  ==============  ===============
+=====================  =============  ========= ==================  ====================  ===========  ====
+Language               Transcription  Callbacks Number Formatting   Knowledge Extraction  Predictions  PCI
+=====================  =============  ========= ==================  ====================  ===========  ====
+Dutch                       √             √
+English US                  √             √             √                    √                √       √
+English UK                  √             √             √                    √                √       √
+English AU                  √             √             √                    √                √       √
+French                      √             √
+German                      √             √
+Italian                     √             √
+Portuguese, BR              √             √
+Spanish, LatAm              √             √
+Spanish, Spain              √             √
+=====================  =============  ========= ==================  ====================  ========== ====
 
 
 Configuring Language Support
@@ -49,14 +59,8 @@ For example, to transcribe a recording in Australian English:
     }
 
 -  ``configuration`` : The root configuration section.
+   -  ``language`` : The language code. Refer to the table above.
 
-   -  ``language`` : The language code.
-
-      -  ``en-US`` : US English
-      -  ``en-UK`` : UK English
-      -  ``en-AU`` : Austrialian English
-      -  ``es-LA`` : Latin American Spanish
-      -  ``pt-BR`` : Brazilian Portuguese
 
 Disabling Semantic Keywords and Topics
 --------------------------------------
@@ -69,7 +73,7 @@ these languages, don't enable these options in your configuration.
 
     {
       "knowledge": {
-        "enableDiscovery" : false,  // Default is false
+        "enableDiscovery" : false
     }
 
 Examples
