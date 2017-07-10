@@ -19,7 +19,7 @@ You must provide ample time between the time you create the
 pre-signed URL and the expected time your processing request to VoiceBase will complete.  The
 sample code expires the URL after 24 hours (86400 seconds).
 
-
+_presigned.py_
 ```python
 import boto3
 import requests
@@ -46,7 +46,10 @@ url = s3.generate_presigned_url(
 print url
 ```
 
-
+Generate the presigned URL
+```bash
+python presigned.py
+```
 
 Use the pre-signed URL in the configuration when submitting media to the /v3 API. For example:
 
