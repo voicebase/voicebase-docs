@@ -8,16 +8,16 @@ VoiceBase supports several spoken languages and dialects.
 ===================  =====  ======
 Language             Code   Supported Frequencies (kHz)
 ===================  =====  ======
-Dutch                nl-NL  11-44
+Dutch                nl-NL  8, 11
 English US           en-US  8, 16
 English UK           en-UK  8, 16
 English Australian   en-AU  8, 16
-French               fr-FR  11-44
-German               de-DE  11-44
-Italian              it-IT  11-44
+French               fr-FR  8, 11
+German               de-DE  8, 11
+Italian              it-IT  8, 11
 Portuguese, Brazil   pt-BR  8
 Spanish, Latin Am.   es-LA  8, 16
-Spanish, Spain       es-ES  11-44
+Spanish, Spain       es-ES  8, 11
 ===================  =====  ======
 
 
