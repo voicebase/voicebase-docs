@@ -132,7 +132,7 @@ Latin American Spanish
         --form media=@recording.mp3 \
         --form configuration='{
           "speechModel" : {
-            "language" : "en-LA"
+            "language" : "es-LA"
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
