@@ -66,9 +66,9 @@ If you have a recording to transcribe and want to add ad hoc custom terms specif
       "vocabularies": [
         {
           "terms" : [
-            "Bob Okunski",
-            "Chuck Boynton",
-            "Tom Werner;4",
+            "Jiohn Cleese",
+            "Eric Idle",
+            "Michael Palin;4",
             "gnocchi;nyohki,nokey,nochi;2",
             "Bryon from VoiceBase",
             "Bryon M.",
