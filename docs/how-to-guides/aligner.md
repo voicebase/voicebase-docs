@@ -94,7 +94,7 @@ Now make a POST request to the `/media/${MEDIA_ID}` including a `configuration` 
 ```bash
 curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}" \
-  --X POST \
+  -X POST \
   --form configuration='{}' \
   --form transcript=@transcript.text
 ```

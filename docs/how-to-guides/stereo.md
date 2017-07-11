@@ -10,8 +10,8 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
 {
   "ingest": {
     "stereo": {
-       "left": { "speaker": "Customer" },
-      "right": { "speaker": "Agent"    }
+       "left": { "speakerName": "Customer" },
+      "right": { "speakerNAme": "Agent"    }
     }
   }
 }
@@ -20,9 +20,9 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
     - `ingest` : the ingest sub-section.
         - `stereo` : specification of the stereo channels.  Both child sections are required.
             - `left` : specification of the left channel.
-                - `speaker` : the name of left channel speaker.
+                - `speakerName` : the name of left channel speaker.
             - `right` : specification of the right channel.
-                - `speaker` : the name of right channel speaker.
+                - `speakerName` : the name of right channel speaker.
 
 
 ## Effects on Transcripts
@@ -159,8 +159,8 @@ curl https://apis.voicebase.com/v3/media  \
     --form configuration='{
         "ingest": {
           "stereo": {
-            "left" : { "speaker": "Customer" },
-            "right": { "speaker": "Agent"    }
+            "left" : { "speakerName": "Customer" },
+            "right": { "speakerName": "Agent"    }
           }
         }
       }' \

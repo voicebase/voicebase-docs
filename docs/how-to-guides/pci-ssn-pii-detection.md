@@ -22,28 +22,65 @@ When detection for sensitive data is enabled, the API returns detected regions a
 {  
   "prediction": {
     "detectors": [
-        { "detectorName": "PCI", "detections" : [{ "s": 85240, "e": 101450 }] },
-        { "detectorName": "SSN", "detections" : [{ "s": 130013, "e": 141711 }] },
-        { "detectorName": "Number", "detections" : [{ "s": 189204, "e": 197912 }] }
-      ]
+      {
+        "detectorId": "c3f8b516-5f20-43fd-a085-ec48ab4fbb59",
+        "detections": [
+          {
+            "detectorClass": 1,
+            "detectorClassLabel": "PCI",
+            "detectedSegments": [
+              {
+                "occurrences": [
+                  { "s": 362000, "e": 410055 },
+                  { "s": 575390, "e": 629607 }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "detectorId": "e79c540f-0d47-484e-859e-30d1ae6e4009",
+        "detections": [
+          {
+            "detectorClass": 1,
+            "detectorClassLabel": "ssn",
+            "detectedSegments": [
+              {
+                "occurrences": [
+                  { "s": 202293, "e": 229835 }
+                ]
+              }
+            ]
+          }
+        ]
+     }
+   ]
   }
 }
 ```
 
 For each detection, the API returns three data points:
-- `detectorName`: The type of sensitive data detected
+- `detectorName` and/or `detectorId`: The type of sensitive data detected
 - `detections`: array of the detected regions
 - `s`: The start time of the detected region, in milliseconds
-- `e`: The start end of the detected region, in milliseconds 
+- `e`: The start end of the detected region, in milliseconds
 
 ## PCI Detector
 
 To enable it, add PCI detector to your configuration when you make a POST request to the /v3/media resource.
 
+IMPORTANT NOTE: Currently, the PCI detector requires to disable number formatting.
+
 ```json
 {  
-  "prediction": { 
-    "detectors": [ 
+  "transcript": {
+    "formatting" : {
+      "enableNumberFormatting" : false
+    }
+  },
+  "prediction": {
+    "detectors": [
       { "detectorName": "PCI" }
     ]
   }
@@ -54,10 +91,17 @@ To enable it, add PCI detector to your configuration when you make a POST reques
 
 To enable it, add the SSN detector to your configuration when you make a POST request to the /v3/media resource.
 
+IMPORTANT NOTE: Currently, the SSN detector requires to disable number formatting.
+
 ```json
 {  
-  "prediction": { 
-    "detectors": [ 
+  "transcript": {
+    "formatting" : {
+      "enableNumberFormatting" : false
+    }
+  },
+  "prediction": {
+    "detectors": [
       { "detectorName": "SSN" }
     ]
   }
@@ -68,10 +112,17 @@ To enable it, add the SSN detector to your configuration when you make a POST re
 
 To enable it, add the Number detector to your configuration when you make a POST request to the /v3/media resource.
 
+IMPORTANT NOTE: Currently, the Number detector requires to disable number formatting.
+
 ```json
 {  
-  "prediction": { 
-    "detectors": [ 
+  "transcript": {
+    "formatting" : {
+      "enableNumberFormatting" : false
+    }
+  },
+  "prediction": {
+    "detectors": [
       { "detectorName": "Number" }
     ]
   }
@@ -82,7 +133,7 @@ To enable it, add the Number detector to your configuration when you make a POST
 ## Examples
 
 ** Note: Export your api `TOKEN` prior to running the following example.
-         
+
 ```bash
 export TOKEN='Your Api Token'
 ```
@@ -91,15 +142,19 @@ export TOKEN='Your Api Token'
 
 ```bash
 curl https://apis.voicebase.com/v3/media \
+  --header "Authorization: Bearer ${TOKEN}"  \
   --form media=@recording.mp3 \
   --form configuration='{
-  "prediction": { 
-    "detectors": [ 
+  "transcript": {
+    "formatting" : {
+      "enableNumberFormatting" : false
+    }
+  },
+  "prediction": {
+    "detectors": [
       { "detectorName": "PCI" }
       { "detectorName": "SSN" }
       { "detectorName": "Number" }
     ]}
-  }' \
-  --header "Authorization: Bearer ${TOKEN}" 
+  }'
 ```
-
