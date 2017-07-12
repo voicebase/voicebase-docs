@@ -6,6 +6,10 @@ VoiceBase can optionally make a callback request to a specific url when media up
 
 To request a processing-completed callback from VoiceBase, include a JSON configuration attachment with your media POST. The configuration attachment should contain the key:
 
+*notes:*
+* Each callback in the set below will result in a unique call to the specified server upon media completion.
+* If "type" is not specified: "analytics" is assumed, which will return the JSON transcript with words array. In addition, DFXP, SRT, WebVTT, and plain-text transcripts will be provided in the "additionalFormats" object using Base64 encoding.
+
 ```json
 
 {
@@ -19,6 +23,12 @@ To request a processing-completed callback from VoiceBase, include a JSON config
         "url" : "https://example.org/callback",
         "method" : "POST",
         "include" : [ "transcripts", "knowledge", "metadata", "predictions" ]
+      },
+      {
+        "url" : "https://example.org/callback/vtt",
+        "method" : "PUT",
+        "type" : "transcript",
+        "format" : "vtt"
       },
       {
         "url" : "https://example.org/callback/srt",
@@ -53,8 +63,8 @@ To request a processing-completed callback from VoiceBase, include a JSON config
             - `format` : the format of the callback of type 'transcript'
                 - `json`: transcript in json format (application/json)
                 - `text`: transcript in text format (text/plain)
+                - `webvtt`: transcript in WebVTT format (text/vtt)
                 - `srt`: transcript in srt format (text/srt)
-                - `webvtt`: transcript in webvvt format (text/vtt)
                 - `dfxp`: transcript in dfxp format (application/ttaf+xml)
             - `include` :  array of data to include with the callback of type 'analytics', with the following supported values. If include is ommitted the callback will return all results:
                 - `metadata` : include supplied metadata, often useful for correlated to records in a different system
