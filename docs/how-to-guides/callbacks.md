@@ -12,7 +12,7 @@ To request a processing-completed callback from VoiceBase, include a JSON config
     "configuration" : {
       "publish": {
         "callbacks": [
-          { 
+          {
             "url" : "https://example.org/callback",
             "method" : "POST",
             "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
@@ -54,7 +54,7 @@ curl https://apis.voicebase.com/v2-beta/media \
         "configuration" : {
           "publish": {
             "callbacks": [
-              { 
+              {
                 "url" : "https://example.org/callback",
                 "method" : "POST",
                 "include" : [ "transcripts", "keywords", "topics", "metadata", "predictions" ]
@@ -73,7 +73,7 @@ When using callbacks, you can still query the status of the media processing usi
 If a success response is not achieved on the first attempt, VoiceBase will do the following:
 
 1) Retry immediately up to two times.
-2) Put the callback delivery on schedule to re-attempt in 15 minutes, and the time doubled until it hits 16 hours between reattempts (in total, VoiceBase will stop after 36 hours). 
+2) Put the callback delivery on schedule to re-attempt in 15 minutes, and the time doubled until it hits 16 hours between reattempts (in total, VoiceBase will stop after 36 hours).
 
 If the file has not been accepted after step b) the status of the media file will change to 'finished' and VoiceBase will stop attempting.
 
@@ -88,7 +88,7 @@ All egress traffic flows from our servers out through one of these three (curren
 
 When media processing is complete, VoiceBase will call back your specified endpoint by making an HTTPS POST request. The body is a JSON object with the following data:
 
-        
+
 ```json
 {
   "_links" : {  
@@ -119,7 +119,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
         "type" : "machine",
         "engine" : "premium",
         "features" : [ "speakerTurns", "speakerId" ],
-        "formats" : [ "json", "srt" ],
+        "formats" : [ "json", "srt", "vtt" ],
         "words" : [
           { "p" : 1, "c" : 0.927, "s" : 10, "e" : 1390, "w" : "him" }
         ]
@@ -129,11 +129,11 @@ When media processing is complete, VoiceBase will call back your specified endpo
       "latest" : {
         "revision" : "abcdef01-2345-6789-abcd-54acd43aea57",
         "terms" : [
-          { 
+          {
             "name" : "mobile industry",
             "id" : "abcdef01-2345-6789-abcd-5726cbdba270",
             "spotting" : false,
-            "keywords" : [ 
+            "keywords" : [
               "mobile advertising",
               "mobile usage"
             ]
@@ -172,7 +172,7 @@ When media processing is complete, VoiceBase will call back your specified endpo
     - `success` : true for success notifications and false for failure notifications
     - `errors` : an optional array of errors (omitted or empty for success notifications)
     - `warnings` : an optional array of warnings
-    - `event` : a JSON object that event triggering the callback (typicall a status change)
+    - `event` : a JSON object that event triggering the callback (typical a status change)
         - `status` : the new status of the media processing job, with the following possible values:
             - `finished` : media processing completed successfully
             - `failed` : media processing failed
@@ -182,4 +182,4 @@ When media processing is complete, VoiceBase will call back your specified endpo
     - `metadata` : the metadata for the media item, typically for correlation to external systems (present if requested when media is uploaded)
     - `transcripts` : the transcipt(s) for the media (present if requested when media is uploaded)
     - `topics` : the topics and keywords for the media (present if requested when media is uploaded)
-    - `predictions` : the predictions results for the media 
+    - `predictions` : the predictions results for the media
