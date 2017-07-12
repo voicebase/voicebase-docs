@@ -8,7 +8,7 @@ recordings with high accuracy, discover the keywords and topics discussed, and p
 Authorization
 #############
 
-The VoiceBase V3 REST API is secured using OAuth Bearer tokens. Bearer tokens are issued and managed
+The VoiceBase /v3 REST API is secured using OAuth Bearer tokens. Bearer tokens are issued and managed
 through the `Developer Portal <https://apis.voicebase.com/developer-portal>`_.
 
 For details on getting your first token, see the `How to Get Your Bearer Token <../how-to-guides/hello-world.html#how-to-get-your-bearer-token>`_
