@@ -9,7 +9,12 @@ Uploading Media with Callbacks Enabled
 
 To request a processing-completed callback from VoiceBase, include a
 JSON configuration attachment with your media POST. The configuration
-attachment should contain the key:
+attachment should contain the publish key, for example as below:
+
+  *Notes:*
+  
+  - Each callback in the set below will result in a unique call to the specified server upon media completion.
+  - If "type" is not specified: "analytics" is assumed, which will return the JSON transcript with words array. In addition, DFXP, SRT, WebVTT, and plain-text transcripts will be provided in the "additionalFormats" object using Base64 encoding.
 
 .. code:: json
 
@@ -24,6 +29,12 @@ attachment should contain the key:
             "url" : "https://example.org/callback",
             "method" : "POST",
             "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams", "spotting" ]
+          },
+          {
+            "url" : "https://example.org/callback/vtt",
+            "method" : "PUT",
+            "type" : "transcript",
+            "format" : "vtt"
           },
           {
             "url" : "https://example.org/callback/srt",
@@ -71,8 +82,8 @@ Configuration Description
 
             -  ``json``: transcript in json format (application/json)
             -  ``text``: transcript in text format (text/plain)
-            -  ``srt``: transcript in srt format (text/srt)
             -  ``webvtt``: transcript in webvvt format (text/vtt)
+            -  ``srt``: transcript in srt format (text/srt)
             -  ``dfxp``: transcript in dfxp format
                (application/ttaf+xml)
 
