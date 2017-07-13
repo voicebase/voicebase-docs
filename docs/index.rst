@@ -63,6 +63,14 @@ More information and guidances can be found in the:
   api-reference/definitions
   api-reference/profile
 
+.. _data-formats
+
+.. toctree::
+  :maxdepth: 3
+  :caption: Data Formats
+
+  data-formats/configuration
+
 .. _developer-portal:
 
 .. toctree::
