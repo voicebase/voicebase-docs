@@ -66,7 +66,7 @@ If you have a recording to transcribe and want to add ad hoc custom terms specif
       "vocabularies": [
         {
           "terms" : [
-            "Jiohn Cleese",
+            "John Cleese",
             "Eric Idle",
             "Michael Palin;4",
             "gnocchi;nyohki,nokey,nochi;2",
