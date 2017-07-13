@@ -9,4 +9,4 @@ You can find more details around the */definitions* resource in the `API Console
 
 .. include:: definitions/transcripts-vocabularies.rst
 
-.. include:: definitions/predictions-models.rst
+..include:: definitions/predictions-models.rst
