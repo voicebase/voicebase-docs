@@ -50,6 +50,7 @@ More information and guidances can be found in the:
   how-to-guides/s3-callbacks
   how-to-guides/number-formatting
   how-to-guides/voicemail
+  how-to-guides/metadata
   how-to-guides/swagger-codegen
 
 
