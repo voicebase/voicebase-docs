@@ -13,7 +13,7 @@ The following code shows how to generate a pre-signed URL using boto3 as the AWS
 Note that the "method" must be set to "PUT".
 
 You you must provide a Content-Type header with a value that matches the content type of the results
-to be received. Refer to [callback] docu(callbacks.html)
+to be received. Refer to [callback] documentation. (callbacks.html)
 
 You must provide ample time between the time you create the
 pre-signed URL and the expected time your processing request to VoiceBase will complete.  The
