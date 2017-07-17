@@ -120,7 +120,7 @@ In this case, the transcript will contain the additional section  'alternateForm
 
 ## SRT transcript
 
-To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/text resource specifying an `Accept` HTTP header with the value `text/srt`.
+To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/srt resource specifying an `Accept` HTTP header with the value `text/srt`.
 
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.
 
@@ -183,7 +183,7 @@ In this case, the SRT transcript is returned encoded with Base64 within the JSON
 ## WebVTT transcript
 
 WebVTT is a W3C standard for displaying timed text in HTML 5 utilizing the <track> element.
-To retrieve a transcripts as a WebVTT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/text resource specifying an `Accept` HTTP header with the value `text/webvtt`.
+To retrieve a transcripts as a WebVTT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/webvtt resource specifying an `Accept` HTTP header with the value `text/vtt`.
 
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the WebVTT and SRT transcript formats.
 
@@ -216,15 +216,15 @@ done we wanted to find those who were not
 ##### Example cURL
 
 ```sh
-curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/text \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript/webvtt \
     --header "Authorization: Bearer ${TOKEN}" \
-    --header "Accept: text/srt"
+    --header "Accept: text/vtt"
 ```
 
 Alternatively, the SRT transcript can be retrieved with the JSON transcript by adding the `includeAlternateFormat` query parameter in the request.
 
 ```sh
-curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=srt \
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=webvtt \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: application/json"
 ```
@@ -235,7 +235,7 @@ In this case, the WebVTT transcript is returned encoded with Base64 within the J
 {
   "alternateFormats": [
     {
-      "format": "srt",
+      "format": "webvtt",
       "contentType": "text/vtt",
       "contentEncoding": "Base64",
       "charset": "utf-8",
@@ -250,12 +250,14 @@ In this case, the WebVTT transcript is returned encoded with Base64 within the J
 You may specify several formats to be returned in the same request, just add 'includeAlternateFormat' in the query string as many times as needed:
 
 ```sh
-curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript?includeAlternateFormat=srt&includeAlternateFormat=text \
+export FIELDS='?includeAlternateFormat=srt&includeAlternateFormat=webvtt' 
+
+curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript${FIELDS} \
     --header "Authorization: Bearer ${TOKEN}" \
     --header "Accept: application/json"
 ```
 
-Valid formats are: text, srt, dfxp, vtt
+Valid formats are: text, srt, dfxp, webvtt
 
 _Attribution:_ SRT and Plaintext transcripts are generated from Audible dictation of [Crucial Conversations](http://www.audible.com/pd/Business/Crucial-Conversations-Audiobook/B009RQZDHS?source_code=GPAGBSH0508140001&mkwid=sDishsy3J_dc&pcrid=90539104740&pmt=&pkw=&cvosrc=ppc%20cse.google%20shopping.342766860&cvo_crid=90539104740&cvo_pid=23455575420) under fair-use.
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the WebVTT & SRT transcript formats.

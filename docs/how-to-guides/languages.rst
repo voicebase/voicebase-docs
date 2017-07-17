@@ -121,10 +121,11 @@ Australian English
 
     curl https://apis.voicebase.com/v3/media \
         --form media=@recording.mp3 \
-        --"speechModel" : {
-            "language" : "en-AU"
-          }
-        }' \
+        --form configuration='{
+           "speechModel" : {
+              "language" : "en-AU"
+            }
+         }' \
         --header "Authorization: Bearer ${TOKEN}"
 
 Latin American Spanish
