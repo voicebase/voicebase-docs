@@ -1,8 +1,54 @@
 # Closed Captioning
 
-VoiceBase can generate subtitles or closed captions for your video project, by allowing you to retrieve the transcript of your audio or video file using the SubRip Text (SRT) format.
+VoiceBase can generate subtitles or closed captions for your video project, by allowing you to retrieve the transcript of your audio or video file using the WebVTT or SubRip Text (SRT) format.
 
-No special configuration is required. All transcripts are always available in three formats: JSON word-by-word, plain text and SRT.
+No special configuration is required. All transcripts are always available in four formats: JSON word-by-word, plain text, WebVTT and SRT.
+
+
+## WebVTT format
+WebVTT is a W3C standard which may be used for displaying timed text within the HTML5 <track> element.
+A WebVTT file will begin with WEBVTT after an optional UTF-8 byte order mark. The timecode format used is hours:minutes:seconds.milliseconds with hours being optional and time units fixed to two zero-padded digits and fractions fixed to three zero-padded digits (00:00:00.000).  The fractional separator used is the full-stop.
+
+
+Example:
+
+```
+WEBVTT
+
+00:00:02.76 --> 00:00:05.08
+Agent: Well this is Michael
+thank you for calling A.B.C.
+
+00:00:05,08 --> 00:00:07,03
+Cable services. How may I help you today.
+
+00:00:08,28 --> 00:00:11,93
+Customer: Hi I'm calling because I'm
+interested in buying new cable services.
+
+00:00:12,64 --> 00:00:16,43
+Agent: OK great let's get started.
+
+```
+
+## GET a WebVTT Transcript
+
+Export `MEDIA_ID` and `TOKEN`
+
+```bash
+export MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1'
+export TOKEN='Your Api Token'
+```
+
+and provide the `Accept` HTTP header with the value `"text/vtt"` when requesting the transcript.
+
+```bash
+curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/srt \
+  --header "Accept: text/vtt" \
+  --header "Authorization: Bearer ${TOKEN}"
+```
+
+
 
 ## SRT subtitle format
 
@@ -53,8 +99,8 @@ curl https://apis.voicebase.com/v2-beta/media/${MEDIA_ID}/transcripts/latest \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
-## Callbacks with SRT transcript
+## Callbacks
 
 Note that when posting a media file with a configuration including a
 [callback](callbacks.html), the results posted to the callback URL always contain
-the JSON (word-by-word), the plain text and SRT transcripts.
+the JSON (word-by-word), the plain text, WebVTT and SRT transcripts.
