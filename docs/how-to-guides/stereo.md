@@ -11,7 +11,7 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
   "ingest": {
     "stereo": {
        "left": { "speakerName": "Customer" },
-      "right": { "speakerNAme": "Agent"    }
+      "right": { "speakerName": "Agent"    }
     }
   }
 }
