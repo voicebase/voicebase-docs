@@ -4,7 +4,7 @@ Once processing is complete, transcripts can be retrieved in several formats.
 
 ## JSON Transcript
 
-Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcripts` collection under the `media` item.
+Retrieve a JSON-formatted transcript with metadata using a `GET` against the `transcript` resource under the `media` item.
 
 Make a GET on the /media/$MEDIA_ID/transcript resource.
 
@@ -120,7 +120,7 @@ In this case, the transcript will contain the additional section  'alternateForm
 
 ## SRT transcript
 
-To retrieve a transcripts as a SRT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/srt resource specifying an `Accept` HTTP header with the value `text/srt`.
+To retrieve a transcript as a SRT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/srt resource specifying an `Accept` HTTP header with the value `text/srt`.
 
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the SRT transcript format.
 
@@ -183,7 +183,7 @@ In this case, the SRT transcript is returned encoded with Base64 within the JSON
 ## WebVTT transcript
 
 WebVTT is a W3C standard for displaying timed text in HTML 5 utilizing the <track> element.
-To retrieve a transcripts as a WebVTT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/webvtt resource specifying an `Accept` HTTP header with the value `text/vtt`.
+To retrieve a transcript as a WebVTT file which is useful for closed captioning or timing the transcript with the audio,  make a GET on the /media/$MEDIA_ID/transcript/webvtt resource specifying an `Accept` HTTP header with the value `text/vtt`.
 
 The [closed captioning](closed-captioning.html) section has a detailed discussion of the WebVTT and SRT transcript formats.
 
@@ -250,7 +250,7 @@ In this case, the WebVTT transcript is returned encoded with Base64 within the J
 You may specify several formats to be returned in the same request, just add 'includeAlternateFormat' in the query string as many times as needed:
 
 ```sh
-export FIELDS='?includeAlternateFormat=srt&includeAlternateFormat=webvtt' 
+export FIELDS='?includeAlternateFormat=srt&includeAlternateFormat=webvtt'
 
 curl https://apis.voicebase.com/v3/media/$MEDIA_ID/transcript${FIELDS} \
     --header "Authorization: Bearer ${TOKEN}" \

@@ -12,7 +12,7 @@ JSON configuration attachment with your media POST. The configuration
 attachment should contain the publish key, for example as below:
 
   *Notes:*
-  
+
   - Each callback in the set below will result in a unique call to the specified server upon media completion.
   - If "type" is not specified: "analytics" is assumed, which will return the JSON transcript with words array. In addition, DFXP, SRT, WebVTT, and plain-text transcripts will be provided in the "additionalFormats" object using Base64 encoding.
 
@@ -326,7 +326,7 @@ Data Description
    -  ``metadata`` : the metadata for the media item, typically for
       correlation to external systems (present if requested when media
       is uploaded)
-   -  ``transcripts`` : the transcript(s) for the media (present if
+   -  ``transcript`` : the transcript(s) for the media (present if
       requested when media is uploaded)
    -  ``knowledge`` : the topics and keywords for the media (present if
       requested when media is uploaded)
