@@ -41,7 +41,7 @@ The response contains the mediaId you will use when aligning (e.g., 7eb7964b-d32
     "mediaId": "7eb7964b-d324-49cb-b5b5-76a29ea739e1",
     "status": "accepted",
     "dateCreated": "2017-06-22T18:23:02Z",
-    "contentType": "audio/mp3",
+    "mediaContentType": "audio/mp3",
     "length": 10031,
     "metadata": {}
   }
