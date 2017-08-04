@@ -41,7 +41,7 @@ curl https://apis.voicebase.com/v3/media \
   --form media=@recording.mp3  \
   --form configuration='{ }' \
   --form metadata='{
-        "title" : "Gathering Leaves by Robert Frost"
+        "title" : "Gathering Leaves by Robert Frost",
         "externalId" : "A12345"
     }'
 ```

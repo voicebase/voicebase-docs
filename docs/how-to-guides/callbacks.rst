@@ -12,9 +12,9 @@ JSON configuration attachment with your media POST. The configuration
 attachment should contain the publish key, for example as below:
 
   *Notes:*
-  
+
   - Each callback in the set below will result in a unique call to the specified server upon media completion.
-  - If "type" is not specified: "analytics" is assumed, which will return the JSON transcript with words array. In addition, DFXP, SRT, WebVTT, and plain-text transcripts will be provided in the "additionalFormats" object using Base64 encoding.
+  - If "type" is not specified: "analytics" is assumed and all sections will be included (transcript, knowledge, metadata, prediction, streams, spotting)
 
 .. code:: json
 
@@ -89,12 +89,12 @@ Configuration Description
 
          -  ``include`` : array of data to include with the callback of
             type 'analytics', with the following supported values. If
-            include is omitted the callback will return all results:
+            "include" is omitted the callback will return all sections:
 
             -  ``metadata`` : include supplied metadata, often useful
                for correlated to records in a different system
             -  ``transcript``: include transcripts for the media on all
-               formats
+               formats.
             -  ``knowledge`` : include topics and keywords for the media
             -  ``prediction`` : include prediction information for the
                media based on supplied predictors
@@ -188,7 +188,7 @@ object with the following data:
     {
       "mediaId": "710a4041-b78a-46ae-b626-773b90316c3b",
       "status": "finished",
-      "contentType": "audio/mpeg",
+      "mediaContentType": "audio/mpeg",
       "length": 201636,
       "metadata": {},
       "knowledge": {
@@ -321,12 +321,12 @@ Data Description
 
    -  ``mediaId`` : the unique VoiceBase id for the media item
    -  ``status`` : the status of processing for the media item
-   -  ``contentType`` : the media item content type
+   -  ``mediaContentType`` : the media item content type
    -  ``length`` : the media item length
    -  ``metadata`` : the metadata for the media item, typically for
       correlation to external systems (present if requested when media
       is uploaded)
-   -  ``transcripts`` : the transcript(s) for the media (present if
+   -  ``transcript`` : the transcript(s) for the media (present if
       requested when media is uploaded)
    -  ``knowledge`` : the topics and keywords for the media (present if
       requested when media is uploaded)
