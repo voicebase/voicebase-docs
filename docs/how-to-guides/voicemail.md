@@ -14,7 +14,10 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
 ## Sample configuration for English Voicemail with a callback endpoint receiving JSON
 ```json
 {  
-  "speechModel" : { "language" : "voicemail-en-US" },
+   "speechModel" : {
+         "language" : "en-US",
+          "extensions" : [ "voicemail" ] 
+   }
    "knowledge": {
      "enableDiscovery" : false
    },
