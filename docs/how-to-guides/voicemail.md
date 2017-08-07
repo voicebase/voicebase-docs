@@ -11,9 +11,13 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
 * **Use [Callbacks](callbacks.md):** By using callbacks, our servers will send the data as soon as processing is finished. You won't have to wait until the next polling interval.
 
 
-## Sample configuration for Voicemail with a callback endpoint receiving JSON
+## Sample configuration for English Voicemail with a callback endpoint receiving JSON
 ```json
 {  
+   "speechModel" : {
+         "language" : "en-US",
+          "extensions" : [ "voicemail" ] 
+   }
    "knowledge": {
      "enableDiscovery" : false
    },
