@@ -58,8 +58,7 @@ For example, to transcribe a recording in Australian English:
       }
     }
 
--  ``configuration`` : The root configuration section.
-   -  ``language`` : The language code. Refer to the table above.
+-  ``language`` : The language code. Refer to the table above.
 
 
 Disabling Semantic Keywords and Topics
@@ -96,6 +95,22 @@ U.S. English
         --form configuration='{
           "speechModel" : {
             "language" : "en-US"
+          }
+        }' \
+        --header "Authorization: Bearer ${TOKEN}"
+
+
+U.S. English for Voicemail
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+    curl https://apis.voicebase.com/v3/media \
+        --form media=@recording.mp3 \
+        --form configuration='{
+          "speechModel" : {
+            "language" : "en-US"
+            "extensions" : [ "voicemail" ]
           }
         }' \
         --header "Authorization: Bearer ${TOKEN}"
