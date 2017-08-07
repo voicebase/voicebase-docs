@@ -19,7 +19,7 @@ To search media documents, one makes a GET request on the `/media` resource with
 ## Examples
 
 ** Note: Export your api `TOKEN` prior to running any of the following examples.
-         
+
 ```bash
 export TOKEN='Your Api Token'
 ```
@@ -93,12 +93,12 @@ VoiceBase supports [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dD
 VoiceBase V2 uses cursor-based pagination to achieve pages that are stable even as media is concurrently added to the collection. Each page is governed by two parameters: “after”, indicating the “mediaId” that immediately precedes the page, and “limit” which determines the size of the page (maximum implicit size is 1000). For example, if the first page ends with the “mediaId” of “f1ea0482-af9b-45d1-bd00-5eac31cd8259”, the next page of 100 results is:
 
 ** Note: Export the mediaId for which you want more recent results.
-         
+
 ```bash
 export MEDIA_ID='The pivot mediaId'
 ```
 
-Make a GET request on the `/media` resource with the `after` query paramater set.
+Make a GET request on the `/media` resource with the `after` query parameter set.
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \

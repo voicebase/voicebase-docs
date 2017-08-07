@@ -50,7 +50,7 @@ Topics are reported by grouping a set of keywords that relate to each other. For
            "speakerName" : "caller",
            "occurrences" : [
               { "s": 34480, "e": 35545, "exact": "solar power" },
-              { "s": 57340, "e": 59034, "exact": "solar engergy" }
+              { "s": 57340, "e": 59034, "exact": "solar energy" }
            ]
          },
          {
@@ -96,7 +96,7 @@ Adding keywords and topics to your media post configuration, enables semantic ke
 The configuration attachment should contain the key:
 
  - `knowledge` : Settings for Knowledge Discovery
-    - `enableDiscovery` : Switch for enabling/disabling knowledge discovery. Default is false.
+    - `enableDiscovery` : Switch for enabling/disabling knowledge discovery. The default is false.
     - `enableExternalDataSources` : Switch for allowing the search on sources external to VoiceBase. Users concerned about data privacy or PCI requirements can turn this off. Default is true.
 
 For example:
