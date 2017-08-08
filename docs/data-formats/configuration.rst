@@ -1,97 +1,101 @@
 Sample configuration
 --------------------
 
-Note: You will need to remove comments preceded by '//'
+Please see notes below for details about specific lines.
+
 
 
 .. code-block:: json
   :linenos:
+  :emphasize-lines: 5,6,34,37,42,43,47,50,55,62
 
-    {
-        "speechModel": {
-            "language": "en-US"
+  {
+    "speechModel": {
+      "language": "en-US"
+    },
+    "ingest": {
+      "stereo": {
+        "left": {
+          "speakerName": "Agent"
         },
-        "priority": "low | medium | high",
-
-        "ingest" {
-            // speakerName, stereo and channels are mutually exclusive.
-            "speakerName": "Speaker", // All channels will be mixed into a single audio channel prior to speech recognition processing
-            "stereo": { // This is a shortcut to specify an "channels" with 2 elements (Is it worth to provide this shortcut?)
-                "left": {
-                    "speakerName": "Agent"
-                },
-                "right": {
-                    "speakerName": "Caller"
-                }
+        "right": {
+          "speakerName": "Caller"
+        }
+      }
+    },
+    "prediction": {
+      "detectors": [
+        {
+          "detectorName": "PCI",
+          "redactor": {
+            "transcript": {
+              "replacement": "[redacted]"
             },
-        },
-        "prediction": {
-            "classifiers": [{
-                    "classifierId": "f95a01b8-bc62-4a97-920a-61460ca7837c"
-                }, {
-                    "classifierName": "Appointment-Made"
-                }, {
-                    "classifierName": "Interested-Customer"
-                }
-            ]
-            "detectors": [{
-                    "detectorName": "PCI"
-                    "redactor": {
-                        "transcript": {
-                            "replacement": "[redacted]"
-                        },
-                        "audio": {
-                            "tone": 270,
-                            "gain": 0.5
-                        }
-                    }
-                }, {
-                    "detectorId": "dc37f348-82a8-4c50-88e1-4eaa916e779b"
-                }
-            ]
-        },
-
-        "spotting": {
-            "groups": [{
-                    "groupName": "finance"
-                }, {
-                    "groupName": "databases"
-                }
-            ]
-        },
-        "knowledge": {
-            "enableDiscovery": true | false, // Default is false
-            "enableExternalDataSources": true | false // Only has effect if enableDiscovery is true. Default is true.
-        },
-        "transcript": {
-            "formatting": {
-                "enableNumberFormatting": true // Default is true.
+            "audio": {
+              "tone": 270,
+              "gain": 0.5
             }
-            "contentFiltering": {
-                "enableProfanityFiltering": true // Default is false
-            }
+          }
+        }
+      ]
+    },
+    "spotting": {
+      "groups": [
+        {
+            "groupName": "finance"
         },
         {
-            "vocabularies": {
-                "recognition": [{
-                        "vocabularyName": "earningsCalls"
-                    }, {
-                        "terms": [{
-                                "term": "VoiceBase",
-                                "soundsLike": [ "voice base" ],
-                                "weight": 1 //0 to 5. 0 being standard weight.
-                            }, {
-                                "term": "Bob Okunski"
-                            }, {
-                                "term": "Chuck Boynton"
-                            }, {
-                                "term": "Tom Werner"
-                            }
-                        ]
-                    }
-                ]
-            }
+            "groupName": "databases"
         }
-        "vocabularies": [],
-        "publish": {}
-    }
+      ]
+    },
+    "knowledge": {
+        "enableDiscovery": true,
+        "enableExternalDataSources": true
+    },
+    "transcript": {
+        "formatting": {
+          "enableNumberFormatting": true
+        },
+        "contentFiltering": {
+          "enableProfanityFiltering": true
+        }
+    },
+    "vocabularies": [
+      {
+        "vocabularyName": "earningsCalls"
+      },
+      {
+        "terms": [
+          {
+            "term": "VoiceBase",
+            "soundsLike": [ "voice base" ],
+            "weight": 1
+          },
+          {
+            "term": "Bob Okunski"
+          },
+          {
+            "term": "Chuck Boynton"
+          },
+          {
+            "term": "Tom Werner"
+          }
+        ]
+      }
+    ],
+    "publish": {}
+  }
+
+Notes:
+
+- line 5 (``"ingest": {``): speakerName and stereo are mutually exclusive
+- line 6 (``"stereo": {``): for mono scenarios, specify ``"speakerName": "Speaker"`` instead of ``stereo`` - all channels will be mixed into a single audio channel prior to speech recognition processing
+- line 34 (``"groupName": "finance"``): this spotting group must be created before it is used
+- line 37 (``"groupName": "databases"``): this spotting group must be created before it is used
+- line 42 (``"enableDiscovery": true``): Default is false - knowledge discovery is disabled by default
+- line 43 (``"enableExternalDataSources": true``): Default is true - only effective if enableDiscovery is true
+- line 47 (``"enableNumberFormatting": true``): Default is true
+- line 50 (``"enableProfanityFiltering": true``): Default is false
+- line 55 (``"vocabularyName": "earningsCalls"``): this vocabulary must be created before it is used
+- line 62 (``"weight": 1``):  weights range from 0 to 5, 0 being standard weight
