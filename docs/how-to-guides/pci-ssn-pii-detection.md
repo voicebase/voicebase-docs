@@ -2,6 +2,10 @@
 
 VoiceBase allows you to detect sensitive data in your recordings (and, optionally, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
 
+PCI and related detectors are based on machine learned models of real calls where both a caller and an agent are audible. This gives higher reliability and adaptability to real world situations than deterministic models, but also means that for accurate results the audio being processed for PCI, SSN, or PII detection must reflect a real transaction. For example: a phone order may reflect some amount of conversation, followed by a product and quantity, the agent giving a total, asking for the card type and number, expiration date and possibly CVV code. The Number detector is rule-based and will detect any portion of the conversation containing numbers.
+
+VoiceBase offers two options for PCI detection (and redaction). The 'PCI' model will detect sensitive portions of the conversation and may mark some buffer before and after sensitive portions for good measure. The 'pci-numbers-only' model will return ONLY the segments of the conversation containing digits within the PCI portion of the conversation. It is worth noting that this second approach while much more specific, relies on recognition of the speech as numbers or words that sound sufficiently like numbers. An expiration date of: 08/2017 will be redacted, but *August* 2017 will result in only the year '2017' marked as PCI.
+
 The API offers the following three detectors for sensitive data:
 
 - Payment Card Information (PCI) Detector
@@ -23,7 +27,7 @@ When detection for sensitive data is enabled, the API returns detected regions a
   "prediction": {
     "detectors": [
       {
-        "detectorId": "c3f8b516-5f20-43fd-a085-ec48ab4fbb59",
+        "detectorId": "abcdefg-1f10-11f2-a085-ec48ab4fbb59",
         "detections": [
           {
             "detectorClass": 1,

@@ -75,7 +75,7 @@ You may receive a 404 response indicating that the alignment of the new transcri
 
 ```
 
-When processing is complete on the media, you will receive the plain text transcript transcribed by Voicebase.  Save it to an ascii text file named `transcript.txt`.  
+When processing is complete on the media, you will receive the plain text transcript transcribed by VoiceBase.  Save it to an ascii text file named `transcript.txt`.  
 
 ```
 Old transcript in file.
