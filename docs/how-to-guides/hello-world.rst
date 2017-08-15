@@ -41,17 +41,31 @@ You should see a response like this (otherwise, see :ref:`explanation <understan
 Step **(2)**: Upload a media file for transcription and analysis
 ----------------------------------------------------------------
 
-To upload a recording for transcription and analysis, POST to /media with the recording as an attachment named media (you can also provide a URL to your recording instead).
+To upload a recording for transcription and analysis, POST to /media with the recording as an attachment named media (you can also provide a URL to your recording instead using the form field 'mediaUrl').
 
+Using local media:
 .. code-block:: sh
   :linenos:
   :emphasize-lines: 2
 
   curl https://apis.voicebase.com/v3/media \
-    --form media=@hello-world.mp3 \
+    --form 'media=@hello-world.mp3' \
     --header "Authorization: Bearer ${TOKEN}" \
     | tee media-post.json \
     | jq .
+
+Using a remote media URL:
+.. code-block:: sh
+  :linenos:
+  :emphasize-lines: 2
+
+  curl https://apis.voicebase.com/v3/media \
+    --form 'mediaUrl=http://myServer.com/mediaFile.mp3' \
+    --header "Authorization: Bearer ${TOKEN}" \
+    | tee media-post.json \
+    | jq .
+
+
 
 The response includes a *mediaId* (assigned by the API) and a status of *accepted*.
 
