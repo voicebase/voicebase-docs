@@ -14,19 +14,16 @@ Example:
 ```
 WEBVTT
 
-00:00:02.76 --> 00:00:05.08
-Agent: Well this is Michael
-thank you for calling A.B.C.
+1
+00:00:01.44 --> 00:00:04.25
+Customer: Hi this is C.S.V. Shipping
+company Brian speaking how can I help you.
 
-00:00:05,08 --> 00:00:07,03
-Cable services. How may I help you today.
+2
+00:00:05.61 --> 00:00:08.48
+Agent: This is Henry A
+We spoke earlier I got a quote from you guys.
 
-00:00:08,28 --> 00:00:11,93
-Customer: Hi I'm calling because I'm
-interested in buying new cable services.
-
-00:00:12,64 --> 00:00:16,43
-Agent: OK great let's get started.
 
 ```
 
