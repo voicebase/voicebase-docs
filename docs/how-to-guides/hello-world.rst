@@ -44,6 +44,7 @@ Step **(2)**: Upload a media file for transcription and analysis
 To upload a recording for transcription and analysis, POST to /media with the recording as an attachment named media (you can also provide a URL to your recording instead using the form field 'mediaUrl').
 
 Using local media:
+
 .. code-block:: sh
   :linenos:
   :emphasize-lines: 2
@@ -55,6 +56,7 @@ Using local media:
     | jq .
 
 Using a remote media URL:
+
 .. code-block:: sh
   :linenos:
   :emphasize-lines: 2
