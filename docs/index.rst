@@ -69,6 +69,12 @@ More information and guidances can be found in the:
 
   data-formats/configuration
 
+.. toctree::
+  :maxdepth: 3
+  :caption: API Error Codes
+
+  errors/errors
+
 .. _developer-portal:
 
 .. toctree::
