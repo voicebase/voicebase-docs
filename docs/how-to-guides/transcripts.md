@@ -19,7 +19,7 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
 
 ###### How to read it
 * "p" = Position (word # in the transcript)
-* "c" = Confidence (A value between 0-1 that relates to the confidence percent ex: 0.88 = 88%.  When the metadata flag is present confidence contains an arbireary value.)
+* "c" = Confidence (A value between 0-1 that relates to the confidence percent ex: 0.88 = 88%.  When the metadata flag is present confidence contains an arbitrary value.)
 * "s" = Start time (milliseconds)
 * "e" = End time (milliseconds)
 * "w" = The word itself (When the metadata flag is present "w" refers to the speaker)

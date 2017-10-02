@@ -4,9 +4,9 @@ VoiceBase V3 API follows the OpenAPI 2.0 Specification  (also known as Swagger R
 
 By following the specification, the API is documented in a way that code generation tools can understand, saving you time and effort on generating code to build requests or access the response from the API.
 
-The Voicebase V3 OpenAPI specification resides at https://apis.voicebase.com/v3/defs/v3-api.yaml
+The VoiceBase V3 OpenAPI specification resides at https://apis.voicebase.com/v3/defs/v3-api.yaml
 
-This document is a summary of how to use the Swagger Code Generation tool to generate a Voicebase V3 client.
+This document is a summary of how to use the Swagger Code Generation tool to generate a VoiceBase V3 client.
 We assume that you already have installed Java 8 and Maven.
 
 ## Download Swagger Codegen CLI tool

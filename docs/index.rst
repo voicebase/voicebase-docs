@@ -48,7 +48,10 @@ More information and guidances can be found in the:
   how-to-guides/number-formatting
   how-to-guides/voicemail
   how-to-guides/metadata
+  how-to-guides/reprocessing
+  how-to-guides/aligner
   how-to-guides/swagger-codegen
+
 
 
 .. _api-reference:
