@@ -16,14 +16,11 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
 {  
    "speechModel" : {
          "language" : "en-US",
-          "extensions" : [ "voicemail" ] 
-   }
+          "extensions" : [ "voicemail" ]
+   },
    "knowledge": {
      "enableDiscovery" : false
-   },
-  "transcript": {  
-    "enableNumberFomatting" : true
-  },       
+   },       
   "publish":{  
      "callbacks": [  
         {  
