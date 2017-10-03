@@ -1,12 +1,12 @@
 # Moving to the v3 API
 
-We have made a lot of changes to the VoiceBase API to improve readability and usability by our customers. If you are used to using the version 2 API, there are some changes you'll need to be aware of as you create code for the VoiceBase API version 3.
+We have made a lot of changes to the VoiceBase API to improve readability and usability by our customers. If you are accustomed to using the version 2 API, there are some changes you will need to be aware of as you create code for the VoiceBase API version 3.
 
 
 ## Changes to Defaults
 
-* Number formatting is *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out.
-* Knowledge (system generated keywords and topics) is *off* by default in v3.  - This feature is powerful, but not always useful. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using *Aligner*.
+* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out.
+* Knowledge (system generated keywords and topics) is *off* by default in v3.  - This feature is powerful, but not always useful. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.md) feature.
 
 ## Changes to Formatting
 * All time values are reported in milliseconds for consistency
