@@ -29,6 +29,7 @@ More information and guidances can be found in the:
   :maxdepth: 1
   :caption: How-To Guides
 
+  how-to-guides/v2tov3
   how-to-guides/hello-world
   how-to-guides/transcripts
   how-to-guides/keywords-and-topics
