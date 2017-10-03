@@ -13,14 +13,14 @@ We have made a lot of changes to the VoiceBase API to improve readability and us
 * File type and length are no longer contained in the metadata object, permitting the entirety of the metadata object to contain user-created metadata.
 
 ## Changes to the Configuration File
-* Configuration is not wrapped in a ‘configuration’ object
-* Metadata is not wrapped in a ‘metadata’ object in config - it is now form field in the POST body or its own resource: https://apis.voicebase.com/v3/media/{{mediaId}}/metadata
+* Configuration is no longer wrapped in a ‘configuration’ object.
+* Metadata is not wrapped in a ‘metadata’ object in the config file - it is now form field in the POST body or its own resource: https://apis.voicebase.com/v3/media/{{mediaId}}/metadata
 
 *Note:* Posting media from a URL must specify ‘mediaURL’ instead of ‘media’ in the media POST. This allows better error validation.
 
 
-### Language
-Is now set under ‘speechModel’
+### Languages
+are now set under ‘speechModel’
 
 v3:
 
@@ -136,7 +136,9 @@ v2-beta:
 {
     "configuration" : {
         "keywords": {
-            "groups": { [ "data-science" ] }
+            "groups": {
+              [ "data-science" ]
+            }
         }
     }
 }
@@ -145,16 +147,16 @@ v2-beta:
 *NOTE:* v2-beta requires that the 'data-science' Keyword group already be created. The above v2-beta example merely calls it for use. For steps on configuring keywork groups in v2-beta, see: [keyword groups](http://voicebase-dev.readthedocs.io/en/v2-beta/how-to-guides/keyword-spotting.html)
 
 ### Number Formatting
-Is now set under ‘transcript’, ‘formatting’ not ‘transcripts’
-The key is now ‘enableNumberFormatting’ not ‘formatNumbers’ to keep syntax similar to other v3 options.
-*Note:* Number formatting is enabled by default in the v3 API, so enabling it in the configuration file is not necessary.
+Is now set under ‘transcript’, ‘formatting’ and no longer under ‘transcripts’.
+The key is now ‘enableNumberFormatting’ instead of ‘formatNumbers’ to keep syntax similar to other v3 options.
+*Note:* Number formatting is enabled by default in the v3 API, so enabling it in the configuration file is not necessary. You may set 'enableNumberFormatting' to 'false' do not wish to use the formatter on your transcripts.
 
 v3:
 
 ```json
 {
     "transcript": {
-        "formatiing": {
+        "formatting": {
             "enableNumberFormatting": true
         }
     }
@@ -173,10 +175,8 @@ v2-beta:
 }
 ```
 
-
-
 ### Swear Word Filter
-Is now set under ‘transcript’, ‘contentfiltering’ not ‘transcripts’
+Is now set under ‘transcript’, ‘contentFiltering’ not ‘transcripts’
 The key is now ‘enableProfanityFiltering’ instead of ‘swearFilter’
 
 v3:
@@ -205,7 +205,7 @@ v2-beta:
 
 
 ### Custom Vocabulary
-is now set under ‘vocabularies’ not ‘transcripts’,’vocabularies’ and terms have a ‘term’ key and the value is the custom vocabulary.
+Is now set under ‘vocabularies’ instead of ‘transcripts’,’vocabularies’ and terms now have a key ‘term’ and the value is the custom vocabulary term.
 
 v3:
 
