@@ -2,7 +2,7 @@
 
 VoiceBase supports keyword (and key phrase) spotting. You can define groups of keywords (or key phrases), which are flagged when they are spotted in the recording.
 
-VoiceBase can also discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing. For more details, [Keywords and Topics](keywords-and-topics.html).
+VoiceBase can also discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing. For more details, view [Keywords and Topics](keywords-and-topics.html).
 
 ## Managing Keyword Spotting Groups
 
