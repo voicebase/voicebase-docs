@@ -72,6 +72,7 @@ More information and guidances can be found in the:
   :caption: Data Formats
 
   data-formats/configuration
+  data-formats/media
 
 .. toctree::
   :maxdepth: 3
