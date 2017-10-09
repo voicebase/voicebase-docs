@@ -1,6 +1,6 @@
 # Moving to the v3 API
 
-We have made a lot of changes to the VoiceBase API to improve readability and usability by our customers. If you are accustomed to using the version 2 API, there are some changes you will need to be aware of as you create code for the VoiceBase API version 3.
+We have made a lot of changes to the VoiceBase API to improve readability and usability by our customers. If you are accustomed to using the version 2 API, there are some changes you will need to be aware of as you create code for the VoiceBase API version 3. For a sample of the v3 API data format, review the [media](/data-formats/media.rst)
 
 
 ## Changes to Defaults
