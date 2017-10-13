@@ -23,7 +23,7 @@ attachment should contain the publish key, for example as below:
       "publish": {
         "callbacks": [
           {
-            "url" : "https://example.org/callback",
+            "url" : "https://example.org/callback"
           },
           {
             "url" : "https://example.org/callback",

@@ -16,7 +16,7 @@ To request a processing-completed callback from VoiceBase, include a JSON config
   "publish": {
     "callbacks": [
       {
-        "url" : "https://example.org/callback",
+        "url" : "https://example.org/callback"
         "method" : "POST"
       },
       {
