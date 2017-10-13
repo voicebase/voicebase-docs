@@ -34,7 +34,7 @@ attachment should contain the publish key, for example as below:
             "url" : "https://example.org/callback/vtt",
             "method" : "PUT",
             "type" : "transcript",
-            "format" : "vtt"
+            "format" : "webvtt"
           },
           {
             "url" : "https://example.org/callback/srt",
