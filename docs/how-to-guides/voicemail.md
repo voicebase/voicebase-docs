@@ -20,7 +20,12 @@ Below is an optimized configuration for fast and accurate voicemail transcriptio
    },
    "knowledge": {
      "enableDiscovery" : false
-   },       
+   },
+   "transcript": {
+     "formatting" : {
+       "enableNumberFormatting" : true
+     }
+  },       
   "publish":{  
      "callbacks": [  
         {  
@@ -43,23 +48,24 @@ You may want a callback just with the text transcript. In this case, you should 
 
 
 ```json
-{  
-   "knowledge": {
-     "enableDiscovery" : false
-   },
-  "transcript": {  
-    "enableNumberFomatting" : true
-  },       
-  "publish":{  
-     "callbacks": [  
-        {  
-           "url": "https://example.com/transcription/recording-7d66f194786d",
-           "method": "PUT",
-           "type": "transcript",
-           "format": "text"
-        }
-     ]
-  }
+{
+    "speechModel":{
+        "language":"en-US",
+        "extensions": [ "voicemail" ]
+    },
+    "knowledge":{
+        "enableDiscovery":false
+    },
+    "publish":{
+        "callbacks":[
+            {
+                "url":"https://example.com/transcription/recording-7d66f194786d",
+                "method":"PUT",
+                "type":"transcript",
+                "format":"text"
+            }
+        ]
+    }
 }
 ```
 
