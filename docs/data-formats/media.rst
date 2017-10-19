@@ -11,43 +11,36 @@ See the bottom of the page for notes on hi-lighted sections.
 
   {
 
-      "prediction": {
-        "classifiers": [ ],
-        "detectors": [ ]
-      },
-      "spotting": {
-        "groups": [ ],
+    "prediction": {
+      "classifiers": [ ],
+      "detectors": [ ]
+    },
+    "spotting": {
+      "groups": [ ],
 
-      },
-      "knowledge": {
-        "keywords": [ ],
-        "topics": [ ],
-      },
-      "transcript": {
-        "words": [ ],
-        "alternateFormats" : [
+    },
+    "knowledge": {
+      "keywords": [ ],
+      "topics": [ ],
+    },
+    "transcript": {
+      "words": [ ],
+      "alternateFormats" : [
 
-         ]
+       ]
 
-      },
-
-
-
-     "metadata": { }
+    },
 
 
 
-
-
-  "_links" : {
-  },
-  "_job" : {
-  }
+    "metadata": { }
 
 
 
-
-
+    "_links" : {
+    },
+    "_job" : {
+    }
 
   }
 ..
