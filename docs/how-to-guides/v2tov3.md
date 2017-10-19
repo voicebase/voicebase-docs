@@ -1,26 +1,28 @@
 # Moving to the v3 API
 
-We have made a lot of changes to the VoiceBase API to improve readability and usability by our customers. If you are accustomed to using the version 2 API, there are some changes you will need to be aware of as you create code for the VoiceBase API version 3. For a sample of the v3 API data format, review the [media](/data-formats/media.rst)
+The /v3 API is an updated API “dialect” you can use to interact with the VoiceBase platform. /v3 joins /v2-beta as the currently supported API dialects for the VoiceBase platform. The /v3 API dialect incorporates a wide range of improvements and suggestions from our customers, and should be easier to learn and easier to use.
+We recommend that you migrate your apps to /v3 in order to take advantage of the new improvements and upcoming new features. If you are accustomed to using the /v2 API, the new /v3 API will look familiar, but with some changes you will need to be aware of as you migrate your code. The changes are outlined below, or you can instead review the entire sample
+[media](/data-formats/media.rst) response.
 
 
 ## Changes to Defaults
 
-* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out.
-* Knowledge (system generated keywords and topics) is *off* by default in v3.  - This feature is powerful, but not always useful. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.md) feature.
+* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out. You can of course turn off number formatting if you choose. See: [number formatting](number-formatting.md).
+* Knowledge (system generated keywords and topics) is *off* by default in v3.  This feature is powerful, but may not be required for your use case. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.md) feature.
 
 ## Changes to Formatting
-* All time values are reported in milliseconds for consistency
-* File type and length are no longer contained in the metadata object, permitting the entirety of the metadata object to contain user-created metadata.
+* All duration values are reported in milliseconds for consistency
+* File type and length have been moved the metadata object to the top-level response object, permitting the entirety of the metadata object to contain only user-created metadata.
 
 ## Changes to the Configuration File
 * Configuration is no longer wrapped in a ‘configuration’ object.
-* Metadata is not wrapped in a ‘metadata’ object in the config file - it is now form field in the POST body or its own resource: https://apis.voicebase.com/v3/media/{{mediaId}}/metadata
+* Metadata is not wrapped in a ‘metadata’ object in the config file - it is now form field(s) in the POST body.
 
 *Note:* Posting media from a URL must specify ‘mediaURL’ instead of ‘media’ in the media POST. This allows better error validation.
 
 
 ### Languages
-are now set under ‘speechModel’
+Languages are now configured under ‘speechModel’
 
 v3:
 
@@ -43,7 +45,7 @@ v2-beta:
 ```
 
 ### Stereo
-Is now set under ‘stereo’ instead of ‘ingest’ and speaker is set by ‘speakerName’ instead of ‘speaker’
+Stereo is now configured under ‘stereo’ instead of ‘ingest’ and speaker is set by ‘speakerName’ instead of ‘speaker’
 
 v3:
 
@@ -78,8 +80,8 @@ v2-beta:
 ```
 
 ### PCI Detection & Redaction
-Is now set under 'prediction', 'detectors'
-Clarifying that PCI detection and redaction relies on the machine-learning prediction models and adding specificity to what is being executed as part of the request.
+PCI Detection & Redaction is now configured under 'prediction', 'detectors'
+Clarifying that PCI detection and redaction rely on the machine-learning prediction models and adding specificity to what is being executed as part of the request.
 PCI model is now specified under "detectorName", rather than model, clarifying that "PCI" is the name of the data detector.
 "redact" has been renamed "redactor", clarifying that the contained object is configuration for the media redactor.
 
@@ -117,7 +119,7 @@ v2-beta:
 ```
 
 ### Keyword Spotting
-Is now set under ‘spotting’ not ‘keywords’ and groups have a key of ‘groupName’.
+Keyword Spotting is now configured under ‘spotting’ not ‘keywords’ and groups have a key of ‘groupName’.
 *Note:* This allows you to create a Keyword Spotting Group and populate it from within the configuration.
 
 v3:
@@ -147,7 +149,7 @@ v2-beta:
 *NOTE:* v2-beta requires that the 'data-science' Keyword group already be created. The above v2-beta example merely calls it for use. For steps on configuring keywork groups in v2-beta, see: [keyword groups](http://voicebase-dev.readthedocs.io/en/v2-beta/how-to-guides/keyword-spotting.html)
 
 ### Number Formatting
-Is now set under ‘transcript’, ‘formatting’ and no longer under ‘transcripts’.
+Number Formatting is now configured under ‘transcript’, ‘formatting’ and no longer under ‘transcripts’.
 The key is now ‘enableNumberFormatting’ instead of ‘formatNumbers’ to keep syntax similar to other v3 options.
 *Note:* Number formatting is enabled by default in the v3 API, so enabling it in the configuration file is not necessary. You may set 'enableNumberFormatting' to 'false' do not wish to use the formatter on your transcripts.
 
@@ -176,7 +178,7 @@ v2-beta:
 ```
 
 ### Swear Word Filter
-Is now set under ‘transcript’, ‘contentFiltering’ not ‘transcripts’
+Swear Word Filter is now configured under ‘transcript’, ‘contentFiltering’ not ‘transcripts’
 The key is now ‘enableProfanityFiltering’ instead of ‘swearFilter’
 
 v3:
@@ -205,7 +207,7 @@ v2-beta:
 
 
 ### Custom Vocabulary
-Is now set under ‘vocabularies’ instead of ‘transcripts’,’vocabularies’ and terms now have a key ‘term’ and the value is the custom vocabulary term.
+Custom Vocabulary is now configured under ‘vocabularies’ instead of ‘transcripts’,’vocabularies’ and terms now have a key ‘term’ and the value is the custom vocabulary term.
 
 v3:
 
