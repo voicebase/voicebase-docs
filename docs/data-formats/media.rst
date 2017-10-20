@@ -6,11 +6,8 @@ See the bottom of the page for notes on hi-lighted sections.
 
 .. code-block:: json
   :linenos:
-  :emphasize-lines: 1
-
 
   {
-
     "prediction": {
       "classifiers": [ ],
       "detectors": [ ]
@@ -25,27 +22,10 @@ See the bottom of the page for notes on hi-lighted sections.
     },
     "transcript": {
       "words": [ ],
-      "alternateFormats" : [
-
-       ]
-
+      "alternateFormats" : [ ]
     },
-
-
-
     "metadata": { }
-
-
-
-    "_links" : {
-    },
-    "_job" : {
-    }
-
+    "_links" : { },
+    "_job" : { }
   }
 ..
-
-
-Notes:
-
-- line 5 (``"ingest": {``): speakerName and stereo are mutually exclusive

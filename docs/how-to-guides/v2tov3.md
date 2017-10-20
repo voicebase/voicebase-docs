@@ -2,13 +2,13 @@
 
 The /v3 API is an updated API “dialect” you can use to interact with the VoiceBase platform. /v3 joins /v2-beta as the currently supported API dialects for the VoiceBase platform. The /v3 API dialect incorporates a wide range of improvements and suggestions from our customers, and should be easier to learn and easier to use.
 We recommend that you migrate your apps to /v3 in order to take advantage of the new improvements and upcoming new features. If you are accustomed to using the /v2 API, the new /v3 API will look familiar, but with some changes you will need to be aware of as you migrate your code. The changes are outlined below, or you can instead review the entire sample
-[media](/data-formats/media.rst) response.
+[media](/en/v3/data-formats/media.html) response.
 
 
 ## Changes to Defaults
 
-* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out. You can of course turn off number formatting if you choose. See: [number formatting](number-formatting.md).
-* Knowledge (system generated keywords and topics) is *off* by default in v3.  This feature is powerful, but may not be required for your use case. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.md) feature.
+* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out. You can of course turn off number formatting if you choose. See: [number formatting](number-formatting.html).
+* Knowledge (system generated keywords and topics) is *off* by default in v3.  This feature is powerful, but may not be required for your use case. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.html) feature.
 
 ## Changes to Formatting
 * All duration values are reported in milliseconds for consistency
@@ -120,15 +120,14 @@ v2-beta:
 
 ### Keyword Spotting
 Keyword Spotting is now configured under ‘spotting’ not ‘keywords’ and groups have a key of ‘groupName’.
-*Note:* This allows you to create a Keyword Spotting Group and populate it from within the configuration.
 
 v3:
 
 ```json
 {
     "spotting": {
-            "groups": [ { "groupName": "data-science", "keywords": ["array", "of", "keywords"] } ]
-    }
+      "groups": [ { "groupName": "data-science" } ]
+    }  
 }
 ```
 
@@ -146,7 +145,9 @@ v2-beta:
 }
 ```
 
-*NOTE:* v2-beta requires that the 'data-science' Keyword group already be created. The above v2-beta example merely calls it for use. For steps on configuring keywork groups in v2-beta, see: [keyword groups](http://voicebase-dev.readthedocs.io/en/v2-beta/how-to-guides/keyword-spotting.html)
+*NOTE:* v3 and v2-beta require that the 'data-science' Keyword group already be created. The above example merely calls it for use. For steps on configuring keyword groups in v2-beta, see:[keyword groups](/en/v3/how-to-guides/keyword-spotting.html)
+
+For steps on configuring keyword groups in v2-beta, see: [keyword groups](/en/v2-beta/how-to-guides/keyword-spotting.html)
 
 ### Number Formatting
 Number Formatting is now configured under ‘transcript’, ‘formatting’ and no longer under ‘transcripts’.
