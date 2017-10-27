@@ -30,6 +30,7 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
   "mediaId": "bc14632d-e81b-4673-992d-5c5fb6573fb8",
   "status": "finished",
   "dateCreated": "2017-06-22T19:18:49Z",
+  "dateFinished": "2017-06-22T19:19:27Z",
   "mediaContentType": "audio/x-wav",
   "length": 10031,
   "transcript": {
