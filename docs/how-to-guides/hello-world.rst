@@ -89,6 +89,7 @@ The response includes a *mediaId* (assigned by the API) and a status of *accepte
     "mediaId": "10827f19-7574-4b54-bf9d-9387999eb5ec",
     "status": "accepted",
     "dateCreated": "2017-06-22T18:23:02Z",
+    "dateFinished": "2017-06-22T18:23:58Z",
     "mediaContentType": "audio/mp3",
     "length": 10031,
     "metadata": {}
