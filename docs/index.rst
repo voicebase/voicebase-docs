@@ -65,3 +65,8 @@ More information and guidances can be found in the:
   :caption: Developer Portal
 
   Developer Portal <https://apis.voicebase.com/developer-portal/>
+
+.. toctree::
+  :caption: License
+
+  license
