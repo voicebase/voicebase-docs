@@ -1,6 +1,6 @@
-# Keyword Spotting
+# Keyword and Phrase Spotting
 
-VoiceBase supports keyword (and key phrase) spotting. You can define groups of keywords (or key phrases), which are flagged when they are spotted in the recording.
+VoiceBase supports keyword and phrase spotting within your transcript. You can define groups of keywords (or key phrases), which are flagged when they are spotted in the recording.
 
 VoiceBase can also discover the keywords, key phrases, and topics in your recording using a processing known as semantic indexing. For more details, view [Keywords and Topics](keywords-and-topics.html).
 
@@ -10,7 +10,7 @@ VoiceBase allows you to specify pre-defined groups of keywords (or key phrases),
 
 To define new keyword group, or update an existing keyword group, simply PUT the group under '/definition/spotting/groups'. The body of the PUT request is a JSON object (`Content-Type: application/json`) that contains two keys:
 
- - `name` : the name of the keyword group
+ - `groupName` : the name of the keyword group
  - `keywords` : an array of the included keywords
 
 For example, to create group `big-data` that includes the keywords `data science`, `big data`, and `data mining`, make the following PUT request using curl, or an equivalent request using a tool of your choice:
@@ -19,7 +19,7 @@ For example, to create group `big-data` that includes the keywords `data science
 curl https://apis.voicebase.com/v3/definition/spotting/groups/data-science \
   --request PUT \
   --header "Content-Type: application/json" \  
-  --data '{ "name" : "data-science", "keywords" : [ "data science", "machine learning", "data mining", "classification" ] }' \
+  --data '{ "groupName" : "data-science", "keywords" : [ "data science", "machine learning", "data mining", "classification" ] }' \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
@@ -37,7 +37,7 @@ The response will look like the following:
 
 ```json
 {
-	"name": "data-science",
+	"groupName": "data-science",
 	"keywords": [ "data science", "machine learning", "data mining", "classification" ]
 }
 ```
@@ -110,7 +110,7 @@ Define a `keyword group` by making a PUT request to the `/definition/spotting/gr
 curl https://apis.voicebase.com/v3/definition/spotting/groups/data-science \
   --request PUT \
   --header "Content-Type: application/json" \  
-  --data '{ "name" : "data-science", "keywords" : [  "data science", "machine learning", "data mining", "classification" ] }' \
+  --data '{ "groupName" : "data-science", "keywords" : [  "data science", "machine learning", "data mining", "classification" ] }' \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
