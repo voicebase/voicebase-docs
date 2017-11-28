@@ -125,11 +125,10 @@ If you have a recording to transcribe and want to add ad hoc custom terms specif
 
 ### Pre-Defined List
 
-You can add a re-usable custom vocabulary list to your VoiceBase account with a PUT request to /v3/definition/vocabularies/($VOCABLISTNAME) with Content-Type application/json and the following body:
+You can add a re-usable custom vocabulary list to your VoiceBase account with a PUT request to /v3/definition/vocabularies/($VOCAB-LIST-NAME) with Content-Type application/json. In this example, we will create a list called 'earningsCalls' by making a PUT req and the following body:
 
 ```json
 {
-  "name": "earningsCalls",
   "terms": [
     {
       "soundsLike": [
