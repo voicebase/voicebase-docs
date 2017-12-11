@@ -13,8 +13,8 @@ English US           en-US  8, 16
 English UK           en-UK  8, 16
 English Australian   en-AU  8, 16
 French               fr-FR  8, 11
-German               de-DE  8, 11
-Italian              it-IT  8, 11
+German               de-DE  8, 16
+Italian              it-IT  8, 16
 Portuguese, Brazil   pt-BR  8
 Spanish, Latin Am.   es-LA  8, 16
 Spanish, Spain       es-ES  8, 11
