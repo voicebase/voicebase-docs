@@ -1,6 +1,28 @@
-# Number Formatting
+# Formatting and Punctuation
 
-VoiceBase can transcribe numbers found in the transcription be displayed in digit form. In V3 number formatting is enabled by default.
+In v3, formatting for US phone numbers and digits is enabled by default, though you may optionally disable it.
+
+Punctuation may be added to your US-English transcript by adding the correct tag to your configuration.
+
+## Advanced Punctuation
+
+Punctuation may be added to your transcripts by adding the following feature to your config file.
+Please note that Advanced Punctuation is only available for US-English at this time.
+
+```json
+{
+  "speechModel" : {
+        "language": "en-US",
+        "features" : [  "advancedPunctuation"  ]
+  }
+}
+```
+
+
+
+## Number Formatting
+
+VoiceBase can transcribe numbers found in the transcription be displayed in digit form. In v3, number formatting is enabled by default.
 
 To explicitly enable number-formatting, include the following snippet in your configuration:
 
