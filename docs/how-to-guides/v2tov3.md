@@ -7,8 +7,8 @@ We recommend that you migrate your apps to /v3 in order to take advantage of the
 
 ## Changes to Defaults
 
-* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out. You can of course turn off number formatting if you choose. See: [number formatting](number-formatting.html).
-* Knowledge (system generated keywords and topics) is *off* by default in v3.  This feature is powerful, but may not be required for your use case. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.html) feature.
+* Number formatting is now *on* by default in v3.  - We thought users would appreciate phone numbers, dates, times, dollar amounts being formatted instead of spelled out. You can of course turn off number formatting if you choose. See: [number formatting](formatting.md).
+* Knowledge (system generated keywords and topics) is *off* by default in v3.  This feature is powerful, but may not be required for your use case. Rather than give a bunch of extra data in the JSON, we thought returning transcripts faster would be preferred in v3. *You can always run Knowledge later* if you decide to use this feature by using the new [reprocessing](reprocessing.md) feature.
 
 ## Changes to Formatting
 * All duration values are reported in milliseconds for consistency
