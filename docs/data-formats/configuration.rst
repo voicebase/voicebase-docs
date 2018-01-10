@@ -11,7 +11,7 @@ Please see notes below for details about specific lines.
 
   {
     "speechModel": {
-      "language": "en-US"
+      "language": "en-US",
       "features": [  "advancedPunctuation"  ]
     },
     "ingest": {
