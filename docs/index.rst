@@ -46,7 +46,7 @@ More information and guidances can be found in the:
   how-to-guides/pci-ssn-pii-redaction
   how-to-guides/custom-vocabulary
   how-to-guides/s3-callbacks
-  how-to-guides/number-formatting
+  how-to-guides/formatting
   how-to-guides/voicemail
   how-to-guides/metadata
   how-to-guides/reprocessing
