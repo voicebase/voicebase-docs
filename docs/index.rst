@@ -44,6 +44,7 @@ More information and guidances can be found in the:
   how-to-guides/priority
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
+  how-to-guides/client-supplied-encryption.md
   how-to-guides/custom-vocabulary
   how-to-guides/s3-callbacks
   how-to-guides/formatting
