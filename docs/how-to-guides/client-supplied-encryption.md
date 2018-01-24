@@ -49,7 +49,7 @@ mediaGetById — Will work as normal until the media has finished processing.
 
 ```GET /v3/media/{mediaId}/progress``` Will return processing progress.
 
-```GET /v3/media/{mediaId}/metadata``` Will return media metadata *until the media has finished processing* and it becomes encrypted.
+```GET /v3/media/{mediaId}/metadata``` Will return 404 as the media metadata is encrypted.
 
 ```DELETE /v3/media/{mediaId}``` Will delete media.
 
