@@ -2,11 +2,13 @@
 
 In v3, formatting for US phone numbers and digits is enabled by default, though you may optionally disable it.
 
-Punctuation may be added to your US-English transcript by adding the correct tag to your configuration.
+Additional punctuation may be added to your US-English transcript by adding the correct tag to your configuration.
 
 ## Advanced Punctuation
 
-Punctuation may be added to your transcripts by adding the following feature to your config file.
+By default VoiceBase transcripts include minimal formatting, though v3 includes features for more robust transcript formatting.
+Advanced Punctuation may be added to your transcripts by adding the following feature to your config file.
+
 Please note that Advanced Punctuation is only available for US-English at this time.
 
 ```json
