@@ -1,9 +1,11 @@
 # Obtaining Your New API Token
 
-After you've set up your account with a new email and password, you will be able to create and manage API tokens from the VoiceBase Developer Portal [key management](https://apis.voicebase.com/developer-portal/#!/key-manager). This is also accessible from the main view from the Developer Portal at any time.
+After you've set up your account with a new password, you will be able to create and manage API tokens from the [VoiceBase Developer Portal](https://apis.voicebase.com/developer-portal/). After you have signed in, click the "Bearer Token Management" tile.
+
+![Token Management Screen Shot](https://github.com/Daniel085/bucket/raw/master/tokenmgmt.png)
 
 ## Add a New Token
-After you have navigated to the Key Management, click the "New Token" button to create a new token. After clicking 'Create Token', you will be shown the following screen.
+After you have navigated to the Bearer Token Management, click the "New Token" button to create a new token. After clicking 'Create Token', you will be shown the following screen.
 
 Download or copy the Bearer Token to your clipboard so that you can quickly update your API calls.
 
