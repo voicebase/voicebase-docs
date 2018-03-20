@@ -8,9 +8,9 @@ Users may create a PGP key using PGP or GPG tools. We recommend to use an "RSA a
 
 ```bash
 curl -s "https://apis.voicebase.com/v3/security/public-keys"
---header "Authorization: Bearer XXXXXX"
+--header "Authorization: Bearer $TOKEN"
 --header "Content-Type: application/octet-stream"
---data-binary @./jsmith-public-key.asc
+--data-binary @./my-public-key.asc
 ```
 
 The upload will return a "publicKeyId". Use this ID when uploading the media.
@@ -22,14 +22,12 @@ Add the publicKeyId in your v3 API Configuration:
 
 ```json
 {
-    ...
-    "encryption" {
+    "encryption" : {
         "publicKeyId" : "the unique identifier"
      },
     "searchability" : {
         "searchable" : false
     }
-     ...
 }
 ```
 
