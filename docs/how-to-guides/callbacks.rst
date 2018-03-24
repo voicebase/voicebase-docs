@@ -173,7 +173,7 @@ IP Whitelist
 ~~~~~~~~~~~~
 
 All egress traffic flows from our servers out through one of these three
-(currently) NAT gateways. The IPs are, 52.6.224.43 52.6.208.178
+(currently) NAT gateways. The IPs are, 52.6.244.43 52.6.208.178
 52.2.171.140
 
 Callback Data
