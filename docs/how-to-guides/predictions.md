@@ -17,10 +17,10 @@ classifier to your account, and we can guide you through the process.
 
 ## Listing classifiers
 
-A list of classifiers available in your account can be obtained as follows by making a GET request on the `/definitions/predictions/models` resource.
+A list of classifiers available in your account can be obtained as follows by making a GET request on the `/definition/prediction/classifiers` resource.
 
 ```bash
-curl https://apis.voicebase.com/v3/definitions/predictions/classifiers \
+curl https://apis.voicebase.com/v3/definition/prediction/classifiers \
      --header "Authorization: Bearer ${TOKEN}"
 ```
 
@@ -29,7 +29,7 @@ An example response:
 ```json
 {
   "_links" : {
-    "self" : { "href": "/v3/definitions/predictions/classifiers" }
+    "self" : { "href": "/v3/definition/prediction/classifiers" }
   },
   "classifiers" : [
     {
