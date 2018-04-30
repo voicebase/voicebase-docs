@@ -62,6 +62,6 @@ The following additional requirements apply to multi-part POST requests:
 
 # TLS Security
 
-Requests should use a secure TLS protocol and cipher suite. We continually
+Requests must use TLS v1.2 protocol. We continually
 update our TLS policies to maintain a grade of A- of better from SSL Labs.
 Requests that specify weaker TLS security are rejected.
