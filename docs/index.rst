@@ -54,6 +54,7 @@ More information and guidances can be found in the:
   how-to-guides/aligner
   how-to-guides/swagger-codegen
   how-to-guides/https-request-security
+  how-to-guides/categories
 
 
 
