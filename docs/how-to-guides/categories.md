@@ -12,7 +12,6 @@ The JSON body of the request contains the category definition. For example:
 
 ```json
 {
-  "categoryName": "hello",
   "categoryDescription": "This category looks for participants saying hello",
   "query": "SELECT * FROM media MATCH 'hello'",
   "notes": "Notes about creating or maintaining the category can be added here",
