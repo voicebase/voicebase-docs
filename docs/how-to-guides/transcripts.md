@@ -34,34 +34,42 @@ Speaker identification is enabled by multi-channel audio, where each channel is 
   "mediaContentType": "audio/x-wav",
   "length": 10031,
   "transcript": {
-     "words":[  
-        {  
+     "words":[
+        {
            "p":1,
-           "c":0.1,
            "s":2200,
+           "c":1.0,
            "e":2350,
-           "w":"agent: ",
+           "w":"agent",
            "m":"turn"
         },
-        {  
+        {
            "p":2,
-           "c":0.537,
            "s":2200,
+           "c":0.537,
            "e":2300,
            "w":"Hello"
         },
-        {  
-           "p":52,
-           "c":0.1,
+        {
+          "p":3,
+          "s":2300,
+          "c":1.0,
+          "e":2300,
+          "w":".",
+          "m":"punc"
+        },
+        {
+           "p":4,
            "s":2400,
+           "c":0.1,
            "e":2550,
-           "w":"caller: ",
+           "w":"caller",
            "m":"turn"
         },
-        {  
-           "p":53,
-           "c":0.975,
+        {
+           "p":5,
            "s":2400,
+           "c":0.975,
            "e":2500,
            "w":"Hi"
         }
