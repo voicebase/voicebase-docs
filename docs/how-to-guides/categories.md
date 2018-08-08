@@ -82,7 +82,7 @@ For example:
 {
   "categories": [
     { "categoryName": "hello", "categoryValue": 1 },
-    { "categoryName": "goobye", "categoryValue": 0 }
+    { "categoryName": "goodbye", "categoryValue": 0 }
   ]
 }
 ```
