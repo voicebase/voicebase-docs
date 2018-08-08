@@ -127,3 +127,18 @@ The definition of each available metric is included below.
 - `call-change-in-sentiment`: A score that compares the sentence sentiment values for the first 3rd of the transcript to the last 3rd of the transcript.
 - `caller-intra-call-change-in-sentiment`: A score that compares the sentence sentiment values of the caller for the first 3rd of the transcript to the last 3rd of the transcript.
 - `caller-sentiment`: A score that compares all the sentence sentiment values of the caller for the transcript.
+
+## Prerequisites for Use
+
+Conversation Metrics are designed to be used for stereo conversations between a
+caller and an agent. There are some hard requirements to generate meaningful results,
+and some strongly recommended features of call processing.
+
+Requirements for use are:
+- Calls MUST be processed in stereo for agent and caller specific metrics (otherwise, these metrics always return 0)
+- The `agent` SHOULD have a speaker name that is one of: `agent`, `service`, `representative`, `operator`, `salesperson`, `callcenter`, `contactcenter`
+- The `caller` SHOULD have a speaker name that is one of: `caller`, `client`, `customer`, `prospect`
+- If the speaker names are not specified as above, the first speaker is assumed to be the agent, and the second speaker is assumed to be the caller
+- For the sentiment metrics, the language MUST be one of: `en-US`, `en-AU`, `en-UK`
+- Voice features SHOULD be enabled, and required for some talk style, tone, and volume metrics
+- Advanced punctuation SHOULD be enabled
