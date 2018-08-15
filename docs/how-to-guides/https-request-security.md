@@ -53,7 +53,9 @@ The following requirements apply to `POST` requests:
 - `POST` requests MUST specify the `Content-Type` of the body
 - `POST` requests MUST specify the `Content-Length` of the body
 - `POST` request type size MUST match the specified `Content-Type`
-- `POST` request body size MUST match the specified `Content-Length`
+- `POST` request body size MUST match the specified `Content-Length`,
+  unless Chunked-Transfer is used
+- `POST` requests with Chunked-Transfer encoding MUST specify the `Content-Length` of each chunk
 - `POST` requests over 1MB in size SHOULD use Chunked-Transfer encoding
 and 100-Continue
 
@@ -83,7 +85,7 @@ returned by the API as acceptable (most APIs return `application/json`).
 Omitting the `Accept` header is interpreted as `Accept: */*`, but this is not
 recommended.
 
-# TLS Security
+## TLS Security
 
 Requests should use a secure TLS protocol and cipher suite. We periodically
 update our TLS policies to maintain a grade of A- or better from SSL Labs.
