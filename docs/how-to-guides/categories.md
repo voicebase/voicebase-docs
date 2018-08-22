@@ -72,6 +72,28 @@ The `configuration` contains the following fields:
 - `categories`: The configuration section for categorization
 - `allCategories`: A flag that indicates all categories should be computed
 
+## Computing specific categories
+
+To enable categorization (computing categories) for a specific subset of categories, add a `categories` section to your `configuration` when POSTing to /media. The `categories` configuration is an array. For each category to compute, add an element consisting of a JSON
+object with the `categoryName` key set to the name of the category.
+
+For example:
+
+```json
+{
+  "categories": [
+    { "categoryName": "hello" },
+    { "categoryName": "goodbye" }
+  ]
+}
+```
+
+The `configuration` contains the following fields:
+
+- `categories`: The configuration section for categorization
+- `categoryName`: The name of a specific category to compute
+
+
 ## Results for categories
 
 Results of categorization (computing categories) are included with responses from `GET /v3/media/{mediaId}` API, and in callbacks.
