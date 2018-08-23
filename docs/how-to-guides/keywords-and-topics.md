@@ -17,14 +17,14 @@ Semantic keywords and topics are discovered automatically (for [languages where 
      {
        "speakerName" : "caller",
        "occurrences" : [
-          { "s": 34480, "e": 35545, "exact": "subscription" },
-          { "s": 57340, "e": 59034, "exact": "membership" }
+          { "s": 34480, "exact": "subscription" },
+          { "s": 57340, "exact": "membership" }
        ]
      },
      {
        "speakerName" : "agent",
        "occurrences" : [
-          { "s": 40010, "e": 42100, "exact": "subscription" }
+          { "s": 40010, "exact": "subscription" }
        ]
      }
 
@@ -49,14 +49,14 @@ Topics are reported by grouping a set of keywords that relate to each other. For
          {
            "speakerName" : "caller",
            "occurrences" : [
-              { "s": 34480, "e": 35545, "exact": "solar power" },
-              { "s": 57340, "e": 59034, "exact": "solar energy" }
+              { "s": 34480, "exact": "solar power" },
+              { "s": 57340, "exact": "solar energy" }
            ]
          },
          {
            "speakerName" : "agent",
            "occurrences" : [
-              { "s": 40010, "e": 42100, "exact": "solar power" }
+              { "s": 40010, "exact": "solar power" }
            ]
          }
 
@@ -69,8 +69,8 @@ Topics are reported by grouping a set of keywords that relate to each other. For
          {
            "speakerName" : "caller",
            "occurrences" : [
-              { "s": 134480, "e": 135545, "exact": "solar water heater" },
-              { "s": 157340, "e": 159034, "exact": "solar thermal collector" }
+              { "s": 134480, "exact": "solar water heater" },
+              { "s": 157340, "exact": "solar thermal collector" }
            ]
          }
       ]
