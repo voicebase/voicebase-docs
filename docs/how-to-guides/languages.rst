@@ -30,16 +30,16 @@ Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Forma
 Language               Transcription  Callbacks Number Formatting   Knowledge Extraction  Predictions  PCI
 =====================  =============  ========= ==================  ====================  ===========  ====
 Dutch                       √             √
-English US                  √             √             √                    √                √       √
-English UK                  √             √             √                    √                √       √
-English AU                  √             √             √                    √                √       √
+English US                  √             √             √                    √                √        √
+English UK                  √             √             √                    √                √        √
+English AU                  √             √             √                    √                √        √
 French                      √             √
 German                      √             √
 Italian                     √             √
 Portuguese, BR              √             √
 Spanish, LatAm              √             √
 Spanish, Spain              √             √
-=====================  =============  ========= ==================  ====================  ========== ====
+=====================  =============  ========= ==================  ====================  ===========  ====
 
 
 Configuring Language Support
