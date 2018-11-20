@@ -163,7 +163,7 @@ the callback URL provided according to the following schedule until a success
 response or the schedule ends:
 
 ============= ===================== =========================
-Retry Number  Time since last retry Time since Initial Try
+Retry number  Time since last retry Time since initial try
 ============= ===================== =========================
 1             Immediate             0
 2             15 min                15 min
