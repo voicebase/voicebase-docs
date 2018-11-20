@@ -158,16 +158,21 @@ processing using a GET request to /v3/media/{mediaId}.
 Callback Retry Logic
 ~~~~~~~~~~~~~~~~~~~~
 
-If a success response is not achieved on the first attempt, VoiceBase
-will do the following:
+If a success response is not achieved on the first attempt, VoiceBase will retry
+the callback URL provided according to the following schedule until a success
+response or the schedule ends:
 
-1) Retry immediately up to two times.
-2) Put the callback delivery on schedule to re-attempt in 15 minutes,
-   and the time doubled until it hits 16 hours between reattempts (in
-   total, VoiceBase will stop after 36 hours).
-
-If the file has not been accepted after step b) the status of the media
-file will change to 'finished' and VoiceBase will stop attempting.
+============= ===================== =========================
+Retry Number  Time since last retry Time since Initial Try
+============= ===================== =========================
+1             Immediate             0
+2             15 min                15 min
+3             30 min                45 min
+4             1 hour                1 hour  45 min (105 min)
+5             2 hours               3 hours 45 min (223 min)
+6             4 hours               7 hours 45 min (465 min)
+7             8 hours               15 hours 45 min (945 min)
+============= ===================== =========================
 
 IP Whitelist
 ~~~~~~~~~~~~
