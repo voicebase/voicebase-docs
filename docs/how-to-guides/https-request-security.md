@@ -87,6 +87,6 @@ recommended.
 
 ## TLS Security
 
-Requests should use a secure TLS protocol and cipher suite. We periodically
-update our TLS policies to maintain a grade of A- or better from SSL Labs.
+Requests must use TLS v1.2 protocol. We continually update our TLS policies to
+maintain a grade of A- of better from SSL Labs.
 Requests that specify weaker TLS security are rejected.
