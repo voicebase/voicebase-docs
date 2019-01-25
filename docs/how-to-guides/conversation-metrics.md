@@ -117,7 +117,7 @@ The definition of each available metric is included below.
 - `caller-relative-voice-volume-energy`: The measure of how energetically an agent speaks. The metric is the average volume of the agent’s words divided by a fixed average volume of a good caller (=7.57). This metric applies only to Stereo calls, and will return a zero for all other types of calls.
 - `caller-voice-dynamism-std-dev-score`: The measure of the standard deviation for all the caller’s words in a transcription. This metric applies only to Stereo calls, and will return a zero for all other types of calls.
 
-### Specific Sentiment Metrics (12 metrics)
+### Sentiment Metrics (12 metrics)
 
 *Note:* Sentiment scores are calculated with a combination of machine classification and NLP for sentences in the transcript.
 
