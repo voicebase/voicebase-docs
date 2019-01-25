@@ -117,16 +117,23 @@ The definition of each available metric is included below.
 - `caller-relative-voice-volume-energy`: The measure of how energetically an agent speaks. The metric is the average volume of the agent’s words divided by a fixed average volume of a good caller (=7.57). This metric applies only to Stereo calls, and will return a zero for all other types of calls.
 - `caller-voice-dynamism-std-dev-score`: The measure of the standard deviation for all the caller’s words in a transcription. This metric applies only to Stereo calls, and will return a zero for all other types of calls.
 
-### Specific Sentiment Metrics (6 metrics)
+### Specific Sentiment Metrics (12 metrics)
 
 *Note:* Sentiment scores are calculated with a combination of machine classification and NLP for sentences in the transcript.
 
-- `agent-intra-call-change-in-sentiment`: A score that compares the sentence sentiment values of the agent for the first 3rd of the transcript to the last 3rd of the transcript.
-- `agent-sentiment`: A score that compares all the sentence sentiment values of the agent for the transcript.
-- `call-sentiment`: A score that compares all the sentence sentiment values for the transcript.
-- `call-change-in-sentiment`: A score that compares the sentence sentiment values for the first 3rd of the transcript to the last 3rd of the transcript.
-- `caller-intra-call-change-in-sentiment`: A score that compares the sentence sentiment values of the caller for the first 3rd of the transcript to the last 3rd of the transcript.
-- `caller-sentiment`: A score that compares all the sentence sentiment values of the caller for the transcript.
+
+- `call-sentiment`: A score that compares all the sentence sentiment values for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `start-sentiment`: A score that compares all of the sentence sentiment values for the first third of the total sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `end-sentiment`: A score that compares all of the sentence sentiment values for the last third of the total sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `call-change-in-sentiment`: A score that subtracts the End-sentiment from the Start-sentiment. The range is -2 to 2 with a -2 for a call that started very positive but ended very negative, 0 for a call that did not change in sentiment and 2 for a call that started very negative but ended very positive.
+- `agent-sentiment`: A score that compares all the sentence sentiment values of the agent for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `agent-start-sentiment`: A score that compares all of the agent sentence sentiment values for the first third of the total agent sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `agent-end-sentiment`: A score that compares all of the agent sentence sentiment values for the last third of the total agent sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `agent-intra-call-change-in-sentiment`: A score that subtracts the Agent-end-sentiment from the Agent-start-sentiment. The range is -2 to 2 with a -2 for a call that started very positive but ended very negative, 0 for a call that did not change in sentiment and 2 for a call that started very negative but ended very positive.
+- `caller-sentiment`: A score that compares all the sentence sentiment values of the caller for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `caller-start-sentiment`: A score that compares all of the caller sentence sentiment values for the first third of the total caller sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `caller-end-sentiment`: A score that compares all of the caller sentence sentiment values for the last third of the total caller sentences for the transcript. The range is between -1 and 1 with -1 for very negative, 0 for neutral and 1 for very positive.
+- `caller-intra-call-change-in-sentiment`: A score that subtracts the Caller-end-sentiment from the Caller-start-sentiment. The range is -2 to 2 with a -2 for a call that started very positive but ended very negative, 0 for a call that did not change in sentiment and 2 for a call that started very negative but ended very positive.
 
 ## Prerequisites for Use
 
