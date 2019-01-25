@@ -27,8 +27,7 @@ Make a POST request to `/media/${MEDIA_ID}` including a `configuration` and a `t
 curl -v -s https://apis.voicebase.com/v3/media/$MEDIA_ID \
   --header "Authorization: Bearer ${TOKEN}" \
   -X POST \
-  --form configuration='{}' \
-  --form transcript=@transcript.text
+  --form configuration='{}' 
 ```
 
 Then, make a GET request on the `/media/${MEDIA_ID}` resource to download the latest transcripts and configured analytics and predictions.
