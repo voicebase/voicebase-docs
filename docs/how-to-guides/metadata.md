@@ -17,7 +17,7 @@ Here is a sample metadata
   "extended" : {
        "call" : {
          "date" : "2017-05-01",
-         "phone" : "+1-307-388-2123",
+         "phone" : "+1-307-388-2123"
        },
        "upselling" : true
   }
