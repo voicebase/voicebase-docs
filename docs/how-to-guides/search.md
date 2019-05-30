@@ -4,7 +4,6 @@ VoiceBase can search across uploaded media documents **and** related results and
 
 To search media documents, one makes a GET request on the `/media` resource with any combination of the following acceptable query parameters:
 
-- `query` : Free text search
 - `after` : Document uploaded after this mediaId
 - `externalId` : Documents with the specified external id in the metadata.
 - `extendedFilter` : A special filter which is of the form 'extendedFilter=Name:Value' which allows you to filter by extended metadata. Please note that the value of this field should be url encoded.
@@ -24,45 +23,13 @@ To search media documents, one makes a GET request on the `/media` resource with
 export TOKEN='Your Api Token'
 ```
 
-### Simple Search
-
-To execute a search, make a GET request to the “media” collection with a “query” parameter.  For example, to look for media where the word "bill" is relevant:
-
-```bash
-curl https://apis.voicebase.com/v3/media?query=bill \
-  --header "Authorization: Bearer ${TOKEN}"
-```
-
-### Compound Expression Search
-
-To search for media containing the terms any of the terms “bill”, “charge”, “recurring payment”, first create a query expression using the OR operator, double-quoting multi-word phrases (and optionally double-quoting single words).
-
-```bash
-“bill” OR “charge” OR “recurring payment”
-```
-
-Next, url-encode the expression:
-
-```bash
-%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22
-```
-
-Then use the encoded expression as the query parameter.
-
-```bash
-   export QUERY='%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22'
-   curl --header “Authorization: Bearer ${TOKEN}” \
-        'https://apis.voicebase.com/v3/media?query=${QUERY}'
-```
-
-
 ### Metadata-Scoped Search
 
-To scope the search to records containing a specific metadata value, add a metadata filter parameter. For example, to search for the word “bill” among only media with a “customerId” of “10101”:
+To scope the search to records containing a specific metadata value, add a metadata filter parameter. For example, to search media with a “customerId” of “10101”:
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v3/media?extendedFilter=customerId%3A10101&query=bill
+https://apis.voicebase.com/v3/media?extendedFilter=customerId%3A10101
 ```
 
 #### Searchable Field Definitions
@@ -83,7 +50,7 @@ To restrict a search to media for a specific time range, add filters for lower a
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v3/media?onOrAfterDate=2016-01-01&onOrBeforeDate=2016-02-01&query=bill
+https://apis.voicebase.com/v3/media?onOrAfterDate=2016-01-01&onOrBeforeDate=2016-02-01
 ```
 
 VoiceBase supports [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dDMPbW2n0x6l2B9nMJW7t5XZs8pTd2PN1qwvy8cV_HYW63JXmj56dN3wf47T3Y802?t=https://en.wikipedia.org/wiki/ISO_8601&si=5704743390019584&pi=f6509585-0574-49d3-b691-b930efd9d8ab) dates in either short form (YYYY-MM-DD) or including time (YYYY-MM-DDThh:mm:ssZ).
@@ -107,9 +74,9 @@ https://apis.voicebase.com/v3/media?after=${MEDIA_ID}
 
 ### Search with compound expressions, metadata-scoping, time-range, and pagination
 
-To achieve metadata-scoping, date range filters, compound expressions and pagination, all three expressions can be combined as shown in this GET request on the `/media` resource with the `onOrBeforeDate`, `onOrAfterDate`, `after`, `limit`, and `query` parameters included.
+To achieve metadata-scoping, date range filters, compound expressions and pagination, all three expressions can be combined as shown in this GET request on the `/media` resource with the `onOrBeforeDate`, `onOrAfterDate`, `after` and `limit` parameters included.
 
 ```bash
 curl --header “Authorization: Bearer ${TOKEN}” \
-https://apis.voicebase.com/v3/media?extendedFilter=customerId%3A10101&onOrAfterDate=2016-01-01&onOrBeforeDate=2016-02-01&limit=100&after=8d109ced-2627-4427-8d8f-24a30f6b86b3&query=%22bill%22%20OR%20%22charge%22%20OR%20%22recurring%20payment%22
+https://apis.voicebase.com/v3/media?extendedFilter=customerId%3A10101&onOrAfterDate=2016-01-01&onOrBeforeDate=2016-02-01&limit=100&after=8d109ced-2627-4427-8d8f-24a30f6b86b3
 ```
