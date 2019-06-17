@@ -7,7 +7,7 @@ To search media documents, one makes a GET request on the `/media` resource with
 - `after` : Document uploaded after this mediaId
 - `externalId` : Documents with the specified external id in the metadata.
 - `extendedFilter` : A special filter which is of the form 'extendedFilter=Name:Value' which allows you to filter by extended metadata. Please note that the value of this field should be url encoded.
-- `onOrAfterDate` : Created on or before this date. Acceptable format: [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dDMPbW2n0x6l2B9nMJW7t5XZs8pTd2PN1qwvy8cV_HYW63JXmj56dN3wf47T3Y802?t=https://en.wikipedia.org/wiki/ISO_8601&si=5704743390019584&pi=f6509585-0574-49d3-b691-b930efd9d8ab) dates in either short form (YYYY-MM-DD) or including time (YYYY-MM-DDThh:mm:ssZ).
+- `onOrAfterDate` : Created on or after this date. Acceptable format: [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dDMPbW2n0x6l2B9nMJW7t5XZs8pTd2PN1qwvy8cV_HYW63JXmj56dN3wf47T3Y802?t=https://en.wikipedia.org/wiki/ISO_8601&si=5704743390019584&pi=f6509585-0574-49d3-b691-b930efd9d8ab) dates in either short form (YYYY-MM-DD) or including time (YYYY-MM-DDThh:mm:ssZ).
 - `onOrBeforeDate` : Created on or before this date. Acceptable format: [ISO8601](http://t.sidekickopen06.com/e1t/c/5/f18dQhb0S7lC8dDMPbW2n0x6l2B9nMJW7t5XZs8pTd2PN1qwvy8cV_HYW63JXmj56dN3wf47T3Y802?t=https://en.wikipedia.org/wiki/ISO_8601&si=5704743390019584&pi=f6509585-0574-49d3-b691-b930efd9d8ab) dates in either short form (YYYY-MM-DD) or including time (YYYY-MM-DDThh:mm:ssZ).
 - `limit` : Limit of media documents returned.
 - `sortOrder` : Sort order of media documents by date.
