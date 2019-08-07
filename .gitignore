@@ -93,3 +93,7 @@ ENV/
 docs/.DS_Store
 
 docs/.DS_Store
+
+# jetbrains
+.idea/
+

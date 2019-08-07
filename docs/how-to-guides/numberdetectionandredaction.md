@@ -8,10 +8,10 @@ To enable PCI detection, add the PCI detector to your configuration when POSTing
 
 ```json
 {  
-  "configuration": { 
-    "detections": [ 
+  "prediction": { 
+    "detectors": [ 
       {  
-        "model": "Number"
+        "detectorName": "Number"
       }
     ]
   }
@@ -24,13 +24,34 @@ When Number detection is enabled, the predictions section of the /media resource
 
 ```json
 {
-  "detections": [
-    {
-      "type": "Number",
-      "e": 181280,
-      "s": 127830
-    }
-  ]
+  "prediction": {
+    "detectors": [
+      {
+        "detectorName": "Number",
+        "detectorVersion": "1.0.0",
+        "detections": [
+          {
+            "detectorClass": 1,
+            "detectorClassLabel": "Number",
+            "detectedSegments": [
+              {
+                "occurrences": [
+                  {
+                    "s": 2250,
+                    "e": 2680
+                  },
+                  {
+                    "s": 8540,
+                    "e": 8830
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
 ```
 
