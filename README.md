@@ -1,4 +1,4 @@
-# VoiceBase V2 Beta API Documentation
+# VoiceBase V3 API Documentation
 
 This repository contains developer documentation for the VoiceBase (V3) API.
 
