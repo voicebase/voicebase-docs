@@ -1,6 +1,6 @@
 # Aligner
 
-VoiceBase allows you to align a human edited transcript with a previously run machine-generated transcript.  
+VoiceBase allows you to align a human edited or new machine transcript with a previously run machine-generated transcript.  
 
 ## Examples
 

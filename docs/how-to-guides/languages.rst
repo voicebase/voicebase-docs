@@ -54,7 +54,7 @@ For example, to transcribe a recording in Australian English:
 
     {
       "speechModel" : {
-        "language" : "en-US"
+        "language" : "en-AU"
       }
     }
 
@@ -65,8 +65,7 @@ Disabling Semantic Keywords and Topics
 --------------------------------------
 
 `Semantic keywords and topics <keywordsandtopics.html>`__ are not
-currently supported with Spanish and Portuguese. When transcribing in
-these languages, don't enable these options in your configuration.
+currently supported with German, Italian, or Portuguese, please disable the feature in your configuration for these languages.
 
 .. code:: json
 

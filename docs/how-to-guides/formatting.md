@@ -52,12 +52,12 @@ Additionally, VoiceBase can detect phone numbers and format them into a US phone
 
 Without number formatting enabled, a plain-text transcript will look like:
 
->"Hi this is Brian from VoiceBase please give me a call back at six five zero two four eight nine six five two thank you."
+>"Hi this is Brian from VoiceBase please give me a call back at six five zero eight nine seven five one seven zero thank you."
 
 
 A plain-text transcript with number formatting enabled:
 
->"Hi this is Brian from VoiceBase please give me a call back at 650-248-9652 thank you."
+>"Hi this is Brian from VoiceBase please give me a call back at 650-897-5170 thank you."
 
 And an excerpt of the number-formatted JSON response:
 
@@ -78,7 +78,7 @@ For simplicity the following keys & respective values have been omitted - start 
           },
           {
             "p": 15,
-            "w": "650-248-9652"
+            "w": "650-897-5170"
           },
 ```
 As you can see in the JSON response, the phone number will be returned in one word value with the time-stamp beginning at the first digit said and ending at the last digit.

@@ -89,9 +89,9 @@ Keyword relevance is computed by matching detected keywords and key phrases to a
 
 Topic relevance is computed by grouping discovered keywords into topics of interest applying a similar relevance algorithm to the aggregate.
 
-## Disabling Semantic Keywords and Topics
+## Enabling Semantic Keywords and Topics
 
-Adding keywords and topics to your media post configuration, enables semantic keywords and topic extraction.
+Enable semantic keywords and topic extraction by adding keywords and topics to your media POST configuration. 
 
 The configuration attachment should contain the key:
 

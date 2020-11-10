@@ -8,9 +8,8 @@ You may also use the reprocessing feature to re-process different configuration 
 
 For example, you may use the reprocessing feature to:
 * Enable Knowledge Extraction, if you previously did not have this set
-* Submit a human edited plaintext transcript, and receive a closed-captioning file.
 * Enable PCI Detection / Redaction if you decide you would like to remove PCI from your transcripts and / or audio files.
-* Enable Number formatting, if you previously set this to disabled.
+* Enable Number Formatting, if you previously set this to disabled.
 * Run new machine learning models on existing media files.
 
 *Please Note:* Custom Vocabulary modifies the speech engine with a custom set of terms for audio processing. Since the speech engine is not run during reprocessing, Custom Vocabulary is not updated.
@@ -20,7 +19,7 @@ For example, you may use the reprocessing feature to:
 Assume that MEDIA_ID='7eb7964b-d324-49cb-b5b5-76a29ea739e1' is a valid media ID of a previously uploaded file for transcription.
 
 
-Make a POST request to `/media/${MEDIA_ID}` including a `configuration` and a `transcript` attachment. Do *not* include a 'media' attachment or 'mediaUrl'
+Make a POST request to `/media/${MEDIA_ID}` including a `configuration` attachment. Do *not* include a 'media' attachment or 'mediaUrl'
 
 
 ```bash
