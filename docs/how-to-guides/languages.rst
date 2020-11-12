@@ -1,45 +1,27 @@
 Languages
 =========
 
-VoiceBase supports several spoken languages and dialects.
-
-**Languages supported in the V3 API:**
-
-===================  =====  ======
-Language             Code   Supported Frequencies (kHz)
-===================  =====  ======
-Dutch                nl-NL  8, 11
-English US           en-US  8, 16
-English UK           en-UK  8, 16
-English Australian   en-AU  8, 16
-French               fr-FR  8, 11
-German               de-DE  8, 16
-Italian              it-IT  8, 16
-Portuguese, Brazil   pt-BR  8
-Spanish, Latin Am.   es-LA  8, 16
-Spanish, Spain       es-ES  8, 11
-===================  =====  ======
-
+VoiceBase supports the following languages and dialects.
 
 
 **Feature Support by Language:**
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
-=====================  =============  ========= ==================  ====================  ===========  ====
-Language               Transcription  Callbacks Number Formatting   Knowledge Extraction  Predictions  PCI
-=====================  =============  ========= ==================  ====================  ===========  ====
-Dutch                       √             √
-English US                  √             √             √                    √                √        √
-English UK                  √             √             √                    √                √        √
-English AU                  √             √             √                    √                √        √
-French                      √             √
-German                      √             √
-Italian                     √             √
-Portuguese, BR              √             √
-Spanish, LatAm              √             √
-Spanish, Spain              √             √
-=====================  =============  ========= ==================  ====================  ===========  ====
+===================  =====  =============  ========= ==================  ====================  ===========  ====
+Language             Code   Transcription  Callbacks  Number Formatting  Knowledge Extraction  Predictions  PCI
+===================  =====  =============  ========= ==================  ====================  ===========  ====
+English US           en-US      √             √             √                    √                √          √
+English UK           en-UK      √             √             √                    √                √          √
+English AU           en-AU      √             √             √                    √                √          √
+French               fr-FR      √             √             √                    √
+German               de-DE      √             √             √
+Italian              it-IT      √             √             √
+Portuguese Brazil    pt-BR      √             √             √
+Spanish LatAm        es-LA      √             √             √                    √
+Spanish Spain        es-ES      √             √             √                    √
+Spanish US           es-US      √             √             √                    √ 
+===================  =====  =============  ========= ==================  ====================  ===========  ====
 
 
 Configuring Language Support
