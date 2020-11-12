@@ -55,7 +55,6 @@ More information and guidances can be found in the:
   how-to-guides/https-request-security
   how-to-guides/categories
   how-to-guides/conversation-metrics
-  how-to-guides/advanced-punctuation
   how-to-guides/voice-features
 
 
