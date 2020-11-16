@@ -28,7 +28,7 @@ attachment should contain the publish key, for example as below:
           {
             "url" : "https://example.org/callback",
             "method" : "POST",
-            "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams", "spotting" ]
+            "include" : [ "knowledge", "metadata", "prediction", "spotting", "streams", "transcript", "metrics", "speakerSentiments", "conversation", "categories", "messages" ]
           },
           {
             "url" : "https://example.org/callback/vtt",
@@ -166,20 +166,24 @@ response or the schedule ends:
 Retry number  Time since last retry Time since initial try
 ============= ===================== =========================
 1             Immediate             0
-2             15 min                15 min
-3             30 min                45 min
-4             1 hour                1 hour  45 min (105 min)
-5             2 hours               3 hours 45 min (223 min)
-6             4 hours               7 hours 45 min (465 min)
-7             8 hours               15 hours 45 min (945 min)
+2             Immediate             <1 min
+3             Immediate             <1 min
+4             15 min                15 min
+5             30 min                45 min
+6             1 hour                1 hour  45 min (105 min)
+7             2 hours               3 hours 45 min (223 min)
+8             4 hours               7 hours 45 min (465 min)
+9             8 hours               15 hours 45 min (945 min)
 ============= ===================== =========================
 
 IP Whitelist
 ~~~~~~~~~~~~
 
-All egress traffic flows from our servers out through one of these three
-(currently) NAT gateways. The IPs are, 52.6.244.43 52.6.208.178
-52.2.171.140
+For VoiceBase US all egress traffic flows from our servers out through one of these three
+(currently) NAT gateways. The IPs are, 52.6.244.43, 52.6.208.178, 52.2.171.140
+
+For VoiceBase EU all egress traffic flows from our servers out through one of these three
+(currently) NAT gateways. The IPs are, 34.248.80.158, 52.210.18.246, 54.72.141.175
 
 Callback Data
 -------------
@@ -190,128 +194,312 @@ object with the following data:
 
 .. code:: json
 
-    {
-      "mediaId": "710a4041-b78a-46ae-b626-773b90316c3b",
-      "status": "finished",
-      "mediaContentType": "audio/mpeg",
-      "length": 201636,
-      "metadata": {},
-      "knowledge": {
-        "keywords": [{
-          "keyword": "credit card",
-          "relevance": 0.880797077978,
-          "mentions": [{
-            "speakerName": "unknown",
-            "occurrences": [{
-              "s": 60074
-            }, {
-              "s": 63696
-            }]
-          }]
-        }, {
-          "keyword": "phone",
-          "relevance": 3.13913279205E-17,
-          "mentions": [{
-            "speakerName": "unknown",
-            "occurrences": [{
-              "s": 64376
-            }, {
-              "s": 20141
-            }]
-          }]
-        }, {
-          "keyword": "machines",
-          "relevance": 1.56288218933E-18,
-          "mentions": [{
-            "speakerName": "unknown",
-            "occurrences": [{
-              "s": 18809
-            }]
-          }]
-        }, {
-          "keyword": "business",
-          "relevance": 1.56288218933E-18,
-          "mentions": [{
-            "speakerName": "unknown",
-            "occurrences": [{
-              "s": 51065
-            }]
-          }]
-        },{
-          "keyword": "toronto",
-          "relevance": 5.74952226429E-19,
-          "mentions": [{
-            "speakerName": "unknown",
-            "occurrences": [{
-              "s": 47.115
-            }]
-          }]
-        }],
-        "topics": [{
-          "topicName": "Machines",
-          "relevance": 16.012355953635,
-          "keywords": [ {
-            "keyword": "Machine",
-            "relevance": 1.0,
-            "mentions": [{
-              "speakerName": "unknown",
-              "occurrences": [{
-                "s": 18809
-              }]
-            }]
-          }, {
-            "keyword": "Mobile phone",
-            "relevance": 0.506181823917995,
-            "mentions": [{
-              "speakerName": "unknown",
-              "occurrences": [{
-                "s": 64376
-              }, {
-                "s": 20141
-              }]
-            }]
-          }]
-        }]
-      },
-      "transcript": {
-        "confidence": 0.25199372833392564,
-        "words": [{
-          "c": 0.263,
-          "e": 1609,
-          "p": 0,
-          "s": 1370,
-          "w": "Hi"
-        }],
-        "alternateFormats": [{
-          "format": "dfxp",
-          "contentType": "application/ttaf+xml",
-          "contentEncoding": "Base64",
-          "charset": "utf-8",
-          "data": "...."
-        }, {
-          "format": "webvtt",
-          "contentType": "text/vtt",
-          "contentEncoding": "Base64",
-          "charset": "utf-8",
-          "data": "...."
-        }, {
-          "format": "srt",
-          "contentType": "text/srt",
-          "contentEncoding": "Base64",
-          "charset": "utf-8",
-          "data": "...."
-        }, {
-          "format": "text",
-          "contentType": "text/plain",
-          "contentEncoding": "Base64",
-          "charset": "utf-8",
-          "data": "...."
-        }],
-      "streams": [{
-        "streamName": "original",
-        "streamLocation": "https://media.voicebase.com/edd441bb-a1c8-4605-a0a8-0b73899d129c/710a4041-b78a-46ae-b626-773b90316c3b.mp3?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20170622T193008Z&X-Amz-SignedHeaders=host&X-Amz-Expires=899&X-Amz-Credential=AKIAJGBJWCBBZHQ52U3A%2F20170622%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=99d220e89739b7179fb16e7ecaa713b538a945cc34bcf053dbbea204f30cbdcf"
-      }]}
+{
+  "_links": {},
+  "formatVersion": "3.0.7",
+  "mediaId": "efbb8c49-87f0-4f6c-9ce9-781599918f8c",
+  "accountId": "710d1652-63a4-4355-8e9a-523ddacd3066",
+  "accountName": "ACME Inc",
+  "status": "finished",
+  "dateCreated": "2017-04-28T21:12:55.563Z",
+  "dateFinished": "2018-07-19T11:34:45.134Z",
+  "timeToLiveInSeconds": 1200,
+  "expiresOn": "2018-10-04T00:41:06.145Z",
+  "metadata": {
+    "title": "Inbound call 2018-07-01 from 15081231234",
+    "description": "Inbound call to 1-800-599-1234, ACME Support Center",
+    "externalId": "inbound-dd9e7002-4a5a-43b3-bd46-73a66362db29",
+    "extended": {
+      "anything": "goes here",
+      "nested": {
+        "is": 0,
+        "also": 0,
+        "accepted": 0
+      }
     }
+  },
+  "mediaContentType": "audio/mpeg",
+  "length": 66900, // Duration in ms of the audio
+  "knowledge": {
+    "keywords": [
+      {
+        "keyword": "Microsoft",
+        "relevance": 0.433,
+        "mentions": [
+          {
+            "speakerName": "Speaker 1",
+            "occurrences": [
+              {
+                "s": 34234,
+                "e": 34234,
+                "exact": "Microsoft"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "topics": [
+      {
+        "topicName": "Algorithms",
+        "relevance": 0.4353,
+        "subtopics": [],
+        "keywords": []
+      }
+    ]
+  },
+  "spotting": {
+    "groups": [
+      {
+        "groupName": "Competitors",
+        "spotted": false,
+        "score": "0.4439",
+        "spottedKeywords": [
+          {
+            "keyword": "Microsoft",
+            "relevance": 1,
+            "mentions": [
+              {
+                "speakerName": "Speaker 1",
+                "occurrences": [
+                  {
+                    "s": 34234,
+                    "e": 34234,
+                    "exact": "Microsoft"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "prediction": {
+    "classifiers": [
+      {
+        "classifierId": "3e8dee45-ae2a-432f-b5ff-aa2513986f23",
+        "classifierName": "SaleCompleted",
+        "classifierVersion": "1.0",
+        "classifierDisplayName": "Sales Completed",
+        "classifierType": "binary",
+        "predictedClassLabel": "completed",
+        "predictionScore": 0.929,
+        "predictedClass": 1
+      }
+    ],
+    "detectors": [
+      {
+        "detectorId": "99179da8-2ef4-4478-92d0-f296399a90b7",
+        "detectorName": "PCI",
+        "detectorVersion": "1.0",
+        "detectorDisplayName": "Detects credit card data",
+        "detectorType": "binary",
+        "detections": [
+          {
+            "detectorClass": 1,
+            "detectorClassLabel": "pci",
+            "detectedSegments": [
+              {
+                "speakerName": "Speaker 1",
+                "occurrences": [
+                  {
+                    "s": 34322,
+                    "e": 458375
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "metrics": [
+    {
+      "metricGroupName": "groupX",
+      "metricValues": [
+        {
+          "metricName": "xyz",
+          "metricValue": 200
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "categoryName": "abc",
+      "categoryValue": 0
+    }, {
+      "categoryName": "def",
+      "categoryValue": 1,
+      "categoryMatches": [
+        {
+          "speakerName": "caller",
+          "occurrences": [
+            {
+              "s": 24251,
+              "e": 24981,
+              "exact": "hello"
+            }, {
+              "s": 26491,
+              "e": 30571,
+              "exact": "hi"
+            }
+          ]
+        }, {
+          "speakerName": "agent",
+          "occurrences": [
+            {
+              "s": 24251,
+              "e": 24981,
+              "exact": "greetings"
+            }, {
+              "s": 26491,
+              "e": 30571,
+              "exact": "how are you"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "conversation": {
+    "speakerVerbNounPairs": [
+      {
+        "speakerName": "Agent",
+        "verbNounPairs": [
+          {
+            "s": 6679,
+            "e": 7260,
+            "verb": "call",
+            "noun": "team"
+          }, {
+            "s": 44279,
+            "e": 45099,
+            "verb": "have",
+            "verbNeg": "not",
+            "noun": "question"
+          }, {
+            "s": 807908,
+            "e": 808918,
+            "verb": "like",
+            "noun": "service",
+            "question": true
+          }
+        ]
+      }, {
+        "speakerName": "Caller",
+        "verbNounPairs": [
+          {
+            "s": 16250,
+            "e": 17340,
+            "verb": "need",
+            "noun": "help"
+          }, {
+            "s": 901234,
+            "e": 902786,
+            "verb": "provide",
+            "noun": "justification",
+            "nounNeg": "no"
+          }, {
+            "s": 1002560,
+            "e": 1003010,
+            "verb": "work",
+            "verbNeg": "not",
+            "noun": "internet"
+          }
+        ]
+      }
+    ]
+  },
+  "speakerSentiments": [
+    {
+      "speakerName": "Caller",
+      "sentimentValues": [
+        {
+          "s": 4558,
+          "e": 7064,
+          "v": -0.5434
+        }, {
+          "s": 9373,
+          "e": 10345,
+          "v": 0.7039
+        }
+      ]
+    }, {
+      "speakerName": "Agent",
+      "sentimentValues": [
+        {
+          "s": 7464,
+          "e": 9373,
+          "v": 0.4328
+        }, {
+          "s": 12937,
+          "e": 14627,
+          "v": -0.3294
+        }
+      ]
+    }
+  ],
+  "transcript": {
+    "confidence": 1.0,
+    "words": [
+      {
+        "p": 3,
+        "c": 0.845,
+        "s": 13466,
+        "e": 15648,
+        "m": "turn|punc",
+        "v": 34,
+        "w": "supercalifragilisticexpialidocious",
+        "frq": [
+          {
+            "e": 1.344,
+            "f": 234.0
+          }, {
+            "e": 2.344,
+            "f": 340.0
+          }
+        ]
+      }
+    ],
+    "voiceActivity": [
+      {
+        "speakerName": "Speaker 1",
+        "occurrences": [
+          {
+            "s": 13000,
+            "e": 150547
+          }, {
+            "s": 163746,
+            "e": 258726
+          }
+        ]
+      }
+    ],
+    "alternateFormats": [
+      {
+        "format": "srt",
+        "contentType": "text/srt",
+        "contentEncoding": "base64",
+        "charset": "utf-8",
+        "data": "A Base64 encoded transcript"
+      }
+    ]
+  },
+  "streams": [
+    {
+      "status": "HTTP Status of the stream. Are we using this?",
+      "streamName": "original",
+      "streamLocation": "https://somewhere.voicebase.com/xyzt&amp;expires=12344",
+    }
+  ],
+  "encryption": {
+    "publishKeyId": "11e13265-e688-428b-b7bb-708c12a30a41",
+    "publicKeyHash": "A SHA256"
+  }
+}
 
 Data Description
 ~~~~~~~~~~~~~~~~
