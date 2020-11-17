@@ -18,9 +18,9 @@ French               fr-FR      √             √             √             
 German               de-DE      √             √             √
 Italian              it-IT      √             √             √
 Portuguese Brazil    pt-BR      √             √             √
-Spanish LatAm        es-LA      √             √             √                    √
-Spanish Spain        es-ES      √             √             √                    √
-Spanish US           es-US      √             √             √                    √ 
+Spanish LatAm        es-LA      √             √             √                    √                √          √
+Spanish Spain        es-ES      √             √             √                    √                √          √
+Spanish US           es-US      √             √             √                    √                √          √
 ===================  =====  =============  ========= ==================  ====================  ===========  ====
 
 
