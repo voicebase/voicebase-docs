@@ -1,6 +1,6 @@
 # VoiceBase V3 API Documentation
 
-This repository contains developer documentation for the VoiceBase (V3) API.
+This repository contains developer documentation for the VoiceBase V3 API.
 
 The documentation is indeed to be rendered using Sphinx docs using the ReadTheDocs theme, for display on readthedocs.io
 
