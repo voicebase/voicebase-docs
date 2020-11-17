@@ -1,6 +1,6 @@
 # PCI, SSN, PII Detection
 
-VoiceBase allows you to detect and/or [redact](pci-ssn-pii-redaction.html) sensitive data in your recordings, transcripts, and analytics.
+VoiceBase allows you to detect and/or [redact](pci-ssn-pii-redaction.html) sensitive data in your recordings, transcripts, and analytics. 
 
 PCI and related detectors are based on machine learned models of real calls where both a caller and an agent are audible. This gives higher reliability and adaptability to real world situations than deterministic models, but also means that for accurate results the audio being processed for PCI, SSN, or PII detection must reflect a real transaction, not a test audio. An actual phone order may reflect some amount of conversation, followed by a product and quantity, the agent giving a total, asking for the card type and number, expiration date and possibly CVV code, and this is type of data the PCI and related detectors have been trained on.
 
@@ -18,13 +18,17 @@ The API offers the following three detectors for sensitive data:
 - Number Detector
     - Detects numbers, to be used for Personally Identifiable Information (PII) numbers that do not fall into above categories
 
-VoiceBase offers three detectionLevel parameters within the PCI model for detection or redaction: "entireRegion", "probableNumbers", and "numbersOnly". The "entireRegion" parameter is the default if no parameters are indicated in the configuration.
+VoiceBase offers three detectionLevel parameters within the PCI model for detection or redaction: "entireRegion", "probableNumbers", and "numbersOnly". The "entireRegion" parameter is the default if no parameters are indicated in the configuration. 
 
 The "entireRegion" parameter detects sensitive portions of the conversation and typically will mark some buffer before and after, so some portion of the pre and post PCI interval may also show as detected or redacted.
 
 The "probableNumbers" parameter detects the segments of the conversation containing digits within the PCI portion of the conversation, and results contain minimal buffering. While this approach is more precise than the default, it relies on recognition of the speech as numbers or words that sound sufficiently like numbers. For example, an expiration date of: 08/2017 will be redacted, but *August* 2017 will result in only the year '2017' marked as PCI. 
 
-The "numbersOnly" parameter is similar to "probableNumbers" but there is no buffering, resulting in more of the non-PCI portions of a conversation remaining in the transcript. 
+The "numbersOnly" parameter is similar to "probableNumbers" but there is no buffering, resulting in more of the non-PCI portions of a conversation remaining in the transcript.
+
+## Support for Spanish
+
+When uploading audio files in Spanish, the detectorLevel parameters are as above, but the model names are "PCI-Spanish" and "SSN-Spanish". "Number" is the model name for "Number Detector" for both English and Spanish files.
 
 ## Custom Models
 
