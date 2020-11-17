@@ -1,6 +1,6 @@
 # PCI, SSN, PII Detection
 
-VoiceBase allows you to detect sensitive data in your recordings (and, optionally, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
+VoiceBase allows you to detect sensitive data in your recordings (and, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
 
 PCI and related detectors are based on machine learned models of real calls where both a caller and an agent are audible. This gives higher reliability and adaptability to real world situations than deterministic models, but also means that for accurate results the audio being processed for PCI, SSN, or PII detection must reflect a real transaction. For example: a phone order may reflect some amount of conversation, followed by a product and quantity, the agent giving a total, asking for the card type and number, expiration date and possibly CVV code. The Number detector is rule-based and will detect any portion of the conversation containing numbers.
 
