@@ -26,6 +26,10 @@ The "probableNumbers" parameter detects the segments of the conversation contain
 
 The "numbersOnly" parameter is similar to "probableNumbers" but there is no buffering, resulting in more of the non-PCI portions of a conversation remaining in the transcript. 
 
+## Custom Models
+
+VoiceBase offers [custom](https://info.voicebase.com/contact-sales) PCI or SSN models for customers who would like specialized models trained on their own data, resulting in even greater accuracy than our standard model. 
+
 ## Detected Regions
 
 When detection for sensitive data is enabled, the API returns detected regions as part of analytics for the recording. For example, in a recording with two regions detected as PCI and one region detected as SSN, the analytics would contain:
