@@ -57,8 +57,8 @@ IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be dis
                 "replacement" : "[redacted]"
             },
             "audio": {
-                "tone": 270,
-                "gain": 0.5
+                "tone": 170,
+                "gain": 0.25
             }
          }
     }]
@@ -133,8 +133,8 @@ curl https://apis.voicebase.com/v3/media \
                     "replacement" : "[redacted]"
                 },
                 "audio": {
-                    "tone": 270,
-                    "gain": 0.5
+                    "tone": 170,
+                    "gain": 0.25
                 }
              }
         }, {
@@ -144,8 +144,8 @@ curl https://apis.voicebase.com/v3/media \
                    "replacement" : "[redacted]"
                },
                "audio": {
-                    "tone": 270,
-                    "gain": 0.5
+                    "tone": 170,
+                    "gain": 0.25
                }
             }
        }]
