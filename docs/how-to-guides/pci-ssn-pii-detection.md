@@ -1,10 +1,8 @@
 # PCI, SSN, PII Detection
 
-VoiceBase allows you to detect sensitive data in your recordings (and, [redact it](pci-ssn-pii-redaction.html)) from the recordings, transcripts, and analytics.
+VoiceBase allows you to detect and/or [redact](pci-ssn-pii-redaction.html) sensitive data in your recordings, transcripts, and analytics.
 
-PCI and related detectors are based on machine learned models of real calls where both a caller and an agent are audible. This gives higher reliability and adaptability to real world situations than deterministic models, but also means that for accurate results the audio being processed for PCI, SSN, or PII detection must reflect a real transaction. For example: a phone order may reflect some amount of conversation, followed by a product and quantity, the agent giving a total, asking for the card type and number, expiration date and possibly CVV code. The Number detector is rule-based and will detect any portion of the conversation containing numbers.
-
-VoiceBase offers two options for PCI detection (and redaction). The 'PCI' model will detect sensitive portions of the conversation and may mark some buffer before and after sensitive portions for good measure. The 'pci-numbers-only' model will return ONLY the segments of the conversation containing digits within the PCI portion of the conversation. It is worth noting that this second approach while much more specific, relies on recognition of the speech as numbers or words that sound sufficiently like numbers. An expiration date of: 08/2017 will be redacted, but *August* 2017 will result in only the year '2017' marked as PCI.
+PCI and related detectors are based on machine learned models of real calls where both a caller and an agent are audible. This gives higher reliability and adaptability to real world situations than deterministic models, but also means that for accurate results the audio being processed for PCI, SSN, or PII detection must reflect a real transaction, not a test audio. For example, a phone order may reflect some amount of conversation, followed by a product and quantity, the agent giving a total, asking for the card type and number, expiration date and possibly CVV code. In contrast, the Number Detector is rule-based and will detect any portion of the conversation containing numbers. 
 
 The API offers the following three detectors for sensitive data:
 
@@ -17,6 +15,14 @@ The API offers the following three detectors for sensitive data:
     - Detects Social security numbers
 - Number Detector
     - Detects numbers, to be used for Personally Identifiable Information (PII) numbers that do not fall into above categories
+
+VoiceBase offers three detectionLevel parameters within the PCI model for detection or redaction: "entireRegion", "probableNumbers", and "numbersOnly". The "entireRegion" parameter is the default if no parameters are indicated in the configuration.
+
+The "entireRegion" parameter detects sensitive portions of the conversation and typically will mark some buffer before and after, so some portion of the pre and post PCI interval may also show as detected or redacted.
+
+The "probableNumbers" parameter detects the segments of the conversation containing digits within the PCI portion of the conversation, and results contain minimal buffering. While this approach is more precise than the default, it relies on recognition of the speech as numbers or words that sound sufficiently like numbers. For example, an expiration date of: 08/2017 will be redacted, but *August* 2017 will result in only the year '2017' marked as PCI. 
+
+The "numbersOnly" parameter is similar to "probableNumbers" but there is no buffering, resulting in more of the non-PCI portions of a conversation remaining in the transcript. 
 
 ## Detected Regions
 
@@ -72,9 +78,9 @@ For each detection, the API returns three data points:
 
 ## PCI Detector
 
-To enable it, add PCI detector to your configuration when you make a POST request to the /v3/media resource.
+To enable it, add PCI detector and optional detectionLevel parameter to your configuration when you make a POST request to the /v3/media resource. 
 
-IMPORTANT NOTE: Currently, the PCI detector requires to disable number formatting.
+IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be disabled.
 
 ```json
 {  
@@ -84,10 +90,14 @@ IMPORTANT NOTE: Currently, the PCI detector requires to disable number formattin
     }
   },
   "prediction": {
-    "detectors": [
-      { "detectorName": "PCI" }
-    ]
-  }
+      "detectors": [{
+        "detectorName": "PCI",
+        "parameters": [{
+          "parameter": "detectionLevel",
+          "value": "probableNumbers"
+        }]
+   }]
+ }
 }
 ```
 
@@ -95,7 +105,7 @@ IMPORTANT NOTE: Currently, the PCI detector requires to disable number formattin
 
 To enable it, add the SSN detector to your configuration when you make a POST request to the /v3/media resource.
 
-IMPORTANT NOTE: Currently, the SSN detector requires to disable number formatting.
+IMPORTANT NOTE: Currently, the SSN detector requires number formatting to be disabled.
 
 ```json
 {  
@@ -116,7 +126,7 @@ IMPORTANT NOTE: Currently, the SSN detector requires to disable number formattin
 
 To enable it, add the Number detector to your configuration when you make a POST request to the /v3/media resource.
 
-IMPORTANT NOTE: Currently, the Number detector requires to disable number formatting.
+IMPORTANT NOTE: Currently, the Number detector requires number formatting to be disabled.
 
 ```json
 {  
