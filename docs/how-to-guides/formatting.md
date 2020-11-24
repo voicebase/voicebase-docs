@@ -1,12 +1,12 @@
 # Formatting and Punctuation
 
-In v3, formatting for US phone numbers and digits is enabled by default, though you may optionally disable it.
+Formatting for US phone numbers and digits is enabled by default, though you may optionally disable it.
 
 Additional punctuation may be added to your US-English transcript by adding the correct tag to your configuration.
 
 ## Advanced Punctuation
 
-By default VoiceBase transcripts provide minimal formatting, though v3 includes features for more robust transcript formatting.
+By default VoiceBase transcripts provide minimal formatting, and you may optionally include an additional advanced formatting feature.
 Advanced Punctuation may be added to your transcripts by including `"advancedPunctuation"` in the `features` array of your config file.
 
 Please note that Advanced Punctuation is only available for US-English at this time.
@@ -96,15 +96,15 @@ For example:
 
 ## Number Formatting
 
-VoiceBase can transcribe numbers found in the transcription be displayed in digit form. In v3, number formatting is enabled by default.
+VoiceBase can transcribe numbers found in the transcription be displayed in digit form. Number formatting is enabled by default.
 
-To explicitly enable number-formatting, include the following snippet in your configuration:
+To explicitly disable number-formatting, include the following snippet in your configuration:
 
 ```json
 {  
    "transcript": {  
       "formatting":{  
-         "enableNumberFormatting": true
+         "enableNumberFormatting": false
       }
    }
 }
@@ -112,7 +112,7 @@ To explicitly enable number-formatting, include the following snippet in your co
 
 Number formatting allows options for transcription preference around phone numbers, currency, addresses, and more. The current version transcribes number words to symbols and US phone number formatting.
 
-For example, with a default configuration, a transcript might read:
+For example, with number formatting disabled, a transcript might read:
 
 >"**Agent:** The total of your bill comes to one hundred thirty eight dollars and sixty five cents"
 
@@ -122,7 +122,7 @@ When number formatting is enabled it will read:
 
 Additionally, VoiceBase can detect phone numbers and format them into a US phone number format within the transcript.
 
-Without number formatting enabled, a plain-text transcript will look like:
+With number formatting disabled, a plain-text transcript will look like:
 
 >"Hi this is Brian from VoiceBase please give me a call back at six five zero eight nine seven five one seven zero thank you."
 
