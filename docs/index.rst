@@ -9,7 +9,7 @@ Welcome to VoiceBase /v3 API Docs
 
 If you are getting started, we recommend the `Hello, World Developer Guide <how-to-guides/hello-world.html>`_ as a practical primer, and the `API Overview <overview/api_overview.html>`_ as a high-level introduction.
 
-More information and guidances can be found in the:
+More information and guidance can be found in the:
 
 * :ref:`how-to-guides`
 * :ref:`api-reference`
@@ -91,8 +91,10 @@ More information and guidances can be found in the:
 
 .. toctree::
   :caption: Developer Portal
-
-  Developer Portal <https://apis.voicebase.com/developer-portal/>
+  
+  Create Account<https://www.voicebase.com/request-api-access/>
+  US Customer login<https://developer.voicebase.com>
+  EU Customer login<https://developer.eu.voicebase.com>
 
 .. toctree::
   :caption: License
