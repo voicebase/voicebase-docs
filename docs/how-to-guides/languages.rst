@@ -8,20 +8,21 @@ VoiceBase supports the following languages and dialects.
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
-===================  =====  =============  ========= ==================  ====================  ===========  ====
-Language             Code   Transcription  Callbacks  Number Formatting  Knowledge Extraction  Predictions  PCI
-===================  =====  =============  ========= ==================  ====================  ===========  ====
-English US           en-US      √             √             √                    √                √          √
-English UK           en-UK      √             √             √                    √                √          √
-English AU           en-AU      √             √             √                    √                √          √
-French               fr-FR      √             √             √                    √
-German               de-DE      √             √             √
-Italian              it-IT      √             √             √
-Portuguese Brazil    pt-BR      √             √             √
-Spanish LatAm        es-LA      √             √             √                    √                √          √
-Spanish Spain        es-ES      √             √             √                    √                √          √
-Spanish US           es-US      √             √             √                    √                √          √
-===================  =====  =============  ========= ==================  ====================  ===========  ====
+===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
+Language             Code   Transcription  Callbacks  NumFormatting   Keywords&Topics   Predictions  PCI  VoiceFeatures
+===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
+English US           en-US      √             √            √                √             √          √         √
+English UK           en-UK      √             √            √                √             √          √         √
+English AU           en-AU      √             √            √                √             √          √         √
+French               fr-FR      √             √            √                √
+German               de-DE      √             √            √
+Italian              it-IT      √             √            √
+Portuguese Brazil    pt-BR      √             √            √
+Spanish LatinAm      es-LA      √             √            √                √             √          √         √
+Spanish Spain        es-ES      √             √            √                √             √          √
+Spanish US           es-US      √             √            √                              √          √         √
+Spanish Mexico       es-MX      √             √            √                √             √          √         √
+===================  =====  =============  ========= ================  ===============  ===========  ===================
 
 
 Configuring Language Support
@@ -56,6 +57,8 @@ currently supported with German, Italian, or Portuguese, please disable the feat
         "enableDiscovery" : false
     }
 
+
+
 Examples
 --------
 
@@ -65,20 +68,6 @@ following examples.
 .. code:: bash
 
     export TOKEN='Your Api Token'
-
-U.S. English
-~~~~~~~~~~~~
-
-.. code:: bash
-
-    curl https://apis.voicebase.com/v3/media \
-        --form media=@recording.mp3 \
-        --form configuration='{
-          "speechModel" : {
-            "language" : "en-US"
-          }
-        }' \
-        --header "Authorization: Bearer ${TOKEN}"
 
 
 U.S. English for Voicemail
@@ -110,44 +99,7 @@ U.K. English
         }' \
         --header "Authorization: Bearer ${TOKEN}"
 
-Australian English
-~~~~~~~~~~~~~~~~~~
+Europa speech engine 
+--------------------
 
-.. code:: bash
-
-    curl https://apis.voicebase.com/v3/media \
-        --form media=@recording.mp3 \
-        --form configuration='{
-           "speechModel" : {
-              "language" : "en-AU"
-            }
-         }' \
-        --header "Authorization: Bearer ${TOKEN}"
-
-Latin American Spanish
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. code:: bash
-
-    curl https://apis.voicebase.com/v3/media  \
-        --form media=@recording.mp3 \
-        --form configuration='{
-          "speechModel" : {
-            "language" : "es-LA"
-          }
-        }' \
-        --header "Authorization: Bearer ${TOKEN}"
-
-Brazilian Portuguese
-~~~~~~~~~~~~~~~~~~~~
-
-.. code:: bash
-
-    curl https://apis.voicebase.com/v3/media  \
-        --form media=@recording.mp3 \
-        --form configuration='{
-          "speechModel" : {
-            "language" : "pt-BR"
-          }
-        }' \
-        --header "Authorization: Bearer ${TOKEN}"
+Rather than using the UK English or Australian English language options, you may want to try our premium speech engine, `Europa <speech_engine.html>`__.       
