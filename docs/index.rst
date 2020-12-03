@@ -26,7 +26,7 @@ More information and guidance can be found in the:
 .. _how-to-guides:
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   :caption: How-To Guides
 
   how-to-guides/hello-world
@@ -34,7 +34,6 @@ More information and guidance can be found in the:
   how-to-guides/aligner
   how-to-guides/callbacks
   how-to-guides/categories
-  how-to-guides/predictions
   how-to-guides/closed-captioning
   how-to-guides/conversation-metrics
   how-to-guides/custom-vocabulary
@@ -45,9 +44,11 @@ More information and guidance can be found in the:
   how-to-guides/metadata
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
+  how-to-guides/predictions
   how-to-guides/priority
   how-to-guides/reprocessing
   how-to-guides/search
+  how-to-guides/speech-engine
   how-to-guides/stereo
   how-to-guides/swearwords
   how-to-guides/voice-features
