@@ -6,21 +6,21 @@ VoiceBase supports the following languages and dialects.
 
 **Feature Support by Language:**
 
-===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
-Language             Code   Transcription  Callbacks  NumFormatting   Keywords&Topics   Predictions  PCI  VoiceFeatures
-===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
-English US           en-US      √             √            √                √             √          √         √
-English UK           en-UK      √             √            √                √             √          √         √
-English AU           en-AU      √             √            √                √             √          √         √
+===================  =====  =============  =========  ==============  ================  ===========  ====  ==============
+Language             Code   Transcription  Callbacks  NumFormatting    Keywords&Topics  Predictions  PCI   VoiceFeatures
+===================  =====  =============  =========  ==============  ================  ===========  ====  ==============
+English US           en-US      √             √            √                √               √          √         √
+English UK           en-UK      √             √            √                √               √          √         √
+English AU           en-AU      √             √            √                √               √          √         √
 French               fr-FR      √             √            √                √
 German               de-DE      √             √            √
 Italian              it-IT      √             √            √
 Portuguese Brazil    pt-BR      √             √            √
-Spanish LatinAm      es-LA      √             √            √                √             √          √         √
-Spanish Spain        es-ES      √             √            √                √             √          √
-Spanish US           es-US      √             √            √                              √          √         √
-Spanish Mexico       es-MX      √             √            √                √             √          √         √
-===================  =====  =============  ========= ================  ===============  ===========  ===================
+Spanish LatinAm      es-LA      √             √            √                √               √          √         √
+Spanish Spain        es-ES      √             √            √                √               √          √
+Spanish US           es-US      √             √            √                                √          √         √
+Spanish Mexico       es-MX      √             √            √                √               √          √         √
+===================  =====  =============  =========  ===============  ===============  ===========  ====  ==============
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
