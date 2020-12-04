@@ -37,7 +37,7 @@ Enable a specific speech engine by including the ``model`` parameter under ``spe
 Feature                Europa  Proteus   Titan 
 =====================  ======  ========  ====== 
 categories               √        √        √      
-custom vocabulary        √        √        √    
+custom vocabulary                 √        √    
 number formatting        √        √        √    
 keywords-and-topics      √        √        √       
 keyword-spotting         √        √        √     
