@@ -6,9 +6,6 @@ VoiceBase supports the following languages and dialects.
 
 **Feature Support by Language:**
 
-Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
-
-
 ===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
 Language             Code   Transcription  Callbacks  NumFormatting   Keywords&Topics   Predictions  PCI  VoiceFeatures
 ===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
@@ -25,6 +22,7 @@ Spanish US           es-US      √             √            √              
 Spanish Mexico       es-MX      √             √            √                √             √          √         √
 ===================  =====  =============  ========= ================  ===============  ===========  ===================
 
+Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
 Configuring Language Support
 ----------------------------
@@ -103,4 +101,10 @@ U.K. English
 Europa speech engine 
 --------------------
 
-Rather than using the UK English or Australian English language options, you may want to try our premium speech engine, `Europa <speech_engine.html>`__.       
+Rather than using the UK English or Australian English language options, you may want to try our premium speech engine, `Europa <speech-engine.html>`__. 
+
+More Language Options
+---------------------
+
+VoiceBase has the capability to add languages per customer requests. Please talk to `sales <https://www.voicebase.com/contact-sales/>`_if you have a use case requiring any of the following languages: Arabic,Bulgarian,Catalan,Croatian,Czech,Danish,Dutch,Finnish,Greek,Hindi,Hungarian,Japanese,Korean,Latvian,Lithuanian,Malay,Mandarin,Norwegian,Polish,Romanian,Russian,Slovak,Slovenian,Swedish,Turkish. 
+     
