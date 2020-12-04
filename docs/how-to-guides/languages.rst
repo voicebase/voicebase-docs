@@ -20,7 +20,8 @@ Spanish LatinAm      es-LA      √             √            √              
 Spanish Spain        es-ES      √             √            √                √               √          √
 Spanish US           es-US      √             √            √                                √          √         √
 Spanish Mexico       es-MX      √             √            √                √               √          √         √
-===================  =====  =============  =========  ===============  ===============  ===========  ====  ==============
+===================  =====  =============  =========  ==============  ================  ===========  ====  ==============
+
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
