@@ -37,7 +37,7 @@ Enable a specific speech engine by including the ``model`` parameter under ``spe
 Feature                Europa  Proteus   Titan 
 =====================  ======  ========  ====== 
 categories               √        √        √      
-custom vocabulary                 √        √    
+custom vocabulary        √        √        √    
 number formatting        √        √        √    
 keywords-and-topics      √        √        √       
 keyword-spotting         √        √        √     
@@ -54,5 +54,10 @@ Custom Speech Models
 --------------------
 
 VoiceBase also offers the unique ability to train a custom speech model on a per customer basis in order to optimize transcription accuracy for a specific use case, lexicon, accent, or codec. Please reach out to your account manager to learn more about the custom speech model training process.
+
+Language Options
+----------------
+
+Information about VoiceBase language offerings may be found `here <languages.html>`_.
 
 
