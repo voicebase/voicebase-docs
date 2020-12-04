@@ -38,7 +38,7 @@ Sensitive data is automatically redacted from analytics (such as keywords and to
 
 ### Audio redaction
 
-To redact sensitive regions from your recording, include an `audio` section to the detector's redaction configuration when making a POST request to the /v3/media resource. In this example, sensitive audio regions will be replaced with a 270 Hz tone of moderate volume.
+To redact sensitive regions from your recording, include an `audio` section to the detector's redaction configuration when making a POST request to the /v3/media resource. In this example, sensitive audio regions will be replaced with a 170 Hz tone of moderate volume.
 
 IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be disabled.
 
