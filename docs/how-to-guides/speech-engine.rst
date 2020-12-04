@@ -27,7 +27,7 @@ Enable a specific speech engine by including the ``model`` parameter under ``spe
 
     {
       "speechModel": {
-        "model": "Europa"    
+        "model": "Titan"    
       }
     }
 
@@ -49,5 +49,10 @@ swear word filter        √        √        √
 voice features                    √        √    
 voicemail                         √            
 =====================  ======  ========  =====
+
+Custom Speech Models
+--------------------
+
+VoiceBase also offers the unique ability to train a custom speech model on a per customer basis in order to optimize transcription accuracy for a specific use case, lexicon, accent, or codec. Please reach out to your account manager to learn more about the custom speech model training process.
 
 
