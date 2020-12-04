@@ -31,6 +31,7 @@ Enable a specific speech engine by including the ``model`` parameter under ``spe
       }
     }
 
+**Feature support by engine**
 
 =====================  ======  ========  ======
 Feature                Europa  Proteus   Titan 
