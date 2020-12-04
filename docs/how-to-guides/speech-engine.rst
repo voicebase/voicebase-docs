@@ -17,20 +17,6 @@ The Titan engine is trained on call center audio, making it a great choice for U
 
 The Proteus engine is our default, general engine trained on a wide range of audio. All languages and features are supported with the default engine.
 
-Configuration 
--------------
-
-Enable a specific speech engine by including the ``model`` parameter under ``speechModel`` when making a call to ``POST /media``. Omitting this optional parameter defaults to the Proteus engine.
-
-.. code:: json
-
-
-    {
-      "speechModel": {
-        "model": "Titan"    
-      }
-    }
-
 **Feature support by engine:**
 
 =====================  ======  ========  ======
@@ -49,6 +35,20 @@ swear word filter        √        √        √
 voice features                    √        √    
 voicemail                         √            
 =====================  ======  ========  ======
+
+Configuration 
+-------------
+
+Enable a specific speech engine by including the ``model`` parameter under ``speechModel`` when making a call to ``POST /media``. Omitting this optional parameter defaults to the Proteus engine.
+
+.. code:: json
+
+
+    {
+      "speechModel": {
+        "model": "Titan"    
+      }
+    }
 
 Custom Speech Models
 --------------------
