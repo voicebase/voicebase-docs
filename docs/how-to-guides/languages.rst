@@ -8,6 +8,7 @@ VoiceBase supports the following languages and dialects.
 
 Note: en-UK and en-AU use the en-US functions for Keywords, Topics, Number Formatting and PCI.
 
+
 ===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
 Language             Code   Transcription  Callbacks  NumFormatting   Keywords&Topics   Predictions  PCI  VoiceFeatures
 ===================  =====  =============  ========= ===============  ===============  ===========  ==== ==============
