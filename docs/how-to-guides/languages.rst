@@ -108,7 +108,7 @@ More Language Options
 
 VoiceBase has the capability to add languages per customer requests. Please talk to `sales <https://www.voicebase.com/contact-sales/>`_ if you have a use case requiring any of the following languages:
 
-Arabic,Bulgarian,Catalan,Croatian,Czech,Danish,Dutch,Finnish,Greek,Hindi,Hungarian,
-Japanese,Korean,Latvian,Lithuanian,Malay,Mandarin,Norwegian,Polish,Romanian,
-Russian,Slovak,Slovenian,Swedish,Turkish. 
+Arabic ``*`` Bulgarian ``*`` Catalan ``*`` Croatian ``*`` Czech ``*`` Danish ``*`` Dutch ``*`` Finnish ``*`` Greek ``*`` Hindi ``*`` Hungarian ``*`` 
+Japanese ``*`` Korean ``*`` Latvian ``*`` Lithuanian ``*`` Malay ``*`` Mandarin ``*`` Norwegian ``*`` Polish ``*`` Romanian ``*`` 
+Russian ``*`` Slovak ``*`` Slovenian ``*`` Swedish ``*`` Turkish. 
      
