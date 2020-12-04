@@ -1,7 +1,7 @@
 # Voice Features
 
 This optional feature returns a set of per-word metrics, used in data science to serve as input attributes to a predictive model.
-VoiceFeatures is supported for all regions of English as well as US and Latin American Spanish.
+Voice Features is supported for all regions of English as well as US and Latin American Spanish.
 
 ## Uses for Voice Features
 
@@ -9,7 +9,7 @@ Voice Features metrics may be used in multiple ways. One example would be determ
 
 ## Enabling Voice Features
 
-Enable voice features by including `"voiceFeatures"` in the `features` array under `speechModel` when making a call to `POST /media`.
+Enable Voice Features by including `"voiceFeatures"` in the `features` array under `speechModel` when making a call to `POST /media`.
 
 ```json
 {
