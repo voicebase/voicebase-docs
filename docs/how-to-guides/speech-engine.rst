@@ -48,7 +48,7 @@ stereo                   √        √        √
 swear word filter        √        √        √    
 voice features                    √        √    
 voicemail                         √            
-=====================  ======  ========  =====
+=====================  ======  ========  ======
 
 Custom Speech Models
 --------------------
