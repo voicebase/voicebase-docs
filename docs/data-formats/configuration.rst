@@ -81,11 +81,12 @@ Please see notes below for details about specific lines.
 
 Notes:
 
-- line 4 (``"features": [  "advancedPunctuation"  ]``): Advanced Punctuation is supported in English and Spanish only.
+- line 4 (``"features": [  "advancedPunctuation"  ]``): Advanced Punctuation is supported in US English only.
 - line 6 (``"ingest": {``): speakerName and stereo are mutually exclusive
 - line 7 (``"stereo": {``): for mono scenarios, specify ``"speakerName": "Speaker"`` instead of ``stereo`` - all channels will be mixed into a single audio channel prior to speech recognition processing
 - line 35 (``"groupName": "finance"``): this spotting group must be created before it is used
 - line 40 (``"enableDiscovery": true``): Default is false - knowledge discovery is disabled by default
+- line 41 (``"enableExternalDataSources": true``): Default is true - only effective if enableDiscovery is true
 - line 45 (``"enableNumberFormatting": false``): Default is true
 - line 48 (``"enableProfanityFiltering": true``): Default is false
 - line 53 (``"vocabularyName": "earningsCalls"``): this vocabulary must be created before it is used
