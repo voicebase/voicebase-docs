@@ -7,7 +7,7 @@ Please see notes below for details about specific lines.
 
 .. code-block:: json
   :linenos:
-  :emphasize-lines: 4, 6, 7, 35, 40, 41, 45, 48, 53, 60
+  :emphasize-lines: 4, 6, 7, 35, 40, 45, 48, 53, 60
 
   {
     "speechModel": {
@@ -86,7 +86,6 @@ Notes:
 - line 7 (``"stereo": {``): for mono scenarios, specify ``"speakerName": "Speaker"`` instead of ``stereo`` - all channels will be mixed into a single audio channel prior to speech recognition processing
 - line 35 (``"groupName": "finance"``): this spotting group must be created before it is used
 - line 40 (``"enableDiscovery": true``): Default is false - knowledge discovery is disabled by default
-- line 41 (``"enableExternalDataSources": true``): Default is true - only effective if enableDiscovery is true
 - line 45 (``"enableNumberFormatting": false``): Default is true
 - line 48 (``"enableProfanityFiltering": true``): Default is false
 - line 53 (``"vocabularyName": "earningsCalls"``): this vocabulary must be created before it is used
