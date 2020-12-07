@@ -7,7 +7,7 @@ Please see notes below for details about specific lines.
 
 .. code-block:: json
   :linenos:
-  :emphasize-lines: 4, 6, 7, 35, 40, 41, 45, 48, 53, 60
+  :emphasize-lines: 4, 6, 7, 35, 40, 45, 48, 53, 60
 
   {
     "speechModel": {
