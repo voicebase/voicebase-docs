@@ -36,6 +36,8 @@ voice features                    √        √
 voicemail                         √            
 =====================  ======  ========  ======
 
+Please note that number formatting may not be disabled on the "Europa" speech engine.
+
 Configuration 
 -------------
 

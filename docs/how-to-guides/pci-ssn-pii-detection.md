@@ -90,7 +90,7 @@ For each detection, the API returns three data points:
 
 To enable it, add PCI detector and optional detectionLevel parameter to your configuration when you make a POST request to the /v3/media resource. 
 
-IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be disabled.
+IMPORTANT NOTE:  We recommend disabling Number Formatting on the PCI detector for best results.
 
 ```json
 {  
@@ -115,7 +115,7 @@ IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be dis
 
 To enable it, add the SSN detector to your configuration when you make a POST request to the /v3/media resource.
 
-IMPORTANT NOTE: Currently, the SSN detector requires number formatting to be disabled.
+IMPORTANT NOTE:  We recommend disabling Number Formatting on the SSN detector for best results.
 
 ```json
 {  
@@ -136,7 +136,7 @@ IMPORTANT NOTE: Currently, the SSN detector requires number formatting to be dis
 
 To enable it, add the Number detector to your configuration when you make a POST request to the /v3/media resource.
 
-IMPORTANT NOTE: Currently, the Number detector requires number formatting to be disabled.
+IMPORTANT NOTE:  We recommend disabling Number Formatting on the Number detector for best results.
 
 ```json
 {  

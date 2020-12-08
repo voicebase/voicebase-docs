@@ -10,7 +10,7 @@ To redact sensitive information from a media file, include a `redactor` section 
 
 For more on detectionLevel parameter options within the PCI model, please refer to the [detect](pci-ssn-pii-detection.html) page.
 
-IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be disabled.
+IMPORTANT NOTE: We recommend disabling number formatting on the PCI detector for best results.
 
 ```json
 {  
@@ -40,7 +40,7 @@ Sensitive data is automatically redacted from analytics (such as keywords and to
 
 To redact sensitive regions from your recording, include an `audio` section to the detector's redaction configuration when making a POST request to the /v3/media resource. In this example, sensitive audio regions will be replaced with a 170 Hz tone of moderate volume.
 
-IMPORTANT NOTE: Currently, the PCI detector requires number formatting to be disabled.
+IMPORTANT NOTE:  We recommend disabling Number Formatting on the PCI detector for best results.
 
 ```json
 {  
