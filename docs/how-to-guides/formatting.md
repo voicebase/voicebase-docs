@@ -96,7 +96,7 @@ For example:
 
 ## Number Formatting
 
-VoiceBase can transcribe numbers found in the transcription be displayed in digit form. Number formatting is enabled by default.
+VoiceBase can transcribe numbers found in the transcription be displayed in digit form. Number formatting is enabled by default. 
 
 To explicitly disable number-formatting, include the following snippet in your configuration:
 
@@ -109,6 +109,7 @@ To explicitly disable number-formatting, include the following snippet in your c
    }
 }
 ```
+Please note: our speech engine "Europa" does not allow Number Formatting to be disabled.
 
 Number formatting allows options for transcription preference around phone numbers, currency, addresses, and more. The current version transcribes number words to symbols and US phone number formatting.
 
