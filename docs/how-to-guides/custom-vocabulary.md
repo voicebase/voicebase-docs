@@ -57,7 +57,7 @@ Let us suppose the recording contains the word 'gnocchi', and we wish this to be
 
 
 ##### Weighting
-Weighting may optionally be used to increase the likelihood that terms are recognized by the speech engine. Terms are weighted with an integer value from 0 to 5, with 0 being default. Each increase in the weighting value will increase the likelihood that the speech engine will select the Custom Vocabulary term, but also will increase the likelihood of false positive. With weighting added to the custom term, the custom vocabulary string becomes:
+Weighting may optionally be used to increase the likelihood that terms are recognized by the speech engine. Terms are weighted with an integer value from 0 to 5, with 0 being default. Each increase in the weighting value will increase the likelihood that the speech engine will select the Custom Vocabulary term, but also will increase the likelihood of false positives. With weighting added to the custom term, the custom vocabulary string becomes:
 
 ```json
 
@@ -65,13 +65,14 @@ Weighting may optionally be used to increase the likelihood that terms are recog
   "soundsLike": [
     "nyohki", "nokey", "nochi"
   ],
-  "weight": 2
+  "weight": 2,
   "term": "gnocchi"
 }
 
 ```
 
-Weighting may be used with or without Sounds Like.
+Weighting may be used with or without Sounds Like. 
+Please note: Weighting is not supported with the [Europa](speech-engine.html) Speech Engine.
 
 ##### Phrases
 Phrases may also be added using Custom Vocabulary as way to ensure that common or scripted phrases are properly recognized. We may wish to add common phrases for our recordings: “Thank you for calling VoiceBase” and “what’s in your calls?”. By adding 'Bryon from VoiceBase' and 'Bryon M.', we can ensure that Bryon's name is properly recognized, and allows recognition of the more common Brian in the same recording when the rest of the custom phrase is not present. Custom Phrases result in the speech engine evaluating the phrase as a unit and generally are tolerant of pronunciation variances in any one term.  *Note:* Custom Phrases *should not* contain 'soundsLike' terms, and multi-term Custom Vocabulary entries will have 'soundsLike' ignored. An individual term may be added to the Custom Vocabulary list with its own soundsLike if required.
