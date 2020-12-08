@@ -36,7 +36,8 @@ voice features                    √        √
 voicemail                         √            
 =====================  ======  ========  ======
 
-Please note that number formatting may not be disabled on the "Europa" speech engine.
+Please note that number formatting may not be disabled on the Europa speech engine.
+`Custom Vocabulary <custom-vocabulary.html>`_ is supported with Europa, but the "Weighting" feature is not.
 
 Configuration 
 -------------
