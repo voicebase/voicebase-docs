@@ -176,8 +176,8 @@ curl https://apis.voicebase.com/v3/media \
   },
   "prediction": {
     "detectors": [
-      { "detectorName": "PCI" }
-      { "detectorName": "SSN" }
+      { "detectorName": "PCI" },
+      { "detectorName": "SSN" },
       { "detectorName": "Number" }
     ]}
   }'
