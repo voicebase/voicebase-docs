@@ -98,6 +98,11 @@ More information and guidance can be found in the:
   EU Customer login<https://developer.eu.voicebase.com>
 
 .. toctree::
+  :caption: Help Center
+  
+  FAQ<https://support.voicebase.com/>  
+
+.. toctree::
   :caption: License
 
   license

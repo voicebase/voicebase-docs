@@ -31,7 +31,7 @@ Metadata is composed of the following items, all of them are optional:
 - `externalId` A tag value. It may refer to an identifier on another system. Voicebase does not enforce uniqueness on it, you may have several recordings submitted with the same value for this attribute.
 - `extended` Free JSON document. This must be a JSON object, not a primitive nor an array.
 
-# Associating a request with Metadata
+## Associating a request with Metadata
 
 In addition to the configuration, specify the "metadata" form attribute in your request.
 
