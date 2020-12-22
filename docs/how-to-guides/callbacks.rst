@@ -194,7 +194,8 @@ object with the following data:
 
 .. code:: json
 
-{
+
+ {
   "_links": {},
   "formatVersion": "3.0.7",
   "mediaId": "efbb8c49-87f0-4f6c-9ce9-781599918f8c",
