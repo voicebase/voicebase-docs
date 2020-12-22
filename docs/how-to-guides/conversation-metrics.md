@@ -142,10 +142,10 @@ caller and an agent. There are some hard requirements to generate meaningful res
 and some strongly recommended features of call processing.
 
 Requirements for use are:
-- Calls MUST be processed in stereo for agent and caller specific metrics (otherwise, these metrics always return 0)
+- Calls MUST be processed in [stereo](stereo.html)  for agent and caller specific metrics (otherwise, these metrics always return 0)
 - The `agent` SHOULD have a speaker name that is one of: `agent`, `service`, `representative`, `operator`, `salesperson`, `callcenter`, `contactcenter`
 - The `caller` SHOULD have a speaker name that is one of: `caller`, `client`, `customer`, `prospect`
 - If the speaker names are not specified as above, the first speaker is assumed to be the agent, and the second speaker is assumed to be the caller
-- For the sentiment metrics, the language MUST be one of: `en-US`, `en-AU`, `en-UK`
-- Voice features SHOULD be enabled, and required for some talk style, tone, and volume metrics
-- Advanced punctuation SHOULD be enabled
+- For the sentiment metrics, the [language](languages.html) MUST be one of: `en-US`, `en-AU`, `en-UK`
+- [Voice Features](voice-features.html) SHOULD be enabled, and is required for some talk style, tone, and volume metrics
+- [Advanced Punctuation](formatting.html) SHOULD be enabled
