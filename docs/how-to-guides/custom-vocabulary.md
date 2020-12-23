@@ -29,7 +29,7 @@ Using the ad-hoc method of Custom Vocabulary we can add these terms as part of t
           "term": "Bryon"
         },
         {
-          "term": "Voicebase"
+          "term": "VoiceBase"
         }      
       ]
     }
@@ -42,28 +42,29 @@ When processed with the Custom Vocabulary configuration, the returned transcript
 > “Hi, this is Bryon from VoiceBase.”
 
 #### Sounds Like and Weighting
-Let us suppose the recording contains the word 'gnocchi', and we wish this to be properly transcribed. If gnocchi is not in the standard speech dictionary, we may wish to add it through Custom Vocabulary. English employs many words taken directly from other languages, complete with their native spelling. Since 'gnocchi' follows Italian pronunciation, 'gn' is pronounced similar to the Spanish ñ and 'cchi' is pronounced 'key'. This could prove troublesome for any speech engine, so VoiceBase allows you to add a spelling which represents how the word would sound. Utilizing Sounds Like, the speech engine can more precisely identify the term in the recording even if the custom term has an unusual pronunciation. The Sounds Like term for 'gnocchi' may look more like 'nyohki'. Since gnocchi is commonly mispronounced in English, we may even want to add alternate ways to pronounce gnocchi. We may add: 'nokey', and 'nochi'. __Up to 100 sounds like terms__ may be added for each custom term. This would be written in the terms array as:
+Let's suppose a recording starts with an agent saying "Hi this is C.S.V. Shipping Comnpany" but the speech engine does not recognize "C.S.V." and mistranscribes the opening as "Hi this is just the shipping company." The best practice to correct this would be to employ the mistranscription as a "soundsLike" term, so since the error appears as "just the", this would be configured as:
 
 ```json
 
 {
   "soundsLike": [
-    "nyohki", "nokey", "nochi"
+    "just the"
   ],
-  "term": "gnocchi"
+  "term": "C.S.V."
 }
 
 ```
 
+__Up to 100 Sounds Like terms__ separated by commas may be added for each custom term.
 
 ##### Weighting
-Weighting may optionally be used to increase the likelihood that terms are recognized by the speech engine. Terms are weighted with an integer value from 0 to 5, with 0 being default. Each increase in the weighting value will increase the likelihood that the speech engine will select the Custom Vocabulary term, but also will increase the likelihood of false positives. With weighting added to the custom term, the custom vocabulary string becomes:
+Weighting may optionally be used to increase the likelihood that terms are recognized by the speech engine. Terms are weighted with an integer value from 0 to 5, with 0 being default. Each increase in the weighting value will increase the likelihood that the speech engine will select the Custom Vocabulary term, but also will increase the likelihood of false positives. With weighting added to the custom term "gnocchi", the custom vocabulary string becomes:
 
 ```json
 
 {
   "soundsLike": [
-    "nyohki", "nokey", "nochi"
+    "nyohki", "nokey"
   ],
   "weight": 2,
   "term": "gnocchi"
@@ -75,7 +76,7 @@ Weighting may be used with or without Sounds Like.
 Please note: Weighting is not supported with the [Europa](speech-engine.html) Speech Engine.
 
 ##### Phrases
-Phrases may also be added using Custom Vocabulary as way to ensure that common or scripted phrases are properly recognized. We may wish to add common phrases for our recordings: “Thank you for calling VoiceBase” and “what’s in your calls?”. By adding 'Bryon from VoiceBase' and 'Bryon M.', we can ensure that Bryon's name is properly recognized, and allows recognition of the more common Brian in the same recording when the rest of the custom phrase is not present. Custom Phrases result in the speech engine evaluating the phrase as a unit and generally are tolerant of pronunciation variances in any one term.  *Note:* Custom Phrases *should not* contain 'soundsLike' terms, and multi-term Custom Vocabulary entries will have 'soundsLike' ignored. An individual term may be added to the Custom Vocabulary list with its own soundsLike if required.
+Phrases may also be added using Custom Vocabulary as way to ensure that common or scripted phrases are properly recognized. We may wish to add common phrases for our recordings: “Thank you for calling VoiceBase” and “what’s in your calls?”. By adding 'Bryon from VoiceBase' and 'Bryon M.', we can ensure that Bryon's name is properly recognized, and allows recognition of the more common Brian in the same recording when the rest of the custom phrase is not present. Custom Phrases result in the speech engine evaluating the phrase as a unit and generally are tolerant of pronunciation variances in any one term.  *Note:* Custom Phrases *should not* contain Sounds Like terms, and multi-term Custom Vocabulary entries will have Sounds Like ignored. An individual term may be added to the Custom Vocabulary list with its own Sounds Like if required.
 
 #### Acronyms
 Acronyms may be added to the Custom Vocabulary for processing your recording. The VoiceBase speech engine will recognize acronyms when periods are placed between the letters, such as: 'Q.E.D.' or 'C.E.O.'. **Remember:** For the purpose of recognizing acronyms, the VoiceBase speech engine follows The New York Times’ style guide, which recommends following each segment with a period when when letters are pronounced individually, as in ‘C.E.O.’, but not when pronounced as a word, such as ‘NATO’ or 'NAFTA'. It is therefore important to remember that acronyms which are spelled __must__ have a period following each letter. If you would like your transcription to read differently, you may use Sounds Like to accomplish this by adding the spelled acronym (including punctuation) as the Sounds Like term, as in:
