@@ -1,7 +1,10 @@
 # Priority
 
-With this feature you have the ability modulate the processing priority of your POST request to /v3/media
+With this feature you have the ability to define the processing priority of your POST request to /v3/media
 
 Media can be submitted with different priority depending on the urgency of the request. This is helpful to obtain better pricing on archive processing, or to increase the speed with which transcripts are returned for time-sensitive items like voicemail.
 
-For SLA and pricing information contact [Voicebase Sales](http://info.voicebase.com/contact-sales) to learn more.
+VoiceBase offers low, medium, and high priority processing. Low priority is the default and least costly. If your use case requires medium or high priority processing, please contact 
+[Voicebase Sales](http://info.voicebase.com/contact-sales) to learn more about pricing.
+
+
