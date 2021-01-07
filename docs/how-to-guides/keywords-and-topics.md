@@ -83,11 +83,9 @@ Topics are reported by grouping a set of keywords that relate to each other. For
 
 ### Relevance
 
-Semantic keywords and topics are scored for relevance. The `relevance` score ranges from 0.0 to 1.0, with higher scores indicating higher relevance.
+Semantic keywords and topics are scored for relevance. The Keyword `relevance` score ranges from 0.0 to 1.0, with higher scores indicating higher relevance. The Topic `relevance` score is an average of the scores of its keywords, and may be any real number.
 
 Keyword relevance is computed by matching detected keywords and key phrases to an extensive taxonomy of potential keywords (VoiceBase's semantic index). The relevance algorithm generally produces higher scores for more frequent, closely matching, and distinctive keywords, while producing lower scores for very common keywords found in the recording.
-
-Topic relevance is computed by grouping discovered keywords into topics of interest applying a similar relevance algorithm to the aggregate.
 
 ## Enabling Semantic Keywords and Topics
 
