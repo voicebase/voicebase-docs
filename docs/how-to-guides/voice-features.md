@@ -1,11 +1,15 @@
 # Voice Features
 
-VoiceBase enables you to generate information regarding the volume, energy and
-frequency of each word in the transcripts output from the VoiceBase speech engine.
+This optional feature returns a set of per-word metrics, used in data science to serve as input attributes to a predictive model.
+Voice Features is supported for all regions of English as well as US and Latin American Spanish.
 
-## Using Voice Features
+## Uses for Voice Features
 
-To enable voice features, set in the `configuration`'s `speechModel` section, include `"voiceFeature"` in the `features` array when make a call to `POST /media`.
+Voice Features metrics may be used in multiple ways. One example would be determining that a caller raised their voice and spoke at a higher pitch during a call, suggesting they may be upset. Making this determination requires that you process these per-word metrics to: 1) Create a function that transforms per-word metrics into utterance or time-leveled metrics  2) Gather baseline values for the caller 3) Track changes over time relative to the baseline  4) Set thresholds, and assign meaning to them.  
+
+## Enabling Voice Features
+
+Enable Voice Features by including `"voiceFeatures"` in the `features` array under `speechModel` when making a call to `POST /media`.
 
 ```json
 {
@@ -23,13 +27,13 @@ The `configuration` contains the following fields:
 
 ## Voice Features Results
 
-When you GET the media results, the response will add to the per word results an array, `“frq”` that includes the frequency, `“f”` and energy, `“e”` values for the dominant and secondary peaks for the word and a volume, `“v”` value for the word.
+When you GET the media results, the response will include the `“frq”` array, populated with `“f”`(frequency),`“e”`(energy), and `“v”`(volume) values for  each word. 
 
-`“f”` is the frequency in Hertz. The maximum value is 8khz or 16khz depending on the format that was provided.
+`“f”` is the frequency in Hertz,computed from the dominant and secondary peaks of each word. The maximum value is 8khz or 16khz, depending on submitted audio.
 
 `“e”` is the relative energy (amplitude) of the frequency. The value will be between 0 and 1.
 
-`“v”` is the relative volume. The higher the louder. Volume is determined by a formula where `v = A * M`. A is the average between the words timing and the frequencies amplitude and M is the maximum amplitude value from any frequency and spectrum frames within the words. The value can be unlimited but it is mostly between 0 and 2. Any value greater than 2 can be cropped to 2.
+`“v”` is the relative volume. Volume is determined by a formula where `v = A * M`. A is the average between the words timing and the frequencies amplitude and M is the maximum amplitude value from any frequency and spectrum frames within the words. The value can be unlimited but it is typically between 0 and 2. Any value greater than 2 can be cropped to 2.
 
 For example:
 

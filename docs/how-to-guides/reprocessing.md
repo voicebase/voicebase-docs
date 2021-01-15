@@ -2,7 +2,7 @@
 
 VoiceBase allows you to re-run the post-processing with different options.
 
-A common use-case for this is to update the media file with a human edited transcript, and re-run knowledge extraction with the new transcript. This is documented in the [aligner](aligner.md) section.
+A common use-case for this is to align a previously generated machine transcript with a human edited or new machine transcript, then re-running knowledge extraction with the new more accurate transcript. This is documented in the [aligner](aligner.md) section.
 
 You may also use the reprocessing feature to re-process different configuration options without requesting a new transcript.
 

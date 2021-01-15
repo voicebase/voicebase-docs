@@ -1,14 +1,16 @@
 # PCI, SSN, PII Redaction
 
 
-VoiceBase allows you to redact sensitive data (after [detecting it](pci-ssn-pii-detection.html)) from your recordings, transcripts, and analytics.
+VoiceBase allows you to redact and/or [detect](pci-ssn-pii-detection.html) sensitive data from your recordings, transcripts, and analytics.
 
 
 ### Transcript redaction
 
-To redact sensitive information from a media file, upload it to Voicebase, with a redact section in the detector configuration. In this example, any words in the detected region will be replaced with `[redacted]`.
+To redact sensitive information from a media file, include a `redactor` section in the detector configuration when making a POST request to the /v3/media resource. In this example, any words in the detected region will be replaced with `[redacted]`. 
 
-IMPORTANT NOTE: Currently, the PCI detector requires to disable number formatting.
+For more on detectionLevel parameter options within the PCI model, please refer to the [detect](pci-ssn-pii-detection.html) page.
+
+IMPORTANT NOTE: We recommend disabling number formatting on the PCI detector for best results.
 
 ```json
 {  
@@ -36,9 +38,9 @@ Sensitive data is automatically redacted from analytics (such as keywords and to
 
 ### Audio redaction
 
-To redact sensitive regions from your recording, upload it to VoiceBase, and add an `audio` section to the detector's redaction configuration. In this example, sensitive audio regions will be replaced with a 270 Hz tone of moderate volume.
+To redact sensitive regions from your recording, include an `audio` section to the detector's redaction configuration when making a POST request to the /v3/media resource. In this example, sensitive audio regions will be replaced with a 170 Hz tone of moderate volume.
 
-IMPORTANT NOTE: Currently, the PCI detector requires to disable number formatting.
+IMPORTANT NOTE:  We recommend disabling Number Formatting on the PCI detector for best results.
 
 ```json
 {  
@@ -55,8 +57,8 @@ IMPORTANT NOTE: Currently, the PCI detector requires to disable number formattin
                 "replacement" : "[redacted]"
             },
             "audio": {
-                "tone": 270,
-                "gain": 0.5
+                "tone": 170,
+                "gain": 0.25
             }
          }
     }]
@@ -131,8 +133,8 @@ curl https://apis.voicebase.com/v3/media \
                     "replacement" : "[redacted]"
                 },
                 "audio": {
-                    "tone": 270,
-                    "gain": 0.5
+                    "tone": 170,
+                    "gain": 0.25
                 }
              }
         }, {
@@ -142,8 +144,8 @@ curl https://apis.voicebase.com/v3/media \
                    "replacement" : "[redacted]"
                },
                "audio": {
-                    "tone": 270,
-                    "gain": 0.5
+                    "tone": 170,
+                    "gain": 0.25
                }
             }
        }]

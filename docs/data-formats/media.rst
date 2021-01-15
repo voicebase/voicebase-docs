@@ -1,8 +1,7 @@
 media
 =====
 
-Below is a sample of the v3 media response.
-See the bottom of the page for notes on hi-lighted sections.
+Below is a sample of the media response.
 
 .. code-block:: json
   :linenos:

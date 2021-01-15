@@ -9,7 +9,7 @@ Welcome to VoiceBase /v3 API Docs
 
 If you are getting started, we recommend the `Hello, World Developer Guide <how-to-guides/hello-world.html>`_ as a practical primer, and the `API Overview <overview/api_overview.html>`_ as a high-level introduction.
 
-More information and guidances can be found in the:
+More information and guidance can be found in the:
 
 * :ref:`how-to-guides`
 * :ref:`api-reference`
@@ -26,39 +26,43 @@ More information and guidances can be found in the:
 .. _how-to-guides:
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   :caption: How-To Guides
 
   how-to-guides/hello-world
   how-to-guides/transcripts
+  how-to-guides/aligner
+  how-to-guides/callbacks
+  how-to-guides/categories
+  how-to-guides/closed-captioning
+  how-to-guides/conversation-metrics
+  how-to-guides/custom-vocabulary
+  how-to-guides/formatting
   how-to-guides/keywords-and-topics
   how-to-guides/keyword-spotting
-  how-to-guides/predictions
   how-to-guides/languages
-  how-to-guides/stereo
-  how-to-guides/closed-captioning
-  how-to-guides/callbacks
-  how-to-guides/search
-  how-to-guides/swearwords
-  how-to-guides/priority
+  how-to-guides/metadata
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
-  how-to-guides/client-supplied-encryption
-  how-to-guides/custom-vocabulary
-  how-to-guides/s3-callbacks
-  how-to-guides/formatting
-  how-to-guides/voicemail
-  how-to-guides/metadata
+  how-to-guides/predictions
+  how-to-guides/priority
   how-to-guides/reprocessing
-  how-to-guides/aligner
-  how-to-guides/swagger-codegen
-  how-to-guides/https-request-security
-  how-to-guides/categories
-  how-to-guides/conversation-metrics
+  how-to-guides/search
+  how-to-guides/speech-engine
+  how-to-guides/stereo
+  how-to-guides/swearwords
   how-to-guides/voice-features
+  how-to-guides/voicemail
 
+.. _security-how-to:  
 
+.. toctree::
+  :maxdepth: 1
+  :caption: Security Reference
 
+  how-to-guides/client-supplied-encryption
+  how-to-guides/https-request-security
+ 
 .. _api-reference:
 
 .. toctree::
@@ -88,8 +92,15 @@ More information and guidances can be found in the:
 
 .. toctree::
   :caption: Developer Portal
+  
+  Create Account<https://www.voicebase.com/request-api-access/>
+  US Customer login<https://developer.voicebase.com>
+  EU Customer login<https://developer.eu.voicebase.com>
 
-  Developer Portal <https://apis.voicebase.com/developer-portal/>
+.. toctree::
+  :caption: Help Center
+  
+  FAQ<https://support.voicebase.com/>  
 
 .. toctree::
   :caption: License

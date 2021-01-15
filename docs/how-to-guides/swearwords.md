@@ -1,6 +1,6 @@
 # Swear Word Filter
 
-You can filter out a preset list of offensive words ("swear words") from English transcriptions. After the transcript is produced, the swear word filter redacts words on the disallowed list with "..." .
+You can filter out a preset list of offensive words ("swear words") from English transcriptions. After the transcript is produced, the swear word filter redacts words on the disallowed list with "..." . Download the list of disallowed words <a href="https://github.com/voicebase/voicebase-docs/blob/develop/SwearList.xlsx" download>here.</a>
 
 
 ## How to Use It
