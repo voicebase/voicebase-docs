@@ -160,30 +160,32 @@ Callback Retry Logic
 
 If a success response is not achieved on the first attempt, VoiceBase will retry
 the callback URL provided according to the following schedule until a success
-response or the schedule ends:
+response or the schedule ends. Each of these 7 scheduled attempts will include 3 attempts one immediately after each other for a maximum 21 attempts to the endpoint over 8 hours.
 
 ============= ===================== =========================
 Retry number  Time since last retry Time since initial try
 ============= ===================== =========================
 1             Immediate             0
-2             Immediate             <1 min
-3             Immediate             <1 min
-4             15 min                15 min
-5             30 min                45 min
-6             1 hour                1 hour  45 min (105 min)
-7             2 hours               3 hours 45 min (223 min)
-8             4 hours               7 hours 45 min (465 min)
-9             8 hours               15 hours 45 min (945 min)
+2             15 min                15 min
+3             30 min                45 min
+4             1 hour                1 hour  45 min (105 min)
+5             2 hours               3 hours 45 min (223 min)
+6             4 hours               7 hours 45 min (465 min)
+7             8 hours               15 hours 45 min (945 min)
 ============= ===================== =========================
 
 IP Whitelist
 ~~~~~~~~~~~~
 
-For VoiceBase US all egress traffic flows from our servers out through one of these three
-(currently) NAT gateways. The IPs are, 52.6.244.43, 52.6.208.178, 52.2.171.140
+All egress traffic flows from VoiceBase servers through the following (currently) NAT gateways:
 
-For VoiceBase EU all egress traffic flows from our servers out through one of these three
-(currently) NAT gateways. The IPs are, 34.248.80.158, 52.210.18.246, 54.72.141.175
+==== ===================== =========================
+IPs  VoiceBase US Instance VoiceBase EU Instance
+==== ===================== =========================
+1    52.6.244.43           34.248.80.158
+2    52.6.208.178          52.210.18.246
+3    52.2.171.140          54.72.141.175
+==== ===================== =========================
 
 Callback Data
 -------------
