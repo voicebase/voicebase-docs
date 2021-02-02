@@ -502,7 +502,7 @@ object with the following data:
     "publishKeyId": "11e13265-e688-428b-b7bb-708c12a30a41",
     "publicKeyHash": "A SHA256"
   }
-}
+  }
 
 Data Description
 ~~~~~~~~~~~~~~~~

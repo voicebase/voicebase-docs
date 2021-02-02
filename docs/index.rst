@@ -51,58 +51,69 @@ More information and guidance can be found in the:
   how-to-guides/speech-engine
   how-to-guides/stereo
   how-to-guides/swearwords
+  how-to-guides/transcoding
   how-to-guides/voice-features
   how-to-guides/voicemail
 
 .. _security-how-to:  
 
 .. toctree::
-  :maxdepth: 1
-  :caption: Security Reference
+   :maxdepth: 1
 
-  how-to-guides/client-supplied-encryption
-  how-to-guides/https-request-security
+   :caption: Security Reference
+
+   how-to-guides/client-supplied-encryption
+   how-to-guides/https-request-security
  
 .. _api-reference:
 
 .. toctree::
-  :maxdepth: 3
-  :caption: API Reference
+   :maxdepth: 3
+   :caption: API Reference
 
-  api-reference/media
-  api-reference/definitions
-  api-reference/profile
+   api-reference/media
+   api-reference/definitions
+   api-reference/profile
 
 .. _data-formats:
 
 .. toctree::
-  :maxdepth: 3
-  :caption: Data Formats
+   :maxdepth: 3
+   :caption: Data Formats
 
-  data-formats/configuration
-  data-formats/media
+   data-formats/configuration
+   data-formats/media
+
+.. _api-error-codes:   
 
 .. toctree::
-  :maxdepth: 3
-  :caption: API Error Codes
+   :maxdepth: 2
+   :caption: API Error Codes
 
-  errors/errors
+   errors/errors
 
 .. _developer-portal:
 
 .. toctree::
-  :caption: Developer Portal
+   :maxdepth: 2
+   :caption: Developer Portal
   
-  Create Account<https://www.voicebase.com/request-api-access/>
-  US Customer login<https://developer.voicebase.com>
-  EU Customer login<https://developer.eu.voicebase.com>
+   Create Account<https://www.voicebase.com/request-api-access/>
+   US Customer login<https://developer.voicebase.com>
+   EU Customer login<https://developer.eu.voicebase.com>
+
+.. _help-center:
 
 .. toctree::
-  :caption: Help Center
+   :maxdepth: 2
+   :caption: Help Center
   
-  FAQ<https://support.voicebase.com/>  
+   FAQ<https://support.voicebase.com/>  
+
+.. _license-:
 
 .. toctree::
-  :caption: License
+   :maxdepth: 2
+   :caption: License
 
-  license
+   license

@@ -7,7 +7,11 @@ VoiceBase offers three distinct proprietary speech engines, each tuned to addres
 
 VoiceBase's premium engine, Europa, gives the highest accuracy and is trained on a wide range of regional accents for English. It performs well for US English audio, as well as international use cases with combinations of English speakers from the UK, India, Singapore, and other regions. 
 
-Configurations should use the default language, US English. 
+No specific configuration is required when using its default language, US English. The default is the same for all regions and dialects of English.
+
+Europa also supports Spanish. It is trained mainly with European Spanish, but also with other variants. 
+Europa Spanish may be configured as any one of the following: "language":"es-ES", "es-MX" or "es-US". The resulting transcript will be the same regardless of which variant is configured. 
+
 
 **Titan**
 
@@ -27,7 +31,7 @@ custom vocabulary        √        √        √
 number formatting        √        √        √    
 keywords-and-topics      √        √        √       
 keyword-spotting         √        √        √     
-languages               en-US     √      en-US 
+languages              en,es      √      en-US 
 pci-ssn-pii-detection    √        √        √    
 pci-ssn-pii-redaction    √        √        √        
 stereo                   √        √        √    
@@ -36,6 +40,7 @@ voice features                    √        √
 voicemail                         √            
 =====================  ======  ========  ======
 
+Europa supports English and Spanish. 
 Please note that number formatting may not be disabled on the Europa speech engine.
 `Custom Vocabulary <custom-vocabulary.html>`_ is supported with Europa, but the "Weighting" feature is not.
 
@@ -49,7 +54,7 @@ Enable a specific speech engine by including the ``model`` parameter under ``spe
 
     {
       "speechModel": {
-        "model": "Titan"    
+        "model": "Titan" 
       }
     }
 
