@@ -7,7 +7,7 @@ Welcome to VoiceBase /v3 API Docs
 `VoiceBase <https://www.voicebase.com>`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data. The `Developer Portal <https://apis.voicebase.com/developer-portal>`_ provides a variety of resources for working with the VoiceBase REST API, and example components you can use to jump-start your integration.
 
 
-If you are getting started, we recommend the `Hello, World Developer Guide <how-to-guides/hello-world.html>`_ as a practical primer, and the `API Overview <overview/api_overview.html>`_ as a high-level introduction.
+If you are getting started, we recommend the `Hello World Developer guide <how-to-guides/hello-world.html>`_  as a practical primer, and the `API Overview <overview/api_overview.html>`_ as a high-level introduction.
 
 More information and guidance can be found in the:
 
@@ -49,6 +49,7 @@ More information and guidance can be found in the:
   how-to-guides/reprocessing
   how-to-guides/search
   how-to-guides/speech-engine
+  how-to-guides/swagger-codegen
   how-to-guides/stereo
   how-to-guides/swearwords
   how-to-guides/transcoding
