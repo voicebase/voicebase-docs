@@ -77,7 +77,7 @@ curl https://apis.voicebase.com/v3/media?query=title%3AFrost  \
   --header "Authorization: Bearer ${TOKEN}"
 ```
 
-# Pass through Metadata
+## Pass through Metadata
 
 You may like to attach some metadata to a VoiceBase job and have VoiceBase remember that metadata throughout the life of the job to eventually pass back to you in the results. The metadata can be passed back in a callback or through polling.
 
@@ -118,7 +118,7 @@ Which would add an additional section to your JSON results (both polling and cal
 }
 
 
-# ExternalId
+## ExternalId
 
 You are able to add your own ID to media you sent into VoiceBase. That ID will remain with the job as long as it is in VoiceBase. This most commonly acts as an identifier on another system.
 
@@ -147,7 +147,7 @@ curl https://apis.voicebase.com/v3/media?externalId=A12345 \
 Your externalId can be unique, but VoiceBase does not force uniqueness on externalId. If you have multiple jobs with the same externalId, then multiple jobs will be returned when you make the GET above.
 
 
-# Metadata Filter
+## Metadata Filter
 
 You are able to index your own metadata which will allow you to filter GET results based on metadata.
 
