@@ -49,7 +49,6 @@ More information and guidance can be found in the:
   how-to-guides/reprocessing
   how-to-guides/search
   how-to-guides/speech-engine
-  how-to-guides/swagger-codegen
   how-to-guides/stereo
   how-to-guides/swagger-codegen
   how-to-guides/swearwords
