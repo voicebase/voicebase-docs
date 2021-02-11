@@ -117,7 +117,6 @@ Which would add an additional section to your JSON results (both polling and cal
 	}
 }
 
-
 ## ExternalId
 
 You are able to add your own ID to media you sent into VoiceBase. That ID will remain with the job as long as it is in VoiceBase. This most commonly acts as an identifier on another system.
@@ -145,7 +144,6 @@ curl https://apis.voicebase.com/v3/media?externalId=A12345 \
 ```
 
 Your externalId can be unique, but VoiceBase does not force uniqueness on externalId. If you have multiple jobs with the same externalId, then multiple jobs will be returned when you make the GET above.
-
 
 ## Metadata Filter
 
