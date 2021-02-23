@@ -96,9 +96,9 @@ For example:
 
 ## Number Formatting
 
-VoiceBase can transcribe numbers found in the transcription be displayed in digit form. Number formatting is enabled by default. 
+The Number Formatting feature will transcribe numbers in digit form, that is, "1" rather than "one". Number formatting is enabled by default. 
 
-To explicitly disable number-formatting, include the following snippet in your configuration:
+To explicitly disable number-formatting, include the following snippet in your configuration at upload:
 
 ```json
 {  
