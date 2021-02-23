@@ -6,7 +6,7 @@ VoiceBase is able to return automatic transcripts for voicemail recordings which
 
 Below is an optimized configuration for fast and accurate voicemail transcription. This includes features that benefit shorter forms of audio, however they are all optional.
 
-* **Disable [Phrase Groups and Topic Extraction](keywordsandtopics.md):** Disabling semantic knowledge discovery improves turnaround time and is generally not needed for short files.
+* **Disable [Phrase Groups and Topic Extraction](keywords-and-topics.md):** Disabling semantic knowledge discovery improves turnaround time and is generally not needed for short files.
 * **Enable [Number Formatting](formatting.md):** This will format numbers as digits instead of words and adds US phone number formatting which will enable click-to-call for users.
 * **Use [Callbacks](callbacks.md):** By using callbacks, our servers will send the data as soon as processing is finished. You won't have to wait until the next polling interval.
 

@@ -27,40 +27,54 @@ To enable one speaker per channel stereo transcription, add the "ingest" configu
 
 ## Effects on Transcripts
 
-When stereo processing is enabled, the word-by-word JSON transcript will contain additional nodes indicating the change of turn on the speaker. These nodes are identified by the attribute "m" set to "turn" and the attribute "w" set to the speaker's label provided in the configuration for one of the channels. The words following a turn node belong to the speaker identified by it until a new turn node appears in the transcript.
+When stereo processing is enabled, the word-by-word JSON transcript will return both a "words" array and a "turns" array, offering different options for parsing the data. 
+
+The "words" array contains nodes indicating the change of turn on the speaker. These nodes are identified by the attribute "m" set to "turn" and the attribute "w" set to the speaker's label provided in the configuration for one of the channels. The words following a turn node belong to the speaker identified by it until a new turn node appears in the transcript. 
 
 ```json
 {
   "transcript" : {
     "confidence": 0.958,
-    "words": [
-        {
-          "p": 176,
-          "s": 55893,
-          "c": 0.574,
-          "e": 56103,
-          "w": "street"
-        },
-        {
-          "p": 177,
-          "s": 57353,
-          "c": 1,
-          "e": 58163,
-          "w": "Agent",
-          "m": "turn"
-        },
-        {
-          "p": 178,
-          "s": 57353,
-          "c": 0.346,
-          "e": 57483,
-          "w": "what"
-        }
-    ]
+        "words": [
+            {
+                "p": 0,
+                "c": 1.0,
+                "s": 1420,
+                "e": 4260,
+                "m": "turn",
+                "w": "Agent"
+            },
+            {
+                "p": 1,
+                "c": 0.486,
+                "s": 1420,
+                "e": 1620,
+                "w": "Hi"
+            },
+            {
+                "p": 2,
+                "c": 0.917,
+                "s": 1630,
+                "e": 1790,
+                "w": "this"
+            }
+       ]     
   }
 }
 ```
 
+The "turns" array contains the key "text", and its value is a block of text all pertaining to one speaker, as in the following example:
+
+```json
+        "turns": [
+            {
+                "speaker": "Agent",
+                "text": "Hi this is c.s.v. shipping company Brian speaking how can I help you.",
+                "s": 1420,
+                "e": 4260
+            }
+           ] 
+``` 
 The plain text version of the transcript will show each segment of the conversation prefixed with the speaker name (e.g. 'Agent:' or  'Customer')
 
 ```bash
@@ -70,17 +84,11 @@ curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/text \
 ```
 
 ---
-**Agent:** Well this is Michael thank you for calling A.B.C. cable services.
-How may I help you today.
-
-**Customer:** Hi I'm calling because I'm interested in buying new cable service.
-
-**Agent:** OK great let's get started.  
+Agent: Hi this is c.s.v. shipping company Brian speaking how can I help you. Customer: This is Henry we spoke earlier I got a quote from you. 
 
 ...
 
 ---
-
 
 The SRT version of the transcript will also contain the speaker names provided in
 the configuration.
@@ -94,7 +102,7 @@ curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/srt  \
 ```
 1
 00:00:02,76 --> 00:00:05,08
-Agent: Well this is Michael
+Agent: Well this is Taneisha
 thank you for calling A.B.C.
 
 2

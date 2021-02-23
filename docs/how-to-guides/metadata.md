@@ -1,13 +1,13 @@
-# Working with Metadata
+# Metadata Guide
 
 Transcriptions may be organized by providing additional information
-about a recording submitted by a POST request to /v3/media
+about a recording submitted by a POST request to /v3/media.
 
 Media can be submitted with additional information that helps you organize and
 search your transcriptions based on it. The additional information is
-supplied by providing a form attribute named "metadata" with a JSON document
+supplied by providing a form attribute named "metadata" with a JSON document.
 
-Here is a sample metadata
+Here is a sample metadata:
 
 ```json
 {
@@ -46,7 +46,7 @@ curl https://apis.voicebase.com/v3/media \
     }'
 ```
 Metadata will be returned as part of your calls to GET /v3/media/{mediaId} and
-GET /v3/media
+GET /v3/media.
 
 Metadata will be included in callbacks of type "analytics" that do not specify
 the "include" attribute and those that explicitly request the "metadata" section
@@ -102,20 +102,22 @@ curl https://apis.voicebase.com/v3/media \
 }'
 ```
 
-Which would add an additional section to your JSON results (both polling and callback) that looks like this,
+This would add an additional section to your JSON results (both polling and callback) that looks like this:
 
+```json
 {
     "metadata": {
-		"extended" {
+		"extended": {
 			"agent" : "Your-Agent",
 			"date" : "Your-Date",
 			"time" : "Your-Time",
 			"ani" : "Your-ANI",
 			"dispcode" : "Your-Dispcode",
 			"campaignId" : "Your-Campaign"
-		}
-	}
+		  }
+	 }
 }
+```
 
 ## ExternalId
 
@@ -172,5 +174,5 @@ https://apis.voicebase.com/v3/media?extendedFilter=campaignId%3A1234
 
 Keep in mind that only media processed AFTER your metadata was indexed will be returned.
 
-For all filtering options, pagination, etc see our search page.
+For all filtering options, pagination, etc see our [Search](search.html) page.
 

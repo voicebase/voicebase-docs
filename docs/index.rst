@@ -59,12 +59,11 @@ More information and guidance can be found in the:
 .. _security-how-to:  
 
 .. toctree::
-   :maxdepth: 1
+  :maxdepth: 2
+  :caption: Security Reference
 
-   :caption: Security Reference
-
-   how-to-guides/client-supplied-encryption
-   how-to-guides/https-request-security
+  how-to-guides/client-supplied-encryption
+  how-to-guides/https-request-security
  
 .. _api-reference:
 
