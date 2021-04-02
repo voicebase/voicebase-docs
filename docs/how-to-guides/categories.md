@@ -6,7 +6,7 @@ VoiceBase runs the categories when the recording is processed, and returns a boo
 
 Categories are especially useful as a discovery tool when used in conjunction with the Analytic Workbench available in your VoiceBase [account](https://app.voicebase.com/app/workbench). 
 
-Categories are created using VoiceBase's proprietary query language, VBQL. For a step-by-step guide to syntax and best practices, the VBQL documentation is available for VoiceBase customers [here](https://app.voicebase.com/static/media/Getting_Started_With_VoiceBase.770cd9e8.pdf). 
+Categories are created using VoiceBase's proprietary query language, VBQL. For a step-by-step guide to syntax and best practices, the VBQL documentation is available for VoiceBase customers, and we are also happy to spend time in training staff on its usage. 
 
 ## Adding a category
 
@@ -27,7 +27,7 @@ The JSON body of the request contains the category definition. For example:
   "version": "0.0.1"
 }
 ```
-Categories may alternatively be added using the "Publish" option in the Analytic Workbench. For a step-by-step guide, see [Saving Your Query as a Category](https://app.voicebase.com/static/media/Getting_Started_With_VoiceBase.770cd9e8.pdf) in the VBQL documentation.
+Categories may alternatively be added using the "Publish" option in the Analytic Workbench.
 
 The body of the category definition contains the following fields:
 
