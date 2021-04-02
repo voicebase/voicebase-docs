@@ -86,8 +86,6 @@ curl https://apis.voicebase.com/v3/media/${MEDIA_ID}/transcript/text \
 ---
 Agent: Hi this is c.s.v. shipping company Brian speaking how can I help you. Customer: This is Henry we spoke earlier I got a quote from you. 
 
-...
-
 ---
 
 The SRT version of the transcript will also contain the speaker names provided in
