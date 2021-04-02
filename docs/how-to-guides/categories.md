@@ -4,6 +4,10 @@ VoiceBase enables you to apply speech analytics to a recording and categorize it
 
 VoiceBase runs the categories when the recording is processed, and returns a boolean result where a 1 equals a match for the category definition and 0 when it does not match.
 
+Categories are especially useful as a discovery tool when used in conjunction with the Analytic Workbench available in your VoiceBase [account](https://app.voicebase.com/app/workbench). 
+
+Categories are created using VoiceBase's proprietary query language, VBQL. For a step-by-step guide to syntax and best practices, the VBQL documentation is available for VoiceBase customers [here](https://app.voicebase.com/static/media/Getting_Started_With_VoiceBase.770cd9e8.pdf). 
+
 ## Adding a category
 
 To define or update a category, make a `PUT` request against the `/definition/categories/{categoryName}` resource.
@@ -23,6 +27,7 @@ The JSON body of the request contains the category definition. For example:
   "version": "0.0.1"
 }
 ```
+Categories may alternatively be added using the "Publish" option in the Analytic Workbench. For a step-by-step guide, see [Saving Your Query as a Category](https://app.voicebase.com/static/media/Getting_Started_With_VoiceBase.770cd9e8.pdf) in the VBQL documentation.
 
 The body of the category definition contains the following fields:
 
