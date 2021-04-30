@@ -6,7 +6,7 @@ VoiceBase runs the categories when the recording is processed, and returns a boo
 
 Categories are especially useful as a discovery tool when used in conjunction with the Analytic Workbench available in your VoiceBase [account](https://app.voicebase.com/app/workbench). 
 
-Categories are created using VoiceBase's proprietary query language, VBQL. For a step-by-step guide to syntax and best practices, the VBQL documentation is available for VoiceBase customers, and we are also happy to spend time in training staff on its usage. 
+Categories are created using VoiceBase's proprietary query language, VBQL. For a step-by-step guide to syntax and best practices, the VBQL documentation is available for VoiceBase customers, and we are also happy to spend time in training customers on its usage. 
 
 ## Adding a category
 

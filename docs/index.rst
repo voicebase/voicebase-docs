@@ -48,11 +48,13 @@ More information and guidance can be found in the:
   how-to-guides/priority
   how-to-guides/reprocessing
   how-to-guides/search
+  how-to-guides/sentiment-by-turn
   how-to-guides/speech-engine
   how-to-guides/stereo
   how-to-guides/swagger-codegen
   how-to-guides/swearwords
   how-to-guides/transcoding
+  how-to-guides/verb-noun
   how-to-guides/voice-features
   how-to-guides/voicemail
 
