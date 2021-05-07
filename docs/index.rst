@@ -44,6 +44,7 @@ More information and guidance can be found in the:
   how-to-guides/metadata
   how-to-guides/pci-ssn-pii-detection
   how-to-guides/pci-ssn-pii-redaction
+  how-to-guides/player
   how-to-guides/predictions
   how-to-guides/priority
   how-to-guides/reprocessing
