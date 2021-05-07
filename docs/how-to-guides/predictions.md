@@ -1,4 +1,4 @@
-# Classifiers (Predictions)
+# Predictions (Classifiers) 
 
 VoiceBase enables you to take advantage of machine learning to make business predictions from a recording.
 
