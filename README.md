@@ -16,6 +16,19 @@ pip install recommonmark
 
 ## Building and previewing the documentation
 
+IMPORTANT: Work on the `develop` branch. Submit pull-requests to merge `develop` into `v3` branch. 
+This project has the Default Branch in GitHub set to `v3` (every other project uses `develop`, but in this case we release to the public from `v3` )
+If more than one person works in this project then the recommendation is to create feature branches from develop:
+```
+git checkout develop
+git checkoout -b feature/V2-9999-adding-new-api
+```
+Do your changes in the branch, when done, commit and create a pull-request from your branch into `develop`.
+
+When multiple changes are ready to be published to the public documentation, submit a pull-request from `develop` into `v3`.
+
+
+
 To build and preview the documentation, navigate to the `docs/` sub-directory and run:
 
 ```bash
