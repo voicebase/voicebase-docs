@@ -1,15 +1,14 @@
 API Overview
 ============
 
-VoiceBase provides APIs for speech recognition and speech analytics. Our customers use the APIs to transcribe
-recordings with high accuracy, discover the keywords and topics discussed, and predict business outcomes.
+VoiceBase provides APIs for speech recognition and speech analytics, providing customers with a wide variety of insights about the data in their audio files.
 
 #############
 Authorization
 #############
 
 The VoiceBase /v3 REST API is secured using OAuth Bearer tokens. Bearer tokens are issued and managed
-through the `Developer Portal <https://apis.voicebase.com/developer-portal>`_.
+through your VoiceBase `account <https://app.voicebase.com>`_.
 
 For details on getting your first token, see the `How to Get Your Bearer Token <../how-to-guides/hello-world.html#how-to-get-your-bearer-token>`_
 section of the `Hello, World How-To Guide <../how-to-guides/hello-world.html>`_.
