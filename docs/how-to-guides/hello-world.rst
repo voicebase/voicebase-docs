@@ -6,14 +6,27 @@ This Quickstart tutorial gets you up and running with your first transcription a
 
 The examples assume you have these prerequisites:
 
-- *Your Bearer token* (otherwise, see: :ref:`How to Get Your Bearer Token <token>` for details)
-- *jq* for working with JSON (otherwise, see: :ref:`A Quick Note on Tools <tools>` for details)
+- *Your Bearer token* 
+- *jq* for working with JSON (see: :ref:`A Quick Note on Tools <tools>` for details)
 - *curl* (comes with most Linux systems, see: :ref:`A Quick Note on Tools <tools>` for details)
 
-Step **(1)**: Verify your Bearer Token and tools are working
-------------------------------------------------------------
+.. _token:
 
-Start by verifying your Bearer token is working by running the following from a command prompt. Please remember to insert your Bearer token after *TOKEN=* in the first line of the example. You can also find more detailed instructions on :ref:`How to Get Your Bearer Token <token>` or :ref:`Understanding Your First Request <understanding_step1>` below.
+How to Get Your Bearer Token
+----------------------------
+
+Sign into your VoiceBase `account <https://app.voicebase.com>`__.
+Go to Settings/Bearer Tokens and click *Add Bearer Token*.
+
+.. image:: /_static/BearerToken.png
+   :width: 550
+
+Save your token in a secure location; it won't be visible in your account after its initial creation.
+
+Verify your Bearer Token and tools are working
+----------------------------------------------
+
+Start by verifying your Bearer token is working by running the following from a command prompt. Please remember to insert your Bearer token after *TOKEN=* in the first line of the example. You can also find more detailed instructions on :ref:`Understanding Your First Request <understanding_step1>` below.
 
 .. code-block:: sh
   :linenos:
@@ -22,10 +35,10 @@ Start by verifying your Bearer token is working by running the following from a 
   export TOKEN= # Insert your VoiceBase Bearer token after TOKEN=
 
   curl https://apis.voicebase.com/v3/media \
-    --header "Authorization: Bearer ${TOKEN:?'(hint: insert your token after export TOKEN=)'}" \
+    --header "Authorization: Bearer TOKEN" \
     | jq
 
-You should see a response like this (otherwise, see :ref:`explanation <understanding_step1>` and/or :ref:`troubleshooting <hello-world-troubleshooting>`):
+You should see a response like this:
 
 .. code-block:: json
 
@@ -38,8 +51,8 @@ You should see a response like this (otherwise, see :ref:`explanation <understan
     "media": []
   }
 
-Step **(2)**: Upload a media file for transcription and analysis
-----------------------------------------------------------------
+Upload a media file for transcription and analysis
+--------------------------------------------------
 
 To upload a recording for transcription and analysis, POST to /media with the recording as an attachment named media (you can also provide a URL to your recording instead using the form field 'mediaUrl').
 
@@ -88,8 +101,8 @@ The response includes a *mediaId* (assigned by the API) and a status of *accepte
     },
     "mediaId": "10827f19-7574-4b54-bf9d-9387999eb5ec",
     "status": "accepted",
-    "dateCreated": "2017-06-22T18:23:02Z",
-    "dateFinished": "2017-06-22T18:23:58Z",
+    "dateCreated": "2021-04-22T18:23:02Z",
+    "dateFinished": "2021-04-22T18:23:58Z",
     "mediaContentType": "audio/mp3",
     "length": 10031,
     "metadata": {}
@@ -114,8 +127,8 @@ You can poll for status until the processing is done (for production, we recomme
     echo "Got status: ${STATUS} for mediaId: ${MEDIA_ID} on $( date )"
   done
 
-Step **(3)**: Get your transcript and analytics
------------------------------------------------
+Get your transcript and analytics
+---------------------------------
 
 You can retrieve the JSON version of the transcript and all analytics with a simple API call.
 
@@ -137,42 +150,13 @@ You can also retrieve a plain-text version using *transcript/text* and the *Acce
     --header 'Accept: text/plain' \
     --header "Authorization: Bearer ${TOKEN}"
 
-.. _token:
-
-
-How to Get Your Bearer Token
-----------------------------
-
-First, sign into the `Developer Portal <https://apis.voicebase.com/developer-portal>`__.
-
-.. image:: /_static/Sign-Into-Developer-Portal.png
-   :width: 200
-
-Click the *Bearer Token Management* widget in the lower-left of the portal.
-
-.. image:: /_static/Bearer-Token-Management.png
-   :width: 300
-
-Click the *+ New Token* button to generate a new Bearer token
-
-.. image:: /_static/New-Token.png
-   :width: 450
-
-Click through on *Create Token* to generate the token.
-
-.. image:: /_static/Create-Token.png
-
-Save your token by Copying it to the clipboard or downloading it.
-
-.. image:: /_static/Copy-Token-To-Clipboard.png
-
 
 .. _understanding_step1:
 
 Understanding Your First Request
 --------------------------------
 
-The root URL of the VoiceBase V3 API is **https://apis.voicebase.com/v3**. Every recording you submit for analysis appears in the **/media** collection. The first request is to GET the **/media** collection (which will be empty when you first sign up). We pro-actively limit the page size to 10 (*?limit=10*) to avoid an overwhelming response as the media collection grows.
+The root URL of the VoiceBase V3 API is **https://apis.voicebase.com/v3**. Every recording you submit for analysis appears in the **/media** collection and is viewable in the 'Media Browser' tab. The first request is to GET the **/media** collection (which will be empty when you first sign up). Pagination default limit is set to 100. 
 
 .. code-block:: sh
   :linenos:
@@ -183,7 +167,7 @@ The root URL of the VoiceBase V3 API is **https://apis.voicebase.com/v3**. Every
     --header "Authorization: Bearer ${TOKEN:?'(hint: insert your token after export TOKEN=)'}" \
     | jq
 
-If you're running this for the first time, the API returns (see: :ref:`Troubleshooting <hello-world-troubleshooting>` if you hit issues):
+If you're running this for the first time, the API returns:
 
 .. code-block:: json
 
@@ -207,7 +191,7 @@ All successful responses from the API will include an *_links* section with `HAL
     "_links": { }
   }
 
-The *media* section the list of media in your account (up to 10 due to the limit parameter). If you have previously uploaded media, it will appear in the list.
+The *media* section the list of media in your account. If you have previously uploaded media, it will appear in the list.
 
 .. code-block:: json
   :emphasize-lines: 2
@@ -255,14 +239,14 @@ Finally, many operations will rely on providing a configuration JSON attachment 
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
 
-Many of the Developer Guides will address how to use specific options in the configuration attachment to address various Use Cases.
+The 'How-to' guides in this documentation show configurations for each feature of the VoiceBase platform, including an overall`sample <https://configuration.html>`__.
 
 .. _tools:
 
 A Quick Note on Tools
 ---------------------
 
-- **curl**: The examples in this documentation make heavy use of `curl`_ for making HTTP requests to the API.
+- **curl**: The examples in this documentation make use of `curl`_ for making HTTP requests to the API.
 - **jq**: The `jq`_ tool helps parse JSON responses and work with JSON data.
 
 .. _curl: https://curl.haxx.se/docs/manpage.html
@@ -270,8 +254,3 @@ A Quick Note on Tools
 
 
 
-
-.. _hello-world-troubleshooting:
-
-Troubleshooting
----------------
