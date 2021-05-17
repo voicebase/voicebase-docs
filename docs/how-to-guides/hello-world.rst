@@ -239,7 +239,7 @@ Finally, many operations will rely on providing a configuration JSON attachment 
     --header "Authorization: Bearer ${TOKEN}" \
     | jq
 
-The 'How-to' guides in this documentation show configurations for each feature of the VoiceBase platform, including an overall`sample <https://configuration.html>`__.
+The 'How-to' guides in this documentation show configurations for each feature of the VoiceBase platform, including an overall `sample configuration <https://voicebase.readthedocs.io/en/v3/data-formats/configuration.html>`__.
 
 .. _tools:
 
