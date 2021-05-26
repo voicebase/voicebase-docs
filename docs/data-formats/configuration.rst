@@ -76,7 +76,9 @@ Please see notes below for details about specific lines.
         ]
       }
     ],
-    "publish": {}
+    "publish": {
+    "enableAnalyticIndexing" : true
+    }
   }
 
 Notes:
@@ -90,3 +92,4 @@ Notes:
 - line 48 (``"enableProfanityFiltering": true``): Default is false
 - line 53 (``"vocabularyName": "earningsCalls"``): this vocabulary must be created before it is used
 - line 60 (``"weight": 1``):  weights range from 0 to 5, 0 being default weight
+- line 69 (``"enableAnalyticIndexing" : true``): this publishes the media file to the Analytic Workbench

@@ -31,6 +31,7 @@ More information and guidance can be found in the:
   how-to-guides/hello-world
   how-to-guides/transcripts
   how-to-guides/aligner
+  how-to-guides/analytics-workbench
   how-to-guides/callbacks
   how-to-guides/categories
   how-to-guides/closed-captioning
