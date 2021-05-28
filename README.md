@@ -21,7 +21,7 @@ This project has the Default Branch in GitHub set to `v3` (every other project u
 If more than one person works in this project then the recommendation is to create feature branches from develop:
 ```
 git checkout develop
-git checkoout -b feature/V2-9999-adding-new-api
+git checkout -b feature/V2-9999-adding-new-api
 ```
 Do your changes in the branch, when done, commit and create a pull-request from your branch into `develop`.
 
@@ -46,7 +46,7 @@ To rebuilding the documentation continuously on changes.
 
 ## Deployment
 
-When deployed, this documentation appears at [http://voicebase.readthedocs.io/en/v3/](http://voicebase.readthedocs.io/en/v3/).
+When deployed, this documentation appears at [http://voicebase.readthedocs.io/en/v3/](http://voicebase.readthedocs.io/en/stable/).
 
 ## Language Guide
 
