@@ -14,7 +14,7 @@ Please note that Advanced Punctuation is not available in French, German, Italia
 ```json
 {
   "speechModel" : {
-        "language": "en-UK",
+        "language": "es-US",
         "features" : [  "advancedPunctuation"  ]
   }
 }

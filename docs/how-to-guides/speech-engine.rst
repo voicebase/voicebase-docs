@@ -5,7 +5,7 @@ VoiceBase offers three distinct proprietary speech engines, each tuned to addres
 
 **Titan**
 
-The Titan engine is VoiceBase's default engine, offering the highest accuracy and best value for US English content. Trained on call center audio, Titan is a great choice for US based customers working with agent/customer calls. It supports US English only.
+The Titan engine is VoiceBase's default engine, offering the highest accuracy and best value for US English content. Trained on call center audio, Titan is a great choice for US based customers working with agent/customer calls. It supports US English and Spanish.
 
 **Europa**
 
@@ -34,7 +34,7 @@ custom vocabulary        √        √        √
 number formatting        √        √        √    
 keywords-and-topics      √        √        √       
 keyword-spotting         √        √        √     
-languages              en, es     √      en-US 
+languages              en, es     √      en-US, es-US 
 pci-ssn-pii-detection    √        √        √    
 pci-ssn-pii-redaction    √        √        √        
 stereo                   √        √        √    

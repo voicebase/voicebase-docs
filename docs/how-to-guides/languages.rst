@@ -102,7 +102,7 @@ U.K. English
 Europa speech engine 
 --------------------
 
-You may want to try our premium speech engine, `Europa <speech-engine.html>`__ for variants of English such as Singapore, Indian, UK, or Australian English. 
+You may want to try our specialized speech engine, `Europa <speech-engine.html>`__ for variants of English such as Singapore, Indian, UK, or Australian English. 
 Europa also supports European Spanish and other variants of Spanish.
 
 More Language Options
