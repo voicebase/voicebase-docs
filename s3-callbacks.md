@@ -84,7 +84,7 @@ Delivery:
 - url. The base URL of your S3 destination bucket, without a trailing slash, for 
 example: http://s3-us-east-1.amazonaws.com/your-bucket-name
 - role. The ARN of the IAM Role you created earlier, for 
-example: arn:aws:iam::817533888121:policy/enable-voicebase-s3-delivery-to-your-s3-
+example: arn:aws:iam::999533888199:policy/enable-voicebase-s3-delivery-to-your-s3-
 bucket-name
 - prependFolder. This value will be used to create the S3 object key for each object that 
 we save to your S3 bucket. For example, if your bucket URL is "http://s3-us-east-
