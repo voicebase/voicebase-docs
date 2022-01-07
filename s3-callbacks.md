@@ -65,7 +65,6 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
       }
     ]
   }
-}
 ```
 
 ## Providing IAM Role ARN to customers for s3 bucket permissions
