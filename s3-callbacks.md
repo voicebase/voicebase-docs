@@ -68,11 +68,11 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
 }
 ```
 
-## Providing ARN to customers for s3 bucket permissions
+## Providing IAMRoleArn to customers for s3 bucket permissions
 
 Customers will typically need a VoiceBase Amazon Resource Name (ARN) because they need to give permission for VoiceBase to write to their s3 bucket. After they create a bucket on their side to receive the files, they would also create an IAM role which VoiceBase assumes in order to write the files to that bucket. 
 
-VoiceBase then needs to provide the ARN, the customer adds this to their trust policy for the role, and this allows VoiceBase to assume the role. 
+VoiceBase then needs to provide the IAMRoleArn, the customer adds this to their trust policy for the role, and this allows VoiceBase to assume the role. 
 
 
 
