@@ -13,7 +13,7 @@ We assume that you already have installed Java 8 and Maven.
 
 The following command uses Maven to download the Swagger Codegen tool.
 ```sh
-mvn dependency:copy -Dartifact=io.swagger:swagger-codegen-cli:2.2.2 -DoutputDirectory=. -Dmdep.stripVersion=true
+mvn dependency:copy -Dartifact=io.swagger:swagger-codegen-cli:2.4.21 -DoutputDirectory=. -Dmdep.stripVersion=true
 ```
 
 

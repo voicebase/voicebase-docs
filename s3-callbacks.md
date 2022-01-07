@@ -12,7 +12,7 @@ media for processing to us.
 The following code shows how to generate a pre-signed URL using boto3 as the AWS client library.
 Note that the "method" must be set to "PUT".
 
-You you must provide a Content-Type header with a value that matches the content type of the results
+You must provide a Content-Type header with a value that matches the content type of the results
 to be received. Refer to [callback] documentation. (callbacks.html)
 
 You must provide ample time between the time you create the
@@ -54,12 +54,12 @@ python presigned.py
 Use the pre-signed URL in the configuration when submitting media to the /v3 API. For example:
 
 ```json
-{
   "publish": {
     "callbacks": [
       {
-        "url" : "https://your-bucket-name.s3.amazonaws.com/desired/object/name/analytics.json?AWSAccessKeyId=AKIAJV3H7XSCGJXMUGGA&content-type=application%2Fjson&Expires=1499476130&Signature=UwcWOfLWLpvtj1LibHd0Na5Fw%2FM%3D",
+        "url" : "https://your-bucket-name.s3.amazonaws.com/desired/object/name/analytics.json?AWSAccessKeyId=AKIAJZZZZXSCGJXMUGGA&content-type=application%2Fjson&Expires=1499476130&Signature=UwcWOfLWLpvtj1LibHd0Na5Fw%2FM%3D",
         "type" : "analytics",
+        "role":"arn:aws:iam::xxxxxxxxxx:role/s3-delivery-role",
         "method" : "PUT",
         "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams" ]
       }
@@ -67,3 +67,15 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
   }
 }
 ```
+
+## Providing ARN to customers for s3 bucket permissions
+
+Customers will typically need a VoiceBase Amazon Resource Name (ARN) because they need to give permission for VoiceBase to write to their s3 bucket. After they create a bucket on their side to receive the files, they would also create an IAM role which VoiceBase assumes in order to write the files to that bucket. 
+
+VoiceBase then needs to provide the ARN, the customer adds this to their trust policy for the role, and this allows VoiceBase to assume the role. 
+
+
+
+
+
+
