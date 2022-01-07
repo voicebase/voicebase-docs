@@ -60,6 +60,7 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
         "url" : "https://your-bucket-name.s3.amazonaws.com/desired/object/name/analytics.json?AWSAccessKeyId=AKIAJZZZZXSCGJXMUGGA&content-type=application%2Fjson&Expires=1499476130&Signature=UwcWOfLWLpvtj1LibHd0Na5Fw%2FM%3D",
         "type" : "analytics",
         "role":"arn:aws:iam::xxxxxxxxxx:role/s3-delivery-role",
+        "prependFolder":"my_files",
         "method" : "PUT",
         "include" : [ "transcript", "knowledge", "metadata", "prediction", "streams" ]
       }
@@ -72,6 +73,24 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
 Customers will typically need a VoiceBase Amazon Resource Name (ARN) because they need to give permission for VoiceBase to write to their s3 bucket. After they create a bucket on their side to receive the files, they would also create an IAM role which VoiceBase assumes in order to write the files to that bucket. 
 
 VoiceBase then needs to provide the IAM Role ARN, the customer adds this to their trust policy for the role, and this allows VoiceBase to assume the role. 
+
+## VoiceBase Callback Configuration
+
+When posting calls to VoiceBase for processing, you trigger S3 Delivery by including the
+relevant instructions in the Callback section of the configuration document that you 
+send with each API request. The following four JSON attributes are used to control S3 
+Delivery:
+- s3Delivery. Set to true to trigger S3 Delivery
+- url. The base URL of your S3 destination bucket, without a trailing slash, for 
+example: http://s3-us-east-1.amazonaws.com/your-bucket-name
+- role. The ARN of the IAM Role you created earlier, for 
+example: arn:aws:iam::817533888121:policy/enable-voicebase-s3-delivery-to-your-s3-
+bucket-name
+- prependFolder. This value will be used to create the S3 object key for each object that 
+we save to your S3 bucket. For example, if your bucket URL is "http://s3-us-east-
+1.amazonaws.com/your-bucket-name" and your prependFolder value is "voicebase-
+output", then VoiceBase will create S3 keys that begin with "http://s3-us-east-
+1.amazonaws.com/your-bucket-name/voicebase-output/"
 
 
 
