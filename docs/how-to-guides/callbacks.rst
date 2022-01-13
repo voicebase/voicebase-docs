@@ -155,6 +155,11 @@ choice:
 When using callbacks, you can still query the status of the media
 processing using a GET request to /v3/media/{mediaId}.
 
+s3 Callbacks
+------------
+
+Steps to receive a callback to an s3 bucket may be found `here <https://github.com/voicebase/voicebase-docs/blob/develop/s3-callbacks.md>`__.
+
 Callback Retry Logic
 ~~~~~~~~~~~~~~~~~~~~
 
