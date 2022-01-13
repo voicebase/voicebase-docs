@@ -16,7 +16,7 @@ Customers will need to give VoiceBase permission to write to their s3 bucket, an
 - Select the "Create role" button.
 - Select "Another AWS Account".
 - Enter the VoiceBase AWS AccountId in the AccountId field 
-- Select Require external ID, and enter the organizationId of the VoiceBase account you are using in the externalId field. (Ask VoiceBase Support for this ID)
+- Select Require external ID, and enter the organizationId of your VoiceBase account in the externalId field. (Ask VoiceBase Support for this ID)
 - Select "Next: Permissions".
 - Create a Policy with the following permissions:
 
