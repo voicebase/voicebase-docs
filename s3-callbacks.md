@@ -3,9 +3,67 @@
 VoiceBase is able to return the results of your requests into your Amazon S3 bucket
 without you having to provide AWS credentials to VoiceBase. This is achieved
 by providing a pre-signed URL in the callback configuration when you submit the
-media for processing to us.
+media for processing to us. Customers also need to give VoiceBase permissions to write to their bucket, using an IAM role.
 
+## Permissions for VoiceBase to write to customer s3 bucket
 
+Customers will need to give VoiceBase permission to write to their s3 bucket, and this is done by the customer creating an IAM role and then allowing VoiceBase to assume that role.
+
+### Steps for the customer:
+
+- Navigate to IAM Management.
+- Navigate to Roles.
+- Select the "Create role" button.
+- Select "Another AWS Account".
+- Enter the VoiceBase AccountId in the AccountId field (ask VoiceBase Support for this Id)
+- Select Require external ID, and enter the organizationId of the account you are using in the externalId field.
+- Select "Next: Permissions".
+- Create a Policy with the following permissions:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject*",
+                "s3:PutObject*",
+                "s3:DeleteObject*"
+            ],
+            "Resource": [
+                "arn:aws:s3:::[s3-bucket-name]",
+                "arn:aws:s3:::[s3-bucket-name]/*"
+            ]
+        }
+    ]
+}
+```
+where the s3-bucket-name is the S3 bucket you want to deliver files into.
+
+- Attach the policy to the role you're creating.
+- Select "Next:Tags".
+- Select "Next: review".
+- Enter a role name and description.
+- Select "Save".
+- Use the "Role ARN" (e.g. arn:aws:iam::999533888199:role/s3-delivery-role) as the role in subsequent media post requests.
+
+## VoiceBase Callback Configuration
+
+When posting calls to VoiceBase for processing, you trigger S3 Delivery by including the
+relevant instructions in the Callback section of the configuration document that you 
+send with each API request. The following four JSON attributes are used to control S3 
+Delivery:
+- s3Delivery. Set to true to trigger S3 Delivery
+- url. The base URL of your S3 destination bucket, without a trailing slash, for 
+example: http://s3-us-east-1.amazonaws.com/your-bucket-name
+- role. The ARN of the IAM Role you created earlier, for example: arn:aws:iam::999533888199:role/s3-delivery-role
+- prependFolder. This value will be used to create the S3 object key for each object that 
+we save to your S3 bucket. For example, if your bucket URL is "http://s3-us-east-
+1.amazonaws.com/your-bucket-name" and your prependFolder value is "voicebase-
+output", then VoiceBase will create S3 keys that begin with "http://s3-us-east-
+1.amazonaws.com/your-bucket-name/voicebase-output/"
 
 ## How to generate a pre-signed URL with Python using Boto3
 
@@ -51,7 +109,9 @@ Generate the presigned URL
 python presigned.py
 ```
 
-Use the pre-signed URL in the configuration when submitting media to the /v3 API. For example:
+Use the pre-signed URL in the configuration when submitting media to the /v3 API. 
+
+## Configuration Example
 
 ```json
   "publish": {
@@ -68,29 +128,7 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
   }
 ```
 
-## Providing IAM Role ARN to customers for s3 bucket permissions
 
-Customers will typically need a VoiceBase Amazon Resource Name (ARN) because they need to give permission for VoiceBase to write to their s3 bucket. After they create a bucket on their side to receive the files, they would also create an IAM role which VoiceBase assumes in order to write the files to that bucket. 
-
-VoiceBase then needs to provide the IAM Role ARN, the customer adds this to their trust policy for the role, and this allows VoiceBase to assume the role. 
-
-## VoiceBase Callback Configuration
-
-When posting calls to VoiceBase for processing, you trigger S3 Delivery by including the
-relevant instructions in the Callback section of the configuration document that you 
-send with each API request. The following four JSON attributes are used to control S3 
-Delivery:
-- s3Delivery. Set to true to trigger S3 Delivery
-- url. The base URL of your S3 destination bucket, without a trailing slash, for 
-example: http://s3-us-east-1.amazonaws.com/your-bucket-name
-- role. The ARN of the IAM Role you created earlier, for 
-example: arn:aws:iam::999533888199:policy/enable-voicebase-s3-delivery-to-your-s3-
-bucket-name
-- prependFolder. This value will be used to create the S3 object key for each object that 
-we save to your S3 bucket. For example, if your bucket URL is "http://s3-us-east-
-1.amazonaws.com/your-bucket-name" and your prependFolder value is "voicebase-
-output", then VoiceBase will create S3 keys that begin with "http://s3-us-east-
-1.amazonaws.com/your-bucket-name/voicebase-output/"
 
 
 
