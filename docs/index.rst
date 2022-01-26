@@ -59,7 +59,6 @@ More information and guidance can be found in the:
   how-to-guides/transcoding
   how-to-guides/verb-noun
   how-to-guides/voice-features
-  how-to-guides/voicemail
 
 .. _security-how-to:  
 
