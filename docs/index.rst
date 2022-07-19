@@ -3,6 +3,8 @@
 Welcome to VoiceBase /v3 API Docs
 =======================================
 
+Please access our most up to date documentation `here <https://docs.voicebase.com>`_
+
 
 `VoiceBase <https://www.voicebase.com>`_ provides an API for speech recognition and analytics for developers looking to get the most from their audio and video data. 
 
