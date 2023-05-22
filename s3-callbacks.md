@@ -117,7 +117,7 @@ Use the pre-signed URL in the configuration when submitting media to the /v3 API
   "publish": {
     "callbacks": [
       {
-        "url" : "https://your-bucket-name.s3.amazonaws.com/desired/object/name/analytics.json?AWSAccessKeyId=AKIAJZZZZXSCGJXMUGGA&content-type=application%2Fjson&Expires=1499476130&Signature=UwcWOfLWLpvtj1LibHd0Na5Fw%2FM%3D",
+        "url" : "https://your-bucket-name.s3.us-east-1.amazonaws.com/desired/object/name/analytics.json?AWSAccessKeyId=AKIAJZZZZXSCGJXMUGGA&content-type=application%2Fjson&Expires=1499476130&Signature=UwcWOfLWLpvtj1LibHd0Na5Fw%2FM%3D",
         "type" : "analytics",
         "role":"arn:aws:iam::xxxxxxxxxx:role/s3-delivery-role",
         "prependFolder":"my_files",
